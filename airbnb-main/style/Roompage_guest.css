@@ -1,0 +1,270 @@
+* {
+  list-style: none; /* 목록태그 점 없앰 */
+  text-decoration: none; /* 글자 밑줄 없앰 */
+  border-collapse: collapse;
+  box-sizing: border-box;
+  margin: 0px;
+  border: 0px;
+  color: black;
+}
+
+.main_nav {
+  width: 100%;
+  height: 73px;
+  background-color: #f2bba7;
+}
+
+.header {
+  display: flex; /* 가로로 정렬 됨 */
+  width: 1300px;
+  margin: 0 auto;
+  height: 61px;
+}
+
+.logo {
+  width: 1200px;
+  height: 80px;
+  line-height: 60px;
+  margin-left: 10px;
+}
+
+.location {
+  border: none;
+  width: 1000px;
+  height: 35px;
+  /*  		background: rgba(0,0,0,0.1); */
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 1px 2px 2px 2px gray;
+}
+
+.location > form > input {
+  border: none;
+  width: 85px;
+  height: 25px;
+  background: rgba(0, 0, 0, 0);
+  color: black;
+  margin: 0 auto;
+  display: inline;
+}
+/* 
+ .search_img{
+     height: 30px;
+     width: 30px;
+     border-radius: 40px;
+     cursor: pointer;
+     background: gray;
+ } */
+/* .location >form >span{
+     width:50px;
+     color: #d99982;;
+     fontweight: bold;
+     cursor: pointer;
+ } */
+
+.nav {
+  display: flex; /* 가로로 정렬 */
+  justify-content: flex-end;
+  line-height: 60px;
+  width: calc(1652px - 500px);
+}
+
+.nav > li {
+  margin-right: 15px; /* li간 간격 띄여주기 */
+  color: black;
+}
+
+.nav > li > a {
+  color: black;
+}
+
+.body {
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+  position: relative;
+}
+
+.name {
+  margin: 0 auto;
+  text-aling: center;
+  height: 80px;
+  width: 821px;
+}
+
+/* .section input[id="slide"]{
+     display:none;
+ }
+ .section .slidwrap{
+     max-width:1200px;
+     margin: 0 auto;
+     overflow: hidden;
+ }
+ .section .slidelist{
+     white-space:nowrap;
+     font-size:0;
+ }
+ .section .slidelist >li{
+     display:inline-block;
+     vertical-align:middle;
+     width:100%;
+     transition: all .5s;
+ }
+ .section .slidelist >li >a{
+     display: block;
+     position: relative;
+ }
+ .section .slidelist > li > a img {
+     width: 100%;
+ }
+ .section .slidelist label{
+     postion: absolute;
+     z-index: 10;
+     top: 50%;
+     transform:translateY(-50%);
+     padding: 50px;
+     cursor: pointer;
+ }
+ .section .slidelist .left{
+     left: 30px;
+     background: url('./images/left.png') center center / 100%;
+ }
+ .section ..slidelist .right{
+     right: 30px;
+     background: url('./images/right.png') center center;
+ }
+ .section[id="slide01"]:checked ~ .slidewrap .slidelist >li{tranform:translatesX(0%);}
+ .section[id="slide02"]:checked ~ .slidewrap .slidelist >li{tranform:translatesX(-100%);}
+ .section[id="slide03"]:checked ~ .slidewrap .slidelist >li{tranform:translatesX(-200%);}
+  */
+
+#slideShow {
+  /* 보여줄 구간의 높이와 넓이 설정 */
+  width: 500px;
+  height: 300px;
+  position: relative;
+  margin: 50px auto;
+  overflow: hidden;
+  /*리스트 형식으로 이미지를 일렬로 정렬할 것이기 때문에, 500px 밖으로 튀어 나간 이미지들은 hidden으로 숨겨줘야됨*/
+}
+
+.slides {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2500px; /* 슬라이드할 사진과 마진 총 넓이 */
+  transition: left 0.5s ease-out; /*ease-out: 처음에는 느렸다가 점점 빨라짐*/
+}
+
+/* 첫 번째 슬라이드 가운데에 정렬하기위해 첫번째 슬라이드만 margin-left조정 */
+.slides li:first-child {
+  margin-left: 100px;
+}
+
+/* 슬라이드들 옆으로 정렬 */
+.slides li:not(:last-child) {
+  float: left;
+  margin-right: 100px;
+}
+.slides li {
+  float: left;
+}
+.controller span {
+  position: absolute;
+  background-color: transparent;
+  color: black;
+  text-align: center;
+  border-radius: 50%;
+  padding: 10px 20px;
+  top: 50%;
+  font-size: 1.3em;
+  cursor: pointer;
+}
+/* 이전, 다음 화살표에 마우스 커서가 올라가 있을때 */
+.controller span:hover {
+  background-color: rgba(128, 128, 128, 0.11);
+}
+.prev {
+  left: 10px;
+}
+
+/* 이전 화살표에 마우스 커서가 올라가 있을때 이전 화살표가 살짝 왼쪽으로 이동하는 효과*/
+.prev:hover {
+  transform: translateX(-10px);
+}
+.next {
+  right: 10px;
+}
+
+/* 다음 화살표에 마우스 커서가 올라가 있을때 이전 화살표가 살짝 오른쪽으로 이동하는 효과*/
+.next:hover {
+  transform: translateX(10px);
+}
+
+.body2 {
+  text-align: cneter;
+}
+.info {
+  width: 821px;
+  margin: 0 auto;
+  padding: 10px;
+  border-bottom: 1px solid lightgray;
+  text-align: center;
+}
+
+.body3 {
+  width: 821px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid lightgray;
+}
+.body3 > h2 {
+  height: 50px;
+  margin-top: 10px;
+}
+.emoji {
+  width: 24px;
+  height: 24px;
+  padding: 2px;
+}
+
+.body5 {
+  width: 821px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 11px;
+  border-bottom: 1px solid lightgray;
+}
+.reviews {
+  display: flex;
+  margin-left: 135px;
+  padding: 10px;
+}
+.reviewer {
+  width: 40px;
+  height: 40px;
+  border-radius: 30px;
+}
+
+.more {
+  margin-top: 65px;
+  margin-left: 50px;
+  width: 100px;
+  height: 30px;
+  background-color: white;
+  color: black;
+  border: 1px solid gray;
+  text-align: center; /* 글자 위치 : 가운데 */
+  line-height: 30px; /* 글자 높이  */
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.body4 {
+  width: 821px;
+  padding: 10px;
+  margin: 0 auto;
+  text-align: center;
+  border-bottom: 1px solid lightgray;
+}
