@@ -31,16 +31,6 @@
         align-items: center;
       }
 
-      .wrapper {
-        background: rgba(242, 187, 167, 95);
-        width: 5000px;
-        height: 50px;
-        max-width: 100%;
-        position: relative;
-        margin: 0px;
-        padding: 0px; /*페이지끝까지 빈틈없이 채우고 싶은데 안됌*/
-      }
-
       header {
         margin: 0px;
         padding: 0px;
@@ -50,7 +40,7 @@
         margin-left: 100px;
         margin-right: 100px;
       }
-      /* 본문 내용만 이렇게 하고싶은데 wrapper부분까지 적용됨 */
+      
 
       .checkboxDescription {
         display: inline;
@@ -77,7 +67,12 @@
 
       .agree {
         font-size: 0.8em;
-      } /*지정 안됌*/
+      } 
+      
+      #mandatory{font-size: 0.8em; color: blue;}
+      
+      #choice{font-size: 0.8em; color: gray;}
+      
     </style>
   </head>
   <body>
@@ -106,19 +101,23 @@
 			  </div> -->
     </nav>
     <div class="test">
-      <h2>예약정보</h2>
+    <br>
+      <h2>예약정보</h2> <br />
       <p id="reservation_info">
         <b>날짜</b><br />
         입력받아온 데이터 필요<br /><br />
         <b>게스트</b><br />
         입력받아온 데이터 필요
       </p>
+      <br />
 
       <hr />
-
-      <h2>예약자 정보</h2>
-      <p class="checkboxDescription">회원 정보와 일치할 시 체크</p>
-      <input type="checkbox" value="equalGuest_check" /><br />
+	  <br /> 
+      <h2 style="display: inline">예약자 정보</h2>
+      <p class="checkboxDescription"> &nbsp;&nbsp;&nbsp;&nbsp;회원 정보와 일치할 시 체크</p> <!-- ☆ check시 회원정보 받아오는 기능 필요 -->
+      <input type="checkbox" value="equalGuest_check" />
+      
+      <br /><br>
       <label>이름 : </label
       ><input
         type="text"
@@ -130,9 +129,9 @@
       <br /><br />
 
       <hr />
-
+	  <br /> 
       <h2>결제 수단</h2>
-      <!-- select or datalist -->
+      <br>
       <form>
         <select id="paymentChoice">
           <!-- EditPayment design02 : 결제정보 수정 틀 디자인 -->
@@ -143,9 +142,13 @@
       </form>
 
       <br />
-      <button onclick="discount();">쿠폰/할인코드 입력</button>
+      <button onclick="discLink();">쿠폰/할인코드 입력</button>
+      <br /><br />
+    
       <hr />
-      <h2>환불정책</h2>
+      
+      <br />
+      <h2>환불정책</h2> <br />
       <div id="refund_notice">
         숙소 환불 정책<br />
         게스트가 전액 환불을 받을 수 있다고 할 때, '전액'은 숙박비를
@@ -198,30 +201,80 @@
       <br />
       <p class="checkboxDescription">취소 및 환불규칙에 동의</p>
       <input type="checkbox" value="refund_check" />
+      <br /><br /> 
 
-      <hr />
-      <h2>요금 세부 정보</h2>
-      <div id="charge_info"></div>
+      <hr /><br />
+      <h2>요금 세부 정보</h2><br /> <!-- 이부분 수정 필요 -->
+      <div id="charge_info">
+      	숙박비<br />
+      	할인<br /> 
+      	<hr>
+      	총 합계
+      </div>
       <br />
 
       <hr />
 
       <br />
-      <input type="checkbox" id="agreeAll" class="agree" /> 전체동의
+      
+      <!-- ★ [필수]/[선택]을 뒤에 바로 붙이고싶은데 잘 안되네요ㅠㅠ -->
+      <input type="checkbox" id="all" onclick="selectAll();" /> 전체동의
       <hr width="50%" align="left" />
-      <input type="checkbox" id="age14" class="agree" /> 만 14세 이상 이용
-      동의<br />
-      <input type="checkbox" id="personalInfo_collect" class="agree" /> 개인정보
-      수집 및 이용 동의<br />
-      <input type="checkbox" id="3rdPartyConsent" class="agree" /> 개인정보 제
-      3자 제공 동의<br />
-      <input type="checkbox" id="Accommodation_use" class="agree" /> 숙소 이용
-      규칙 동의<br />
-      <input type="checkbox" id="eventSms" class="agree" /> 이메일 알림 메일 및
-      SMS수신 <br />
+      <input type="checkbox" id="age14" name="agree" onclick="selectOne();" />만 14세 이상 이용 동의 <p id="mandatory">[필수]</p><br />
+      <input type="checkbox" id="personalInfo_collect" name="agree" onclick="selectOne();" /> 개인정보 수집 및 이용 동의<p id="mandatory">[필수]</p><br />
+      <input type="checkbox" id="3rdPartyConsent" name="agree" onclick="selectOne();" /> 개인정보 제 3자 제공 동의<p id="mandatory">[필수]</p><br />
+      <input type="checkbox" id="Accommodation_use" name="agree" onclick="selectOne();" /> 숙소 이용 규칙 동의<p id="mandatory">[필수]</p><br />
+      <input type="checkbox" id="eventSms" name="agree" onclick="selectOne();" /> 이메일 알림 메일 및 SMS수신<p id="choice">[선택]</p> <br />
       <br />
-
-      <button onclick="reservationPayment">확인 및 결제</button>
+      
+      <button onclick="reservationPayment()">확인 및 결제</button>
+      
+      <script>
+      	var all = document.getElementById("all");
+      	var agree = document.getElementsByName("agree");
+      	
+      	function selectAll(){
+      		if(all.checked){
+      			for(var i = 0; i < agree.length; i++){
+      				agree[i].checked = true;
+      			}
+      		} else {
+      			for(var i = 0; i < agree.length; i++){
+      				agree[i].checked = false;
+      			}
+      		}
+      	}
+      	
+      	function selectOne(){
+      		var count = 0;
+      		
+      		for(var i = 0; i < agree.length; i++){
+      			if(agree[i].checked){
+      				count++;
+      			}
+      		}
+      		
+      		if(count != 5){
+      			all.checked = false;
+      		} else {
+      			all.checked = true;
+      		}
+      	}
+      	
+      	function discLink(){
+      		window.open('', 'width=300, height=400');
+      	}
+    
+      	function reservationPayment(){
+      		var result = window.confirm("예약을 완료하시겠습니까?");
+          	
+          	if(result){
+          		alert("예약이 완료되었습니다.")
+          	} else {
+          		alert("예약이 취소되었습니다.")
+          	}
+      	}
+      </script>
     </div>
   </body>
 </html>
