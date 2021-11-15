@@ -5,23 +5,23 @@
       <head>
         <meta charset="UTF-8" />
         <title>Registration</title>
-        <link rel="stylesheet" href="style/Registration.css">
+        <link rel="stylesheet" href="../style/Registration.css">
       </head>
       <body>
         <div class="header">
           <div class="logo">
             <label>
-              <a href="index.html">
-               <img src="./images/logo.png" 
+              <a href="../index.jsp">
+               <img src="../img/logo.png" 
                 alt="메인페이지" 
                 id="main">
               </a>
             </label>
           </div>
           <div class="img">
-            <a href="mypage.html">
+            <a href="mypage.jsp">
               <img
-                src="./images/profile.png"
+                src="../images/profile.png"
                 alt="마이페이지" 
                 id="profile"/>
               </a>

@@ -172,7 +172,7 @@
         숙소를 등록하여 부수입을 올리고 새로운<br />
         가능성을 만나세요.
       </p>
-      <a href="Registration.html">
+      <a href="view/Registration.jsp">
       <button type="button">숙소 등록하기</button>
     </a>
     </div>
