@@ -1,0 +1,385 @@
+* {
+    margin: 0 auto;
+    list-style: none; 
+    text-decoration: none; 
+    color: black;
+    box-sizing: border-box;
+  }
+
+  .header {
+    display: flex; 
+    width: 100%;
+    height: 90px;
+    border-radius: 10px;
+    background-color: #f2bba7;
+    box-shadow: 0px 4px 4px lightgrey;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    width: 100%;
+    height: 80px;
+    margin-left: 20px;
+    background-color: transparent;
+  }
+  
+  #logo {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .myPage {
+    margin-left: 30%;
+    width: 20%;
+  } 
+  
+  #profile {
+    width: 40px;
+    height: 40px;
+    display: flex;
+  }
+
+  .searching_box {
+    background-color: transparent;
+    margin-top: 0px;
+    margin-left: 20px;
+    height: 70%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    background: white;
+    box-shadow: 0px 3px 2px #aaaaaa;
+  }
+
+  .searching_box_inner{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100%;
+    display: grid;
+    flex-direction: row;
+    font-size: 12px;
+  }
+
+  .location {
+    width: 80%;
+    grid-area: 1/1 / span 1 / span 1;
+    display: grid;
+    align-items: flex-end;
+    margin-top: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    border-right: 1px solid #dddddd;
+  }
+
+  .location_input {
+    grid-area: 2/1 / span 1 / span 1;
+    padding: 2px;
+    align-items: center;
+    border-right: 1px solid #dddddd;
+  }
+  .input_box {
+    margin-left: 5px;
+    border-color: #d99982;
+  }
+  
+  .datePicker {
+    width: 130px;
+    size: 12px;
+    height: 30px;
+    font-size: 13px;
+    border-color: #d99982;
+    border-radius: 10px;
+  }
+
+  .dropdown-toggle {
+    width: 130px;
+    size: 12px;
+    height: 30px;
+    font-size: 13px;
+    border-radius: 10px;
+    border-color: #d99982;
+  }
+
+  .checkin {
+    width: 100%;
+    grid-area: 1/2 / span 1 / span 1;
+    display: grid;
+    align-items: flex-end;
+    margin-top: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    border-right: 1px solid #dddddd;
+  }
+
+  .checkin_input {
+    grid-area: 2/2 / span 1 / span 1;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid #dddddd;
+  }
+  .calendar {
+    display: inline-block; 
+    position: absolute; 
+    left: 828px; 
+    top: 67px;
+  } 
+
+  .calendar-wrapper {
+    max-width: 310px;
+    opacity: 0.9;
+  }
+
+  .calendar-header {
+    position: relative;
+    width: 330px;
+    background-color: #d99982;
+    padding: 0px;
+    overflow: auto;
+    border-radius: 15px;
+  }
+  
+  .calendar-mid {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+  }
+
+  .calendar-header 
+  .leftArrow {
+    border-width: 10px;
+    border-style: solid;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-right-color: #261d1c;
+    margin-left: 5px;
+    margin-top: 8px;
+    float: left;
+    cursor: pointer;
+  }
+
+  .calendar-header 
+  .rightArrow {
+    border-width: 10px;
+    border-style: solid;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: #261d1c;
+    border-right-color: transparent;
+    margin-left: 5px;
+    margin-bottom: 10px;
+    float: right;
+    cursor: pointer;
+  }
+  
+  .calendar-mid {
+    width: 140px;
+    height: 0px;
+    margin: 10px 70px 0px 0px; 
+  }
+
+  ul.weekTip, 
+  ul.date {
+    width: 104%;
+    margin-right:30px;
+    background-color: white;
+    border-radius: 10px;
+  }
+
+  ul.weekTip > li,
+  ul.date > li {
+    display: inline-block;
+    box-sizing: border-box;
+    font-size: 15px;
+    color: #74788c;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 5px;
+  }
+
+  ul.date > li.active {
+    background-color: #f2bba7;
+    color: #261d1c;
+  }
+
+  ul.date > li.across {
+    border: 1px solid #f2bba7;
+    color: #d99982;
+  }
+
+  ul > li.weekend {  color: #f2bba7; }
+
+  ul > li.disabled { color: lightgrey; }
+
+  .dropdown-toggle {
+    width: 130px;
+    size: 12px;
+    height: 30px;
+    font-size: 13px;
+    border-radius: 10px;
+    border-color: #d99982;
+  }
+  
+  .input_box {
+    margin-left: 5px;
+    border-color: #d99982;
+    width: 50px;
+    height: 25px;
+  }
+  
+  /* ?? ???? ??? ??? ??? */
+  .datePicker {
+    width: 160px;
+    size: 12px;
+    height: 30px;
+    font-size: 13px;
+    border-color: #d99982;
+    border-radius: 10px;
+  }
+
+  .peoplenum {
+    grid-area: 1/3 / span 1 / span 1;
+    font-size: 12px;
+    font-weight: bold;
+    display: grid;
+    align-items: flex-end;
+    padding-left: 20px;
+  }
+  .peoplenum_input {
+    grid-area: 2/3 / span 1 / span 1;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  .search_button {
+    grid-area: 1/4 / span 2 / span 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .search_img {
+    height: 30px;
+    width: 30px;
+    border-radius: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background-color: white;
+    border: none;
+  }
+  /* header1 ? */
+
+ .header2 {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 20px;
+  }
+
+  .ft { 
+    width: 100%; 
+    text-align: center;
+  }
+
+  .filter { width: 100%; }
+
+  .button {
+    width: 110px;
+    height: 40px;
+    text-align: center;
+    border: none;
+    background-color: #f2bba7;
+    color: white;
+    margin: 30px 10px 20px 30px;
+    border-radius: 20px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+  }
+
+  .button:hover {
+    background-color: #d99982;
+    color: white;
+    transform: translateY(-7px);
+  }
+
+  .body {
+    width: 100%;
+    height: 100%;
+  }
+
+  .room_left {
+    width: 50%;
+    height: 400px;
+    float: left;
+    margin-left: 5%;
+    border-bottom: 1px solid lightgrey;
+  }
+
+  .room_left2, 
+  .room_left3, 
+  .room_left4 {
+    width: 100%;
+    float: left;
+    border-bottom: 1px solid lightgrey;
+  }
+
+  .map_right {
+    position: sticky;
+    top: 0;
+    width: 30%;
+    height: 100%;
+    float: right;
+    margin: 75px 220px 0px 0px;
+  }
+
+  .room { border-bottom: 1px solid lightgrey; }
+
+  .photo, 
+  .photo2, 
+  .photo3, 
+  .photo4 {
+    margin-top: 20px;
+    float: left;
+  }
+
+  .info, 
+  .info3, 
+  .info5, 
+  .info7 {
+    margin: 30px;
+    float: left;
+  }
+
+  .info > pre, 
+  .info3 > pre { margin-bottom: 2px; }
+
+  .room_img_input {
+    margin: 10px;
+    border-radius: 10px;
+  }
+
+  .pho { vertical-align: middle; }
+
+  .info2, 
+  .info4, 
+  .info6, 
+  .info8 {
+    margin: 30px 0px 20px 250px;
+  }
+
+  .on {
+    float: left;
+    margin: 5px 0px 0px 0px;
+    color: #d99982;
+  }

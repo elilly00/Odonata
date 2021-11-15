@@ -1,159 +1,78 @@
+/* 초기화 */
 * {
-  list-style: none; /* 목록태그 점 없앰 */
-  text-decoration: none; /* 글자 밑줄 없앰 */
-  border-collapse: collapse;
+  margin: 0 auto;
+  padding: 0;
   box-sizing: border-box;
-  margin: 0px;
-  border: 0px;
+  list-style: none;
+  text-decoration: none;
   color: black;
-}
-
-.main_nav {
-  width: 100%;
-  height: 73px;
-  background-color: #f2bba7;
 }
 
 .header {
   display: flex; /* 가로로 정렬 됨 */
-  width: 1300px;
+  width: 100%;
   margin: 0 auto;
-  height: 61px;
+  height: 90px;
+  border-radius: 10px;
+  background: #f2bba7;
+  box-shadow: 0px 4px 4px lightgrey;
 }
 
 .logo {
-  width: 1200px;
+  width: 75%;
   height: 80px;
-  line-height: 60px;
-  margin-left: 10px;
+  margin-left: 20px;
+/*         background: gray; */
+}
+#logo {
+    width: 80px;
+    height: 80px;
+  margin-top: 5px;
+/*       	background:tomato; */
 }
 
-.location {
-  border: none;
-  width: 1000px;
-  height: 35px;
-  /*  		background: rgba(0,0,0,0.1); */
-  border-radius: 10px;
-  margin-top: 20px;
-  box-shadow: 1px 2px 2px 2px gray;
-}
-
-.location > form > input {
-  border: none;
-  width: 85px;
-  height: 25px;
-  background: rgba(0, 0, 0, 0);
-  color: black;
-  margin: 0 auto;
-  display: inline;
-}
-/* 
- .search_img{
-     height: 30px;
-     width: 30px;
-     border-radius: 40px;
-     cursor: pointer;
-     background: gray;
- } */
-/* .location >form >span{
-     width:50px;
-     color: #d99982;;
-     fontweight: bold;
-     cursor: pointer;
- } */
-
-.nav {
-  display: flex; /* 가로로 정렬 */
-  justify-content: flex-end;
-  line-height: 60px;
-  width: calc(1652px - 500px);
-}
-
-.nav > li {
-  margin-right: 15px; /* li간 간격 띄여주기 */
-  color: black;
-}
-
-.nav > li > a {
-  color: black;
+.img {
+      width: 30%;
+/* 	  	background: yellow; */
+    } 
+  
+#profile {
+  margin-left:87%;
+  width: 40px;
+  height: 40px;
+  margin-top: 25px;  
+       /* background: gray;  */
 }
 
 .body {
   text-align: center;
   margin: 10px;
-  padding: 10px;
-  position: relative;
+  padding: 20px;
+  position: flex;
+  border-bottom: 1px solid lightgrey;
 }
 
-.name {
-  margin: 0 auto;
-  text-aling: center;
-  height: 80px;
-  width: 821px;
-}
-
-/* .section input[id="slide"]{
-     display:none;
- }
- .section .slidwrap{
-     max-width:1200px;
-     margin: 0 auto;
-     overflow: hidden;
- }
- .section .slidelist{
-     white-space:nowrap;
-     font-size:0;
- }
- .section .slidelist >li{
-     display:inline-block;
-     vertical-align:middle;
-     width:100%;
-     transition: all .5s;
- }
- .section .slidelist >li >a{
-     display: block;
-     position: relative;
- }
- .section .slidelist > li > a img {
-     width: 100%;
- }
- .section .slidelist label{
-     postion: absolute;
-     z-index: 10;
-     top: 50%;
-     transform:translateY(-50%);
-     padding: 50px;
-     cursor: pointer;
- }
- .section .slidelist .left{
-     left: 30px;
-     background: url('./images/left.png') center center / 100%;
- }
- .section ..slidelist .right{
-     right: 30px;
-     background: url('./images/right.png') center center;
- }
- .section[id="slide01"]:checked ~ .slidewrap .slidelist >li{tranform:translatesX(0%);}
- .section[id="slide02"]:checked ~ .slidewrap .slidelist >li{tranform:translatesX(-100%);}
- .section[id="slide03"]:checked ~ .slidewrap .slidelist >li{tranform:translatesX(-200%);}
-  */
-
+  /* 슬라이드 부분 */
+/* 보여줄 구간의 높이와 넓이 설정 */
 #slideShow {
-  /* 보여줄 구간의 높이와 넓이 설정 */
   width: 500px;
   height: 300px;
   position: relative;
   margin: 50px auto;
   overflow: hidden;
+  background: white;
   /*리스트 형식으로 이미지를 일렬로 정렬할 것이기 때문에, 500px 밖으로 튀어 나간 이미지들은 hidden으로 숨겨줘야됨*/
 }
 
 .slides {
   position: absolute;
-  left: 0;
+  left: 100px;
+  right: 100px;
   top: 0;
-  width: 2500px; /* 슬라이드할 사진과 마진 총 넓이 */
-  transition: left 0.5s ease-out; /*ease-out: 처음에는 느렸다가 점점 빨라짐*/
+  width: 200px;
+  /* 슬라이드할 사진과 마진 총 넓이 */
+  transition: left 1s ease-out;
+  /*ease-out: 처음에는 느렸다가 점점 빨라짐*/
 }
 
 /* 첫 번째 슬라이드 가운데에 정렬하기위해 첫번째 슬라이드만 margin-left조정 */
@@ -166,9 +85,11 @@
   float: left;
   margin-right: 100px;
 }
+
 .slides li {
   float: left;
 }
+
 .controller span {
   position: absolute;
   background-color: transparent;
@@ -180,6 +101,7 @@
   font-size: 1.3em;
   cursor: pointer;
 }
+
 /* 이전, 다음 화살표에 마우스 커서가 올라가 있을때 */
 .controller span:hover {
   background-color: rgba(128, 128, 128, 0.11);
@@ -200,46 +122,52 @@
 .next:hover {
   transform: translateX(10px);
 }
+/* 슬라이드 부분 끝 */
 
-.body2 {
+.body1 {
+  width: 45%;
+  margin-left: 5%;
+  float: left;
+}
+.body1_1 {
+  float: left;
+  width: 100%;
+  margin: 60px;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  box-shadow: 1px 2px 2px 1px lightgrey;
+}
+.body1_2 {
   text-align: cneter;
+  /* background: lightpink; */
 }
-.info {
-  width: 821px;
+.body_info,
+.body_info2,
+.body_info3,
+.body_info4 {
+  width: 90%;
   margin: 0 auto;
-  padding: 10px;
-  border-bottom: 1px solid lightgray;
+  padding: 11px;
+  border-bottom: 1px solid lightgrey;
   text-align: center;
 }
 
-.body3 {
-  width: 821px;
-  margin: 0 auto;
-  text-align: center;
-  padding: 10px;
-  border-bottom: 1px solid lightgray;
-}
-.body3 > h2 {
+.body_info2>h2 {
   height: 50px;
   margin-top: 10px;
 }
+
 .emoji {
   width: 24px;
   height: 24px;
   padding: 2px;
 }
 
-.body5 {
-  width: 821px;
-  margin: 0 auto;
-  text-align: center;
-  padding: 11px;
-  border-bottom: 1px solid lightgray;
-}
 .reviews {
   display: flex;
-  margin-left: 135px;
-  padding: 10px;
+  margin-right: 6%;
+  padding: 5%;
+  /* background:rgba(0, 0, 0, 0.1); */
 }
 .reviewer {
   width: 40px;
@@ -261,10 +189,120 @@
   border-radius: 10px;
 }
 
-.body4 {
-  width: 821px;
-  padding: 10px;
+.body_info5 {
+  width: 90%;
   margin: 0 auto;
+  padding: 11px;
   text-align: center;
-  border-bottom: 1px solid lightgray;
+}
+
+#note {
+    width: 80%;
+    height: 100px;
+    margin: 10px;
+}
+
+.submit {
+  margin: 40px;
+  text-align: center;
+  width: 90%;
+  height: 40px;
+}
+
+#submit {
+  width: 100px;
+  height: 40px;
+  border: none;
+  border-radius: 20px;
+  background-color: #f2bba7;
+  color: white;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+}
+
+#submit:hover {
+  background-color: #d99982;
+  color: white;
+  transform: translateY(-7px);
+}
+
+.right {
+  height: 1450px;
+  margin-top: 60px;
+  margin-right: 15%;
+  float: right;
+}
+.wrap {
+  position: sticky;
+  top: 0px;
+  width: 450px;
+  height: 550px;
+  text-align: center;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  box-shadow: 1px 2px 2px 1px lightgrey;
+}
+
+.booking {
+  margin-top: 15%;
+  height: 30px;
+}
+
+.booking li {
+  padding: 10px;
+}
+
+.add2,
+.add3 {
+  font-size: 0.9em;
+}
+
+.date {
+  width: 40%;
+  height: 30px;
+  text-align: center;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+}
+
+.add {
+  margin-bottom: 15px;
+}
+
+.select {
+  width: 20%;
+  height: 30px;
+  text-align: center;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+
+}
+
+.button {
+  height: 60px;
+  margin-top: 20%;
+  border-bottom: 1px solid lightgrey;
+}
+
+.button2 {
+  width: 200px;
+  height: 40px;
+  border: none;
+  border-radius: 20px;
+  background-color: #f2bba7;
+  color: white;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+}
+
+.button2:hover {
+  background-color: #74788c;
+  transform: translateY(-7px);
+  color: white;
+}
+
+.result {
+  margin-top: 72%;
 }
