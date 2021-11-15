@@ -31,8 +31,8 @@
     <nav class="main-navi">
       <div class="logo">
         <!-- <i class="fab fa-airbnb"></i> 잠자리 -->
-        <a href="index.html">
-        <img class="main-navi" src="img/logo.png" href="index.html" >
+        <a href="index.jsp">
+        <img class="main-navi" src="img/logo.png" href="index.jsp" >
         </a>
         
       </div>
@@ -131,7 +131,7 @@
       <div class="menu">
         <button
           type="button"
-          onclick="location.href='login.html'"
+          onclick="location.href='view/login.jsp'"
           class="item menusolo hostdg"
         >
           로그인/회원가입
@@ -143,11 +143,11 @@
           <button
           class="mypage"
           type="button"
-          onclick="location.href='login.html'"
+          onclick="location.href='view/login.jsp'"
           class="item menusolo hostdg"
         >
           <!-- <i class="fas fa-bars"></i> -->
-          <a href="mypage.html">
+          <a href="view/mypage.jsp">
           <i class="fas fa-user-circle" ></i>
           </a>
 
