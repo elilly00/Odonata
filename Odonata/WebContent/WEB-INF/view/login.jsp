@@ -1,0 +1,69 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="../style/login.css" />
+    
+  </head>
+
+  <body>
+    <nav class="main-navi">
+      <!-- < class="logo"> -->
+        <!-- <i class="fab fa-airbnb"></i> 잠자리 -->
+        <a class="logoo" href="index.html">
+        <img class="logoo" src="../img/logo.png" > </img>
+      </a>
+        
+      </div>
+      <!-- <div class="search">
+                <button class="btn">
+                    <div>검색 시작하기</div>
+                    <div class="bicon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    
+                </button>
+            </div> -->
+    </nav>
+
+    <div class="main-page">
+      <div class="login-form">
+        <form>
+          <input
+            type="text"
+            name="email"
+            class="text-field"
+            placeholder="아이디"
+          />
+          <input
+            type="password"
+            name="password"
+            class="text-field"
+            placeholder="비밀번호"
+          />
+          <input type="submit" value="로그인" class="submit-btn" />
+        </form>
+
+        <div class="links">
+          <a href="#">아이디 찾기 / 비밀번호 찾기</a>
+        </div>
+        <div class="links">
+          <a href="register.html">회원가입</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
