@@ -35,3 +35,7 @@ Binding(COMMAND+SHIFT+T,
 
 !ENTRY org.eclipse.ui.navigator 2 0 2021-11-15 11:08:44.189
 !MESSAGE Can't find Navigator Content Descriptor with id: org.eclipse.jst.servlet.ui.EnhancedJavaRendering
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-11-15 11:10:46.692
+!MESSAGE Exception caught during execution of command '[bash, --login, -c, which git]' in '/Users/choewonseog', return code '127', error message 'bash: which: command not found
+'
