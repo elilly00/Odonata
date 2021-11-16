@@ -258,3 +258,8 @@ java.lang.Error: SWT Resource was not properly disposed
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:659)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:596)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1467)
+
+!ENTRY org.eclipse.jst.server.tomcat.ui 4 0 2021-11-16 15:22:59.266
+!MESSAGE An error occurred while cleaning Odonata work directory.  Tomcat v9.0 Server at localhost will not be automatically restarted.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2021-11-16 15:22:59.266
+!MESSAGE Could not determine work directory for module
