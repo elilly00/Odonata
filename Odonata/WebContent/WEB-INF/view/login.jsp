@@ -27,8 +27,8 @@
       </div>
     </nav>
 
-
-
+  <% if(loginUser == null){ %>
+  <form id="loginForm" action="<%= request.getContextPath() %>/login.me" method="post">
     <div class="main-page">
       <div class="login-form">
 
@@ -58,8 +58,49 @@
         <div class="links">
           <a href="register.html">회원가입</a>
         </div>
-        
+  </form>
+  <%-- 로그인 할때 입력 끝--%>
+  <% } else { %>
+      <div id="userInfo" align="right">
+			<label> <%= loginUser.getUserName() %> 님의 방문을 환영합니다. </label>
+			<br clear="all">
+			<div class="loginBtns">
+				<%-- <input type="button" value="내 정보 보기" onclick="location.href='<%= request.getContextPath() %>/myPage.me'">
+				<input type="button" value="로그 아웃" onclick="location.href =  '<%= request.getContextPath() %>/Logout.me'"> --%>
+			</div>
+		</div>
+	<% } %>
+
+
       </div>
     </div>
+
+    <script>
+		function logout(){
+			location.href='<%= request.getContextPath() %>/logout.me';
+		}
+		
+		function memberJoin(){
+			location.href='<%= request.getContextPath() %>/signUpForm.me';
+		}
+		
+		function myPage(){
+			location.href='<%= request.getContextPath() %>/myPage.me';
+		}
+
+		function goHome(){
+			location.href='<%= request.getContextPath() %>';
+		}
+		function goNotice(){
+			location.href='<%= request.getContextPath() %>/list.no';
+		}	
+		function goBoard(){
+			location.href='<%= request.getContextPath() %>/list.bo';
+		}	
+		function goThumbnail(){
+			location.href='<%= request.getContextPath() %>/list.th';
+		}	
+		
+	</script>
   </body>
 </html>
