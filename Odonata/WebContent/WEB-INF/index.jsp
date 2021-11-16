@@ -49,6 +49,7 @@
         <div class="searching_box_inner">
           <div class="location">
             <p>위치</p>
+            
           </div>
           <div class="location_input">
             <input id="inputLocalizacao" type="text" class="dropdown-toggle" autocomplete="off" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" placeholder="도시 또는 지역을 입력하세요."></input>
@@ -131,7 +132,7 @@
       <div class="menu">
         <button
           type="button"
-          onclick="location.href='view/login.jsp'"
+          onclick="location.href='views/login.jsp'"
           class="item menusolo hostdg"
         >
           로그인/회원가입
@@ -143,11 +144,11 @@
           <button
           class="mypage"
           type="button"
-          onclick="location.href='view/login.jsp'"
+          onclick="location.href='views/login.jsp'"
           class="item menusolo hostdg"
         >
           <!-- <i class="fas fa-bars"></i> -->
-          <a href="view/mypage.jsp">
+          <a href="views/mypage.jsp">
           <i class="fas fa-user-circle" ></i>
           </a>
 
@@ -172,7 +173,7 @@
         숙소를 등록하여 부수입을 올리고 새로운<br />
         가능성을 만나세요.
       </p>
-      <a href="view/Registration.jsp">
+      <a href="views/Registration.jsp">
       <button type="button">숙소 등록하기</button>
     </a>
     </div>

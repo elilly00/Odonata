@@ -37,7 +37,7 @@
       <div class="login-form">
 
   <%-- <% if(loginUser == null){ %> --%>
-  <form id="loginForm" action="<%= request.getContextPath() %>/login.me" method="post">
+  <form id="loginForm" action="<%=request.getContextPath()%>/login.me" method="post">
         <form>
           <input
             type="text"
@@ -78,7 +78,7 @@
         </div>
 
         <div class="links">
-          <a href="register.html">회원가입</a>
+          <a href="register.jsp">회원가입</a>
         </div>
 
 
