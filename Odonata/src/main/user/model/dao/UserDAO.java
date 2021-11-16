@@ -1,7 +1,6 @@
 package main.user.model.dao;
 
 import static main.common.JDBCTemplate.close;
-import static main.common.JDBCTemplate.getConnection;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -11,8 +10,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
-
-
 
 import main.user.model.vo.User;
 
@@ -58,10 +55,10 @@ public class UserDAO {
                                         rset.getString("User_name"),
                                         rset.getString("User_email"),
                                         rset.getString("User_phone"),
-                                        rset.getDate("User_birth"),
-                                        rset.getString("User_code"),
+                                        rset.getString("User_birth"),
+                                        rset.getint("User_code"),
                                         rset.getString("User_type"),
-                                        rset.getString("Status"),
+                                        rset.getchar("Status"),
                                         
             }
         }catch (SQLException e){

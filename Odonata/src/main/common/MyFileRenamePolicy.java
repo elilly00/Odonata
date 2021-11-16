@@ -1,4 +1,4 @@
-package common;
+package main.common;
 
 import com.oreilly.servlet.multipart.FileRenamePolicy;
 import java.io.File;

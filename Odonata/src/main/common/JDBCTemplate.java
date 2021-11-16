@@ -1,4 +1,4 @@
-package common;
+package main.common;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

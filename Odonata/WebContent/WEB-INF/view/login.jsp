@@ -1,12 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" %>
+<%@ page import="user.model.vo.User"%>
+<% 
+  User loginUser = (User)session.getAttribute("loginUser"); 
+%>
+
 <!DOCTYPE html>
-<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>login</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -21,43 +25,37 @@
 
   <body>
     <nav class="main-navi">
-        <a class="logoo" href="index.html">
-        <img class="logoo" src="../img/logo.png" > </imgORA-02267: column type incompatible with referenced column type>
+        <a class="logoo" href="../index.jsp">
+        <img class="logoo" src="../img/logo.png" > 
       </a>
       </div>
     </nav>
 
-  <% if(loginUser == null){ %>
-  <form id="loginForm" action="<%= request.getContextPath() %>/login.me" method="post">
     <div class="main-page">
       <div class="login-form">
 
+  <% if(loginUser == null){ %>
+  <form id="loginForm" action="<%= request.getContextPath() %>/login.me" method="post">
         <form>
           <input
             type="text"
-            name="email"
+            name="userId"
             class="text-field"
+            id="userId"
             placeholder="아이디"
           />
 
           <input
             type="password"
-            name="password"
+            name="userPwd"
             class="text-field"
+            id="userPwd"
             placeholder="비밀번호"
           />
 
           <input type="submit" value="로그인" class="submit-btn" />
 
         </form>
-
-        <div class="links">
-          <a href="#">아이디 찾기 / 비밀번호 찾기</a>
-        </div>
-
-        <div class="links">
-          <a href="register.html">회원가입</a>
-        </div>
   </form>
   <%-- 로그인 할때 입력 끝--%>
   <% } else { %>
@@ -70,6 +68,14 @@
 			</div>
 		</div>
 	<% } %>
+
+        <div class="links">
+          <a href="#">아이디 찾기 / 비밀번호 찾기</a>
+        </div>
+
+        <div class="links">
+          <a href="register.html">회원가입</a>
+        </div>
 
 
       </div>
