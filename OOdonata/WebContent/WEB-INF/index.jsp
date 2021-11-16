@@ -132,7 +132,7 @@
       <div class="menu">
         <button
           type="button"
-          onclick="location.href='views/login.jsp'"
+          onclick="location.href='view/login.jsp'"
           class="item menusolo hostdg"
         >
           로그인/회원가입
@@ -144,11 +144,11 @@
           <button
           class="mypage"
           type="button"
-          onclick="location.href='views/login.jsp'"
+          onclick="location.href='view/login.jsp'"
           class="item menusolo hostdg"
         >
           <!-- <i class="fas fa-bars"></i> -->
-          <a href="views/mypage.jsp">
+          <a href="view/mypage.jsp">
           <i class="fas fa-user-circle" ></i>
           </a>
 
@@ -173,7 +173,7 @@
         숙소를 등록하여 부수입을 올리고 새로운<br />
         가능성을 만나세요.
       </p>
-      <a href="views/Registration.jsp">
+      <a href="view/Registration.jsp">
       <button type="button">숙소 등록하기</button>
     </a>
     </div>
