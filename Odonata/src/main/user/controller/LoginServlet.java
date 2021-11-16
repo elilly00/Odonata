@@ -2,6 +2,8 @@ package main.user.controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpServletMapping;
 import javax.servlet.http.HttpSession;
 
 import main.user.model.service.UserService;
@@ -14,7 +16,7 @@ import main.user.model.vo.User;
  */
 @WebServlet("/login.me")
 // name="UpdatePwdServlet",urlPatterns=
-public class LoginServlet extends HttpServlet {
+public class LoginServlet extends HttpServletMapping {
 
   private static final long serialVersionUID = 1L;
 
