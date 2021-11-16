@@ -4,7 +4,7 @@ CREATE TABLE `USER` (
     `User_pwd`  VARCHAR2(30)    NOT NULL,
     `User_email`    VARCHAR2(100)   NOT NULL,
     `User_phone`    VARCHAR2(10)    NOT NULL,
-    `User_birth`    VARCHAR2(30)    NOT NULL,
+    `User_birth`    DATE    NOT NULL,
     `User_id`   VARCHAR2(30)    NOT NULL,
     `User_type` VARCHAR2(30)    NOT NULL    COMMENT 'Admin/User/Host',
     `Status`    CHAR(1) NOT NULL    COMMENT 'Y or N'
@@ -48,7 +48,8 @@ CREATE TABLE `MSG` (
     `msgtext`   VARCHAR2(300)   NULL,
     `send_id`   VARCHAR2(30)    NOT NULL,
     `receive_id`    VARCHAR2(30)    NOT NULL,
-    `Status`    CHAR(1) NOT NULL    COMMENT 'Y or N'
+    `Status`    CHAR(1) NOT NULL    COMMENT 'Y or N',
+    `Field` VARCHAR(255)    NULL
 );
 
 CREATE TABLE `SookSoIMG` (
