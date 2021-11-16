@@ -1,9 +1,11 @@
 <%@page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
-<%@ page import="user.model.vo.User"%>
+<%-- <%@ page import="user.model.vo.User"%>
+
 <% 
+  
   User loginUser = (User)session.getAttribute("loginUser"); 
-%>
+%> --%>
 
 <!DOCTYPE html>
   <head>
@@ -34,7 +36,7 @@
     <div class="main-page">
       <div class="login-form">
 
-  <% if(loginUser == null){ %>
+  <%-- <% if(loginUser == null){ %> --%>
   <form id="loginForm" action="<%= request.getContextPath() %>/login.me" method="post">
         <form>
           <input
@@ -58,16 +60,18 @@
         </form>
   </form>
   <%-- 로그인 할때 입력 끝--%>
-  <% } else { %>
-      <div id="userInfo" align="right">
+  <%-- <% } else { %> --%>
+
+      <%-- <div id="userInfo" align="right">
 			<label> <%= loginUser.getUserName() %> 님의 방문을 환영합니다. </label>
 			<br clear="all">
 			<div class="loginBtns">
 				<%-- <input type="button" value="내 정보 보기" onclick="location.href='<%= request.getContextPath() %>/myPage.me'">
 				<input type="button" value="로그 아웃" onclick="location.href =  '<%= request.getContextPath() %>/Logout.me'"> --%>
-			</div>
-		</div>
-	<% } %>
+			<%-- </div> --%>
+		<%-- </div> --%> 
+
+	<%-- <% } %> --%>
 
         <div class="links">
           <a href="#">아이디 찾기 / 비밀번호 찾기</a>
