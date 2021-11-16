@@ -9,13 +9,13 @@ public class User {
     private String User_birth;
     private String User_id;
     private String User_type;
-    private char Status;
+    private String Status;
     
     public User() {
     }
     
     public User(int user_code, String user_name, String user_pwd, String user_email, String user_phone,
-            String user_birth, String user_id, String user_type, char status) {
+            String user_birth, String user_id, String user_type, String status) {
         User_code = user_code;
         User_name = user_name;
         User_pwd = user_pwd;
@@ -91,11 +91,11 @@ public class User {
         User_type = user_type;
     }
     
-    public char getStatus() {
+    public String getStatus() {
         return Status;
     }
     
-    public void setStatus(char status) {
+    public void setStatus(String status) {
         Status = status;
     }
     
