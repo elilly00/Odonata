@@ -116,7 +116,7 @@ body {
 }
 
 .box {
-  width: 1600px;
+  width: 100%;
   height: 364px;
   padding: 12% 80px;
 }
