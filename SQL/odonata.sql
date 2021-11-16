@@ -10,6 +10,20 @@ CREATE TABLE `MEMBER` (
     `Status`    CHAR(1) NOT NULL    COMMENT 'Y or N'
 );
 
+--------------------------------------------------
+-- User_code 시퀀스 생성
+CREATE SEQUENCE SEQ_UID
+INCREMENT BY 1
+START WITH 2
+MINVALUE 1
+NOCYCLE
+NOCACHE;
+--------------------------------------------------
+-- User_type 및 Status 디폴트 값 수정
+ALTER TABLE MEMBER MODIFY (User_type DEFAULT 'User');
+ALTER TABLE MEMBER MODIFY (STATUS DEFAULT 'Y');
+--------------------------------------------------
+
 CREATE TABLE `Reserv` (
     `V_code`    NUMBER  NOT NULL,
     `V_status`  CHAR(1) NOT NULL    COMMENT 'Y or N',
