@@ -1,8 +1,8 @@
-package user.model.service;
+package main.user.model.dao;
 
-import user.model.dao.UserDAO;
 
-public class UserService {
+
+public class UserDAO {
     
-    private UserDAO uDAO = new UserDAO();
+    
 }
