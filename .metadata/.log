@@ -588,3 +588,8 @@ Binding(COMMAND+SHIFT+T,
 !ENTRY org.eclipse.m2e.logback.appender 2 0 2021-11-16 20:34:21.491
 !MESSAGE Exception caught during execution of command '[bash, --login, -c, which git]' in '/Users/choewonseog', return code '127', error message 'bash: which: command not found
 '
+
+!ENTRY org.eclipse.core.resources 2 2 2021-11-16 20:46:32.165
+!MESSAGE Save operation warnings.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2021-11-16 20:46:32.165
+!MESSAGE The project description file (.project) for 'Odonata' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
