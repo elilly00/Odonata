@@ -86,30 +86,7 @@
     </div>
 
     <script>
-		function logout(){
-			location.href='<%= request.getContextPath() %>/logout.me';
-		}
 		
-		function memberJoin(){
-			location.href='<%= request.getContextPath() %>/signUpForm.me';
-		}
-		
-		function myPage(){
-			location.href='<%= request.getContextPath() %>/myPage.me';
-		}
-
-		function goHome(){
-			location.href='<%= request.getContextPath() %>';
-		}
-		function goNotice(){
-			location.href='<%= request.getContextPath() %>/list.no';
-		}	
-		function goBoard(){
-			location.href='<%= request.getContextPath() %>/list.bo';
-		}	
-		function goThumbnail(){
-			location.href='<%= request.getContextPath() %>/list.th';
-		}	
 		
 	</script>
   </body>
