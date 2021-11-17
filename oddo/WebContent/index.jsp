@@ -9,8 +9,11 @@
     <title>
       잠자리: 휴가용 임대 숙소, 통나무집, 비치 하우스, 독특한 숙소 및 체험
     </title>
-    <script src="js/jquery-3.5.1.min.js"></script>
-    <link rel="shortcut icon" href="img/airbnb.ico" type="image/x-icon" />
+    <script src="WEB-INF/js/jquery-3.5.1.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/cesiumjs/1.78/Build/Cesium/Cesium.js"></script>
+    <link rel="shortcut icon" href="WEB-INF/img/airbnb.ico" type="WEB-INF/image/x-icon" />
 
     
 
@@ -22,8 +25,16 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+  
     
-    <link rel="stylesheet" href="style/main.css" />
+    <%-- <link rel="stylesheet" href="WEB-INF/style/main.css" /> --%>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/style/main.css" />
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/WEB-INF/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/WEB-INF/js/jquery.fullPage.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/WEB-INF/js/jquery-3.6.0.min.js"></script>
+    
+    
   </head>
   <!-- 첫페이지 시작 -->
   <header id="main-page">
@@ -32,7 +43,7 @@
       <div class="logo">
         <!-- <i class="fab fa-airbnb"></i> 잠자리 -->
         <a href="index.jsp">
-        <img class="main-navi" src="img/logo.png" href="index.jsp" >
+        <img class="main-navi" src="WEB-INF/img/logo.png" href="index.jsp" >
         </a>
         
       </div>
@@ -65,7 +76,7 @@
         </div>
         
         
-        <script src="js/calendar.js"></script>
+        <script src="WEB-INF/js/calendar.js"></script>
         <script>
             var trigger = document.querySelector('#datePicker');
             var dateComponent = new DatePicker({
