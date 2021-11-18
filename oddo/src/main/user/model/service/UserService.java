@@ -24,5 +24,40 @@ public class UserService {
         return loginUser;
     }
     
+    public int insertUser(User u) {
+        Connection conn = getConnection();
+        
+        int result = uDAO.insertUser(conn, u);
+        
+        if (result > 0)
+            commit(conn);
+        else
+            rollback(conn);
+        
+        close(conn);
+        
+        return result;
+    }
+    
+    public int checkId(String inputId) {
+        Connection conn = getConnection();
+        
+        int result = uDAO.checkId(conn, inputId);
+        
+        close(conn);
+        
+        return result;
+    }
+    
+    public int checkEmail(String inputEmail) {
+        Connection conn = getConnection();
+        
+        int result = uDAO.checkEmail(conn, inputEmail);
+        
+        close(conn);
+        
+        return result;
+    }
+    
     
 }

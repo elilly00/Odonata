@@ -3,7 +3,7 @@ CREATE TABLE `MEMBER` (
     `User_name` VARCHAR2(30)    NOT NULL,
     `User_pwd`  VARCHAR2(30)    NOT NULL,
     `User_email`    VARCHAR2(100)   NOT NULL,
-    `User_phone`    VARCHAR2(10)    NOT NULL,
+    `User_phone`    VARCHAR2(20)    NOT NULL,
     `User_birth`    DATE    NOT NULL,
     `User_id`   VARCHAR2(30)    NOT NULL,
     `User_type` VARCHAR2(30)    NOT NULL    COMMENT 'Admin/User/Host',
