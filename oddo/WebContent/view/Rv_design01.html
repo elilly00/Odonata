@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<!-- <%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%> --%> -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +21,7 @@
 
     <!-- 아임포트 라이브러리 -->
 <!--     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script> -->
-<!--    <!-- iamport.payment.js -->
+<!--     iamport.payment.js -->
 <!--    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-{SDK-최신버전}.js"></script> -->
 
 <meta charset="UTF-8">
@@ -32,7 +32,7 @@
         position: sticky;
         top: 0;
         background-color: #f2bba7;
-        width: 1500px;
+        width: 100%;
         height: 90px;
         padding: 5 70px;
         display: flex;
@@ -90,6 +90,17 @@
        
        .info{width: 200px;} 
        .em_red{color: red;}
+
+	   .dyrmatpqn{
+		font-size: 1.0em;
+		
+		
+		
+	   }
+	   .dyrmatpqn1{
+		   padding-left: 15px;
+		   
+	   }
 	
 
 
@@ -98,9 +109,11 @@
 </head>
 <body>
 	<form action="<%= request.getContextPath() %>/" method="post" id="reservationForm" name="reservationForm">
+	<!-- form 태그의 action 문구로 인해 마이 페이지, 등을 누를시 다운로드 하는거 같음 -->
+
 		<nav class="main-navi">
 	      <div class="logo">
-	        <a href="index.html">
+	        <a href="../index.jsp">
 	          <div class="logo">
 	            <img
 	              src="../img/logo.png"
@@ -114,21 +127,26 @@
 	      	</div>
 	      
 	   <!-- ★ 마이페이지로 이동하는 버튼 필요 : 뭔가 잘못들어간듯 -->
-	   <div class="img">
-            <a href="mypage.html">
+	   <!-- 수정 완 -->
+	   <div class="button" type="button" onclick="location.href='mypage.jsp'">
+            <!-- <a href="mypage.jsp"> -->
               <img
-                src="./images/profile.png"
+                src="../images/profile.png"
                 alt="마이페이지" 
-                id="profile"/>
+                id="profile" style="height:40px;" />
               </a>
           </div>
 	    </nav>
 	    
 	    <div class="content"> <!-- 본문 여백위한 div인데 왜 노란줄 뜨지 -> end tag밑에 있는데 없다고 뜸, css적용은 되는듯-->
+			<!-- 음?.....  -->
 		      <br>
 		      
 		      <h2>예약정보</h2> <br />
 		      <!-- ★ 1, 2 둘중에 선택필요 -->
+
+			  <!-- 전 1번이 더 괜찮아 보여요  -->
+
 		      <!-- 1.  -->
 		      <p id="reservation_info">
 		        <b>날짜</b><br/>
@@ -265,10 +283,10 @@
 <!-- 		      	<hr> -->
 <!-- 		      	총 합계 -->
 <!-- 		      </div> -->
-		      
+		      <div class="dyrmatpqn">
 		      	<table>
 		      		<tr>
-		      			<th>숙박비</th>
+		      			<th class="dyrmatpqn1">숙박비</th>
 		      			<td></td>
 		      		</tr>
 		      		<tr>
@@ -280,10 +298,11 @@
 		      		<tr></tr>
 		      		<tr></tr>
 		      		<tr>
-		      			<th>총 합계</th>
+		      			<th class="dyrmatpqn1">총 합계</th>
 		      			<td></td>
 		      		</tr>
 		      	</table>
+				</div>
 		      
 		      <br />
 		      <hr /><br />
