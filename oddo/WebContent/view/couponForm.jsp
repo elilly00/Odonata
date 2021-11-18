@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -51,16 +51,17 @@
         margin: 0 auto;
       } /* ★ 반응형으로 화면 크기가 조절되어도 가운데 정렬 되게 하고싶지만 안됐음 */
 
-      .coupon{ width: 200px;}
-      
+      .coupon {
+        width: 200px;
+      }
+
       #cardList {
         border: 1px solid black;
         border-radius: 20px;
         padding: 5px;
         /* width: 460px; */
-        height : 50px;
+        height: 50px;
       }
-
 
       #deleteBut {
         width: 60px;
@@ -76,7 +77,7 @@
   <body>
     <nav class="main-navi">
       <h2 id="couponTitle">쿠폰/할인코드</h2>
-      <!--       <div class="logo"> -->
+      <!-- <div class="logo"> -->
       <!--         <a href="index.html"> -->
       <!--           <div class="logo"> -->
       <!--             <img -->
@@ -95,21 +96,23 @@
       <h3>쿠폰/할인코드 적용</h3>
       <hr />
       <br />
-      
-      <select name="coupon" style="width : 300px; height: 30px">
-      	<option>쿠폰번호</option>
-      	<option>1</option>
-      	<option>2</option>
-      	<option>3</option>
+
+      <select name="coupon" style="width: 300px; height: 30px">
+        <option>쿠폰번호</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
       </select>
-      <br> <br>
-      <h3>쿠폰/할인코드 적용</h3><br>
-      <div id="cardList">
-      </div>
-      
-      <br>
-      <button onclick="addCard" id="addCardBut" value="결제 수단 등록">결제 수단 등록</button>
-      
+      <br />
+      <br />
+      <h3>쿠폰/할인코드 적용</h3>
+      <br />
+      <div id="cardList"></div>
+
+      <br />
+      <button onclick="addCard" id="addCardBut" value="결제 수단 등록">
+        결제 수단 등록
+      </button>
     </div>
   </body>
 </html>
