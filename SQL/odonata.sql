@@ -18,6 +18,25 @@ START WITH 2
 MINVALUE 1
 NOCYCLE
 NOCACHE;
+
+--------------------------------------------------
+-- Rooms_code 시퀀스 생성
+CREATE SEQUENCE SEQ_RNO
+START WITH 1
+INCREMENT BY 1
+MAXVALUE 300
+NOCYCLE
+NOCACHE;
+
+----------------------------------------------------
+-- img_number 시퀀스 생성
+CREATE SEQUENCE SEQ_INO
+START WITH 1
+INCREMENT BY 1
+MAXVALUE 500
+NOCYCLE
+NOCACHE;
+
 --------------------------------------------------
 -- 시퀀스 초기화 하기(예시 : SEQ_UID / 1번은 관리자 계정, 2번부터 사용자 계정)
 -- 1. 현시점 시퀀스 번호 확인(예시 : 현재 시퀀스 18번까지 사용됨)
@@ -90,30 +109,47 @@ FROM (SELECT MESSAGE_CODE, MESSAGE_TITLE, SENDTIME, READTIME, MSGTEXT, SEND_ID, 
       ORDER BY SENDTIME DESC) M;
 --------------------------------------------------
 
-CREATE TABLE `SookSoIMG` (
-    `image_number`  NUMBER  NOT NULL,
-    `image_name`    VARCHAR2(50)    NOT NULL,
-    `image_path`    VARCHAR2(50)    NOT NULL,
-    `ssum`  CHAR(1) NOT NULL    COMMENT 'Y or N',
-    `Rooms_Code`    NUMBER  NOT NULL,
-    `Status`    CHAR(1) NOT NULL    COMMENT 'Y or N'
+CREATE TABLE "SookSoIMG" (
+	"image_number"	NUMBER		NOT NULL,
+	"Origin_name"	VARCHAR2(100)		NOT NULL,
+	"Change_name"	VARCHAR2(100)		NOT NULL,
+	"img_Level"	NUMBER		NOT NULL,   -- 이미지 레벨을 추가하였습니다.
+	"image_path"	VARCHAR2(50)		NOT NULL,
+	"Rooms_Code"	NUMBER		NOT NULL,
+	"Status"	CHAR(1)	DEFAULT 'Y'	NOT NULL
 );
 
-CREATE TABLE `Rooms` (
-    `Rooms_Code`    NUMBER  NOT NULL,
-    `Rooms_Addr`    VARCHAR2(100)   NOT NULL,
-    `Rooms_Type`    VARCHAR2(20)    NOT NULL,
-    `Rooms_Personnel`   NUMBER  NOT NULL    COMMENT 'Min. 1',
-    `Rooms_Host`    VARCHAR2(300)   NOT NULL,
-    `Rooms_Desc`    VARCHAR2(500)   NOT NULL,
-    `Rooms_Price`   NUMBER  NOT NULL    COMMENT '원',
-    `Rooms_RegDate` DATE    NOT NULL,
-    `Rooms_RoomCnt` NUMBER  NOT NULL    COMMENT 'Min. 1',
-    `Rooms_ToiletCnt`   NUMBER  NOT NULL    COMMENT 'Min. 0',
-    `Rooms_DogAvail`    CHAR(1) NOT NULL    COMMENT 'Y or N',
-    `User_code` NUMBER  NOT NULL,
-    `Status`    CHAR(1) NOT NULL    COMMENT 'Y or N'
+COMMENT ON COLUMN "SookSoIMG"."Status" IS 'Y or N';
+
+CREATE TABLE "Rooms" ( -- 데이터 타입을 변경하였습니다.
+	"Rooms_Code"	NUMBER		NOT NULL,
+	"Rooms_Host"	VARCHAR2(300)		NOT NULL,
+	"Rooms_Type"	VARCHAR2(20)		NOT NULL,
+	"Rooms_Addr"	VARCHAR2(100)		NOT NULL,
+	"Rooms_Price"	VARCHAR2(100)		NOT NULL,
+	"Rooms_Personnel"	VARCHAR(100)		NOT NULL,
+	"Rooms_RoomCnt"	VARCHAR2(50)		NOT NULL,
+	"Rooms_ToiletCnt"	VARCHAR2(50)		NOT NULL,
+	"Rooms_DogAvail"	CHAR(1)	DEFAULT 'N'	NOT NULL,
+	"Amenity"	VARCHAR2(100)		NOT NULL,
+	"Rooms_Desc"	VARCHAR2(500)		NOT NULL,
+	"Rooms_RegDate"	DATE		NOT NULL,
+	"Status"	CHAR(1)	DEFAULT 'Y'	NOT NULL,
+	"User_code"	NUMBER		NOT NULL
 );
+
+COMMENT ON COLUMN "Rooms"."Rooms_Price" IS '원';
+
+COMMENT ON COLUMN "Rooms"."Rooms_Personnel" IS 'Min. 1';
+
+COMMENT ON COLUMN "Rooms"."Rooms_RoomCnt" IS 'Min. 1';
+
+COMMENT ON COLUMN "Rooms"."Rooms_ToiletCnt" IS 'Min. 0';
+
+COMMENT ON COLUMN "Rooms"."Rooms_DogAvail" IS 'Y or N';
+
+COMMENT ON COLUMN "Rooms"."Status" IS 'Y or N';
+
 
 ALTER TABLE `MEMBER` ADD CONSTRAINT `PK_MEMBER` PRIMARY KEY (
     `User_code`
