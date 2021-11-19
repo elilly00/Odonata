@@ -16,10 +16,12 @@
 	<link rel="stylesheet" href="../style/main.css" />
 	<script src="../js/jquery-3.6.0.min.js"></script>
 
-	<!-- 아임포트 라이브러리 -->
-	<!--     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script> -->
-	<!--     iamport.payment.js -->
-	<!--    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-{SDK-최신버전}.js"></script> -->
+	<!-- 아임포트 라이브러리 : jQuery 1.0이상 필요-->
+	<!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+    <!-- iamport.payment.js -->
+<!--     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-{SDK-최신버전}.js"></script> -->
+     <script src="http://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
 	<meta charset="UTF-8">
 	<style>
@@ -114,21 +116,22 @@
 		.dyrmatpqn {
 			font-size: 1.0em;
 
-
-
 		}
 
 		.dyrmatpqn1 {
 			padding-left: 15px;
-
 		}
+		
+		.rDateForm{width: 300px;}
+		
+		.rDateForm tr{text-align: middle;}
 	</style>
 	<title>Insert title here</title>
 </head>
 
 <body>
 	<form action="<%= request.getContextPath() %>/" method="post" id="reservationForm" name="reservationForm">
-		<!-- form 태그의 action 문구로 인해 마이 페이지, 등을 누를시 다운로드 하는거 같음 -->
+		<!-- <수정 완>form 태그의 action 문구로 인해 마이 페이지, 등을 누를시 다운로드 하는거 같음 -->
 
 		<nav class="main-navi">
 			<div class="logo">
@@ -138,9 +141,6 @@
 					</div>
 				</a>
 			</div>
-
-			<!-- ★ 마이페이지로 이동하는 버튼 필요 : 뭔가 잘못들어간듯 -->
-			<!-- 수정 완 -->
 			<div class="button" type="button" onclick="location.href='mypage.jsp'">
 				<!-- <a href="mypage.jsp"> -->
 				<img src="../images/profile.png" alt="마이페이지" id="profile" style="height:40px;" />
@@ -149,48 +149,35 @@
 		</nav>
 
 		<div class="content">
-			<!-- 본문 여백위한 div인데 왜 노란줄 뜨지 -> end tag밑에 있는데 없다고 뜸, css적용은 되는듯-->
-			<!-- 음?.....  -->
+			<!-- 본문 여백위한 div인데 왜 노란줄 -> end tag밑에 있는데 없다고 뜸, css적용은 되는듯-->
 			<br>
 
 			<h2>예약정보</h2> <br />
-			<!-- ★ 1, 2 둘중에 선택필요 -->
 
-			<!-- 전 1번이 더 괜찮아 보여요  -->
-
-			<!-- 1.  -->
 			<p id="reservation_info">
-				<b>날짜</b><br />
-				입력받아온 데이터 필요<br /><br />
-				<b>게스트</b><br />
+				<b id="rName">숙소명</b><br><br>
+				<b id="rDate">날짜</b><br />
+				<table class="rDateForm">
+					<tr> <!-- ★ 가운데 정렬 필요  -->
+						<td>체크인</td>
+						<td>체크아웃</td>
+					</tr>
+					<tr>
+						<th>2021-12-5</th>
+						<th>2021-12-8</th>
+					</tr>
+				</table>
+				<br>
+				<b id=rGuest>게스트</b><br />
 				입력받아온 데이터 필요
 			</p>
 			<br>
-			<!-- 2. -->
-			<table>
-				<tr>
-					<th>날짜</th>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td> 입력받아온 데이터 필요</td>
-
-				</tr>
-				<tr>
-					<th>게스트</th>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td> 입력받아온 데이터 필요</td>
-				</tr>
-			</table>
-			<br />
 
 
 			<hr /><br />
 			<h2 style="display: inline">예약자 정보</h2>
 			<p class="checkboxDescription"> &nbsp;&nbsp;&nbsp;&nbsp;회원 정보와 일치할 시 체크</p>
-			<!-- ☆ check시 회원정보 받아오는 기능 필요 -->
+			<!-- ★ check시 회원정보 받아오는 기능 필요 -->
 			<input type="checkbox" value="equalGuest_check" />
 
 			<br /><br>
@@ -212,7 +199,6 @@
 					</td>
 				</tr>
 				<tr>
-					<!-- type=email이 적용되지 않음 : submit에서만 적용됨 따라서 따로 정의가 필요  -->
 					<th scope="row">이메일 <span class="em_red">*</span></th>
 					<td></td>
 					<td></td>
@@ -234,35 +220,48 @@
 							<option value="1">직접입력</option>
 						</select>
 
-						<!-- 					<select class="select" title="이메일 도메인 주소 선택" onclick="setEmailDomain(this.value);return false;"> -->
-						<!-- 					</select> -->
 					</td>
 				</tr>
 			</table>
 			<br /><br />
 
-			<hr />
-			<br />
-			<h2>결제 수단</h2> <!-- ★ 이거 구현 가능..? -->
+			<hr /><br />
+			<h2>요금 세부 정보</h2><br /> 
+			<div class="dyrmatpqn">
+				<table>
+					<tr>
+						<th class="dyrmatpqn1">총 금액</th>
+						<td></td><td></td><td></td>
+						<td><p id="amount">1000</p></td>
+						<td>원</td>
+					</tr>
+				</table>
+			</div>
 			<br>
-			<form>
-				<select id="paymentChoice">
-					<!-- EditPayment design02 : 결제정보 수정 틀 디자인 -->
-					<option value="card1">카드1 : 구현가능?</option>
-					<option value="card2">카드2</option>
-					<option value="card3">카드3</option>
-				</select>
-			</form>
-
-			<br />
-			<input type="button" value="쿠폰/할인코드 입력"
-				onclick="location.href='<%= request.getContextPath() %>/couponSelect.do'">
-			<!-- window open으로 작성  -->
-			<br /><br />
 
 			<hr />
-
 			<br />
+			
+			<!-- 결제수단, 쿠폰 제외 -->
+<!-- 			<h2>결제 수단</h2>-->
+<!-- 			<br> -->
+<!-- 			<form> -->
+<!-- 				<select id="paymentChoice"> -->
+<!-- 					EditPayment design02 : 결제정보 수정 틀 디자인 -->
+<!-- 					<option value="card1">카드1 : 구현가능?</option> -->
+<!-- 					<option value="card2">카드2</option> -->
+<!-- 					<option value="card3">카드3</option> -->
+<!-- 				</select> -->
+<!-- 			</form> -->
+
+<!-- 			<br /> -->
+<!-- 			<input type="button" value="쿠폰/할인코드 입력" -->
+<%-- 				onclick="location.href='<%= request.getContextPath() %>/couponSelect.do'"> --%>
+<!-- 			<!-- window open으로 작성  -->
+<!-- 			<br /><br /> -->
+
+<!-- 			<hr /> -->
+			
 			<h2>환불정책</h2> <br />
 			<div id="refund_notice">
 				숙소 환불 정책<br />
@@ -296,42 +295,9 @@
 
 
 			<p class="checkboxDescription">취소 및 환불규칙에 동의</p>
-			<input type="checkbox" name="refundCheck" id="refundCheck" value="refund_check" /><span class="em_red">
-				*</span><br /><br />
-
+			<input type="checkbox" name="refundCheck" id="refundCheck" value="refund_check" /><span class="em_red">*</span><br /><br />
 
 			<hr /><br />
-			<h2>요금 세부 정보</h2><br /> <!-- 이부분 수정 필요 -->
-			<!-- 		      <div id="charge_info"> -->
-			<!-- 		      	숙박비<br /> -->
-			<!-- 		      	할인<br />  -->
-			<!-- 		      	<hr> -->
-			<!-- 		      	총 합계 -->
-			<!-- 		      </div> -->
-			<div class="dyrmatpqn">
-				<table>
-					<tr>
-						<th class="dyrmatpqn1">숙박비</th>
-						<td></td>
-					</tr>
-					<tr>
-						<th>할인</th>
-						<td></td>
-					</tr>
-					<tr></tr>
-					<tr></tr>
-					<tr></tr>
-					<tr></tr>
-					<tr>
-						<th class="dyrmatpqn1">총 합계</th>
-						<td></td>
-					</tr>
-				</table>
-			</div>
-
-			<br />
-			<hr /><br />
-
 
 			<input type="checkbox" id="all" onclick="selectAll();" /> 전체동의
 			<hr width="50%" align="left" />
@@ -443,49 +409,120 @@
 
 
 		// 결제페이지로 연결 -> required를 인식하기는하는데 그전에 결제 창이 뜸 
-		// => required는 submit을 할때만 걸러주는 애라서 해당 함수에서 window.open을 바로 연결하지 말고 모든 필드에 값이 들어왔을 때 열리게끔 로직을 추가해야
+		// => required는 submit을 할때만 걸러주는 애라서 해당 함수에서 window.open을 바로 연결하지 말고 모든 필드에 값이 들어왔을 때 열리게끔 로직을 추가
 		document.getElementById('paymentBtn').onclick = function () {
-			var name = document.getElementById("name").value;
-			var tel = document.getElementById("tel").value;
-			var email = document.getElementById("email1").value + "@" + document.getElementById("email2").value;
+			var pName = document.getElementById("name").value;
+			var pTel = document.getElementById("tel").value;
+			var pEmail = document.getElementById("email1").value + "@" + document.getElementById("email2").value;
 			// checked
 			var refundCheck = document.getElementById('refundCheck'); // 취소, 환불규정
 			var age14 = document.getElementById('age14'); // 14세 이상 동의
 			var p_collect = document.getElementById('personalInfo_collect'); // 수집 이용 동의
 			var partyConsent = document.getElementById('3rdPartyConsent'); // 3자 제공
 			var accomodationUse = document.getElementById('Accommodation_use'); // 숙소이용규칙
-			console.log(email);
+			
+// 			var rName = document.getElementById(rName);  // 숙소이름
+// 			var amount = docment.getElementById(amount); // 숙소 가격
+// 			var rDate = docment.getElementById(rDate); // 예약 날짜 : 체크인, 체크아웃 나눠서 받아와야함  아직 받아오지 않았고 미정의 됌
+// 			var rGuest = docment.getElementById(rGuest); // 인원 : 아직 받아오지 않았음 : 미정의 error
+// 			var imp_uid = null;
+// 			console.log(email);
 
+			
+			// 아임포트 : 주문 페이지에 가맹점 식별코드를 이용하여 IMP 객체를 초기화합니다.
+			 var IMP = window.IMP;
+		     var code = "imp18406886";  //가맹점 식별코드
+		     IMP.init(code);
+		     
+		     /* 
+		     	가맹점 식별 코드 : imp18406886
+		     	REST API 키 : 4301146235024506
+		     	REST API secret : 65f31c8c86859ebe1d61ec55457158bbcf97cc98043d69a46a35e37f9eebb230b539ff31319a1fb9
+		     
+		     */
 
-			if (name == "" || tel == "" || email == "" || refundCheck.checked == false || age14.checked == false ||
+			//  결제로 넘어가지 않아야 하는 경우
+			if (pName == "" || pTel == "" || pEmail == "" || refundCheck.checked == false || age14.checked == false ||
 				p_collect.checked == false ||
 				partyConsent.checked == false || accomodationUse.checked == false) {
 
 				var msg = "";
-				if (name == "") {
+				if (pName == "") {
 					msg = "이름을 확인해주세요";
-					name.focus(); // 포커스 이동
-				} else if (tel == "") {
+					pName.focus(); // 포커스 이동
+				} else if (pTel == "") {
 					msg = "전화번호를 확인해주세요";
-					tel.focus();
-				} else if (email == "") {
+					pTel.focus();
+				} else if (pEmail == "") {
 					msg = "이메일을 확인해주세요";
-					email.focus();
+					pEmail.focus();
 				} else if (refundCheck.checked == false) {
 					msg = "취소 및 환불규칙에 동의해주세요";
 					refundCheck.focus();
 				} else if (age14.checked == false || p_collect.checked == false || partyConsent.checked == false ||
 					accomodationUse.checked == false) {
-					alert("동의사항을 확인해주세요");
+					msg = "동의사항을 확인해주세요";
 				}
 
 				alert(msg);
 
 			} else {
-				window.open('<%= request.getContextPath() %>/reservationPayment.do', 'paymentForm',
-					'width=815, height=530');
+				        // 결제요청
+				        IMP.request_pay({  
+				            pg : 'html5_inicis', // pg 사 선택
+				            pay_method : 'card',  // 결제 방식
+				            merchant_uid : 'merchant_' + new Date().getTime(), // ★ 결제코드로 사용 가능?
+				            name : "test"/*  rName */, // 주문명 : 앞에서 받아와야 함
+				            /* rName으로 했을 경우 : 결제에 실패하였습니다. 
+				            	에러내용 : F0004:PG사 결제요청에 실패하여 중단합니다.(imp_731331785076) [코드: V023] 
+				        		파라미터의 데이터 설정이 잘못되었습니다.[Version 1.0에서는 goodsname가 필수 입니다.] => 읽어오지 못하는듯*/
+				            amount : 100, // 가격 : 앞에서 받아와야 함
+				            
+				            buyer_email : pEmail, // 구매자 이메일
+				            buyer_name : pName, // 구매자 이름
+				            buyer_tel : pTel, // 구매자 전화번호 
+// 				            m_redirect_url : "reservationPayment.do"  // 구매 완료후 돌아갈 url(결제완료 페이지) : 작동x
+
+				        }, function(rsp) { // 4. 고객이 결제를 완료한 후 실행되는 함수(callback) 추가
+				            if ( rsp.success ) { // 5. 콜백 함수에서 쿼리 파라미터 전달하기 : jQuery로 HTTP 요청  / 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
+				            	
+								 jQuery.ajax({
+							          url: '<%= request.getContextPath() %>/reservationPayment.do', 
+							          // "/payments/complete" 일경우 : 메시지 요청된 리소스 [/payments/complete]은(는) 가용하지 않습니다. -> 결제 성공이 뜨지 않음
+							          // [√] reservationPayment.do일 경우 : 딱히 이동이 없음 화면은 종료되고 그대로 Rv_design01페이지에 있음 ( 서블릿에 딱히 내용이 없음에도 가용됨)
+							          
+							          method: "POST",
+							          // 아래 두개가 활성화 되어있으면 success에 console("결제성공")이 뜨지 않음
+// 							          dataType: 'json', 
+// 							          headers: { "Content-Type": "application/json" },  // header와 dataType의 차이?
+							          data: {
+							              imp_uid: rsp.imp_uid, // 고유 id
+							              merchant_uid: rsp.merchant_uid // 상점 거래 id
+							              //기타 필요한 데이터가 있으면 추가 전달
+							          }
+							      }).done(function (data) { // done은 ajax의 success와 같음 : 가맹점 서버 결제 API 성공시 로직
+							        console.log("결제성공"); 
+							      // ※ 새로운 url 요청 -> 데이터 정보를 받아 db에 저장, 마지막 결제완료 페이지까지 연결 (수업때 했던것처럼 서블릿 거쳐서)
+							      // 				location.href로 url만 보내면 데이터들이 안넘어갈테니까 쿼리스트링도 같이 넣어주기
+							   	
+							      location.href="<%= request.getContextPath() %>/payment.bo?=pName="+pName+"&pTel="+pTel+"&pEmail="+pEmail;
+							      // [ 결제 완료 페이지로 넘어가야 할 정보] 예약자 이름, 전화번호, 이메일, 고유id(결제 코드로 사용) : 결국 결제 코드가 필요한건데...
+							      // 							결제상태, 총 금액, 숙소이름, 체크인, 체크아웃, 인원 
+							      // => 현재 문제 없이 넘어갈수 있는것 : 이름, 전화번호, 이메일 
+							      // 들어가면 문제가 생기는것 : 고유id, 총금액, 숙소이름, 체크인,체크아웃, 인원 (고유id를 제외하고는 다 이전에서 받아와야하는것들임)				
+							      // imp_uid is not defined : 위에 선언되지 않아서인가? 쿼리스트링 없이 진행해보기 => 쿼리스트링 없이 진행하면 이동되는것 확인
+							    
+							      
+							      })
+				            } else { // 결제 실패시 : 에러페이지로 이동
+				                var msg = '결제에 실패하였습니다. 에러내용 : ' + rsp.error_msg
+				                alert(msg);
+				            }
+				    		
+				        });
 			}
 
+			
 
 		}
 	</script>
