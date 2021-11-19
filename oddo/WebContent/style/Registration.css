@@ -71,8 +71,18 @@
   }
 
   .button li {
-    margin-right: 2%;
+    margin-right: 4%;
   }
+  
+  #personNum,
+  #roomCnt,
+  #toiletCnt {
+  	height: 20px;
+  	border: 1px solid lightgrey;
+  	border-radius: 10px;
+  	text-align: center;
+  }
+  
   .switch-button { 
     position: relative; 
     display: inline-block; 
