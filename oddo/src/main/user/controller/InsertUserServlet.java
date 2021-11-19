@@ -16,7 +16,7 @@ import user.model.vo.User;
 /**
  * Servlet implementation class InsertUserServlet
  */
-@WebServlet("/insert.us")
+@WebServlet(name = "InsertUserServlet", urlPatterns = "/insert.us")
 public class InsertUserServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     

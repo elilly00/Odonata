@@ -152,8 +152,8 @@
                           <div class="col-12 col-md-6 mb-4">
                             <div class="form-floating form-white">
                               <select class="form-select" id="uEmailDomain" name="uEmailDomain">
-                                <option value="@google.com" selected>
-                                  @google.com
+                                <option value="@gmail.com" selected>
+                                  @gmail.com
                                 </option>
                                 <option value="@naver.com">@naver.com</option>
                                 <option value="@daum.net">@daum.net</option>
@@ -473,20 +473,38 @@
         
         /* 입력 정보 최종 확인 */
         function insertValidate() {
-            if(isIdUsable && isIdChecked && isPwdUsable && isPwdChecked && nameChk && isEmailUsable && isEmailChecked && phoneChk && birthChk) {
-                console.log('isIdUsbale: ' + isIdUsable);
-                console.log('isIdChecked: ' + isIdChecked);
-                console.log('isPwdUsbale: ' + isPwdUsable);
-                console.log('isPwdChecked: ' + isPwdChecked);
-                console.log('nameChk: ' + nameChk);
-                console.log('isEmailUsable: ' + isEmailUsbale);
-                console.log('isEmailChecked: ' + isEmailChecked);
-                console.log('phoneChk: ' + phoneChk);
-                console.log('birthChk: ' + birthChk);
-                return true;
-            }
-            else {
-                alert('입력된 정보를 확인해주세요.');
+            $.ajax({
+                url: 'confirmMail.us',
+                data: {email:$('#uEmailId').val(), domain:$('#uEmailDomain').val()},
+                success: function(data) {
+                    console.log(data);
+                },
+                error :function(data) {
+                    console.log(data);
+                }
+            });
+            
+            var confirmMail = confirm("입력한 메일 주소로 발송된 확인 메일을 읽은 뒤 '확인'을 눌러주세요.");
+            
+            if(confirmMail) {
+                if(isIdUsable && isIdChecked && isPwdUsable && isPwdChecked && nameChk && isEmailUsable && isEmailChecked && phoneChk && birthChk) {
+                    console.log('isIdUsbale: ' + isIdUsable);
+                    console.log('isIdChecked: ' + isIdChecked);
+                    console.log('isPwdUsbale: ' + isPwdUsable);
+                    console.log('isPwdChecked: ' + isPwdChecked);
+                    console.log('nameChk: ' + nameChk);
+                    console.log('isEmailUsable: ' + isEmailUsbale);
+                    console.log('isEmailChecked: ' + isEmailChecked);
+                    console.log('phoneChk: ' + phoneChk);
+                    console.log('birthChk: ' + birthChk);
+                    return true;
+                }
+                else {
+                    alert('입력된 정보를 확인해주세요.');
+                    return false;
+                }
+            } else {
+                alert('메일 주소를 다시 한 번 확인해주세요.');
                 return false;
             }
         }
