@@ -1,7 +1,7 @@
 CREATE TABLE `MEMBER` (
     `User_code` NUMBER  NOT NULL,
     `User_name` VARCHAR2(30)    NOT NULL,
-    `User_pwd`  VARCHAR2(30)    NOT NULL,
+    `User_pwd`  VARCHAR2(100)    NOT NULL,
     `User_email`    VARCHAR2(100)   NOT NULL,
     `User_phone`    VARCHAR2(20)    NOT NULL,
     `User_birth`    DATE    NOT NULL,
@@ -18,6 +18,18 @@ START WITH 2
 MINVALUE 1
 NOCYCLE
 NOCACHE;
+--------------------------------------------------
+-- 시퀀스 초기화 하기(예시 : SEQ_UID / 1번은 관리자 계정, 2번부터 사용자 계정)
+-- 1. 현시점 시퀀스 번호 확인(예시 : 현재 시퀀스 18번까지 사용됨)
+SELECT LAST_NUMBER FROM USER_SEQUENCES WHERE SEQUENCE_NAME = 'SEQ_UID';
+-- 2. 시퀀스(SEQ_UID의 초기값(최소값) 1을 고려)의 증감값을 변경시켜줌(현재값 19, 초기값이 1, 기존 증감값이 +1이라면 증감값을 -18로 변경)
+ALTER SEQUENCE SEQ_UID INCREMENT BY -18;
+-- 3. NEXTVAL로 시퀀스 증감값 반영(현재 19, 증감 -18 이므로 19 - 18 = 1로)
+SELECT SEQ_UID.NEXTVAL FROM DUAL;
+-- 4. CURRVAL로 시퀀스 값이 원하는 값(초기값)으로 변경되었는 지 확인
+SELECT SEQ_UID.CURRVAL FROM DUAL;
+-- 5. 시퀀스 증감값을 다시 초기화
+ALTER SEQUENCE SEQ_UID INCREMENT BY 1;
 --------------------------------------------------
 -- User_type 및 Status 디폴트 값 수정
 ALTER TABLE MEMBER MODIFY (User_type DEFAULT 'User');
@@ -65,6 +77,18 @@ CREATE TABLE `MSG` (
     `Status`    CHAR(1) NOT NULL    COMMENT 'Y or N',
     `Field` VARCHAR(255)    NULL
 );
+
+--------------------------------------------------
+-- 메세지 박스 출력을 위한 뷰 생성
+CREATE OR REPLACE VIEW MLIST
+AS
+SELECT ROWNUM RNUM, M.*
+FROM (SELECT MESSAGE_CODE, MESSAGE_TITLE, SENDTIME, READTIME, MSGTEXT, SEND_ID, RECEIVE_ID, MSG.STATUS
+      FROM MSG
+           JOIN MEMBER ON(USER_ID = RECEIVE_ID)
+      WHERE MSG.STATUS = 'Y'
+      ORDER BY SENDTIME DESC) M;
+--------------------------------------------------
 
 CREATE TABLE `SookSoIMG` (
     `image_number`  NUMBER  NOT NULL,

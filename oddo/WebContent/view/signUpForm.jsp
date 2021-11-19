@@ -152,8 +152,8 @@
                           <div class="col-12 col-md-6 mb-4">
                             <div class="form-floating form-white">
                               <select class="form-select" id="uEmailDomain" name="uEmailDomain">
-                                <option value="@google.com" selected>
-                                  @google.com
+                                <option value="@gmail.com" selected>
+                                  @gmail.com
                                 </option>
                                 <option value="@naver.com">@naver.com</option>
                                 <option value="@daum.net">@daum.net</option>
@@ -268,7 +268,6 @@
                             $("label[for='uId']").text('아이디: 사용 불가').css({'color':'red', 'font-weight':'bold'});
                             isIdUsable = false;
                             isIdChecked = false;
-                            userId.focus();
                         }
                     },
                     error :function(data) {
@@ -298,7 +297,6 @@
                 isPwdUsable = true;
             } else {
                 $("label[for='uPwd1']").text('비밀번호: 사용 불가').css({'color':'red', 'font-weight':'bold'});
-                $(this).focus();
                 isPwdUsable = false;
             }
         });
@@ -314,7 +312,6 @@
                 isPwdChecked = true;
             } else {
                 $("label[for='uPwd2']").text('비밀번호 확인: 불일치').css({'color':'red', 'font-weight':'bold'});
-                $(this).focus();
                 isPwdChecked = false;
             }
         });
@@ -336,7 +333,6 @@
             
             if(regExpName.test(name) || name.length < 2) {
                 $("label[for='uName']").text('이름: 올바르지 않음').css({'color':'red', 'font-weight':'bold'});
-                $(this).focus();
                 nameChk = false;
             } else {
                 $("label[for='uName']").text('이름').css({'color':'green', 'font-weight':'bold'});
@@ -407,7 +403,6 @@
                             $("label[for='uEmailId']").text('이메일: 사용 불가').css({'color':'red', 'font-weight':'bold'});
                             isEmailUsable = false;
                             isEmailChecked = false;
-                            userEmail.focus();
                         }
                     },
                     error :function(data) {
@@ -437,7 +432,6 @@
                 phoneChk = true;
             } else {
                 $("label[for='uPhone']").text('휴대전화: 올바르지 않음').css({'color':'red', 'font-weight':'bold'});
-                $(this).focus();
                 phoneChk = false;
             }
         });
@@ -462,7 +456,6 @@
                 birthChk = true;
             } else {
                 $("label[for='uBirth']").text('생년월일: 올바르지 않음').css({'color':'red', 'font-weight':'bold'});
-                $(this).focus();
                 birthChk = false;
             }
         });
@@ -473,20 +466,38 @@
         
         /* 입력 정보 최종 확인 */
         function insertValidate() {
-            if(isIdUsable && isIdChecked && isPwdUsable && isPwdChecked && nameChk && isEmailUsable && isEmailChecked && phoneChk && birthChk) {
-                console.log('isIdUsbale: ' + isIdUsable);
-                console.log('isIdChecked: ' + isIdChecked);
-                console.log('isPwdUsbale: ' + isPwdUsable);
-                console.log('isPwdChecked: ' + isPwdChecked);
-                console.log('nameChk: ' + nameChk);
-                console.log('isEmailUsable: ' + isEmailUsbale);
-                console.log('isEmailChecked: ' + isEmailChecked);
-                console.log('phoneChk: ' + phoneChk);
-                console.log('birthChk: ' + birthChk);
-                return true;
-            }
-            else {
-                alert('입력된 정보를 확인해주세요.');
+            $.ajax({
+                url: 'confirmMail.us',
+                data: {email:$('#uEmailId').val(), domain:$('#uEmailDomain').val()},
+                success: function(data) {
+                    console.log(data);
+                },
+                error :function(data) {
+                    console.log(data);
+                }
+            });
+            
+            var confirmMail = confirm("입력한 메일 주소로 발송된 확인 메일을 읽은 뒤 '확인'을 눌러주세요.");
+            
+            if(confirmMail) {
+                if(isIdUsable && isIdChecked && isPwdUsable && isPwdChecked && nameChk && isEmailUsable && isEmailChecked && phoneChk && birthChk) {
+                    console.log('isIdUsbale: ' + isIdUsable);
+                    console.log('isIdChecked: ' + isIdChecked);
+                    console.log('isPwdUsbale: ' + isPwdUsable);
+                    console.log('isPwdChecked: ' + isPwdChecked);
+                    console.log('nameChk: ' + nameChk);
+                    console.log('isEmailUsable: ' + isEmailUsbale);
+                    console.log('isEmailChecked: ' + isEmailChecked);
+                    console.log('phoneChk: ' + phoneChk);
+                    console.log('birthChk: ' + birthChk);
+                    return true;
+                }
+                else {
+                    alert('입력된 정보를 확인해주세요.');
+                    return false;
+                }
+            } else {
+                alert('메일 주소를 다시 한 번 확인해주세요.');
                 return false;
             }
         }
