@@ -29,90 +29,53 @@
 
   <div class="main-page">
     <div class="login-form">
-
-
       <form id="loginForm" method="post">
-
       </form>
-
-      <!-- 결제 -->
-      <h2 id="couponTitle">결제</h2>
-      <hr>
-      <!-- 결제끝 -->
+      <h2 id="couponTitle"></h2>
       </nav>
-
-      <!-- 결제 완료 -->
       <div class="content">
 
         <h3 class="title1">결제가 정상적으로 완료되었습니다.</h3>
-        <hr />
-        <!-- 결제 완료 끝 -->
 
+        <!-- 결제 정보 -->
+        <div>
+          <h4>결제 정보</h4>
+          <div class="title5">
+            <div class="title6">
+              <h5>예약 날짜:</h5>
+              <h5>숙소 이름 :</h5>
+              <h5>인원 :</h5>
 
-        <!-- 숙소 정보 -->
-        <div class="title2">
-
-          
-          <h4>숙소 정보</h4>
-          <div class="test1">
-            <!-- 숙소 썸네일 -->
-          </div>
-
-          <div class="test2">
-            <h5>위치</h5>
-            <h5>숙소 이름</h5>
-            <h5>연락처</h5>
-            <h5>체크인/체크아웃</h5>
-
+              <hr>
+              <hr>
+              <h5>총 금액 :</h5>
+            </div>
 
           </div>
-
-          <!-- <div class="test3">
-            <iframe
-              loading: lazy;
-            ></iframe>
-          </div> -->
-
         </div>
-        <hr>
+        <!-- 결제 정보 끝 -->
 
 
 
       </div>
-      <!-- 숙소 정보 끝 -->
 
-      <div>
-        <h4>결제 정보</h4>
 
-        <div class="title3">
-          <div class="title4">
-          <h5>카드 간편결제</h5>
-          <h5>삼성(*****************)</h5>
-          <h5>일시불</h5>
-          <h5>승인일시:</h5>
-          </div>
-        </div>
-
-        <div class="title5">
-          <div class="title6">
-            <h5>총 금액 :</h5>
-            <hr>
-            <h5>쿠폰/할인금액 :</h5>
-            
-            <h3>결제금액 :</h3>
-          </div>
-
-        </div>
-      </div>
 
 
     </div>
+
+
+
+
+
+  </div>
   </div>
 
   <script>
 
 
   </script>
+
 </body>
 
 </html>
