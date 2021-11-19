@@ -268,7 +268,6 @@
                             $("label[for='uId']").text('아이디: 사용 불가').css({'color':'red', 'font-weight':'bold'});
                             isIdUsable = false;
                             isIdChecked = false;
-                            userId.focus();
                         }
                     },
                     error :function(data) {
@@ -298,7 +297,6 @@
                 isPwdUsable = true;
             } else {
                 $("label[for='uPwd1']").text('비밀번호: 사용 불가').css({'color':'red', 'font-weight':'bold'});
-                $(this).focus();
                 isPwdUsable = false;
             }
         });
@@ -314,7 +312,6 @@
                 isPwdChecked = true;
             } else {
                 $("label[for='uPwd2']").text('비밀번호 확인: 불일치').css({'color':'red', 'font-weight':'bold'});
-                $(this).focus();
                 isPwdChecked = false;
             }
         });
@@ -336,7 +333,6 @@
             
             if(regExpName.test(name) || name.length < 2) {
                 $("label[for='uName']").text('이름: 올바르지 않음').css({'color':'red', 'font-weight':'bold'});
-                $(this).focus();
                 nameChk = false;
             } else {
                 $("label[for='uName']").text('이름').css({'color':'green', 'font-weight':'bold'});
@@ -407,7 +403,6 @@
                             $("label[for='uEmailId']").text('이메일: 사용 불가').css({'color':'red', 'font-weight':'bold'});
                             isEmailUsable = false;
                             isEmailChecked = false;
-                            userEmail.focus();
                         }
                     },
                     error :function(data) {
@@ -437,7 +432,6 @@
                 phoneChk = true;
             } else {
                 $("label[for='uPhone']").text('휴대전화: 올바르지 않음').css({'color':'red', 'font-weight':'bold'});
-                $(this).focus();
                 phoneChk = false;
             }
         });
@@ -462,7 +456,6 @@
                 birthChk = true;
             } else {
                 $("label[for='uBirth']").text('생년월일: 올바르지 않음').css({'color':'red', 'font-weight':'bold'});
-                $(this).focus();
                 birthChk = false;
             }
         });
