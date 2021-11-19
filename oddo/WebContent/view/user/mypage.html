@@ -151,10 +151,10 @@
       </div>
     </div>
 
-    <button type="button" class="btn btn-secondary btn-lg btn-block mx-5">개인 정보 변경</button>
-    <button type="button" class="btn btn-secondary btn-lg btn-block mx-5">쪽지함</button>
+    <!-- <button type="button" class="btn btn-secondary btn-lg btn-block mx-5">개인 정보 변경</button> -->
+    <!-- <button type="button" class="btn btn-secondary btn-lg btn-block mx-5">쪽지함</button>
     <button type="button" class="btn btn-secondary btn-lg btn-block mx-5">결제 수단 관리</button>
-    <button type="button" class="btn btn-secondary btn-lg btn-block mx-5">호스트 숙소 등록</button>
+    <button type="button" class="btn btn-secondary btn-lg btn-block mx-5">호스트 숙소 등록</button> -->
 
   </div>
 </body>
