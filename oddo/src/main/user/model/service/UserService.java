@@ -59,5 +59,14 @@ public class UserService {
         return result;
     }
     
+    public User selectUser(String userId) {
+        Connection conn = getConnection();
+        
+        User user = uDAO.selectUser(conn, userId);
+        
+        close(conn);
+        
+        return user;
+    }
     
 }

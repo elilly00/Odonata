@@ -6,16 +6,16 @@ public class User {
     private String User_pwd;
     private String User_email;
     private String User_phone;
-    private String User_birth;
+    private Date User_birth;
     private String User_id;
     private String User_type;
-    private String Status;
+    private char Status;
     
     public User() {
     }
     
-    public User(int user_code, String user_name, String user_pwd, String user_email, String user_phone,
-            String user_birth, String user_id, String user_type, String status) {
+    public User(int user_code, String user_name, String user_pwd, String user_email, String user_phone, Date user_birth,
+            String user_id, String user_type, char status) {
         User_code = user_code;
         User_name = user_name;
         User_pwd = user_pwd;
@@ -67,11 +67,11 @@ public class User {
         User_phone = user_phone;
     }
     
-    public String getUser_birth() {
+    public Date getUser_birth() {
         return User_birth;
     }
     
-    public void setUser_birth(String user_birth) {
+    public void setUser_birth(Date user_birth) {
         User_birth = user_birth;
     }
     
@@ -91,11 +91,11 @@ public class User {
         User_type = user_type;
     }
     
-    public String getStatus() {
+    public char getStatus() {
         return Status;
     }
     
-    public void setStatus(String status) {
+    public void setStatus(char status) {
         Status = status;
     }
     
