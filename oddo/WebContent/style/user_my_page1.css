@@ -117,6 +117,16 @@ body {
   align-items: center;
 }
 
+.intro{
+  opacity: 0.9;
+  height: 700px;
+}
+.profile{
+  height: 40px;
+  
+  background-color: #f2bba7;
+  
+}
 
 
 

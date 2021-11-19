@@ -1,4 +1,5 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
 <head>
@@ -35,7 +36,7 @@
     </div>
     <div class="button" type="button" onclick="location.href='mypage.jsp'">
       <!-- <a href="mypage.jsp"> -->
-      <img src="../images/profile.png" alt="마이페이지" id="profile" style="height:40px;" />
+      <img class="profile" src="../images/profile.png" alt="마이페이지" id="profile"  />
       </a>
     </div>
   </nav>
@@ -51,7 +52,7 @@
                 <div class="card mask-custom">
                   <div class="card-body p-5">
                     <div class="my-4">
-                      <h2 class="text-center mb-5">내 정보</h2>
+                      <h2 class="text-center mb-5">내 정보 수정</h2>
 
                       <form action="<%= request.getContextPath() %>/insert.us" method="post" id="joinForm" name="joinForm" onsubmit="return insertValidate();">
                         <div class="row">
@@ -129,10 +130,9 @@
 
                         
                         
-                        <input type="submit" value="내 정보 수정" class="submit-btn" />
-                        <input type="submit" value="쪽지" class="submit-btn" />
-                        <input type="submit" value="과거 예약 내역" class="submit-btn" />
-                        <input type="submit" value="숙소 등록" class="submit-btn" />
+                        <input type="submit" value="수정 하기" class="submit-btn" />
+                        <input type="submit" value="취소" class="submit-btn" />
+                        
                       </form>
                     </div>
                   </div>
