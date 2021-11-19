@@ -5,16 +5,16 @@
       <head>
         <meta charset="UTF-8" />
         <title>Search_result</title>
-        <link rel="stylesheet" href="./style/Search_Result.css" />
-        <script src="js/calendar.js"></script>
+        <link rel="stylesheet" href="../style/Search_Result.css" />
+        <script src="../js/calendar.js"></script>
       </head>
       <body>
         <div class="header">
           <div class="logo">
             <label>
-              <a href="index.html">
+              <a href="../index.html">
                 <img 
-                  src="images/logo.png" 
+                  src="../images/logo.png" 
                   alt="메인페이지"
                   id="logo">
               </a>
