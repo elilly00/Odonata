@@ -78,6 +78,18 @@ CREATE TABLE `MSG` (
     `Field` VARCHAR(255)    NULL
 );
 
+--------------------------------------------------
+-- 메세지 박스 출력을 위한 뷰 생성
+CREATE OR REPLACE VIEW MLIST
+AS
+SELECT ROWNUM RNUM, M.*
+FROM (SELECT MESSAGE_CODE, MESSAGE_TITLE, SENDTIME, READTIME, MSGTEXT, SEND_ID, RECEIVE_ID, MSG.STATUS
+      FROM MSG
+           JOIN MEMBER ON(USER_ID = RECEIVE_ID)
+      WHERE MSG.STATUS = 'Y'
+      ORDER BY SENDTIME DESC) M;
+--------------------------------------------------
+
 CREATE TABLE `SookSoIMG` (
     `image_number`  NUMBER  NOT NULL,
     `image_name`    VARCHAR2(50)    NOT NULL,
