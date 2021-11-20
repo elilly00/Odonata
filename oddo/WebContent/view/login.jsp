@@ -59,23 +59,11 @@
 
         
   </form>
-  <%-- 로그인 할때 입력 끝--%>
-  <%-- <% } else { %> --%>
+  
 
-      <%-- <div id="userInfo" align="right">
-			<label> <%= loginUser.getUserName() %> 님의 방문을 환영합니다. </label>
-			<br clear="all">
-			<div class="loginBtns">
-				<%-- <input type="button" value="내 정보 보기" onclick="location.href='<%= request.getContextPath() %>/myPage.me'">
-				<input type="button" value="로그 아웃" onclick="location.href =  '<%= request.getContextPath() %>/Logout.me'"> --%>
-			<%-- </div> --%>
-		<%-- </div> --%> 
-
-	<%-- <% } %> --%>
-
-        <div class="links">
+        <%-- <div class="links">
           <a href="#">아이디 찾기 / 비밀번호 찾기</a>
-        </div>
+        </div> --%>
 
         <div class="links">
           <a href="register.jsp">회원가입</a>
