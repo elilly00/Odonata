@@ -83,7 +83,7 @@
             <div class="price">
               <h3>1박당 요금</h3>
               <br>
-              <input type="text" placeholder="가격을 입력하세요" class="room-price" name="roomPrice">
+              <input type="text" placeholder="가격을 입력하세요" class="room-price" name="roomPrice" required/>
             </div>
             
             <br /><br />
