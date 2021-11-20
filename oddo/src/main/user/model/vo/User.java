@@ -1,5 +1,7 @@
 package main.user.model.vo;
 
+import java.sql.Date;
+
 public class User {
     private int User_code;
     private String User_name;
@@ -14,6 +16,17 @@ public class User {
     public User() {
     }
     
+    /**
+     * @param user_code
+     * @param user_name
+     * @param user_pwd
+     * @param user_email
+     * @param user_phone
+     * @param user_birth
+     * @param user_id
+     * @param user_type
+     * @param status
+     */
     public User(int user_code, String user_name, String user_pwd, String user_email, String user_phone, Date user_birth,
             String user_id, String user_type, char status) {
         User_code = user_code;
@@ -26,7 +39,7 @@ public class User {
         User_type = user_type;
         Status = status;
     }
-    
+
     public int getUser_code() {
         return User_code;
     }

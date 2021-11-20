@@ -104,3 +104,6 @@
 2021-11-17 10:03:54,522 [Worker-109: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/choewonseog/Documents/study/kh/semi/coding/Odonata/odo/src/main/resources
 2021-11-17 10:03:54,523 [Worker-109: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2021-11-17 10:03:54,523 [Worker-109: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/choewonseog/Documents/study/kh/semi/coding/Odonata/odo/src/test/resources
+2021-11-20 11:28:11,702 [Worker-6: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2021-11-20 11:28:16,008 [Worker-3: Decoration Calculation] WARN  org.eclipse.jgit.util.FS_POSIX - Exception caught during execution of command '[bash, --login, -c, which git]' in '/Users/choewonseog', return code '127', error message 'bash: which: command not found
+'

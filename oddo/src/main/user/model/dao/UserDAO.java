@@ -36,7 +36,8 @@ public class UserDAO {
     ResultSet rset = null;
     User loginUser = null;
 
-    String query = prop.getProperty("login");
+    // String query = prop.getProperty("login");
+    String query = "SELECT * FROM USER WHERE USER_ID = ? AND USER_PWD = ?";
 
     try {
       pstmt = conn.prepareStatement(query);
@@ -48,15 +49,15 @@ public class UserDAO {
       if (rset.next()) {
         loginUser =
           new User(
-            rset.getInt("User_code"),
-            rset.getString("User_pwd"),
-            rset.getString("User_name"),
-            rset.getString("User_email"),
-            rset.getString("User_phone"),
-            rset.getString("User_birth"),
-            rset.getString("User_id"),
-            rset.getString("User_type"),
-            rset.getString("Status")
+            rset.getInt("USER_CODE"),
+            rset.getString("USER_NAME"),
+            rset.getString("USER_PWD"),
+            rset.getString("USER_EMAIL"),
+            rset.getString("USER_PHONE"),
+            rset.getDate("USER_BIRTH"),
+            rset.getString("USER_ID"),
+            rset.getString("USER_TYPE"),
+            rset.getString("STATUS").charAt(0)
           );
       }
     } catch (SQLException e) {
@@ -68,106 +69,112 @@ public class UserDAO {
 
     return loginUser;
   }
-    
-    public int insertUser(Connection conn, User u) {
-        PreparedStatement pstmt = null;
-        int result = 0;
-        
-        String query = prop.getProperty("insertUser");
-        
-        try {
-            pstmt = conn.prepareStatement(query);
-            pstmt.setString(1, u.getUser_name());
-            pstmt.setString(2, u.getUser_pwd());
-            pstmt.setString(3, u.getUser_email());
-            pstmt.setString(4, u.getUser_phone());
-            pstmt.setDate(5, u.getUser_birth());
-            pstmt.setString(6, u.getUser_id());
-            
-            result = pstmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            close(pstmt);
-        }
-        
-        return result;
+
+  public int insertUser(Connection conn, User u) {
+    PreparedStatement pstmt = null;
+    int result = 0;
+
+    String query = prop.getProperty("insertUser");
+
+    try {
+      pstmt = conn.prepareStatement(query);
+      pstmt.setString(1, u.getUser_name());
+      pstmt.setString(2, u.getUser_pwd());
+      pstmt.setString(3, u.getUser_email());
+      pstmt.setString(4, u.getUser_phone());
+      pstmt.setDate(5, u.getUser_birth());
+      pstmt.setString(6, u.getUser_id());
+
+      result = pstmt.executeUpdate();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } finally {
+      close(pstmt);
     }
-    
-    public int checkId(Connection conn, String inputId) {
-        PreparedStatement pstmt = null;
-        ResultSet rset = null;
-        int result = 0;
-        
-        String query = prop.getProperty("checkId");
-        
-        try {
-            pstmt = conn.prepareStatement(query);
-            pstmt.setString(1, inputId);
-            
-            rset = pstmt.executeQuery();
-            
-            if (rset.next())
-                result = rset.getInt(1);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            close(rset);
-            close(pstmt);
-        }
-        
-        return result;
+
+    return result;
+  }
+
+  public int checkId(Connection conn, String inputId) {
+    PreparedStatement pstmt = null;
+    ResultSet rset = null;
+    int result = 0;
+
+    String query = prop.getProperty("checkId");
+
+    try {
+      pstmt = conn.prepareStatement(query);
+      pstmt.setString(1, inputId);
+
+      rset = pstmt.executeQuery();
+
+      if (rset.next()) result = rset.getInt(1);
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } finally {
+      close(rset);
+      close(pstmt);
     }
-    
-    public int checkEmail(Connection conn, String inputEmail) {
-        PreparedStatement pstmt = null;
-        ResultSet rset = null;
-        int result = 0;
-        
-        String query = prop.getProperty("checkEmail");
-        
-        try {
-            pstmt = conn.prepareStatement(query);
-            pstmt.setString(1, inputEmail);
-            
-            rset = pstmt.executeQuery();
-            
-            if (rset.next())
-                result = rset.getInt(1);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            close(rset);
-            close(pstmt);
-        }
-        
-        return result;
+
+    return result;
+  }
+
+  public int checkEmail(Connection conn, String inputEmail) {
+    PreparedStatement pstmt = null;
+    ResultSet rset = null;
+    int result = 0;
+
+    String query = prop.getProperty("checkEmail");
+
+    try {
+      pstmt = conn.prepareStatement(query);
+      pstmt.setString(1, inputEmail);
+
+      rset = pstmt.executeQuery();
+
+      if (rset.next()) result = rset.getInt(1);
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } finally {
+      close(rset);
+      close(pstmt);
     }
-    
-    public User selectUser(Connection conn, String userId) {
-        PreparedStatement pstmt = null;
-        ResultSet rset = null;
-        User user = null;
-        
-        String query = prop.getProperty("selectUser");
-        
-        try {
-            pstmt = conn.prepareStatement(query);
-            pstmt.setString(1, userId);
-            
-            rset = pstmt.executeQuery();
-            
-            if (rset.next())
-                user = new User(rset.getInt("USER_CODE"), rset.getString("USER_NAME"), rset.getString("USER_PWD"),
-                        rset.getString("USER_EMAIL"), rset.getString("USER_PHONE"), rset.getDate("USER_BIRTH"),
-                        rset.getString("USER_ID"), rset.getString("USER_TYPE"), rset.getString("STATUS").charAt(0));
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            close(rset);
-            close(pstmt);
-        }
-        
-        return user;
+
+    return result;
+  }
+
+  public User selectUser(Connection conn, String userId) {
+    PreparedStatement pstmt = null;
+    ResultSet rset = null;
+    User user = null;
+
+    String query = prop.getProperty("selectUser");
+
+    try {
+      pstmt = conn.prepareStatement(query);
+      pstmt.setString(1, userId);
+
+      rset = pstmt.executeQuery();
+
+      if (rset.next()) user =
+        new User(
+          rset.getInt("USER_CODE"),
+          rset.getString("USER_NAME"),
+          rset.getString("USER_PWD"),
+          rset.getString("USER_EMAIL"),
+          rset.getString("USER_PHONE"),
+          rset.getDate("USER_BIRTH"),
+          rset.getString("USER_ID"),
+          rset.getString("USER_TYPE"),
+          rset.getString("STATUS").charAt(0)
+        );
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } finally {
+      close(rset);
+      close(pstmt);
     }
+
+    return user;
+  }
 }

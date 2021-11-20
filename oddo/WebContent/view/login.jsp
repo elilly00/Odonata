@@ -36,9 +36,9 @@
     <div class="main-page">
       <div class="login-form">
 
-  <%-- <% if(loginUser == null){ %> --%>
+  
   <form id="loginForm" action="<%=request.getContextPath()%>/login.me" method="post">
-        <form>
+        
           <input
             type="text"
             name="userId"
@@ -57,7 +57,7 @@
 
           <input type="submit" value="로그인" class="submit-btn" />
 
-        </form>
+        
   </form>
   <%-- 로그인 할때 입력 끝--%>
   <%-- <% } else { %> --%>
