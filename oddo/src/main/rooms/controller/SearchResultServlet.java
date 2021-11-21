@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import main.rooms.model.service.RoomsService;
+import main.rooms.model.vo.PageInfo;
 import main.rooms.model.vo.Rooms;
 import main.sooksoimg.model.vo.sooksoImg;
 
@@ -32,15 +33,43 @@ public class FileListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int listCount;
+		int currentPage;
+		int pageLimit;
+		int boardLimit;
+		int maxPage;
+		int startPage;
+		int endPage;
+		
 		RoomsService rService = new RoomsService();
 		
-		ArrayList<Rooms> rList = rService.selectTList(1); 		// 게시글 리스트	
-		ArrayList<sooksoImg> sList = rService.selectTList(2);   // 파일 리스트
+		listCount = rService.getListCount(); // 총 게시글 개수 
+		
+		currentPage = 1;
+		if(request.getParameter("currentPage") != null) { 
+			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		}
+		
+		pageLimit = 5;
+		boardLimit = 4;
+		
+		maxPage = (int)Math.ceil((double)listCount / boardLimit);
+		startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
+		endPage = startPage + (pageLimit - 1);
+		if(maxPage < endPage) { 
+			endPage = maxPage;
+		}
+		
+		PageInfo pi = new PageInfo(currentPage, listCount, pageLimit, boardLimit, maxPage, startPage, endPage);
+		
+		ArrayList<Rooms> rList = rService.selectTList(1); 		// 게시글
+		ArrayList<sooksoImg> sList = rService.selectTList(2);   // 사진
 		
 		String page = null;
 		if(rList != null && sList != null) {
 			request.setAttribute("rList", rList);
 			request.setAttribute("fList", sList);
+			request.setAttribute("pi", pi);
 			page = "WEB-INF/view/search_result.jsp";
 		} else {
 			request.setAttribute("msg", "검색 결과 조회 실패");

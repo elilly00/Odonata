@@ -15,14 +15,14 @@ public class Rooms {
     private String Amenity;	// 편의시설
     private String Rooms_Desc;
     private Date Rooms_RegDate;
-    private int User_code;
     private String Status;
+    private int User_code;
 
     public Rooms() {}
 
 	public Rooms(int rooms_Code, String rooms_Host, String rooms_Type, String rooms_Addr, String rooms_Price,
 			String rooms_Personnel, String rooms_RoomCnt, String rooms_ToiletCnt, String rooms_DogAvail, String amenity,
-			String rooms_Desc, Date rooms_RegDate, int user_code, String status) {
+			String rooms_Desc, Date rooms_RegDate, String status, int user_code) {
 		super();
 		Rooms_Code = rooms_Code;
 		Rooms_Host = rooms_Host;
@@ -36,8 +36,8 @@ public class Rooms {
 		Amenity = amenity;
 		Rooms_Desc = rooms_Desc;
 		Rooms_RegDate = rooms_RegDate;
-		User_code = user_code;
 		Status = status;
+		User_code = user_code;
 	}
 
 	public int getRooms_Code() {
@@ -136,14 +136,6 @@ public class Rooms {
 		Rooms_RegDate = rooms_RegDate;
 	}
 
-	public int getUser_code() {
-		return User_code;
-	}
-
-	public void setUser_code(int user_code) {
-		User_code = user_code;
-	}
-
 	public String getStatus() {
 		return Status;
 	}
@@ -152,14 +144,21 @@ public class Rooms {
 		Status = status;
 	}
 
+	public int getUser_code() {
+		return User_code;
+	}
+
+	public void setUser_code(int user_code) {
+		User_code = user_code;
+	}
+
 	@Override
 	public String toString() {
 		return "Rooms [Rooms_Code=" + Rooms_Code + ", Rooms_Host=" + Rooms_Host + ", Rooms_Type=" + Rooms_Type
 				+ ", Rooms_Addr=" + Rooms_Addr + ", Rooms_Price=" + Rooms_Price + ", Rooms_Personnel=" + Rooms_Personnel
 				+ ", Rooms_RoomCnt=" + Rooms_RoomCnt + ", Rooms_ToiletCnt=" + Rooms_ToiletCnt + ", Rooms_DogAvail="
 				+ Rooms_DogAvail + ", Amenity=" + Amenity + ", Rooms_Desc=" + Rooms_Desc + ", Rooms_RegDate="
-				+ Rooms_RegDate + ", User_code=" + User_code + ", Status=" + Status + "]";
+				+ Rooms_RegDate + ", Status=" + Status + ", User_code=" + User_code + "]";
 	}
-
 	
 }
