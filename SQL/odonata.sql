@@ -137,6 +137,19 @@ CREATE TABLE "Rooms" ( -- 데이터 타입을 변경하였습니다.
 	"Status"	CHAR(1)	DEFAULT 'Y'	NOT NULL,
 	"User_code"	NUMBER		NOT NULL
 );
+--------------------------------------------------
+-- ROOMS 게시글 조회 뷰 생성
+CREATE OR REPLACE VIEW RLIST
+AS
+SELECT ROWNUM RNUM, DESCROOMS.*
+FROM(SELECT ROOMS_CODE, ROOMS_HOST, ROOMS_ADDR, ROOMS_PRICE, ROOMS_PERSONNEL, ROOMS_ROOMCNT,
+            ROOMS_TOILETCNT, ROOMS_DOGAVAIL, AMENITY, ROOMS_DESC, ROOMS_REGDATE, R.STATUS, USER_CODE
+     FROM ROOMS R
+        JOIN MEMBER USING(USER_CODE)
+     WHERE R.STATUS = 'Y'
+     ORDER BY ROOMS_CODE DESC) DESCROOMS;
+--------------------------------------------------
+
 
 COMMENT ON COLUMN "Rooms"."Rooms_Price" IS '원';
 
