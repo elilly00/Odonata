@@ -35,8 +35,7 @@ public class RoomsDAO {
 			e.printStackTrace();
 		}
     }
-
-    public int insertRooms(Connection conn, Rooms room) {
+	public int insertRooms(Connection conn, Rooms r) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
@@ -46,15 +45,16 @@ public class RoomsDAO {
 			
 			pstmt = conn.prepareStatement(query);
 			
-			pstmt.setString(1, room.getRooms_Type());
-			pstmt.setString(2, room.getRooms_Addr());
-			pstmt.setString(3, room.getRooms_Price());
-			pstmt.setString(4, room.getRooms_Personnel());
-			pstmt.setString(5, room.getRooms_RoomCnt());
-			pstmt.setString(6, room.getRooms_ToiletCnt());
-			pstmt.setString(7, room.getRooms_DogAvail());
-			pstmt.setString(8, room.getAmenity());
-			pstmt.setString(9, room.getRooms_Desc());
+			pstmt.setString(1, r.getRooms_Host());
+			pstmt.setString(2, r.getRooms_Type());
+			pstmt.setString(3, r.getRooms_Addr());
+			pstmt.setString(4, r.getRooms_Price());
+			pstmt.setString(5, r.getRooms_Personnel());
+			pstmt.setString(6, r.getRooms_RoomCnt());
+			pstmt.setString(7, r.getRooms_ToiletCnt());
+			pstmt.setString(8, r.getRooms_DogAvail());
+			pstmt.setString(9, r.getAmenity());
+			pstmt.setString(10, r.getRooms_Desc());
 			
 			result = pstmt.executeUpdate();
 			
@@ -66,7 +66,6 @@ public class RoomsDAO {
 		
 		return result;
 	}
-
 	public int insertsooksoImg(Connection conn, ArrayList<sooksoImg> ImgList) {
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -74,12 +73,13 @@ public class RoomsDAO {
 		String query = prop.getProperty("insertsooksoImg");
 		
 		try {
-			for(int i = 0; i  < ImgList.size(); i++) {	
+			for(int e = 0; e  < ImgList.size(); e++) {	
 				pstmt = conn.prepareStatement(query);
-				pstmt.setString(1, ImgList.get(i).getOrigin_name());
-				pstmt.setString(2, ImgList.get(i).getChange_name());
-				pstmt.setString(3, ImgList.get(i).getImage_path());
-				pstmt.setInt(4, ImgList.get(i).getImage_Level());
+				
+				pstmt.setString(1, ImgList.get(e).getOrigin_name());
+				pstmt.setString(2, ImgList.get(e).getChange_name());
+				pstmt.setString(3, ImgList.get(e).getImage_path());
+				pstmt.setInt(4, ImgList.get(e).getImage_Level());
 				
 				result += pstmt.executeUpdate();
 			}
@@ -115,24 +115,6 @@ public class RoomsDAO {
 		return listCount;
 	}
 
-		public ArrayList<ResultPage> selectList(Connection conn, PageInfo pi) {
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		ArrayList<ResultPage> list = null;
-		
-		String query = prop.getProperty("selectList");
-		
-		try {
-			pstmt = conn.prepareStatement(query);
-			
-			
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return list;
-	}
-
 	public ArrayList selectRList(Connection conn) {
 		Statement stmt = null;
 		ResultSet rset = null;
@@ -145,12 +127,58 @@ public class RoomsDAO {
 			rset = stmt.executeQuery(query);
 			
 			list = new ArrayList<Rooms>();
-			
+			while(rset.next()) {
+				list.add(new Rooms(rset.getInt("rooms_code"),
+								   rset.getString("rooms_host"),
+								   rset.getString("rooms_type"),
+								   rset.getString("rooms_addr"),
+								   rset.getString("rooms_price"),
+								   rset.getString("rooms_personnel"),
+								   rset.getString("rooms_roomcnt"),
+								   rset.getString("rooms_toiletcnt"),
+								   rset.getString("rooms_dogavail"),
+								   rset.getString("amenity"),
+								   rset.getString("rooms_desc"),
+								   rset.getDate("rooms_regdate"),
+								   rset.getString("status"),
+								   rset.getInt("user_code")));
+			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
 		}
 		return list;
 	}
-
-    
+	public ArrayList selectFList(Connection conn) {
+		Statement stmt = null;
+		ResultSet rset = null;
+		ArrayList<sooksoImg> list = null;
+		
+		String query = prop.getProperty("selectFList");
+		// image_Level¿Ã 0¿Œ ∞Õ (ΩÊ≥◊¿œ)¿ª ∞°¡Æø»
+		
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			
+			list = new ArrayList<sooksoImg>();
+			while(rset.next()) {
+				sooksoImg s = new sooksoImg();
+				s.setImage_number(rset.getInt("image_number"));
+				s.setChange_name(rset.getString("chang_name"));
+				
+				list.add(s);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		
+		return list;
+	}
+}
