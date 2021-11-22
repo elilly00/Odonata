@@ -62,13 +62,13 @@
   
 
         <div class="links">
-          <a href="user/user_id_find.jsp">아이디 찾기 / </a>
+          <a href="user/user_id_find.jsp">아이디 찾기</a>
         </div>
-
+<br>
         <div class="links">
           <a href="user/user_pwd_find.jsp">비밀번호 찾기</a>
         </div>
-
+<br>
         <div class="links">
           <a href="register.jsp">회원가입</a>
         </div>
