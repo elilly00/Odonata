@@ -24,51 +24,54 @@ import main.sooksoimg.model.vo.sooksoImg;
  * Servlet implementation class InsertRoomeServlet
  */
 @WebServlet("/insert.ro")
-public class InsertRoomeServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+public class InsertRoomsServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+    
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InsertRoomeServlet() {
+    public InsertRoomsServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// enctypeÀÌ mulipart/form-data·Î Á¤¼ÛµÇ¾ú´ÂÁö È®ÀÎ
-		if(ServletFileUpload.isMultipartContent(request)) {
-			
-			int maxSize = 1024*1024*10;
-			String root = request.getSession().getServletContext().getRealPath("/");
-			String savePath = root + "thumbnail_uploadFiles/";
-			
-			File f = new File(savePath);
-			if(!f.exists()) {	// ÆÄÀÏÀÌ Á¸ÀçÇÏÁö ¾ÊÀ¸¸é 
-				f.mkdirs();	// µð·ºÅä¸®¸¦ ¸¸µé¾î³ö¶ó
-			}
-			
-			System.out.println(savePath);
-			MultipartRequest multiRequset = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy()); 
-		
-			ArrayList<String> saveFiles = new ArrayList<String>();		// ÆÄÀÏÀÇ ¹Ù²ï ÀÌ¸§À» ÀúÀåÇÒ ArrayList
-			ArrayList<String> originFiles = new ArrayList<String>();	// ÆÄÀÏÀÇ ¿ø·¡ ÀÌ¸§À» ÀúÀåÇÒ ArrayList
-			
-			Enumeration<String> files = multiRequset.getFileNames();
-			
-			while(files.hasMoreElements()) {
-			//	System.out.println(files.nextElement());	
-				String name = files.nextElement();
-				
-				if(multiRequset.getFilesystemName(name) != null) {				// getFilesystemName : ÇØ´ç ÀÌ¹ÌÁö¿¡ ´ëÇÑ renameµÈ ÆÄÀÏ¸íÀ» °¡Áö°í ¿È / »çÁøÀÌ µé¾î°¡ÀÖ´Ù¸é
-					saveFiles.add(multiRequset.getFilesystemName(name));		// ¹Ù²ï ÀÌ¸§
-					originFiles.add(multiRequset.getOriginalFileName(name));	// ¿ø·¡ ÀÌ¸§À» °¡Á®¿È
-				}
-			}
-			// °è¼Ó nullÀÌ ¹ÝÈ¯µÅ¿ä.. ºÎÀûÇÕÇÑ ¿­ ÀÎµ¦½º¶ó´Âµ¥ ¾îµð°¡ ´Ù¸¥Áö ¸ð¸£°Ú¾î¿ä¤Ð¤Ð
+    
+    /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+     *      response)
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // enctypeï¿½ï¿½ mulipart/form-dataï¿½ï¿½ ï¿½ï¿½ï¿½ÛµÇ¾ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
+        if (ServletFileUpload.isMultipartContent(request)) {
+            
+            int maxSize = 1024 * 1024 * 10;
+            String root = request.getSession().getServletContext().getRealPath("/");
+            String savePath = root + "thumbnail_uploadFiles/";
+            
+            File f = new File(savePath);
+            if (!f.exists()) {	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
+                f.mkdirs();	// ï¿½ï¿½ï¿½ä¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            }
+            
+            System.out.println(savePath);
+            MultipartRequest multiRequset = new MultipartRequest(request, savePath, maxSize, "UTF-8",
+                    new MyFileRenamePolicy());
+            
+            ArrayList<String> saveFiles = new ArrayList<String>();		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ArrayList
+            ArrayList<String> originFiles = new ArrayList<String>();	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ArrayList
+            
+            Enumeration<String> files = multiRequset.getFileNames();
+            
+            while (files.hasMoreElements()) {
+                //	System.out.println(files.nextElement());	
+                String name = files.nextElement();
+                
+                if (multiRequset.getFilesystemName(name) != null) {				// getFilesystemName : ï¿½Ø´ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ renameï¿½ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ / ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½î°¡ï¿½Ö´Ù¸ï¿½
+                    saveFiles.add(multiRequset.getFilesystemName(name));		// ï¿½Ù²ï¿½ ï¿½Ì¸ï¿½
+                    originFiles.add(multiRequset.getOriginalFileName(name));	// ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                }
+            }
+            // ï¿½ï¿½ï¿½ nullï¿½ï¿½ ï¿½ï¿½È¯ï¿½Å¿ï¿½.. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½ ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ï¿½ï¿½ ï¿½ð¸£°Ú¾ï¿½ï¿½Ð¤ï¿½
 //			System.out.println(request.getParameter("roomType"));
 //			System.out.println(request.getParameter("roomAddr"));
 //			System.out.println(request.getParameter("roomPrice"));
@@ -78,88 +81,91 @@ public class InsertRoomeServlet extends HttpServlet {
 //			System.out.println(request.getParameter("pet"));
 //			System.out.println(request.getParameter("amenity"));
 //			System.out.println(request.getParameter("Desc"));
-			
-			System.out.println(saveFiles);
-			System.out.println(originFiles);
-			
-			String Rooms_Type = multiRequset.getParameter("roomType");
-			String[] Rooms_Addr = multiRequset.getParameterValues("roomAddr");
-			String Rooms_Price = multiRequset.getParameter("roomPrice");
-			String Rooms_Personnel = multiRequset.getParameter("personNum");
-			String Rooms_RoomCnt = multiRequset.getParameter("roomCnt");
-			String Rooms_ToiletCnt = multiRequset.getParameter("toiletCont");
-			String Rooms_DogAvail = multiRequset.getParameter("pet");
-			String[] Amenity = multiRequset.getParameterValues("amenity");
-			String Rooms_Desc = multiRequset.getParameter("Desc");
-			
-			String strRooms_Addr = "";
-			if(Rooms_Addr != null) {
-				for(int i = 0; i < Rooms_Addr.length; i++) {
-					if(i == 0) {
-						strRooms_Addr += Rooms_Addr[i];
-					} else {
-						strRooms_Addr += " " + Rooms_Addr[i];
-					}
-				}
-			}
-			
-			String strAmenity = "";
-			if(Amenity != null) {
-				for(int j = 0; j < Amenity.length; j++) {
-					if(j == 0) {
-						strAmenity += Amenity[j];
-					} else {
-						strAmenity += " ¡¤ " + Amenity[j];
-					}
-				}
-				
-			}
-		
-			Rooms room = new Rooms(0, null, Rooms_Type, strRooms_Addr, Rooms_Price, Rooms_Personnel, Rooms_RoomCnt, Rooms_ToiletCnt, Rooms_DogAvail, strAmenity, Rooms_Desc, null, 0, null);
-			// rooms
-			
-			// ÀÌ¹ÌÁö
-			ArrayList<sooksoImg> ImgList = new ArrayList<sooksoImg>();
-			for(int e = originFiles.size() - 1; e >= 0; e--) {	
-				sooksoImg s = new sooksoImg();
-				s.setImage_path(savePath);
-				s.setOrigin_name(originFiles.get(e));
-				s.setChange_name(saveFiles.get(e));
-				
-				// ÆÄÀÏ ·¹º§ ÁöÁ¤ÇÏ±â
-				if(e == originFiles.size() -1) {
-					s.setImage_Level(0);		
-				} else {							
-					s.setImage_Level(1);	
-				}
-				
-				ImgList.add(s);
-			}
-			
-			int result = new RoomsService().insertRooms(room, ImgList);
-				
-			if(result >= 1+ImgList.size()) {
-				response.sendRedirect(request.getContextPath()); // µî·Ï ¿Ï·á ½Ã ¸ÞÀÎ ÆäÀÌÁö·Î ÀÌµ¿
-			} else {
-				request.setAttribute("msg", "»çÁø °Ô½ÃÆÇ µî·Ï ½ÇÆÐ");
-				request.getRequestDispatcher("WEB-INF/view/errorPage.jsp").forward(request, response);
-				
-				// °Ô½ÃÆÇ µî·Ï¿¡ ½ÇÆÐÇßÀ» ¶©  ÀÚµ¿À¸·Î ÀúÀåµÇ´Â ÆÄÀÏ Áö¿ì±â
-				for(int e = 0; e < saveFiles.size(); e++) {
-					File fail = new File(savePath + saveFiles.get(e));
-					fail.delete();
-				}
-			}
-		}
-		
-		
-	}
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
+            
+            System.out.println(saveFiles);
+            System.out.println(originFiles);
+            
+            String Rooms_Type = multiRequset.getParameter("roomType");
+            String[] Rooms_Addr = multiRequset.getParameterValues("roomAddr");
+            String Rooms_Price = multiRequset.getParameter("roomPrice");
+            String Rooms_Personnel = multiRequset.getParameter("personNum");
+            String Rooms_RoomCnt = multiRequset.getParameter("roomCnt");
+            String Rooms_ToiletCnt = multiRequset.getParameter("toiletCont");
+            String Rooms_DogAvail = multiRequset.getParameter("pet");
+            String[] Amenity = multiRequset.getParameterValues("amenity");
+            String Rooms_Desc = multiRequset.getParameter("Desc");
+            
+            String strRooms_Addr = "";
+            if (Rooms_Addr != null) {
+                for (int i = 0; i < Rooms_Addr.length; i++) {
+                    if (i == 0) {
+                        strRooms_Addr += Rooms_Addr[i];
+                    } else {
+                        strRooms_Addr += " " + Rooms_Addr[i];
+                    }
+                }
+            }
+            
+            String strAmenity = "";
+            if (Amenity != null) {
+                for (int j = 0; j < Amenity.length; j++) {
+                    if (j == 0) {
+                        strAmenity += Amenity[j];
+                    } else {
+                        strAmenity += " ï¿½ï¿½ " + Amenity[j];
+                    }
+                }
+                
+            }
+            
+            Rooms room = new Rooms(0, null, Rooms_Type, strRooms_Addr, Rooms_Price, Rooms_Personnel, Rooms_RoomCnt,
+                    Rooms_ToiletCnt, Rooms_DogAvail, strAmenity, Rooms_Desc, null, 0, null);
+            // rooms
+            
+            // ï¿½Ì¹ï¿½ï¿½ï¿½
+            ArrayList<sooksoImg> ImgList = new ArrayList<sooksoImg>();
+            for (int e = originFiles.size() - 1; e >= 0; e--) {
+                sooksoImg s = new sooksoImg();
+                s.setImage_path(savePath);
+                s.setOrigin_name(originFiles.get(e));
+                s.setChange_name(saveFiles.get(e));
+                
+                // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
+                if (e == originFiles.size() - 1) {
+                    s.setImage_Level(0);
+                } else {
+                    s.setImage_Level(1);
+                }
+                
+                ImgList.add(s);
+            }
+            
+            int result = new RoomsService().insertRooms(room, ImgList);
+            
+            if (result >= 1 + ImgList.size()) {
+                response.sendRedirect(request.getContextPath()); // ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
+            } else {
+                request.setAttribute("msg", "ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
+                request.getRequestDispatcher("WEB-INF/view/errorPage.jsp").forward(request, response);
+                
+                // ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½  ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+                for (int e = 0; e < saveFiles.size(); e++) {
+                    File fail = new File(savePath + saveFiles.get(e));
+                    fail.delete();
+                }
+            }
+        }
+        
+    }
+    
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+     *      response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        doGet(request, response);
+    }
+    
 }

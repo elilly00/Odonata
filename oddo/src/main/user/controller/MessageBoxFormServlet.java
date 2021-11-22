@@ -69,11 +69,11 @@ public class MessageBoxFormServlet extends HttpServlet {
         
         String page = null;
         if (list != null) {
-            page = "WEB-INF/views/msg/messageBox.jsp";
+            page = "WebContent/msg/messageBox.jsp";
             request.setAttribute("list", list);
             request.setAttribute("pi", pi);
         } else {
-            page = "WEB-INF/views/common/errorPage.jsp";
+            page = "WebContent/errorPage.jsp";
             request.setAttribute("msg", "메세지 조회 실패");
         }
         

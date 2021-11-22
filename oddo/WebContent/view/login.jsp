@@ -70,7 +70,7 @@
         </div>
 <br>
         <div class="links">
-          <a href="register.jsp">회원가입</a>
+          <a href="<%= request.getContextPath() %>/signUpForm.us">회원가입</a>
         </div>
 
 

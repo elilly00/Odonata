@@ -52,7 +52,7 @@ public class InsertUserServlet extends HttpServlet {
             response.sendRedirect("index.jsp");
         else {
             request.setAttribute("msg", "회원가입 실패");
-            request.getRequestDispatcher("WEB-INF/views/common/errorPage.jsp").forward(request, response);
+            request.getRequestDispatcher("errorPage.jsp").forward(request, response);
         }
     }
     

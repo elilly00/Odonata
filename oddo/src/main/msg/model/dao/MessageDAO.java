@@ -22,7 +22,7 @@ public class MessageDAO {
     public MessageDAO() {
         prop = new Properties();
         
-        String fileName = MessageDAO.class.getResource("/sql/msg/msg-query.properties").getPath();
+        String fileName = MessageDAO.class.getResource("/main/sql/msg/msg-query.properties").getPath();
         
         try {
             prop.load(new FileReader(fileName));

@@ -12,7 +12,7 @@ public class Rooms {
     private String Rooms_RoomCnt;
     private String Rooms_ToiletCnt;
     private String Rooms_DogAvail;
-    private String Amenity;	// ÆíÀÇ½Ã¼³
+    private String Amenity;	// ï¿½ï¿½ï¿½Ç½Ã¼ï¿½
     private String Rooms_Desc;
     private Date Rooms_RegDate;
     private String Status;

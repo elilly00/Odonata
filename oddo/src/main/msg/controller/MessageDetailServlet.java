@@ -36,10 +36,10 @@ public class MessageDetailServlet extends HttpServlet {
         
         String page = null;
         if (msg != null) {
-            page = "WEB-INF/views/msg/messageBox.jsp";
+            page = "/view/msg/messageBox.jsp";
             request.setAttribute("msgDetail", msg);
         } else {
-            page = "WEB-INF/views/common/errorPage.jsp";
+            page = "/errorPage.jsp";
             request.setAttribute("msg", "쪽지 상세보기 실패");
         }
         request.getRequestDispatcher(page).forward(request, response);

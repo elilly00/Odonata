@@ -30,7 +30,7 @@ public class MyPageServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        request.getRequestDispatcher("WebContent/view/user/user_my_page").forward(request, response);
+        request.getRequestDispatcher("view/user/user_my_page").forward(request, response);
         
     }
     
