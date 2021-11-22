@@ -1,4 +1,4 @@
-package msg.model.controller;
+package main.msg.controller;
 
 import java.io.IOException;
 
