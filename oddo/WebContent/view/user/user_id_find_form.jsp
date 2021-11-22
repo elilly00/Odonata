@@ -50,35 +50,15 @@
                 <div class="card-body p-5">
                   <div class="my-4">
                     <h2 class="text-center mb-3">아이디 찾기</h2>
-                    <h5 class="text-center mb-3">
-                      <%= getid() %>
-                    </h5>
+                    <h5 class="text-center mb-3">회원가입 시 사용한 비밀번호는 <strong>${fn:substring(id,0,2)}
+                        <c:forEach begin="1" end="${fn:lenght(id)-2}">
+                          *
+                        </c:forEach>
+                      </strong>입니다.</h5>
 
                     
 
-                      <!-- <div class="form-floating form-white mb-4">
-                          <input
-                            type="tel"
-                            id="uPhone"
-                            name="uPhone"
-                            class="form-control form-control-lg"
-                          />
-                          <label class="form-label" for="uPhone"
-                            >이름</label
-                          >
-                        </div>
-
-                        <div class="form-floating form-white mb-4">
-                          <input
-                            type="tel"
-                            id="uPhone"
-                            name="uPhone"
-                            class="form-control form-control-lg"
-                          />
-                          <label class="form-label" for="uPhone"
-                            >이메일</label
-                          >
-                        </div> -->
+                      
 
 
 
@@ -87,9 +67,9 @@
                       </div>
 
 
-
+                      <a href="../login.jsp">
                       <input type="submit" value="로그인 화면으로 돌아가기" class="submit-btn" />
-                      <!-- <input type="submit" value="취소" class="submit-btn" /> -->
+                      </a>
 
                     
                   </div>
