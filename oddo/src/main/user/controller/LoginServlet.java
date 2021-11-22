@@ -18,7 +18,7 @@ import main.user.model.vo.User;
  * Servlet implementation class LoginServlet
  
  */
-@WebServlet("/login.me")
+@WebServlet("/login.us")
 // name="UpdatePwdServlet",urlPatterns=
 public class LoginServlet extends HttpServlet {
 
@@ -52,6 +52,8 @@ public class LoginServlet extends HttpServlet {
       session.setMaxInactiveInterbal(1200);
       session.setAttribute("loginUser", loginUser);
       response.sendRedirect(request.getContextPath());
+      RequestDispatcher view = request.getRequestDispatcher("WebContent/index.jsp");
+      view.forward(request, response);
       
     } else {
       request.setAttribute("msg" , "아이디 또는 비밀번호가 다릅니다.");

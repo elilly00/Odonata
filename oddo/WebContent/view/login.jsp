@@ -37,7 +37,7 @@
       <div class="login-form">
 
   
-  <form id="loginForm" action="<%=request.getContextPath()%>/login.me" method="post">
+  <form id="loginForm" action="<%=request.getContextPath()%>/login.us" method="post">
         
           <input
             type="text"
