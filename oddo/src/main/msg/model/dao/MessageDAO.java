@@ -1,6 +1,6 @@
-package msg.model.dao;
+package main.msg.model.dao;
 
-import static common.JDBCTemplate.close;
+import static main.common.JDBCTemplate.close;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -12,8 +12,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import msg.model.vo.Message;
-import msg.model.vo.PageInfo;
+import main.msg.model.vo.Message;
+import main.msg.model.vo.PageInfo;
 
 public class MessageDAO {
     
@@ -103,10 +103,10 @@ public class MessageDAO {
             pstmt.setInt(1, mId);
             
             rset = pstmt.executeQuery();
-            if(rset.next())
-                m = new Message(rset.getInt("MESSAGE_CODE"), rset.getString("MESSAGE_TITLE"),
-                        rset.getDate("SENDTIME"), rset.getDate("READTIME"), rset.getString("MSGTEXT"),
-                        rset.getString("SEND_ID"), rset.getString("RECEIVE_ID"), rset.getString("STATUS").charAt(0))
+            if (rset.next())
+                m = new Message(rset.getInt("MESSAGE_CODE"), rset.getString("MESSAGE_TITLE"), rset.getDate("SENDTIME"),
+                        rset.getDate("READTIME"), rset.getString("MSGTEXT"), rset.getString("SEND_ID"),
+                        rset.getString("RECEIVE_ID"), rset.getString("STATUS").charAt(0));
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

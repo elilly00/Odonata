@@ -1,4 +1,4 @@
-package msg.model.vo;
+package main.msg.model.vo;
 
 import java.sql.Date;
 

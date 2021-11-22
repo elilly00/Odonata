@@ -1,14 +1,14 @@
-package msg.model.service;
+package main.msg.model.service;
 
-import static common.JDBCTemplate.close;
-import static common.JDBCTemplate.getConnection;
+import static main.common.JDBCTemplate.close;
+import static main.common.JDBCTemplate.getConnection;
 
 import java.sql.Connection;
 import java.util.ArrayList;
 
-import msg.model.dao.MessageDAO;
-import msg.model.vo.Message;
-import msg.model.vo.PageInfo;
+import main.msg.model.dao.MessageDAO;
+import main.msg.model.vo.Message;
+import main.msg.model.vo.PageInfo;
 
 public class MessageService {
     

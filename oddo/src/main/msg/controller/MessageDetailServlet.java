@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import msg.model.service.MessageService;
-import msg.model.vo.Message;
+import main.msg.model.service.MessageService;
+import main.msg.model.vo.Message;
 
 /**
  * Servlet implementation class MessageDetailServlet

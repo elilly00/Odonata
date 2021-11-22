@@ -2,6 +2,7 @@ package main.user.controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,59 +17,53 @@ import main.user.model.vo.User;
 
 /**
  * Servlet implementation class LoginServlet
- 
+ * 
  */
 @WebServlet("/login.us")
 // name="UpdatePwdServlet",urlPatterns=
 public class LoginServlet extends HttpServlet {
-
-  private static final long serialVersionUID = 1L;
-
-  /**
-   * @see HttpServlet#HttpServlet()
-   */
-  public LoginServlet() {
-    super();
-    // TODO Auto-generated constructor stub
-  }
-
-  /**
-   * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-   */
-  protected void doGet(
-    HttpServletRequest request,
-    HttpServletResponse response
-  ) throws ServletException, IOException {
-    request.setCharacterEncoding("UTF-8");
-
-    String userId = request.getParameter("userId");
-    String userPwd = request.getParameter("userPwd");
-
-    User loginUser = new UserService().loginUser(userId, userPwd);
-
     
-    if(loginUser != null) {
-      HttpSession session = request.getSession();
-      session.setMaxInactiveInterbal(1200);
-      session.setAttribute("loginUser", loginUser);
-      response.sendRedirect(request.getContextPath());
-      RequestDispatcher view = request.getRequestDispatcher("WebContent/index.jsp");
-      view.forward(request, response);
-      
-    } else {
-      request.setAttribute("msg" , "아이디 또는 비밀번호가 다릅니다.");
-      RequestDispatcher view = request.getRequestDispatcher("WebContent/view/login.jsp");
-      view.forward(request, response);
+    private static final long serialVersionUID = 1L;
+    
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public LoginServlet() {
+        super();
+        // TODO Auto-generated constructor stub
     }
     
-
+    /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+     *      response)
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        
+        String userId = request.getParameter("userId");
+        String userPwd = request.getParameter("userPwd");
+        
+        User loginUser = new UserService().loginUser(userId, userPwd);
+        
+        if (loginUser != null) {
+            HttpSession session = request.getSession();
+            session.setMaxInactiveInterval(1200);
+            session.setAttribute("loginUser", loginUser);
+            response.sendRedirect(request.getContextPath());
+            RequestDispatcher view = request.getRequestDispatcher("WebContent/index.jsp");
+            view.forward(request, response);
+            
+        } else {
+            request.setAttribute("msg", "아이디 또는 비밀번호가 다릅니다.");
+            RequestDispatcher view = request.getRequestDispatcher("WebContent/view/login.jsp");
+            view.forward(request, response);
+        }
+        
+    }
     
-  }
-
-  protected void doPost(
-    HttpServletRequest request,
-    HttpServletResponse response
-  ) throws ServletException, IOException {
-    doGet(request, response);
-  }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        doGet(request, response);
+    }
 }

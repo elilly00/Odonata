@@ -1,4 +1,4 @@
-package user.controller;
+package main.user.controller;
 
 import java.io.IOException;
 
@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import user.model.service.UserService;
-import user.model.vo.User;
+import main.user.model.service.UserService;
+import main.user.model.vo.User;
 
 /**
  * Servlet implementation class UpdateFormServlet

@@ -1,4 +1,4 @@
-package user.controller;
+package main.user.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import msg.model.service.MessageService;
-import msg.model.vo.Message;
-import msg.model.vo.PageInfo;
-import user.model.vo.User;
+import main.msg.model.service.MessageService;
+import main.msg.model.vo.Message;
+import main.msg.model.vo.PageInfo;
+import main.user.model.vo.User;
 
 /**
  * Servlet implementation class MessageBoxFormServlet

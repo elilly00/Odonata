@@ -1,4 +1,4 @@
-package filter;
+package main.filter;
 
 import java.io.IOException;
 
@@ -11,7 +11,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
-import filter.wrapper.EncryptWrapper;
+import main.filter.wrapper.EncryptWrapper;
 
 /**
  * Servlet Filter implementation class EncryptFilter

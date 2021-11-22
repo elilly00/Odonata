@@ -1,4 +1,4 @@
-package filter.wrapper;
+package main.filter.wrapper;
 
 import java.nio.charset.Charset;
 import java.security.MessageDigest;

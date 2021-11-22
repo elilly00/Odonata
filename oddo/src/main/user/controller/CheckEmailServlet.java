@@ -1,4 +1,4 @@
-package user.controller;
+package main.user.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import user.model.service.UserService;
+import main.user.model.service.UserService;
 
 /**
  * Servlet implementation class CheckEmailServlet

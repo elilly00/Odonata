@@ -1,4 +1,4 @@
-package user.controller;
+package main.user.controller;
 
 import java.io.IOException;
 import java.util.Properties;

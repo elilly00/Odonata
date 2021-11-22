@@ -1,4 +1,4 @@
-package user.controller;
+package main.user.controller;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import user.model.service.UserService;
-import user.model.vo.User;
+import main.user.model.service.UserService;
+import main.user.model.vo.User;
 
 /**
  * Servlet implementation class InsertUserServlet
