@@ -36,8 +36,8 @@ public class UserDAO {
     ResultSet rset = null;
     User loginUser = null;
 
-    // String query = prop.getProperty("login");
-    String query = "SELECT * FROM USER WHERE USER_ID = ? AND USER_PWD = ?";
+    
+    String query = prop.getProperty("loginUser");
 
     try {
       pstmt = conn.prepareStatement(query);
@@ -186,16 +186,10 @@ public class UserDAO {
     ResultSet rset2 = null;
     User user = null;
 
-    String sql =
-      "select USER" +
-      "from USER_ID" +
-      "where USER_NAME = ? and" +
-      "USER_EMAIL=?";
-    String sql2 =
-      "select USER" +
-      "from USER_ID" +
-      "where USER_NAME = ? and" +
-      "USER_EMAIL=?";
+    String sql = prop.getProperty("idfind");
+
+    String sql2 = prop.getProperty("idfind");
+      
 
     try {
       pstmt = conn.prepareStatement(sql);
@@ -254,16 +248,10 @@ public class UserDAO {
     ResultSet rset2 = null;
     User user = null;
 
-    String sql =
-      "select USER" +
-      "from USER_ID" +
-      "where USER_NAME = ? and" +
-      "USER_EMAIL=?";
-    String sql2 =
-      "select USER" +
-      "from USER_ID" +
-      "where USER_NAME = ? and" +
-      "USER_EMAIL=?";
+    String sql = prop.getProperty("pwdfind");
+      
+    String sql2 = prop.getProperty("pwdfind");
+      
 
     try {
       pstmt = conn.prepareStatement(sql);
