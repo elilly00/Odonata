@@ -177,4 +177,140 @@ public class UserDAO {
 
     return user;
   }
+
+  public User idfind(Connection conn, String name, String email) {
+    PreparedStatement pstmt = null;
+    PreparedStatement pstmt2 = null;
+
+    ResultSet rset = null;
+    ResultSet rset2 = null;
+    User user = null;
+
+    String sql =
+      "select USER" +
+      "from USER_ID" +
+      "where USER_NAME = ? and" +
+      "USER_EMAIL=?";
+    String sql2 =
+      "select USER" +
+      "from USER_ID" +
+      "where USER_NAME = ? and" +
+      "USER_EMAIL=?";
+
+    try {
+      pstmt = conn.prepareStatement(sql);
+      pstmt.setString(1, name);
+      pstmt.setString(2, email);
+      rset = pstmt.executeQuery();
+
+      pstmt2 = conn.prepareStatement(sql2);
+      pstmt.setString(1, name);
+      pstmt.setString(2, email);
+      rset2 = pstmt.executeQuery();
+
+      
+
+      if (rset.next()) user =
+        new User(
+          rset.getInt("USER_CODE"),
+          rset.getString("USER_NAME"),
+          rset.getString("USER_PWD"),
+          rset.getString("USER_EMAIL"),
+          rset.getString("USER_PHONE"),
+          rset.getDate("USER_BIRTH"),
+          rset.getString("USER_ID"),
+          rset.getString("USER_TYPE"),
+          rset.getString("STATUS").charAt(0)
+        );
+
+      if (rset2.next()) user =
+        new User(
+          rset.getInt("USER_CODE"),
+          rset.getString("USER_NAME"),
+          rset.getString("USER_PWD"),
+          rset.getString("USER_EMAIL"),
+          rset.getString("USER_PHONE"),
+          rset.getDate("USER_BIRTH"),
+          rset.getString("USER_ID"),
+          rset.getString("USER_TYPE"),
+          rset.getString("STATUS").charAt(0)
+        );
+    } catch (SQLException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    } finally {
+      close(rset);
+      close(pstmt);
+    }
+
+    return user;
+  }
+
+  public User pwdfind(Connection conn, String id, String name, String email) {
+    PreparedStatement pstmt = null;
+    PreparedStatement pstmt2 = null;
+
+    ResultSet rset = null;
+    ResultSet rset2 = null;
+    User user = null;
+
+    String sql =
+      "select USER" +
+      "from USER_ID" +
+      "where USER_NAME = ? and" +
+      "USER_EMAIL=?";
+    String sql2 =
+      "select USER" +
+      "from USER_ID" +
+      "where USER_NAME = ? and" +
+      "USER_EMAIL=?";
+
+    try {
+      pstmt = conn.prepareStatement(sql);
+      pstmt.setString(1, id);
+      pstmt.setString(2, email);
+      pstmt.setString(3, name);
+      rset = pstmt.executeQuery();
+
+      pstmt2 = conn.prepareStatement(sql2);
+      pstmt.setString(1, id);
+      pstmt.setString(2, email);
+      pstmt.setString(3, name);
+      rset2 = pstmt.executeQuery();
+
+      if (rset.next()) user =
+        new User(
+          rset.getInt("USER_CODE"),
+          rset.getString("USER_NAME"),
+          rset.getString("USER_PWD"),
+          rset.getString("USER_EMAIL"),
+          rset.getString("USER_PHONE"),
+          rset.getDate("USER_BIRTH"),
+          rset.getString("USER_ID"),
+          rset.getString("USER_TYPE"),
+          rset.getString("STATUS").charAt(0)
+        );
+
+      if (rset2.next()) user =
+        new User(
+          rset.getInt("USER_CODE"),
+          rset.getString("USER_NAME"),
+          rset.getString("USER_PWD"),
+          rset.getString("USER_EMAIL"),
+          rset.getString("USER_PHONE"),
+          rset.getDate("USER_BIRTH"),
+          rset.getString("USER_ID"),
+          rset.getString("USER_TYPE"),
+          rset.getString("STATUS").charAt(0)
+        );
+    } catch (SQLException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    } finally {
+      close(rset);
+      close(pstmt);
+    }
+
+    return user;
+  }
 }
