@@ -146,8 +146,8 @@
       </button>
       <% } else { %>
       <div id="userInfo" align="right">
-        <label> <%= loginUser.getUser_name() %> 님의 방문을 환영합니다. </label>
-        <br clear="all">
+        <%-- <label> <%= loginUser.getUser_name() %> 님의 방문을 환영합니다. </label>
+        <br clear="all"> --%>
         <div class="menu">
           <%-- <input type="button" class="item menusolo hostdg" value="내 정보 보기" onclick="location.href='<%= request.getContextPath() %>/myPage.me'">
           --%>
