@@ -51,8 +51,9 @@ public class LoginServlet extends HttpServlet {
             session.setMaxInactiveInterval(1200);
             session.setAttribute("loginUser", loginUser);
             response.sendRedirect(request.getContextPath());
-            RequestDispatcher view = request.getRequestDispatcher("index.jsp");
-            view.forward(request, response);
+            // RequestDispatcher view = request.getRequestDispatcher("index.jsp");
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+            // view.forward(request, response);
             
         } else {
             request.setAttribute("msg", "아이디 또는 비밀번호가 다릅니다.");
