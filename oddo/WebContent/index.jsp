@@ -46,8 +46,8 @@
   <nav class="main-navi">
     <div class="logo">
       <!-- <i class="fab fa-airbnb"></i> 잠자리 -->
-      <a href="<%= request.getContextPath() %>index.jsp">
-        <img class="main-navi" src="img/logo.png" href="index.jsp">
+      <a href="<%= request.getContextPath() %>/index.jsp">
+        <img class="main-navi" src="<%= request.getContextPath() %>/img/logo.png" href="<%= request.getContextPath() %>/index.jsp">
       </a>
 
     </div>
@@ -81,7 +81,7 @@
         </div>
 
 
-        <script src="WEB-INF/js/calendar.js"></script>
+        <script src="<%= request.getContextPath() %>/js/calendar.js"></script>
         <script>
           var trigger = document.querySelector('#datePicker');
           var dateComponent = new DatePicker({
