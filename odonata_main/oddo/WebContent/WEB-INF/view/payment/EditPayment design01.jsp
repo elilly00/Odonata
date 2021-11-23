@@ -15,8 +15,8 @@
       referrerpolicy="no-referrer"
     />
 
-    <link rel="stylesheet" href="../style/main.css" />
-    <script src="../js/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/style/main.css" />
+    <script src="<%= request.getContextPath() %>/js/jquery-3.6.0.min.js"></script>
 
     <style>
       /* 고려 사항 : 전체창으로 띄우지 않고 크기 지정해서 띄우고싶음. 대략 가로 500px 정도? 생각중 */
@@ -106,7 +106,7 @@
             <td rowspan="2"></td>
             <td rowspan="2">
               <img
-                src="../image/card.png"
+                src="<%= request.getContextPath() %>/image/card.png"
                 width="100px"
                 height="100px"
                 alt="잠자리"

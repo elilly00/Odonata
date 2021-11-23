@@ -12,8 +12,8 @@
 		integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
 		crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-	<link rel="stylesheet" href="../style/main.css" />
-	<script src="../js/jquery-3.6.0.min.js"></script>
+	<link rel="stylesheet" href="<%= request.getContextPath() %>/style/main.css" />
+	<script src="<%= request.getContextPath() %>/js/jquery-3.6.0.min.js"></script>
 
 	<!-- 아임포트 라이브러리 : jQuery 1.0이상 필요-->
 	<!-- jQuery -->
@@ -135,13 +135,13 @@
 			<div class="logo">
 				<a href="../index.jsp">
 					<div class="logo">
-						<img src="../img/logo.png" width="80px" height="80px" alt="잠자리" class="mx-2" />
+						<img src="<%= request.getContextPath() %>/img/logo.png" width="80px" height="80px" alt="잠자리" class="mx-2" />
 					</div>
 				</a>
 			</div>
 			<div class="button" type="button" onclick="location.href='mypage.jsp'">
 				<!-- <a href="mypage.jsp"> -->
-				<img src="../images/profile.png" alt="마이페이지" id="profile" style="height:40px;" />
+				<img src="<%= request.getContextPath() %>/images/profile.png" alt="마이페이지" id="profile" style="height:40px;" />
 				</a>
 			</div>
 		</nav>

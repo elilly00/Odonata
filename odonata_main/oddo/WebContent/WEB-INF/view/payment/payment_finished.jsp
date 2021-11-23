@@ -10,19 +10,19 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="../style/Payment_finished.css" />
+  <link rel="stylesheet" href="<%= request.getContextPath() %>/style/Payment_finished.css" />
 
 </head>
 
 <body>
   <nav class="main-navi">
-    <a class="logoo" href="../../index.jsp">
-      <img class="logoo" src="../../img/logo.png">
+    <a class="logoo" href="<%= request.getContextPath() %>/WEB-INF/index.jsp">
+      <img class="logoo" src="<%= request.getContextPath() %>/img/logo.png">
     </a>
     </div>
     <div class="button" type="button" onclick="location.href='mypage.jsp'">
       <!-- <a href="mypage.jsp"> -->
-      <img src="../../images/profile.png" alt="마이페이지" id="profile" style="height:40px;" />
+      <img src="<%= request.getContextPath() %>/images/profile.png" alt="마이페이지" id="profile" style="height:40px;" />
       </a>
     </div>
   </nav>
