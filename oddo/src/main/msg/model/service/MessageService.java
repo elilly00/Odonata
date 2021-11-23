@@ -43,4 +43,20 @@ public class MessageService {
         
         return msg;
     }
+
+    public int insertMessage(Message msg) {
+		Connection conn = getConnection();
+		
+		int result = mDAO.insertMessage(conn, msg);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
 }

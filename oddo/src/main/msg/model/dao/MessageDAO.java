@@ -116,4 +116,24 @@ public class MessageDAO {
         
         return m;
     }
+
+    public int insertMessage(Connection conn, Message msg) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("insertMessage");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, msg.getMessage_Title());
+			pstmt.setString(2, msg.getMessage_Text());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 }
