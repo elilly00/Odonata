@@ -55,20 +55,6 @@
         </div>
         <!-- 결제 정보 끝 -->
 
+
+
       </div>
-
-
-    </div>
-
-
-  </div>
-  </div>
-
-  <script>
-
-
-  </script>
-
-</body>
-
-</html>
