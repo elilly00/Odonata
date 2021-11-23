@@ -38,6 +38,16 @@ NOCYCLE
 NOCACHE;
 
 --------------------------------------------------
+
+-- MESSAGE_CODE 시퀀스 생성
+CREATE SEQUENCE SEQ_MNO
+INCREMENT BY 1
+START WITH 1
+MINVALUE 1
+NOCYCLE
+NOCACHE;
+
+----------------------------------------------------
 -- 시퀀스 초기화 하기(예시 : SEQ_UID / 1번은 관리자 계정, 2번부터 사용자 계정)
 -- 1. 현시점 시퀀스 번호 확인(예시 : 현재 시퀀스 18번까지 사용됨)
 SELECT LAST_NUMBER FROM USER_SEQUENCES WHERE SEQUENCE_NAME = 'SEQ_UID';
