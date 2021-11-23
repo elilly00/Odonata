@@ -161,7 +161,7 @@
       <div class="item menuset">
         <button class="mypage" type="button" onclick="location.href='<%= request.getContextPath() %>/myPage.me'" class="item menusolo hostdg">
           <!-- <i class="fas fa-bars"></i> -->
-          <a href="view/mypage.jsp">
+          <a href="<%= request.getContextPath()%>/view/user/user_my_page.jsp">
             <i class="fas fa-user-circle"></i>
           </a>
 
