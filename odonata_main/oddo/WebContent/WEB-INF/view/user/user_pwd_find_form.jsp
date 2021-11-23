@@ -14,7 +14,7 @@
     integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <link rel="stylesheet" href="../../style/user/user_id_pw_check.css" />
+  <link rel="stylesheet" href="<%= request.getContextPath() %>/style/user/user_id_pw_check.css" />
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
@@ -29,13 +29,13 @@
 
 <body>
   <nav class="main-navi">
-    <a class="logoo" href="../../index.jsp">
-      <img class="logoo" src="../../img/logo.png">
+    <a class="logoo" href="<%= request.getContextPath() %>/WEB-INF/index.jsp">
+      <img class="logoo" src="<%= request.getContextPath() %>/img/logo.png">
     </a>
     </div>
     <div class="button" type="button" onclick="location.href='mypage.jsp'">
       <!-- <a href="mypage.jsp"> -->
-      <img class="profile" src="../../images/profile.png" alt="마이페이지" id="profile" />
+      <img class="profile" src="<%= request.getContextPath() %>/images/profile.png" alt="마이페이지" id="profile" />
       </a>
     </div>
   </nav>
@@ -71,7 +71,7 @@
 
 
 
-                    <a href="<%= request.getContextPath() %>/view/login.jsp">
+                    <a href="<%= request.getContextPath() %>/WEB-INF/view/login.jsp">
                       <input type="submit" value="로그인 화면으로 돌아가기" class="submit-btn" />
                     </a>
 
