@@ -1,0 +1,7 @@
+
+-- RESERV에 ROOM_NAME추가
+ALTER TABLE RESERV ADD ROOM_NAME VARCHAR2(100);
+
+-- PAYMENT에 P_METHOD삭제
+--  : 결제 시스템을 I'MPORT를 이용하게 되었기때문에 결제 방식은 받아올수 없어서 삭제하였습니다.
+ALTER TABLE PAYMENT DROP COLUMN P_METHOD;
