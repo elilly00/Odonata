@@ -153,94 +153,100 @@ pageEncoding="UTF-8"%>
             <!-- <div class="more">후기 더보기</div> -->
           </div>
         </div>
+        <form action="<%= request.getContextPath() %>/msgDetail.ms" method="post"></form>
         <div class="body_info5">
-          <h2>호스트에게 쪽지 보내기</h2>
-          <div>
-            <textarea
-              id="note"
-              placeholder="호스트에게 쪽지 보내기 / 문의하기"
-            ></textarea>
-          </div>
-        </div>
+        	<h2>호스트에게 쪽지 보내기</h2>
+        	<ul>
+            <br>
+            <b>제목</b>
+            <li>
+              <textarea id="title" placeholder="제목 입력" name="title"></textarea>
+        		</li>
+            <br>
+            <b>내용</b>
+            <li>
+              <textarea id="note" placeholder="호스트에게 쪽지 보내기 / 문의하기" name="text"></textarea>
+            </li>  
+          </ul>
+        </div> 
         <div class="submit">
           <input type="submit" id="submit" value="보내기" />
         </div>
+        </form>
       </div>
     </div>
-    <div class="right">
-      <div class="wrap">
-        <div class="booking">
-          <ul>
-            <li>
-              <span>
-                <b>체크인</b>
-              </span>
-              <input type="date" class="date" />
-            </li>
-            <li>
-              <span>
-                <b>체크아웃</b>
-              </span>
-              <input type="date" class="date" />
-            </li>
-            <li>
-              <div class="add">
-                <b>인원 추가</b>
-              </div>
-              <span class="add2">성인</span>
-              <select class="select">
-                <option value="1">1명</option>
-                <option value="2">2명</option>
-                <option value="3">3명</option>
-                <option value="4">4명</option>
-                <option value="5">5명</option>
-                <option value="6">6명</option>
-                <option value="7">7명</option>
-                <option value="8">8명</option>
-                <option value="9">9명</option>
-                <option value="10">10명</option>
-              </select>
-              <span class="add3">아동</span>
-              <select class="select">
-                <option value="1">1명</option>
-                <option value="2">2명</option>
-                <option value="3">3명</option>
-                <option value="4">4명</option>
-                <option value="5">5명</option>
-                <option value="6">6명</option>
-                <option value="7">7명</option>
-                <option value="8">8명</option>
-                <option value="9">9명</option>
-                <option value="10">10명</option>
-              </select>
-            </li>
-          </ul>
-          <div class="button">
-            <button type="button" class="button2">
-              예약 가능 여부 확인 / 예약 확인
-            </button>
+    <form>
+      <div class="right">
+        <div class="wrap">
+          <div class="booking">
+            <ul>
+              <li>
+                <span><b>체크인</b></span>
+                <input type="date" class="date" />
+              </li>
+              <li>
+                <span><b>체크아웃</b></span>
+                <input type="date" class="date" />
+              </li>
+              <li>
+                <div class="add">
+                  <b>인원 추가</b>
+                </div>
+                <span class="add2">성인</span>
+                <select class="select">
+                  <option value="1">1명</option>
+                  <option value="2">2명</option>
+                  <option value="3">3명</option>
+                  <option value="4">4명</option>
+                  <option value="5">5명</option>
+                  <option value="6">6명</option>
+                  <option value="7">7명</option>
+                  <option value="8">8명</option>
+                  <option value="9">9명</option>
+                  <option value="10">10명</option>
+                </select>
+                <span class="add3">아동</span>
+                <select class="select">
+                  <option value="1">1명</option>
+                  <option value="2">2명</option>
+                  <option value="3">3명</option>
+                  <option value="4">4명</option>
+                  <option value="5">5명</option>
+                  <option value="6">6명</option>
+                  <option value="7">7명</option>
+                  <option value="8">8명</option>
+                  <option value="9">9명</option>
+                  <option value="10">10명</option>
+                </select>
+              </li>
+            </ul>
+            <div class="button">
+              <button type="button" class="button2">
+                예약 가능 여부 확인 / 예약 확인
+              </button>
+            </div>
+          </div>
+
+          <br />
+
+          <div class="result">
+            <ul>
+              <li>
+                <span>\ 50,000 X 3박 </span>
+              </li>
+              <li>
+                <span>\ 150,00</span>
+              </li>
+              <li>
+                <span>
+                  <b>총 합계</b>
+                </span>
+                <span>\ 150,000</span>
+              </li>
+            </ul>
           </div>
         </div>
-
-        <br />
-
-        <div class="result">
-          <ul>
-            <li>
-              <span>\ 50,000 X 3박 </span>
-            </li>
-            <li>
-              <span>\ 150,00</span>
-            </li>
-            <li>
-              <span>
-                <b>총 합계</b>
-              </span>
-              <span>\ 150,000</span>
-            </li>
-          </ul>
-        </div>
       </div>
-    </div>
+    </form>
   </body>
 </html>

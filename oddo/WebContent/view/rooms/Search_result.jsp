@@ -12,8 +12,7 @@
         <div class="header">
           <div class="logo">
             <label>
-              <a href="../index.html">
-                <img 
+              <img onclick="location.href='<%= request.getContextPath() %>'"
                   src="../images/logo.png" 
                   alt="메인페이지"
                   id="logo">
@@ -225,9 +224,9 @@
                     class="search_img"
                     onclick="alert"
                     type="button"
-                    src="./img/search.png"
-                  >
-                    <img class="search_img" src="./img/search.png" />
+                    src="./img/search.png">
+                    <img 
+                      class="search_img" src="./img/search.png" />
                   </button>
                 </a>
               </div>
@@ -236,12 +235,10 @@
     
           <div class="myPage">
             <label>
-              <a href="mypage.html">
-                <img
+              <img onclick="location.href='<%= request.getContextPath() %>/myPage.me'"
                   src="./images/profile.png"
                   alt="마이페이지" 
                   id="profile">
-              </a>
             </label>
           </div>
         </div>
@@ -250,37 +247,36 @@
           <div class="ft">
             <nav class="filter">
               <span>
-                <select class="button">
+                <select class="button" name="roomType">
                   <option>숙소 유형</option>
                   <option>아파트</option>
                   <option>주택</option>
                   <option>별채</option>
                   <option>게스트하우스</option>
                 </select>
-                <button class="button">요금</button>
-                <button class="button">주방</button>
-                <button class="button">에어컨</button>
-                <button class="button">세탁기</button>
-                <button class="button">애완동물 동반</button>
-                <button class="button">무료 주차장</button>
-                <button class="button">조식</button>
+                <button class="button" name="Amenity" value="price">요금</button>
+                <button class="button" name="Amenity" value="kichen">주방</button>
+                <button class="button" name="Amenity" value="aircon">에어컨</button>
+                <button class="button" name="Amenity" value="washer">세탁기</button>
+                <button class="button" name="Amenity" value="pet">애완동물 동반</button>
+                <button class="button" name="Amenity" value="freeP">무료 주차장</button>
+                <button class="button" name="Amenity" value="breakfast">조식</button>
               </span>
             </nav>
           </div>
         </div>
     
+        <div class="search_info">
+          <p>00월 00일 - 00월 00일 . 게스트 2명</p>
+          <h2>부산에서 위치한 숙소입니다.</h2>
+          <br />
+        </div>
         <div class="body">
           <div class="room_left">
-            <div class="room">
-              <p>00월 00일 - 00월 00일 . 게스트 2명</p>
-              <h2>부산에서 위치한 숙소입니다.</h2>
-              <br />
-            </div>
-    
-            <div class="photo">
+            <div class="rooms">
               <img
                 class="room_img_input"
-                alt="방 사진1"
+                alt="방 사진"
                 src="./images/room1.png"
                 width="250"
                 height="250"

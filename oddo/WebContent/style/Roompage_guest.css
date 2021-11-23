@@ -196,10 +196,19 @@
   text-align: center;
 }
 
+#title {
+  width: 50%;
+  margin-top: 20px;
+  text-align: center;
+  border-radius: 10px;
+}
 #note {
-    width: 80%;
-    height: 100px;
-    margin: 10px;
+    width: 70%;
+    height: 90px;
+    margin-top: 20px;
+    text-align: center;
+    border-radius: 10px;
+
 }
 
 .submit {

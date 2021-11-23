@@ -235,7 +235,6 @@
     height: 25px;
   }
   
-  /* ?? ???? ??? ??? ??? */
   .datePicker {
     width: 160px;
     size: 12px;
@@ -278,7 +277,7 @@
     background-color: white;
     border: none;
   }
-  /* header1 ? */
+  /* header1 ³¡ */
 
  .header2 {
     width: 100%;
@@ -313,6 +312,11 @@
     transform: translateY(-7px);
   }
 
+  .search_info { 
+    width: 90%;
+    border-bottom: 1px solid lightgrey; 
+  }
+
   .body {
     width: 100%;
     height: 100%;
@@ -326,13 +330,20 @@
     border-bottom: 1px solid lightgrey;
   }
 
+  .rooms { 
+    overflow: auto;
+    /* background:rosybrown;  */
+    margin-left: 4%;
+    border-bottom: 1px solid lightgrey;
+  }
+/* 
   .room_left2, 
   .room_left3, 
   .room_left4 {
     width: 100%;
     float: left;
     border-bottom: 1px solid lightgrey;
-  }
+  } */
 
   .map_right {
     position: sticky;
@@ -343,20 +354,20 @@
     margin: 75px 220px 0px 0px;
   }
 
-  .room { border-bottom: 1px solid lightgrey; }
+  /* .room { border-bottom: 1px solid lightgrey; } */
 
-  .photo, 
+  .photo /*, 
   .photo2, 
   .photo3, 
-  .photo4 {
+  .photo4 */{
     margin-top: 20px;
     float: left;
   }
 
-  .info, 
+  .info /*, 
   .info3, 
   .info5, 
-  .info7 {
+  .info7 */ {
     margin: 30px;
     float: left;
   }
@@ -371,10 +382,10 @@
 
   .pho { vertical-align: middle; }
 
-  .info2, 
+  .info2 /*, 
   .info4, 
   .info6, 
-  .info8 {
+  .info8 */ {
     margin: 30px 0px 20px 250px;
   }
 
