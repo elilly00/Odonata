@@ -18,7 +18,7 @@
       crossorigin="anonymous"
     ></script>
 
-    <link rel="shortcut icon" href="../img/airbnb.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="<%= request.getContextPath() %>/img/airbnb.ico" type="image/x-icon" />
 
     <link
       rel="stylesheet"
@@ -28,7 +28,7 @@
       referrerpolicy="no-referrer"
     />
 
-    <link rel="stylesheet" href="../style/navi.css" />
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/style/navi.css" />
 
     <title>내 쪽지함</title>
 
@@ -56,7 +56,7 @@
       <a href="index.html">
         <div class="logo">
           <img
-            src="../img/logo.png"
+            src="<%= request.getContextPath() %>/img/logo.png"
             width="80px"
             height="80px"
             alt="잠자리"

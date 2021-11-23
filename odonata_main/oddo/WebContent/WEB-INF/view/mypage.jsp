@@ -20,7 +20,7 @@
     referrerpolicy="no-referrer"
   />
 
-  <link rel="stylesheet" href="../style/navi.css" />
+  <link rel="stylesheet" href="<%= request.getContextPath() %>/style/navi.css" />
 
   <title>마이페이지</title>
 
@@ -42,7 +42,7 @@
   <nav class="main-navi" style="background: #f2bba7;">
     <a href="index.html">
     <div class="logo">
-      <img src="../img/logo.png" width="80px" height="80px" alt="잠자리" class="mx-2" />
+      <img src="<%= request.getContextPath() %>/img/logo.png" width="80px" height="80px" alt="잠자리" class="mx-2" />
     </div>
   </a>
 

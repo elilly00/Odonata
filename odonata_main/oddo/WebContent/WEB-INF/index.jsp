@@ -20,7 +20,7 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/cesiumjs/1.78/Build/Cesium/Cesium.js"></script>
-  <link rel="shortcut icon" href="WEB-INF/img/airbnb.ico" type="WEB-INF/image/x-icon" />
+  <link rel="shortcut icon" href="img/airbnb.ico" type="WEB-INF/image/x-icon" />
   <!-- <link rel="shortcut icon" href="img/public_photo/logo.png" type="WEB-INF/image/x-icon" /> -->
 
 
@@ -142,7 +142,7 @@
 
     <div class="menu">
       <% if(loginUser == null) { %>
-      <button type="button" onclick="location.href='view/login.jsp'" class="item menusolo hostdg">
+      <button type="button" onclick="location.href='WEB-INF/view/login.jsp'" class="item menusolo hostdg">
         로그인/회원가입
       </button>
       <% } else { %>
