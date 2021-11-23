@@ -5,20 +5,20 @@ pageEncoding="UTF-8"%>
   <head>
     <meta charset="UTF-8" />
     <title>Roompage_guest</title>
-    <link rel="stylesheet" href="../style/Roompage_guest.css" />
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/style/Roompage_guest.css" />
   </head>
   <body>
     <div class="header">
       <div class="logo">
         <label>
           <a href="../index.html">
-            <img src="../img/logo.png" alt="메인페이지" id="logo" />
+            <img src="<%= request.getContextPath() %>/img/logo.png" alt="메인페이지" id="logo" />
           </a>
         </label>
       </div>
       <div class="img">
-        <a href="../mypage.html">
-          <img src="../images/profile.png" alt="마이페이지" id="profile" />
+        <a href="<%= request.getContextPath() %>/mypage.html">
+          <img src="<%= request.getContextPath() %>/images/profile.png" alt="마이페이지" id="profile" />
         </a>
       </div>
     </div>
@@ -32,9 +32,9 @@ pageEncoding="UTF-8"%>
     <div id="slideShow">
       <!-- 첫 사진이 제대로 안나옴.. -->
       <ul class="slides">
-        <li><img src="../images/room1.png" alt="방사진1" /></li>
-        <li><img src="../images/room2.png" alt="방사진2" /></li>
-        <li><img src="../images/room3.png" alt="방사진3" /></li>
+        <li><img src="<%= request.getContextPath() %>/images/room1.png" alt="방사진1" /></li>
+        <li><img src="<%= request.getContextPath() %>/images/room2.png" alt="방사진2" /></li>
+        <li><img src="<%= request.getContextPath() %>/images/room3.png" alt="방사진3" /></li>
       </ul>
 
       <p class="controller">
@@ -94,7 +94,7 @@ pageEncoding="UTF-8"%>
           <h2>숙소 편의 시설</h2>
           <div class="info_a">
             <!-- 가로로 병렬시키기 -->
-            <img class="emoji" alt="집" src="../images/home.PNG" />
+            <img class="emoji" alt="집" src="<%= request.getContextPath() %>/images/home.PNG" />
             <div><b>아파트 전체</b></div>
             <img
               class="emoji"
@@ -104,11 +104,11 @@ pageEncoding="UTF-8"%>
             <div><b>세탁기</b></div>
           </div>
           <div class="info_b">
-            <img class="emoji" alt="와이파이" src="../images/wifi.PNG" />
+            <img class="emoji" alt="와이파이" src="<%= request.getContextPath() %>/images/wifi.PNG" />
             <div><b>와이파이</b></div>
-            <img class="emoji" alt="에어컨" src="../images/aircon.PNG" />
+            <img class="emoji" alt="에어컨" src="<%= request.getContextPath() %>/images/aircon.PNG" />
             <div><b>에어컨</b></div>
-            <img class="emoji" alt="주방" src="../images/kitchen.PNG" />
+            <img class="emoji" alt="주방" src="<%= request.getContextPath() %>/images/kitchen.PNG" />
             <div><b>주방</b></div>
           </div>
         </div>
@@ -133,19 +133,19 @@ pageEncoding="UTF-8"%>
           <p>nn개</p>
           <div class="reviews">
             <div>
-              <img class="reviewer" src="../images/man.PNG" />
+              <img class="reviewer" src="<%= request.getContextPath() %>/images/man.PNG" />
               <div><b>룰루</b></div>
               <pre>2021.4.12</pre>
               <div>너무 깔끔하고 좋았습니다 &nbsp;</div>
             </div>
             <div>
-              <img class="reviewer" src="../images/man2.PNG" />
+              <img class="reviewer" src="<%= request.getContextPath() %>/images/man2.PNG" />
               <div><b>랄라</b></div>
               <pre>2021.7.08</pre>
               <div>&nbsp;최고입니다 !!&nbsp;</div>
             </div>
             <div>
-              <img class="reviewer" src="../images/woman.PNG" />
+              <img class="reviewer" src="<%= request.getContextPath() %>/images/woman.PNG" />
               <div><b>릴리</b></div>
               <pre>2021.10.16</pre>
               <div>&nbsp;다시 방문하고 싶어요</div>

@@ -5,15 +5,15 @@
       <head>
         <meta charset="UTF-8" />
         <title>Search_result</title>
-        <link rel="stylesheet" href="../style/Search_Result.css" />
-        <script src="../js/calendar.js"></script>
+        <link rel="stylesheet" href="<%= request.getContextPath() %>/style/Search_Result.css" />
+        <script src="<%= request.getContextPath() %>/js/calendar.js"></script>
       </head>
       <body>
         <div class="header">
           <div class="logo">
             <label>
               <img onclick="location.href='<%= request.getContextPath() %>'"
-                  src="../images/logo.png" 
+                  src="<%= request.getContextPath() %>/images/logo.png" 
                   alt="메인페이지"
                   id="logo">
               </a>
@@ -170,7 +170,7 @@
                 </span>
             </div>
             
-            <script src="./js/calendar.js"></script>
+            <script src="<%= request.getContextPath() %>/js/calendar.js"></script>
             <script>
                 var trigger = document.querySelector('#datePicker');
                 var dateComponent = new DatePicker({
@@ -224,9 +224,9 @@
                     class="search_img"
                     onclick="alert"
                     type="button"
-                    src="./img/search.png">
+                    src="<%= request.getContextPath() %>/img/search.png">
                     <img 
-                      class="search_img" src="./img/search.png" />
+                      class="search_img" src="<%= request.getContextPath() %>/img/search.png" />
                   </button>
                 </a>
               </div>
@@ -277,7 +277,7 @@
               <img
                 class="room_img_input"
                 alt="방 사진"
-                src="./images/room1.png"
+                src="<%= request.getContextPath() %>/images/room1.png"
                 width="250"
                 height="250"
               />
@@ -318,7 +318,7 @@
                 <img 
                   class="room_img_input" 
                   alt="방 사진1" 
-                  src="./images/room2.png" 
+                  src="<%= request.getContextPath() %>/images/room2.png" 
                   width="250" 
                   height="250"
                 />
@@ -361,7 +361,7 @@
                 <img 
                   class="room_img_input" 
                   alt="방 사진3" 
-                  src="./images/room3.png" 
+                  src="<%= request.getContextPath() %>/images/room3.png" 
                   width="250" 
                   height="250"
                 />
@@ -404,7 +404,7 @@
                 <img 
                   class="room_img_input" 
                   alt="방 사진4" 
-                  src="./images/room1.png" 
+                  src="<%= request.getContextPath() %>/images/room1.png" 
                   width="250" 
                   height="250"
                 />

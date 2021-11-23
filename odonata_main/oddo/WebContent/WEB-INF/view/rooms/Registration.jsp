@@ -5,24 +5,24 @@
       <head>
         <meta charset="UTF-8" />
         <title>Registration</title>
-        <link rel="stylesheet" href="../style/Registration.css">
-        <script src="../js/jquery-3.6.0.min.js"></script>
+        <link rel="stylesheet" href="<%= request.getContextPath() %>/style/Registration.css">
+        <script src="<%= request.getContextPath() %>/js/jquery-3.6.0.min.js"></script>
       </head>
       <body>
         <div class="header">
           <div class="logo">
             <label>
-              <a href="../index.jsp">
-               <img src="../img/logo.png" 
+              <a href="<%= request.getContextPath() %>/WEB-INF/index.jsp">
+               <img src="<%= request.getContextPath() %>/img/logo.png" 
                 alt="메인페이지" 
                 id="main">
               </a>
             </label>
           </div>
           <div class="img">
-            <a href="mypage.jsp">
+            <a href="<%= request.getContextPath() %>mypage.jsp">
               <img
-                src="../images/profile.png"
+                src="<%= request.getContextPath() %>/images/profile.png"
                 alt="마이페이지" 
                 id="profile"/>
               </a>
