@@ -21,7 +21,7 @@
       referrerpolicy="no-referrer"
     />
 
-    <link rel="stylesheet" href="../style/login.css" />
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/style/login.css" />
     
   </head>
 
