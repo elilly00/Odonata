@@ -40,6 +40,9 @@ public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
+
+        String path1 = "index.jsp";
+        String path2 = "view/login.jsp";
         
         String userId = request.getParameter("userId");
         String userPwd = request.getParameter("userPwd");
@@ -51,12 +54,13 @@ public class LoginServlet extends HttpServlet {
             session.setMaxInactiveInterval(1200);
             session.setAttribute("loginUser", loginUser);
             response.sendRedirect(request.getContextPath());
-            RequestDispatcher view = request.getRequestDispatcher("index.jsp");
-            view.forward(request, response);
+            request.getRequestDispatcher(path1).forward(request, response);
+            // RequestDispatcher view = request.getRequestDispatcher("index.jsp");
+            // view.forward(request, response);
             
         } else {
             request.setAttribute("msg", "아이디 또는 비밀번호가 다릅니다.");
-            RequestDispatcher view = request.getRequestDispatcher("view/login.jsp");
+            RequestDispatcher view = request.getRequestDispatcher(path2);
             view.forward(request, response);
         }
         

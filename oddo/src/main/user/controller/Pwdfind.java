@@ -44,7 +44,7 @@ public class Pwdfind extends HttpServlet {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         
-        User pwd = new UserService().idfind(id, name, email);
+        User pwd = new UserService().pwdfind(id, name, email);
         
         request.setAttribute("pwd", pwd);
         

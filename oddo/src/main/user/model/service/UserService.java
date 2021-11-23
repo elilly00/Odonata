@@ -79,7 +79,7 @@ public class UserService {
         return user;
     }
     
-    public User idfind(String id, String name, String email) {
+    public User pwdfind(String id, String name, String email) {
         Connection conn = getConnection();
         
         User user = uDAO.pwdfind(conn, id, name, email);
