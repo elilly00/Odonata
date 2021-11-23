@@ -38,6 +38,7 @@
 
         <!-- 결제 정보 -->
         <div>
+      
           <h4>결제 정보</h4>
           <div class="title5">
             <div class="title6">
