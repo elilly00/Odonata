@@ -27,8 +27,8 @@
 
   <body>
     <nav class="main-navi">
-        <a class="logoo" href="../index.jsp">
-        <img class="logoo" src="../img/logo.png" > 
+        <a class="logoo" href="<%= request.getContextPath() %>/index.jsp">
+        <img class="logoo" src="<%= request.getContextPath() %>/img/logo.png" > 
       </a>
       </div>
     </nav>
@@ -62,11 +62,11 @@
   
 
         <div class="links">
-          <a href="user/user_id_find.jsp">아이디 찾기</a>
+          <a href="<%= request.getContextPath() %>view/user/user_id_find.jsp">아이디 찾기</a>
         </div>
 <br>
         <div class="links">
-          <a href="user/user_pwd_find.jsp">비밀번호 찾기</a>
+          <a href="<%= request.getContextPath() %>view/user/user_pwd_find.jsp">비밀번호 찾기</a>
         </div>
 <br>
         <div class="links">

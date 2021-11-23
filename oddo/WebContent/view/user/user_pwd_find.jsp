@@ -30,13 +30,13 @@
 
 <body>
   <nav class="main-navi">
-    <a class="logoo" href="../../index.jsp">
-      <img class="logoo" src="../../img/logo.png">
+    <a class="logoo" href="<%= request.getContextPath() %>/index.jsp">
+      <img class="logoo" src="<%= request.getContextPath() %>/img/logo.png">
     </a>
     </div>
     <div class="button" type="button" onclick="location.href='mypage.jsp'">
       <!-- <a href="mypage.jsp"> -->
-      <img class="profile" src="../../images/profile.png" alt="마이페이지" id="profile"  />
+      <img class="profile" src="<%= request.getContextPath() %>/images/profile.png" alt="마이페이지" id="profile"  />
       </a>
     </div>
   </nav>

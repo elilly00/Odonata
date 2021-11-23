@@ -15,7 +15,7 @@
   <title>
     잠자리: 휴가용 임대 숙소, 통나무집, 비치 하우스, 독특한 숙소 및 체험
   </title>
-  <script src="oddo/WebContent/js/jquery-3.5.1.min.js"></script>
+  <script src="<%= request.getContextPath() %>/js/jquery-3.5.1.min.js"></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/cesiumjs/1.78/Build/Cesium/Cesium.js"></script>
@@ -45,7 +45,7 @@
   <nav class="main-navi">
     <div class="logo">
       <!-- <i class="fab fa-airbnb"></i> 잠자리 -->
-      <a href="index.jsp">
+      <a href="<%= request.getContextPath() %>index.jsp">
         <img class="main-navi" src="img/logo.png" href="index.jsp">
       </a>
 

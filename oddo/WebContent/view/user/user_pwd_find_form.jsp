@@ -71,7 +71,7 @@
 
 
 
-                    <a href="../login.jsp">
+                    <a href="<%= request.getContextPath() %>/view/login.jsp">
                       <input type="submit" value="로그인 화면으로 돌아가기" class="submit-btn" />
                     </a>
 
