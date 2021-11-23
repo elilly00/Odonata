@@ -22,6 +22,7 @@
     />
 
     <link rel="stylesheet" href="<%= request.getContextPath() %>/style/login.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/style/login.css" />
     
   </head>
 
