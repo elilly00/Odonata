@@ -60,86 +60,88 @@
                     
                 </button>
             </div> -->
-    <div class="searching_box">
-      <div class="searching_box_inner">
-        <div class="location">
-          <p>위치</p>
+    <form onclick="location.href='<%= request.getContextPath() %>/list.re'" method="post">        
+      <div class="searching_box">
+        <div class="searching_box_inner">
+          <div class="location">
+            <p>위치</p>
 
-        </div>
-        <div class="location_input">
-          <input id="inputLocalizacao" type="text" class="dropdown-toggle" autocomplete="off" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="true" placeholder="도시 또는 지역을 입력하세요."></input>
-        </div>
-        <div class="checkin">
-          <p>체크인/체크아웃</p>
-        </div>
-        <div id="demo">
+          </div>
+          <div class="location_input">
+            <input id="inputLocalizacao" type="text" class="dropdown-toggle" autocomplete="off" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="true" placeholder="도시 또는 지역을 입력하세요."></input>
+          </div>
+          <div class="checkin">
+            <p>체크인/체크아웃</p>
+          </div>
+          <div id="demo">
 
-          <input type="text" class="datePicker" placeholder="체크인/체크아웃 날자를 선택" id="datePicker" readonly>
+            <input type="text" class="datePicker" placeholder="체크인/체크아웃 날자를 선택" id="datePicker" readonly>
 
-          <span id="calendar"></span>
-        </div>
+            <span id="calendar"></span>
+          </div>
 
 
-        <script src="<%= request.getContextPath() %>/js/calendar.js"></script>
-        <script>
-          var trigger = document.querySelector('#datePicker');
-          var dateComponent = new DatePicker({
-            el: document.querySelector('#calendar'),
-            trigger: trigger,
-            onchange: function (curr) {
-              trigger.value = curr;
-            }
-          });
+          <script src="<%= request.getContextPath() %>/js/calendar.js"></script>
+          <script>
+            var trigger = document.querySelector('#datePicker');
+            var dateComponent = new DatePicker({
+              el: document.querySelector('#calendar'),
+              trigger: trigger,
+              onchange: function (curr) {
+                trigger.value = curr;
+              }
+            });
 
-          trigger.onfocus = function () {
-            dateComponent.show();
-          };
-        </script>
-        <div class="peoplenum">
-          <p>인원 - 성인 / 유아</p>
-        </div>
+            trigger.onfocus = function () {
+              dateComponent.show();
+            };
+          </script>
+          <div class="peoplenum">
+            <p>인원 - 성인 / 유아</p>
+          </div>
 
-        <div class="peoplenum_input">
+          <div class="peoplenum_input">
 
-          <select class="input_box">
+            <select class="input_box">
 
-            <option value="1">1명</option>
-            <option value="2">2명</option>
-            <option value="3">3명</option>
-            <option value="4">4명</option>
-            <option value="5">5명</option>
-            <option value="6">6명</option>
-            <option value="7">7명</option>
-            <option value="8">8명</option>
-            <option value="9">9명</option>
-            <option value="10">10명</option>
-          </select>
-          <select class="input_box">
+              <option value="1">1명</option>
+              <option value="2">2명</option>
+              <option value="3">3명</option>
+              <option value="4">4명</option>
+              <option value="5">5명</option>
+              <option value="6">6명</option>
+              <option value="7">7명</option>
+              <option value="8">8명</option>
+              <option value="9">9명</option>
+              <option value="10">10명</option>
+            </select>
+            <select class="input_box">
 
-            <option value="1">1명</option>
-            <option value="2">2명</option>
-            <option value="3">3명</option>
-            <option value="4">4명</option>
-            <option value="5">5명</option>
-            <option value="6">6명</option>
-            <option value="7">7명</option>
-            <option value="8">8명</option>
-            <option value="9">9명</option>
-            <option value="10">10명</option>
-          </select>
-        </div>
-        <div class="search_button">
-          <a class="search_button_a">
-            <button class="search_img" onclick="alert" type="button" src="img/search.png">
-              <img class="search_img" src="img/search.png" />
-            </button>
-            <!-- <p class="search_text">검색</p> -->
-          </a>
+              <option value="1">1명</option>
+              <option value="2">2명</option>
+              <option value="3">3명</option>
+              <option value="4">4명</option>
+              <option value="5">5명</option>
+              <option value="6">6명</option>
+              <option value="7">7명</option>
+              <option value="8">8명</option>
+              <option value="9">9명</option>
+              <option value="10">10명</option>
+            </select>
+          </div>
+          <div class="search_button">
+            <a class="search_button_a">
+              <button class="search_img" onclick="alert" type="button" src="img/search.png">
+                <img class="search_img" src="img/search.png" />
+              </button>
+              <!-- <p class="search_text">검색</p> -->
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-
+    </form>
+    
     <div class="menu">
       <% if(loginUser == null) { %>
       <button type="button" onclick="location.href='view/login.jsp'" class="item menusolo hostdg">

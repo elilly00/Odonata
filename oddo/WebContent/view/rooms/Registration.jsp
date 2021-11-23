@@ -12,20 +12,17 @@
         <div class="header">
           <div class="logo">
             <label>
-              <a href="../index.jsp">
-               <img src="../img/logo.png" 
+               <img onclick="location.href='<%= request.getContextPath() %>/myPage.me'"
+                src="../img/logo.png" 
                 alt="메인페이지" 
                 id="main">
-              </a>
             </label>
           </div>
           <div class="img">
-            <a href="mypage.jsp">
-              <img
+              <img 
                 src="../images/profile.png"
                 alt="마이페이지" 
                 id="profile"/>
-              </a>
           </div>
         </div>
     
