@@ -47,7 +47,7 @@
     <div class="logo">
       <!-- <i class="fab fa-airbnb"></i> 잠자리 -->
       <a href="<%= request.getContextPath() %>/index.jsp">
-        <img class="main-navi" src="<%= request.getContextPath() %>/img/logo.png" href="<%= request.getContextPath() %>/index.jsp">
+        <img class="main-navi" src="<%= request.getContextPath() %>/img/public_img/logo.png" href="<%= request.getContextPath() %>/index.jsp">
       </a>
 
     </div>
@@ -131,8 +131,8 @@
         </div>
         <div class="search_button">
           <a class="search_button_a">
-            <button class="search_img" onclick="alert" type="button" src="img/search.png">
-              <img class="search_img" src="img/search.png" />
+            <button class="search_img" onclick="alert" type="button" src="<%= request.getContextPath() %>/img/public_img/search.png">
+              <img class="search_img" src="<%= request.getContextPath() %>/img/public_img/search.png" />
             </button>
             <!-- <p class="search_text">검색</p> -->
           </a>
@@ -192,7 +192,7 @@
       숙소를 등록하여 부수입을 올리고 새로운<br />
       가능성을 만나세요.
     </p>
-    <a href="view/Registration.jsp">
+    <a href="<%= request.getContextPath() %>view/Registration.jsp">
       <button type="button">숙소 등록하기</button>
     </a>
   </div>
@@ -242,19 +242,19 @@
   <h1>어디에서나, 여행은 살아보는 거야!</h1>
   <div class="grid">
     <div class="item">
-      <img src="img/11.webp" alt="" />
+      <img src="<%= request.getContextPath() %>/img/public_file/main/11.webp" alt="" />
       <div>자연생활을 만끽할 수 있는 숙소</div>
     </div>
     <div class="item">
-      <img src="img/12.webp" alt="" />
+      <img src="<%= request.getContextPath() %>/img/public_file/main/12.webp" alt="" />
       <div>독특한 공간</div>
     </div>
     <div class="item">
-      <img src="img/13.webp" alt="" />
+      <img src="<%= request.getContextPath() %>/img/public_file/main/13.webp" alt="" />
       <div>집 전체</div>
     </div>
     <div class="item">
-      <img src="img/14.webp" alt="" />
+      <img src="<%= request.getContextPath() %>/img/public_file/main/14.webp" alt="" />
       <div>반려동물 동반 가능</div>
     </div>
   </div>

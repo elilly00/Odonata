@@ -62,7 +62,7 @@
       <a href="<%= request.getContextPath() %>/WEB-INF/index.html">
         <div class="logo">
           <img
-            src="<%= request.getContextPath() %>/img/logo.png"
+            src="<%= request.getContextPath() %>/img/public_img/logo.png"
             width="80px"
             height="80px"
             alt="잠자리"

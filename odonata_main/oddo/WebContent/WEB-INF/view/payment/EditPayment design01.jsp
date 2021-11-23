@@ -106,7 +106,7 @@
             <td rowspan="2"></td>
             <td rowspan="2">
               <img
-                src="<%= request.getContextPath() %>/image/card.png"
+                src="<%= request.getContextPath() %>/img/public_file/pay/card.png"
                 width="100px"
                 height="100px"
                 alt="잠자리"

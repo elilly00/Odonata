@@ -10,7 +10,7 @@ cc
     integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <link rel="stylesheet" href="../../style/user/user_my_page.css" />
+  <link rel="stylesheet" href="<%= request.getContextPath() %>/style/user/user_my_page.css" />
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
@@ -30,12 +30,12 @@ cc
 <body>
   <nav class="main-navi">
     <a class="logoo" href="<%= request.getContextPath() %>/WEB-INF/index.jsp">
-      <img class="logoo" src="<%= request.getContextPath() %>/img/logo.png">
+      <img class="logoo" src="<%= request.getContextPath() %>/img/public_img/logo.png">
     </a>
     </div>
     <div class="button" type="button" onclick="location.href='mypage.jsp'">
       <!-- <a href="mypage.jsp"> -->
-      <img class="profile" src="<%= request.getContextPath() %>/images/profile.png" alt="마이페이지" id="profile"  />
+      <img class="profile" src="<%= request.getContextPath() %>/img/public_img/profile.png" alt="마이페이지" id="profile"  />
       </a>
     </div>
   </nav>

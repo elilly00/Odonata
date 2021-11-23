@@ -135,13 +135,13 @@
 			<div class="logo">
 				<a href="../index.jsp">
 					<div class="logo">
-						<img src="<%= request.getContextPath() %>/img/logo.png" width="80px" height="80px" alt="잠자리" class="mx-2" />
+						<img src="<%= request.getContextPath() %>/img/public_img/logo.png" width="80px" height="80px" alt="잠자리" class="mx-2" />
 					</div>
 				</a>
 			</div>
 			<div class="button" type="button" onclick="location.href='mypage.jsp'">
 				<!-- <a href="mypage.jsp"> -->
-				<img src="<%= request.getContextPath() %>/images/profile.png" alt="마이페이지" id="profile" style="height:40px;" />
+				<img src="<%= request.getContextPath() %>/img/public_img/profile.png" alt="마이페이지" id="profile" style="height:40px;" />
 				</a>
 			</div>
 		</nav>

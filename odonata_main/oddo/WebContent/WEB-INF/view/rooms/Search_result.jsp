@@ -13,7 +13,7 @@
           <div class="logo">
             <label>
               <img onclick="location.href='<%= request.getContextPath() %>'"
-                  src="<%= request.getContextPath() %>/images/logo.png" 
+                  src="<%= request.getContextPath() %>/img/public_img/logo.png" 
                   alt="메인페이지"
                   id="logo">
               </a>
@@ -224,9 +224,9 @@
                     class="search_img"
                     onclick="alert"
                     type="button"
-                    src="<%= request.getContextPath() %>/img/search.png">
+                    src="<%= request.getContextPath() %>/img/public_img/search.png">
                     <img 
-                      class="search_img" src="<%= request.getContextPath() %>/img/search.png" />
+                      class="search_img" src="<%= request.getContextPath() %>/img/public_img/search.png" />
                   </button>
                 </a>
               </div>
@@ -236,7 +236,7 @@
           <div class="myPage">
             <label>
               <img onclick="location.href='<%= request.getContextPath() %>/myPage.me'"
-                  src="./images/profile.png"
+                  src="<%= request.getContextPath() %>/img/public_img/profile.png"
                   alt="마이페이지" 
                   id="profile">
             </label>
@@ -277,7 +277,7 @@
               <img
                 class="room_img_input"
                 alt="방 사진"
-                src="<%= request.getContextPath() %>/images/room1.png"
+                src="<%= request.getContextPath() %>/img/public_file/room/room1.png"
                 width="250"
                 height="250"
               />
@@ -318,7 +318,7 @@
                 <img 
                   class="room_img_input" 
                   alt="방 사진1" 
-                  src="<%= request.getContextPath() %>/images/room2.png" 
+                  src="<%= request.getContextPath() %>/img/public_file/room/room2.png" 
                   width="250" 
                   height="250"
                 />
@@ -361,7 +361,7 @@
                 <img 
                   class="room_img_input" 
                   alt="방 사진3" 
-                  src="<%= request.getContextPath() %>/images/room3.png" 
+                  src="<%= request.getContextPath() %>/img/public_file/room/room3.png" 
                   width="250" 
                   height="250"
                 />
@@ -404,7 +404,7 @@
                 <img 
                   class="room_img_input" 
                   alt="방 사진4" 
-                  src="<%= request.getContextPath() %>/images/room1.png" 
+                  src="<%= request.getContextPath() %>/img/public_file/room/room1.png" 
                   width="250" 
                   height="250"
                 />

@@ -287,5 +287,15 @@
     </div>
   </footer>
   
+
+
+
+/img/public_img/logo.png
+/img/public_img/profile.png
+
+/img/public_img/bg.jpg
+/img/public_img/search.png
+
+
   <body></body>
 </html>

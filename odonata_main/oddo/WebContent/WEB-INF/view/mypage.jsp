@@ -40,9 +40,9 @@
 </head>
 <body>
   <nav class="main-navi" style="background: #f2bba7;">
-    <a href="index.html">
+    <a href="<%= request.getContextPath() %>/WEB-INF/index.html">
     <div class="logo">
-      <img src="<%= request.getContextPath() %>/img/logo.png" width="80px" height="80px" alt="잠자리" class="mx-2" />
+      <img src="<%= request.getContextPath() %>/img/public_img/logo.png" width="80px" height="80px" alt="잠자리" class="mx-2" />
     </div>
   </a>
 

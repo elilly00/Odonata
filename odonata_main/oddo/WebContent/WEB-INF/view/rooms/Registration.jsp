@@ -13,7 +13,7 @@
           <div class="logo">
             <label>
               <a href="<%= request.getContextPath() %>/WEB-INF/index.jsp">
-               <img src="<%= request.getContextPath() %>/img/logo.png" 
+               <img src="<%= request.getContextPath() %>/img/public_img/logo.png" 
                 alt="메인페이지" 
                 id="main">
               </a>
@@ -22,7 +22,7 @@
           <div class="img">
             <a href="<%= request.getContextPath() %>mypage.jsp">
               <img
-                src="<%= request.getContextPath() %>/images/profile.png"
+                src="<%= request.getContextPath() %>/img/public_img/profile.png"
                 alt="마이페이지" 
                 id="profile"/>
               </a>
