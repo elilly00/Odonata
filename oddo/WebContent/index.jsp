@@ -152,7 +152,7 @@
           <%-- <input type="button" class="item menusolo hostdg" value="내 정보 보기" onclick="location.href='<%= request.getContextPath() %>/myPage.me'">
           --%>
           <input type="button" class="item menusolo hostdg" value="로그 아웃"
-            onclick="location.href='<%= request.getContextPath() %>/Logout.me'">
+            onclick="location.href='<%= request.getContextPath() %>/logout.me'">
         </div>
       </div>
       <div class="item menusolo">
