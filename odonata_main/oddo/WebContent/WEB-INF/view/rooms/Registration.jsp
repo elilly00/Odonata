@@ -147,7 +147,7 @@
             
               <br />
             
-              <input type="checkbox" value="essentials" name="amenity" />필수 품목(수건,휴지,치약)<br />
+              <input type="checkbox" value="essentials" name="amenity" checked/>필수 품목(수건,휴지,치약)<br />
               <input type="checkbox" value="wifi" name="amenity"/>무선인터넷 <br />
               <input type="checkbox" value="sap_con" name="amenity"/>샴푸/컨디셔너<br />
               <input type="checkbox" value="tube" name="amenity"/>욕조 <br />

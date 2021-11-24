@@ -1,39 +1,53 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <meta charset="UTF-8" />
-        <title>Search_result</title>
-        <link rel="stylesheet" href="<%= request.getContextPath() %>/style/Search_Result.css" />
-        <script src="<%= request.getContextPath() %>/js/calendar.js"></script>
-      </head>
-      <body>
-        <div class="header">
-          <div class="logo">
-            <label>
-              <img onclick="location.href='<%= request.getContextPath() %>'"
-                  src="<%= request.getContextPath() %>/img/public_img/logo.png" 
-                  alt="메인페이지"
-                  id="logo">
-              </a>
-            </label>
-          </div>
+<%@ page import="java.util.ArrayList"  
+	       import="main.user.model.vo.*, main.rooms.model.vo.*, 
+                 main.review.model.vo.*, main.reserv.model.vo.*" 
+%>
+<% 
+    ArrayList<Rooms> rList = (ArrayList<Rooms>)request.getAttribute("bList");
+	  ArrayList<sooksoImg> ImgList = (ArrayList<sooksoImg>)request.getAttribute("fList");
+
+    User loginUser = (User)session.getAttribute("loginUser"); 
+    Rooms room = (Rooms)request.getAttribute("room");
+    reserv r = (reserv)request.getAttribute("r");
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Search_result</title>
+<link rel="stylesheet" href="<%= request.getContextPath() %>/style/Search_Result.css" />
+<script src="<%= request.getContextPath() %>/js/calendar.js"></script>
+<!-- 구글 지도 API -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJil7Bh-RMna_GTpFIVfnvxUw_jIAiPco&callback=initMap"async defer></script>
+
+</head>
+<body>
+  <div class="header">
+    <div class="logo">
+      <label>
+        <img onclick="location.href='<%= request.getContextPath() %>'"
+             src="<%= request.getContextPath() %>/img/public_img/logo.png" 
+             alt="메인페이지"
+             id="logo">
+      </label>
+    </div>
     
-          <div class="searching_box">
-            <div class="searching_box_inner">
-              <div class="location">
-                <p>위치</p>
-              </div>
-              <div class="location_input">
-                <input id="inputLocalizacao" type="text" class="dropdown-toggle" autocomplete="off" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" placeholder="도시 또는 지역 입력"></input>
-              </div>
-              <div class="checkin">
-                <p>체크인/체크아웃</p>
-              </div>
-              <div id="demo">
-                <input type="text" class="datePicker" placeholder="체크인/체크아웃 선택" id="datePicker" readonly>
-                <span id="calendar">
+    <div class="searching_box">
+      <div class="searching_box_inner">
+        <div class="location">
+          <p>위치</p>
+        </div>
+        <div class="location_input">
+          <input id="inputLocalizacao" type="text" class="dropdown-toggle" autocomplete="off" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" placeholder="도시 또는 지역 입력"></input>
+        </div>
+        <div class="checkin">
+          <p>체크인/체크아웃</p>
+        </div>
+        <div id="demo">
+          <input type="text" class="datePicker" placeholder="체크인/체크아웃 선택" id="datePicker" readonly>
+            <span id="calendar">
                   <div class="calendar-wrapper">
                     <div class="calendar-header">
                       <span class="leftArrow"></span>
@@ -170,21 +184,6 @@
                 </span>
             </div>
             
-            <script src="<%= request.getContextPath() %>/js/calendar.js"></script>
-            <script>
-                var trigger = document.querySelector('#datePicker');
-                var dateComponent = new DatePicker({
-                    el: document.querySelector('#calendar'),
-                    trigger: trigger,
-                    onchange: function (curr) {
-                        trigger.value = curr;
-                    }
-                });
-            
-                trigger.onfocus = function () {
-                    dateComponent.show();
-                };
-            </script>
               <div class="peoplenum">
                 <p>인원 - 성인 / 유아</p>
               </div>
@@ -267,7 +266,7 @@
         </div>
     
         <div class="search_info">
-          <p>00월 00일 - 00월 00일 . 게스트 2명</p>
+          <p>00월 00일 - 00월 00일 . 게스트 <%= room.getRooms_Personnel %>명</p>
           <h2>부산에서 위치한 숙소입니다.</h2>
           <br />
         </div>
@@ -283,178 +282,79 @@
               />
             </div>
             <div class="info">
-              <pre>호스트명</pre>
-              <span><b>잠자리 방</b></span>
+              <pre><%= room.getRooms_Host %>명</pre>
+              <span><b><%= r.getRoom_name %></b></span>
     
               <br />
     
-              <span>아파트 전체</span>
+              <span><%= room.getRooms_Type %></span>
     
               <br />
     
-              <span>최대 인원 N명</span>
+              <span>최대 인원 <%= room.getRooms_Personnel %>명</span>
     
               <br />
     
-              <span>침실 1개</span><span> · </span> <span>침대 2개</span
-              ><span> · </span><span>욕실 1개</span>
+              <span>침실 <%= room.getRooms_RoomCnt %>개</span><span> · </span><span>욕실 <%= room.getRooms_ToiletCnt %>개</span>
     
               <br />
-    
-              <span>무료 주차 공간</span><span> · </span><span>에어컨</span
-              ><span> · </span><span>무료 인터넷</span>
+              
+              <span><%= room.getAmenity %></span>
+              <!-- <span>무료 주차 공간</span><span> · </span><span>에어컨</span
+              ><span> · </span><span>무료 인터넷</span> -->
     
               <div class="info2">
-                <h3>\ 50,000 / 박</h3>
+                <h3>\ <%= room.getRooms_Price> / 박</h3>
               </div>
               <div>
-                <span>총액 \ 100,000</span>
-                <p class="star_rating"><br /><a href="#" class="on">⭐ 4.8</a></p>
+                <p class="star_rating"><br /><a href="<%= request.getAttribute()>/list.re" class="on">⭐ 4.8</a></p>
               </div>
-            </div>
-            
-            <div class="room_left2">
-              <div class="photo2">
-                <img 
-                  class="room_img_input" 
-                  alt="방 사진1" 
-                  src="<%= request.getContextPath() %>/img/public_file/room/room2.png" 
-                  width="250" 
-                  height="250"
-                />
-              </div>
-              <div class="info3">
-                <pre>호스트명</pre>
-                <span><b>잠자리</b></span>
-                
-                <br /> 
-                
-                <span>별채</span>
-                
-                <br />
-                
-                <span>최대 인원 N명</span>
-                
-                <br />
-                
-                <span>침실 2개</span><span> · </span>
-                <span>침대 3개</span><span> · </span><span>욕실 2개</span>
-                
-                <br />
-                
-                <span>조식</span><span> · </span><span>에어컨</span><span>
-                · </span><span>무료 인터넷</span>
-              
-              <div class="info4">
-                <h3>\ 70,000 / 박</h3>
-              </div>
-              <div>
-              </div>
-                <span>총액 \ 100,000</span>
-                <p class="star_rating">
-                <br><a href="#" class="on">⭐ 4.6</a>
-              </div>
-            </div>
-    
-            <div class="room_left3">
-              <div class="photo3">
-                <img 
-                  class="room_img_input" 
-                  alt="방 사진3" 
-                  src="<%= request.getContextPath() %>/img/public_file/room/room3.png" 
-                  width="250" 
-                  height="250"
-                />
-              </div>
-              <div class="info5">
-                <pre>호스트명</pre>
-                <span><b>잠자리</b></span>
-                
-                <br /> 
-                
-                <span>별채</span>
-                
-                <br />
-                
-                <span>최대 인원 N명</span>
-                
-                <br />
-                
-                <span>침실 2개</span><span> · </span>
-                <span>침대 3개</span><span> · </span><span>욕실 2개</span>
-                
-                <br />
-                
-                <span>조식</span><span> · </span><span>에어컨</span><span>
-                · </span><span>무료 인터넷</span>
-              
-                <div class="info6">
-                  <h3>\ 70,000 / 박</h3>
-                </div>
-                <div>
-                  <span>총액 \ 180,000</span>
-                  <p class="star_rating">
-                  <br><a href="#" class="on">⭐ 5.0</a>
-                </div>
-              </div>
-            </div>
-    
-            <div class="room_left4">
-              <div class="photo4">
-                <img 
-                  class="room_img_input" 
-                  alt="방 사진4" 
-                  src="<%= request.getContextPath() %>/img/public_file/room/room1.png" 
-                  width="250" 
-                  height="250"
-                />
-              </div>
-              <div class="info7">
-                <pre>호스트명</pre>
-                <span><b>잠자리</b></span>
-                
-                <br /> 
-                
-                <span>별채</span>
-                
-                <br />
-                
-                <span>최대 인원 N명</span>
-                
-                <br />
-                
-                <span>침실 2개</span><span> · </span>
-                <span>침대 3개</span><span> · </span><span>욕실 2개</span>
-                
-                <br />
-                
-                <span>조식</span><span> · </span><span>에어컨</span><span>
-                · </span><span>무료 인터넷</span>
-              
-                <div class="info8">
-                  <h3>\ 70,000 / 박</h3>
-                </div>
-                <div>
-                  <span>총액 \ 180,000</span>
-                  <p class="star_rating">
-                  <br><a href="#" class="on">⭐ 5.0</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="map_right">
-            <div class="map">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3261.8972314302264!2d129.15316575108915!3d35.15918366593513!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35688d58be7e6c63%3A0xdd37731410008030!2z67aA7IKw6rSR7Jet7IucIO2VtOyatOuMgOq1rCDsmrAx64-ZIDY1MS0y!5e0!3m2!1sko!2skr!4v1636036959507!5m2!1sko!2skr" 
-                width="650"
-                height="1300"
-                style="border: 0"
-                allowfullscreen=""
-                loading="lazy"
-              ></iframe>
             </div>
           </div>
         </div>
+
+          <div class="map_right">
+            <div class="map"></div>
+          </div>
+          <script>
+            // 날짜 선택 설정
+            var trigger = document.querySelector('#datePicker');
+                var dateComponent = new DatePicker({
+                    el: document.querySelector('#calendar'),
+                    trigger: trigger,
+                    onchange: function (curr) {
+                        trigger.value = curr;
+                    }
+                });
+            
+                trigger.onfocus = function () {
+                    dateComponent.show();
+                };
+              
+              // 구글 지도 설정
+              function initMap() {
+    
+                  const map = new google.maps.Map(document.getElementById("map"), {
+                      zoom: 15,
+                      center: { lat: 35.15205551267718, lng: 129.1171569191601 }, 
+                  });
+    
+                  for (var i = 0; i < location.length; i++) {
+                      var marker = new google.maps.Marker({
+                          map: map,
+                          label: locations[i].place,
+                          position: new google.maps.LatLng(locations[i].lat, locations[i].lng),
+                      });
+                  }
+              }
+              // 마킹
+               const locations = [
+                  { place:"광안리 해수욕장", lat: 35.1532222614049, lng: 129.11855625595865 },
+                  // { place:"어린이대공원역", lat: 37.547263, lng: 127.074181 },
+               ];
+    
+              </script>
+        
       </body>
     </html>
     

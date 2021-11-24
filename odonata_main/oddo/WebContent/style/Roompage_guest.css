@@ -175,7 +175,7 @@
   border-radius: 30px;
 }
 
-.more {
+/* .more {
   margin-top: 65px;
   margin-left: 50px;
   width: 100px;
@@ -183,10 +183,15 @@
   background-color: white;
   color: black;
   border: 1px solid gray;
-  text-align: center; /* 글자 위치 : 가운데 */
-  line-height: 30px; /* 글자 높이  */
+  text-align: center;  // 글자 위치 : 가운데
+  line-height: 30px;  // 글자 높이  
   cursor: pointer;
   border-radius: 10px;
+} */
+
+#map {
+  width: 90%;
+  height: 300px;
 }
 
 .body_info5 {
