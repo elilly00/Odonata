@@ -1,7 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <!-- 로그인 유저 정보 받아오기 -->
+<%-- <%  User loginUser = (User)session.getAttribute("loginUser"); %> --%>
+
+	<!-- 숙소 정보 받아오기 : 숙소 명, 게스트 수, 체크인, 체크아웃날짜 -->
+    
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -11,9 +18,10 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
 		integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
 		crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+	
 	<link rel="stylesheet" href="<%= request.getContextPath() %>/style/main.css" />
 	<script src="<%= request.getContextPath() %>/js/jquery-3.6.0.min.js"></script>
+
 
 	<!-- 아임포트 라이브러리 : jQuery 1.0이상 필요-->
 	<!-- jQuery -->
@@ -135,13 +143,13 @@
 			<div class="logo">
 				<a href="../index.jsp">
 					<div class="logo">
-						<img src="<%= request.getContextPath() %>/img/public_img/logo.png" width="80px" height="80px" alt="잠자리" class="mx-2" />
+						<img src="<%= request.getContextPath() %>/img/logo.png" width="80px" height="80px" alt="잠자리" class="mx-2" />
 					</div>
 				</a>
 			</div>
 			<div class="button" type="button" onclick="location.href='mypage.jsp'">
 				<!-- <a href="mypage.jsp"> -->
-				<img src="<%= request.getContextPath() %>/img/public_img/profile.png" alt="마이페이지" id="profile" style="height:40px;" />
+				<img src="<%= request.getContextPath() %>/images/profile.png" alt="마이페이지" id="profile" style="height:40px;" />
 				</a>
 			</div>
 		</nav>
@@ -176,7 +184,7 @@
 			<hr /><br />
 			<h2 style="display: inline">예약자 정보</h2>
 <!-- 			<p class="checkboxDescription"> &nbsp;&nbsp;&nbsp;&nbsp;회원 정보와 일치할 시 체크</p> -->
-<!-- 			<!-- ★ check시 회원정보 받아오는 기능 필요 --> -->
+<!-- 			<!-- ★ check시 회원정보 받아오는 기능 필요 -->
 <!-- 			<input type="checkbox" value="equalGuest_check" /> -->
 
 			<br /><br>
@@ -410,26 +418,31 @@
 		// 결제페이지로 연결 -> required를 인식하기는하는데 그전에 결제 창이 뜸 
 		// => required는 submit을 할때만 걸러주는 애라서 해당 함수에서 window.open을 바로 연결하지 말고 모든 필드에 값이 들어왔을 때 열리게끔 로직을 추가
 		document.getElementById('paymentBtn').onclick = function () {
+			// 결제스크립트에 필요
 			var pName = document.getElementById("name").value;
 			var pTel = document.getElementById("tel").value;
 			var pEmail = document.getElementById("email1").value + "@" + document.getElementById("email2").value;  // loginUser에서 받아오므로 수정필요
-			// 앞에서 받아와야하는데 지금 없으므로 임시로 데이터 삽입
-			var rName = "test" /* document.getElementById(rName) */;  // 숙소이름
+			
+			// SERVICE로 넘길 데이터 : 앞에서 받아와야하는데 지금 없으므로 임시로 데이터 삽입
 			var price = 1000 /* docment.getElementById(amount) */; // 숙소 가격
-			var checkIn = "2021-12-05"/* docment.getElementById(rDate) */; // 예약 날짜 : 체크인
-			var checkOut = "2021-12-07"/* docment.getElementById(rDate) */; // 예약 날짜 :체크아웃 
-			var rGuest = "어른 1명"/* docment.getElementById(rGuest) */; // 인원 
+			var vCode = 3; // 예약 코드
+			
+			// RESERV테이블에서 INSERT되기때문에 불필요
+// 			var rName = "test" /* document.getElementById(rName) */;  // 숙소이름
+// 			var checkIn = "2021-12-05"/* docment.getElementById(rDate) */; // 예약 날짜 : 체크인
+// 			var checkOut = "2021-12-07"/* docment.getElementById(rDate) */; // 예약 날짜 :체크아웃 
+// 			var rGuest = "어른 1명"/* docment.getElementById(rGuest) */; // 인원 
 // 			console.log(email);
 			
-			// checked
+			// 선택되어야 결제가능
 			var refundCheck = document.getElementById('refundCheck'); // 취소, 환불규정
 			var age14 = document.getElementById('age14'); // 14세 이상 동의
 			var p_collect = document.getElementById('personalInfo_collect'); // 수집 이용 동의
 			var partyConsent = document.getElementById('3rdPartyConsent'); // 3자 제공
 			var accomodationUse = document.getElementById('Accommodation_use'); // 숙소이용규칙
 			
-			
-			// 아임포트 : 주문 페이지에 가맹점 식별코드를 이용하여 IMP 객체를 초기화합니다.
+			// -----------------------------------------------------------------------------------
+			// ※ 아임포트 : 주문 페이지에 가맹점 식별코드를 이용하여 IMP 객체를 초기화합니다.
 			 var IMP = window.IMP;
 		     var code = "imp18406886";  //가맹점 식별코드
 		     IMP.init(code);
@@ -441,7 +454,7 @@
 		     
 		     */
 
-			//  결제로 넘어가지 않아야 하는 경우
+			//  결제로 넘어가지 않아야 하는 경우 설정
 			if (pName == "" || pTel == "" || pEmail == "" || refundCheck.checked == false || age14.checked == false ||
 				p_collect.checked == false ||
 				partyConsent.checked == false || accomodationUse.checked == false) {
@@ -466,8 +479,7 @@
 
 				alert(msg);
 
-			} else {
-				        // 결제요청
+			} else {  // 결제요청
 				        IMP.request_pay({  
 				            pg : 'html5_inicis', // pg사
 				            pay_method : 'card',  // 결제 방식
@@ -481,7 +493,6 @@
 
 				        }, function(rsp) { // 4. 고객이 결제를 완료한 후 실행되는 함수(callback) 추가
 				            if ( rsp.success ) { // 5. 콜백 함수에서 쿼리 파라미터 전달하기 : jQuery로 HTTP 요청  / 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
-				            	
 								 jQuery.ajax({
 							          url: '<%= request.getContextPath() %>/reservationPayment.do', 
 							          // "/payments/complete" 일경우 : 메시지 요청된 리소스 [/payments/complete]은(는) 가용하지 않습니다. -> 결제 성공이 뜨지 않음
@@ -490,7 +501,7 @@
 							          method: "POST",
 							          // 아래 두개가 활성화 되어있으면 success에 console("결제성공")이 뜨지 않음
 // 							          dataType: 'json', 
-// 							          headers: { "Content-Type": "application/json" },  // header와 dataType의 차이?
+// 							          headers: { "Content-Type": "application/json" },  // ○ header와 dataType의 차이?
 							          data: {
 							              imp_uid: rsp.imp_uid, // 고유 id
 							              merchant_uid: rsp.merchant_uid // 상점 거래 id
@@ -501,16 +512,20 @@
 							      // ※ 새로운 url 요청 -> 데이터 정보를 받아 db에 저장, 마지막 결제완료 페이지까지 연결 (수업때 했던것처럼 서블릿 거쳐서)
 							      // 				location.href로 url만 보내면 데이터들이 안넘어갈테니까 쿼리스트링도 같이 넣어주기
 							   	
-							      location.href="<%= request.getContextPath() %>/payment.bo?=pName="+pName+"&pTel="+pTel+"&pEmail="+pEmail+"&rName="+rName+"&price="+price+"&checkIn="+checkIn+"&checkOut="+checkOut+"&rGuest="+rGuest;
-							      // [ 이 페이지에서 결제 완료 페이지로 넘어가야 할 정보] 예약자 이름, 전화번호, 이메일, 총 금액, 숙소이름, 체크인, 체크아웃, 인원 
-							      // 현재 문제 없이 넘어갈수 있는것 : 이름, 전화번호, 이메일 
-							      // 임시로 데이터 삽입 : 총금액, 숙소이름, 체크인,체크아웃, 인원 (고유id를 제외하고는 다 이전에서 받아와야하는것들임)				
-							    
+							      location.href="<%= request.getContextPath() %>/payment.bo?price="+price+"&vCode="+vCode;
+							      // [ 이 페이지에서 결제 완료 페이지로 넘어가야 할 정보] price(p_total), 예약코드(v_code)
+							      // [Insert하기위해 필요한 값들] P_code(시퀸스로 저장될 예정)	/p_status(default값)/p_date(sysdate)/p_total(받아온 가격)/v-code(roomcode)			
+							      // 나머지 예약자 이름, 전화번호, 이메일, 숙소이름, 게스트정보, 체크인, 체크아웃은 RESERV테이블에서 INSERT함 
+							      // -> 결제완료 페이지에서 SELECT해서 출력할것
 							      
 							      })
-				            } else { // 결제 실패시 : 에러페이지로 이동하도록 만들기-> history객체 사용하면 될듯
+				            } else { // 결제 실패시 : 에러페이지로 이동 OR 이전 페이지로 이동 -> 이전 페이지로 이동시 history객체 사용하면 될듯
 				                var msg = '결제에 실패하였습니다. 에러내용 : ' + rsp.error_msg
 				                alert(msg);
+				            
+// 				                request.setAttribute("msg", "결제를 실패했습니다");
+// 				        		request.getRequestDispatcher("errorPage.jsp").forward(request, response);
+				            
 				            }
 				    		
 				        });
