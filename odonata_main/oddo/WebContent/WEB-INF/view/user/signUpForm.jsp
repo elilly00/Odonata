@@ -372,7 +372,6 @@
                             $("label[for='uEmailId']").text('이메일: 사용 불가').css({'color':'red', 'font-weight':'bold'});
                             isEmailUsable = false;
                             isEmailChecked = false;
-                            userEmail.focus();
                         }
                     },
                     error :function(data) {

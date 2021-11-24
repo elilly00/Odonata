@@ -142,7 +142,7 @@
 
     <div class="menu">
       <% if(loginUser == null) { %>
-      <button type="button" onclick="location.href='WEB-INF/view/login.jsp'" class="item menusolo hostdg">
+      <button type="button" onclick="location.href='<%= request.getContextPath() %>/loginForm.us'" class="item menusolo hostdg">
         로그인/회원가입
       </button>
       <% } else { %>
