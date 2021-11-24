@@ -1,4 +1,4 @@
-package sooksoimg.model.vo;
+package rooms.model.vo;
 
 public class sooksoImg {
     private int image_number;

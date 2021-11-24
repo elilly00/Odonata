@@ -3,7 +3,7 @@ pageEncoding="UTF-8"%>
 <%@ 
 	page import="java.util.ArrayList"  
 	import="user.model.vo.*, rooms.model.vo.*,   
-			    reserv.model.vo.*, sooksoimg.model.vo.*, review.model.vo.*" %>
+			reserv.model.vo.*, sooksoimg.model.vo.*, review.model.vo.*" %>
 <% 
 	User loginUser = (User)session.getAttribute("loginUser");
 	Rooms room = (Rooms)request.getAttribute("room");
@@ -67,7 +67,7 @@ pageEncoding="UTF-8"%>
 
             <br />
 
-            <span>침실 <%= room.getRooms_RoomCnt() %>개</span><span> · </span><span> · </span><span>욕실 <%= room.getRooms_ToiletCnt() %>개</span>
+            <span>침실 <%= room.getRooms_RoomCnt() %>개</span><span> · </span><span>욕실 <%= room.getRooms_ToiletCnt() %>개</span>
 
             <br />
 

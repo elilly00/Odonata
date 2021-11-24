@@ -41,7 +41,7 @@ public class InsertRoomsServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // enctype�� mulipart/form-data�� ���۵Ǿ����� Ȯ��
+        
         if (ServletFileUpload.isMultipartContent(request)) {
             
             int maxSize = 1024 * 1024 * 10;
@@ -49,16 +49,16 @@ public class InsertRoomsServlet extends HttpServlet {
             String savePath = root + "thumbnail_uploadFiles/";
             
             File f = new File(savePath);
-            if (!f.exists()) {	// ������ �������� ������ 
-                f.mkdirs();	// ���丮�� ��������
+            if (!f.exists()) {	
+                f.mkdirs();	
             }
             
             System.out.println(savePath);
             MultipartRequest multiRequset = new MultipartRequest(request, savePath, maxSize, "UTF-8",
                     new MyFileRenamePolicy());
             
-            ArrayList<String> saveFiles = new ArrayList<String>();		// ������ �ٲ� �̸��� ������ ArrayList
-            ArrayList<String> originFiles = new ArrayList<String>();	// ������ ���� �̸��� ������ ArrayList
+            ArrayList<String> saveFiles = new ArrayList<String>();		
+            ArrayList<String> originFiles = new ArrayList<String>();	
             
             Enumeration<String> files = multiRequset.getFileNames();
             
@@ -66,12 +66,12 @@ public class InsertRoomsServlet extends HttpServlet {
                 //	System.out.println(files.nextElement());	
                 String name = files.nextElement();
                 
-                if (multiRequset.getFilesystemName(name) != null) {				// getFilesystemName : �ش� �̹����� ���� rename�� ���ϸ��� ������ �� / ������ ���ִٸ�
-                    saveFiles.add(multiRequset.getFilesystemName(name));		// �ٲ� �̸�
-                    originFiles.add(multiRequset.getOriginalFileName(name));	// ���� �̸��� ������
+                if (multiRequset.getFilesystemName(name) != null) {				
+                    saveFiles.add(multiRequset.getFilesystemName(name));		
+                    originFiles.add(multiRequset.getOriginalFileName(name));	
                 }
             }
-            // ��� null�� ��ȯ�ſ�.. �������� �� �ε�����µ� ��� �ٸ��� �𸣰ھ��Ф�
+
 //			System.out.println(request.getParameter("roomType"));
 //			System.out.println(request.getParameter("roomAddr"));
 //			System.out.println(request.getParameter("roomPrice"));
@@ -112,7 +112,7 @@ public class InsertRoomsServlet extends HttpServlet {
                     if (j == 0) {
                         strAmenity += Amenity[j];
                     } else {
-                        strAmenity += " �� " + Amenity[j];
+                        strAmenity += " · " + Amenity[j];
                     }
                 }
                 
@@ -122,7 +122,7 @@ public class InsertRoomsServlet extends HttpServlet {
                     Rooms_ToiletCnt, Rooms_DogAvail, strAmenity, Rooms_Desc, null, 0, null);
             // rooms
             
-            // �̹���
+            // image
             ArrayList<sooksoImg> ImgList = new ArrayList<sooksoImg>();
             for (int e = originFiles.size() - 1; e >= 0; e--) {
                 sooksoImg s = new sooksoImg();
@@ -130,7 +130,7 @@ public class InsertRoomsServlet extends HttpServlet {
                 s.setOrigin_name(originFiles.get(e));
                 s.setChange_name(saveFiles.get(e));
                 
-                // ���� ���� �����ϱ�
+                
                 if (e == originFiles.size() - 1) {
                     s.setImage_Level(0);
                 } else {
@@ -143,12 +143,11 @@ public class InsertRoomsServlet extends HttpServlet {
             int result = new RoomsService().insertRooms(room, ImgList);
             
             if (result >= 1 + ImgList.size()) {
-                response.sendRedirect(request.getContextPath()); // ��� �Ϸ� �� ���� �������� �̵�
+                response.sendRedirect(request.getContextPath()); 
             } else {
-                request.setAttribute("msg", "���� �Խ��� ��� ����");
+                request.setAttribute("msg", "숙소 등록 실패");
                 request.getRequestDispatcher("WEB-INF/view/errorPage.jsp").forward(request, response);
                 
-                // �Խ��� ��Ͽ� �������� ��  �ڵ����� ����Ǵ� ���� �����
                 for (int e = 0; e < saveFiles.size(); e++) {
                     File fail = new File(savePath + saveFiles.get(e));
                     fail.delete();

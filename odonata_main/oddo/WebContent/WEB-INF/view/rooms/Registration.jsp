@@ -20,7 +20,7 @@
             </label>
           </div>
           <div class="img">
-            <a href="<%= request.getContextPath() %>mypage.jsp">
+            <a href="<%= request.getContextPath() %>/mypage.jsp">
               <img
                 src="<%= request.getContextPath() %>/img/public_img/profile.png"
                 alt="마이페이지" 

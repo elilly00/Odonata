@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList"  
-	       import="main.user.model.vo.*, main.rooms.model.vo.*, 
-                 main.review.model.vo.*, main.reserv.model.vo.*" 
+	     import="user.model.vo.*, rooms.model.vo.*, 
+                 review.model.vo.*, reserv.model.vo.*" 
 %>
 <% 
     ArrayList<Rooms> rList = (ArrayList<Rooms>)request.getAttribute("bList");
-	  ArrayList<sooksoImg> ImgList = (ArrayList<sooksoImg>)request.getAttribute("fList");
+	ArrayList<sooksoImg> ImgList = (ArrayList<sooksoImg>)request.getAttribute("fList");
 
     User loginUser = (User)session.getAttribute("loginUser"); 
     Rooms room = (Rooms)request.getAttribute("room");
@@ -17,10 +17,11 @@
 <head>
 <meta charset="UTF-8" />
 <title>Search_result</title>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/style/Search_Result.css" />
-<script src="<%= request.getContextPath() %>/js/calendar.js"></script>
+<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/style/Search_Result.css" />
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+ <script src="<%= request.getContextPath() %>/js/calendar.js"></script>
 <!-- 구글 지도 API -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJil7Bh-RMna_GTpFIVfnvxUw_jIAiPco&callback=initMap"async defer></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJil7Bh-RMna_GTpFIVfnvxUw_jIAiPco&callback=initMap" async defer></script>
 
 </head>
 <body>
@@ -241,7 +242,7 @@
             </label>
           </div>
         </div>
-        </div>
+        
         <div class="header2">
           <div class="ft">
             <nav class="filter">
@@ -264,57 +265,71 @@
             </nav>
           </div>
         </div>
-    
+    	
         <div class="search_info">
-          <p>00월 00일 - 00월 00일 . 게스트 <%= room.getRooms_Personnel %>명</p>
+          <p>00월 00일 - 00월 00일 . 게스트 <%-- room.getRooms_Personnel() --%>명</p>
           <h2>부산에서 위치한 숙소입니다.</h2>
           <br />
         </div>
         <div class="body">
           <div class="room_left">
             <div class="rooms">
+          	<% if(rLIst.isEmpty() || ImgList.isEmpty()) { %>
+          		등록된 숙소가 없습니다.
+          	<% } else { %>
+          	<% for(int i = 0; i < rList.size(); i++) { %>
+          	<% Rooms room = rList.get(i); %>
+          		<input type="hidden" value="<%= room.getRooms_code() %>">
+				<% for(int j = 0; j < fList.size(); j++) { %>
+				<% sooksoImg = ImgList.get(j); %>
+				<% if(room.getRooms_code() == ImgList.getRooms_code()) { %>	
               <img
                 class="room_img_input"
                 alt="방 사진"
-                src="<%= request.getContextPath() %>/img/public_file/room/room1.png"
+                src="<%= request.getContextPath() %>/thumbnail_uploadFiles/<%= ImgList.getChangeName() %>" 
                 width="250"
                 height="250"
               />
+              	<% } %>
+			<% } %>
             </div>
-            <div class="info">
-              <pre><%= room.getRooms_Host %>명</pre>
-              <span><b><%= r.getRoom_name %></b></span>
+            <br /><br />
+<!--             <div class="info"> -->
+				<p><b><%= room.getRooms_Host() %></b></p>
+              
+              	<br />
+              	
+                <span><b><%= r.getRoom_name() %></b></span>
     
               <br />
     
-              <span><%= room.getRooms_Type %></span>
+              <span><% room.getRooms_Type() %></span>
     
               <br />
     
-              <span>최대 인원 <%= room.getRooms_Personnel %>명</span>
+              <span>최대 인원 <%= room.getRooms_Personnel() %>명</span>
     
               <br />
     
-              <span>침실 <%= room.getRooms_RoomCnt %>개</span><span> · </span><span>욕실 <%= room.getRooms_ToiletCnt %>개</span>
+              <span>침실 <%= room.getRooms_RoomCnt() %>개</span><span> · </span><span>욕실 <%= room.getRooms_ToiletCnt() %>개</span>
     
               <br />
               
-              <span><%= room.getAmenity %></span>
+              <span><%= room.getAmenity() %></span>
+              
+              <!-- 이미지와 같이 넣기 힘들거 같아서 글자만 나오도록 할 생각입니다.. -->
               <!-- <span>무료 주차 공간</span><span> · </span><span>에어컨</span
               ><span> · </span><span>무료 인터넷</span> -->
     
-              <div class="info2">
-                <h3>\ <%= room.getRooms_Price> / 박</h3>
-              </div>
-              <div>
-                <p class="star_rating"><br /><a href="<%= request.getAttribute()>/list.re" class="on">⭐ 4.8</a></p>
-              </div>
-            </div>
+                <h3>\ <%= room.getRooms_Price() %> / 박</h3>
+               
+                <p class="star_rating"><br /><a href="<%= request.getContextPath() %>/Roompage_guest.jsp" class="on">⭐ 4.8</a></p>
+              
           </div>
         </div>
 
           <div class="map_right">
-            <div class="map"></div>
+            <div id="map"></div>
           </div>
           <script>
             // 날짜 선택 설정
@@ -357,4 +372,3 @@
         
       </body>
     </html>
-    

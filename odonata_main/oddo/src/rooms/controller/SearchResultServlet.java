@@ -64,8 +64,8 @@ public class SearchResultServlet extends HttpServlet {
         
         PageInfo pi = new PageInfo(currentPage, listCount, pageLimit, boardLimit, maxPage, startPage, endPage);
         
-        ArrayList<Rooms> rList = rService.selectTList(1); 		// �Խñ�
-        ArrayList<sooksoImg> sList = rService.selectTList(2);   // ����
+        ArrayList<Rooms> rList = rService.selectTList(1); 		// 숙소
+        ArrayList<sooksoImg> sList = rService.selectTList(2);   // 숙소 이미지
         
         String page = null;
         if (rList != null && sList != null) {
@@ -74,7 +74,7 @@ public class SearchResultServlet extends HttpServlet {
             request.setAttribute("pi", pi);
             page = "WEB-INF/view/search_result.jsp";
         } else {
-            request.setAttribute("msg", "�˻� ��� ��ȸ ����");
+            request.setAttribute("msg", "검색 조회 실패");
             page = "WEB-INF/view/errorPage.jsp";
         }
         
