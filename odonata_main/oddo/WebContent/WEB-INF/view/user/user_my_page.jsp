@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page import="user.model.vo.User" %>
+    pageEncoding="UTF-8" import="user.model.vo.User"%>
 <%
   User loginUser = (User)session.getAttribute("loginUser");
 %>
@@ -84,88 +83,76 @@
                     <div class="my-4">
                       <h2 class="text-center mb-5">내 정보</h2>
 
-                      <form action="<%= request.getContextPath() %>/insert.us" method="post" id="joinForm" name="joinForm" onsubmit="return insertValidate();">
                         <div class="row">
                           <div class="col-12 col-md-6 mb-4">
                             <div class="form-floating form-white">
-                              <box
+                              <input
                                 type="text"
                                 id="uId"
                                 name="uId"
                                 class="form-control form-control-lg"
+                                readonly
+                                value="<%= loginUser.getUser_id() %>"
                               />
-                              <label class="form-label" for="uId"></label>
+                              <label class="form-label" for="uId">아이디</label>
                             </div>
                           </div>
                           <div class="col-12 col-md-6 mb-4">
                             <div class="form-floating form-white">
-                              <box
-                                type="name"
-                                id="name1"
-                                name="name1"
+                              <input
+                                type="text"
+                                id="uName"
+                                name="uName"
                                 class="form-control form-control-lg"
+                                readonly
+                                value="<%= loginUser.getUser_name() %>"
                               />
-                              <label class="form-label" for="uPwd1"
-                                ></label
-                              >
+                              <label class="form-label" for="uName">이름</label>
                             </div>
                           </div>
                         </div>
 
-                        
-
-                        
+                        <div class="form-floating form-white mb-4">
+                          <input
+                            type="text"
+                            id="uEmail"
+                            name="uEmail"
+                            class="form-control form-control-lg"
+                            readonly
+                            value="<%= loginUser.getUser_email() %>"
+                          />
+                          <label class="form-label" for="uEmail">이메일</label>
+                        </div>
 
                         <div class="form-floating form-white mb-4">
-                          <box
+                          <input
                             type="tel"
                             id="uPhone"
                             name="uPhone"
                             class="form-control form-control-lg"
+                            readonly
+                            value="<%= loginUser.getUser_phone() %>"
                           />
-                          <label class="form-label" for="uPhone"
-                            ></label
-                          >
+                          <label class="form-label" for="uPhone">휴대전화</label>
                         </div>
 
                         <div class="form-floating form-white mb-4">
-                          <box
-                            type="tel"
-                            id="uPhone"
-                            name="uPhone"
-                            class="form-control form-control-lg"
-                          />
-                          <label class="form-label" for="uPhone"
-                            ></label
-                          >
-                        </div>
-
-                        <div class="form-floating form-white mb-4">
-                          <box
+                          <input
                             type="text"
                             id="uBirth"
                             name="uBirth"
                             class="form-control form-control-lg"
+                            readonly
+                            value="<%= loginUser.getUser_birth() %>"
                           />
-                          <label class="form-label" for="uBirth"
-                            ></label
-                          >
+                          <label class="form-label" for="uBirth">생년월일</label>
                         </div>
-
-                        <div
-                          class="form-check d-flex justify-content-center mb-4"
-                        >
-                          
-                        </div>
-
                         
-                        
-                        <input type="submit" value="내 정보 수정" class="submit-btn" />
-                        <input type="submit" value="비밀 번호 변경" class="submit-btn" />
-                        <input type="submit" value="쪽지" class="submit-btn" />
-                        <input type="submit" value="과거 예약 내역" class="submit-btn" />
-                        <input type="submit" value="숙소 등록" class="submit-btn" />
-                      </form>
+                        <input type="button" value="내 정보 수정" class="submit-btn" />
+                        <input type="button" value="비밀 번호 변경" class="submit-btn" />
+                        <input type="button" value="쪽지" class="submit-btn" />
+                        <input type="button" value="과거 예약 내역" class="submit-btn" />
+                        <input type="button" value="숙소 등록" class="submit-btn" />
                     </div>
                   </div>
                 </div>

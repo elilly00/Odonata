@@ -170,9 +170,7 @@
                             name="uPhone"
                             class="form-control form-control-lg"
                           />
-                          <label class="form-label" for="uPhone"
-                            >휴대전화</label
-                          >
+                          <label class="form-label" for="uPhone">휴대전화</label>
                         </div>
 
                         <div class="form-floating form-white mb-4">
@@ -182,9 +180,7 @@
                             name="uBirth"
                             class="form-control form-control-lg"
                           />
-                          <label class="form-label" for="uBirth"
-                            >생년월일</label
-                          >
+                          <label class="form-label" for="uBirth">생년월일</label>
                         </div>
 
                         <div
