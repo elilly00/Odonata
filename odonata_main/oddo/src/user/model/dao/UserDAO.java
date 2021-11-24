@@ -38,6 +38,7 @@ public class UserDAO {
     User loginUser = null;
 
     String query = prop.getProperty("loginUser");
+    // String query = prop.getProperty("login");
 
     try {
       pstmt = conn.prepareStatement(query);
