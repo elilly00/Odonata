@@ -46,8 +46,8 @@
   <nav class="main-navi">
     <div class="logo">
       <!-- <i class="fab fa-airbnb"></i> 잠자리 -->
-      <a href="<%= request.getContextPath() %>/index.jsp">
-        <img class="main-navi" src="<%= request.getContextPath() %>/img/public_img/logo.png" href="<%= request.getContextPath() %>/index.jsp">
+      <a href="<%= request.getContextPath() %>/WEB-INF/index.jsp">
+        <img class="main-navi" src="<%= request.getContextPath() %>/img/public_img/logo.png" href="<%= request.getContextPath() %>/WEB-INF/index.jsp">
       </a>
 
     </div>
@@ -60,6 +60,7 @@
                     
                 </button>
             </div> -->
+  <form id="loginForm" action="<%=request.getContextPath()%>/list.re" method="post">
     <div class="searching_box">
       <div class="searching_box_inner">
         <div class="location">
@@ -139,6 +140,7 @@
         </div>
       </div>
     </div>
+    <form>
 
     <div class="menu">
       <% if(loginUser == null) { %>
@@ -192,7 +194,7 @@
       숙소를 등록하여 부수입을 올리고 새로운<br />
       가능성을 만나세요.
     </p>
-    <a href="<%= request.getContextPath() %>view/Registration.jsp">
+    <a href="<%= request.getContextPath() %>/WEB-INF/view/rooms/Registration.jsp">
       <button type="button">숙소 등록하기</button>
     </a>
   </div>
