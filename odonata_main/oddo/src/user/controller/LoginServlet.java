@@ -29,8 +29,6 @@ public class LoginServlet extends HttpServlet {
      * @see HttpServlet#HttpServlet()
      */
     public LoginServlet() {
-        super();
-        // TODO Auto-generated constructor stub
     }
     
     /**
@@ -39,8 +37,6 @@ public class LoginServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        
         String userId = request.getParameter("userId");
         String userPwd = request.getParameter("userPwd");
         
@@ -51,9 +47,6 @@ public class LoginServlet extends HttpServlet {
             session.setMaxInactiveInterval(1200);
             session.setAttribute("loginUser", loginUser);
             response.sendRedirect(request.getContextPath());
-            // request.getRequestDispatcher(path1).forward(request, response);
-            RequestDispatcher view = request.getRequestDispatcher("index.jsp");
-            view.forward(request, response);
         } else {
             request.setAttribute("msg", "아이디 또는 비밀번호가 다릅니다.");
             RequestDispatcher view = request.getRequestDispatcher("view/login.jsp");
