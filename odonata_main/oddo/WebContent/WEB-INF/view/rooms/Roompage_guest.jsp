@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%@ 
+	page import="java.util.ArrayList"  
+	import="user.model.vo.*, rooms.model.vo.*,   
+			    reserv.model.vo.*, sooksoimg.model.vo.*, review.model.vo.*" %>
+<% 
+	User loginUser = (User)session.getAttribute("loginUser");
+	Rooms room = (Rooms)request.getAttribute("room");
+	reserv r = (reserv)request.getAttribute("r");
+	ArrayList<sooksoImg> ImgList = (ArrayList<sooksoImg>)request.getAttribute("ImgList");
+	review review = (review)request.getAttribute("reivew");
+%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -25,16 +36,17 @@ pageEncoding="UTF-8"%>
 
     <div class="body">
       <div class="name">
-        <h1>잠자리 방</h1>
-        <p><b>\120,000</b>/박</p>
+        <h1><%= r.getRoom_name() %></h1>
+        <p><b>\<%= room.getRooms_Price() %></b>/박</p>
       </div>
     </div>
     <div id="slideShow">
       <!-- 첫 사진이 제대로 안나옴.. -->
       <ul class="slides">
-        <li><img src="<%= request.getContextPath() %>/img/public_file/room/room1.png" alt="방사진1" /></li>
-        <li><img src="<%= request.getContextPath() %>/img/public_file/room/room2.png" alt="방사진2" /></li>
-        <li><img src="<%= request.getContextPath() %>/img/public_file/room/room3.png" alt="방사진3" /></li>
+        <li><img src="<%= request.getContextPath() %>/thumbnail_uploadFiles/<%= ImgList.get(0).getChange_name() %>" alt="방사진1" /></li>
+        <li><img src="<%= request.getContextPath() %>/thumbnail_uploadFiles/<%= ImgList.get(1).getChange_name() %>" alt="방사진2" /></li>
+        <li><img src="<%= request.getContextPath() %>/thumbnail_uploadFiles/<%= ImgList.get(1).getChange_name() %>" alt="방사진3" /></li>
+      	<li><img src="<%= request.getContextPath() %>/thumbnail_uploadFiles/<%= ImgList.get(1).getChange_name() %>" alt="방사진4" /></li>
       </ul>
 
       <p class="controller">
@@ -43,58 +55,33 @@ pageEncoding="UTF-8"%>
         <span class="next">&rang;</span>
       </p>
     </div>
-    <script>
-      let slides = document.querySelector(".slides");
-      let slideImg = document.querySelectorAll(".slides li");
-      currentIdx = 0;
-      slideCount = slideImg.length;
-      prev = document.querySelector(".prev");
-      next = document.querySelector(".next");
-      slideWidth = 300;
-      slideMargin = 100;
-      slides.style.width = (slideWidth + slideMargin) * slideCount + "px";
-      function moveSlide(num) {
-        // 왼쪽으로 400px씩 이동
-        slides.style.left = -num * 400 + "px";
-        currentIdx = num;
-      }
-      prev.addEventListener("click", function () {
-        // 첫 번째 슬라이드로 표시 됐을때는 이전 버튼 눌러도 아무런 반응 없게 하기 위해
-        // currentIdx !==0일때만 moveSlide 함수 불러옴
-        if (currentIdx !== 0) moveSlide(currentIdx - 1);
-      });
-      next.addEventListener("click", function () {
-        // 마지막 슬라이드로 표시 됐을때는 다음 버튼 눌러도 아무런 반응 없게 하기 위해
-        // currentIdx !==slideCount - 1 일때만 moveSlide 함수 불러옴
-        if (currentIdx !== slideCount - 1) moveSlide(currentIdx + 1);
-      });
-    </script>
-
     <div class="body1">
       <div class="body1_1">
         <div class="body1_2">
           <div class="body_info">
-            <h2>잠자리님의 아파트 전체</h2>
+            <h2><%= room.getRooms_Host() %>님의 <%= room.getRooms_Type() %></h2>
 
             <br />
 
-            <span>최대 인원 4명</span>
+            <span>최대 인원 <%= room.getRooms_Personnel() %>명</span>
 
             <br />
 
-            <span>침실 2개</span><span> · </span><span>침대 2개</span
-            ><span> · </span><span>욕실 1개</span>
+            <span>침실 <%= room.getRooms_RoomCnt() %>개</span><span> · </span><span> · </span><span>욕실 <%= room.getRooms_ToiletCnt() %>개</span>
 
             <br />
 
-            <span>셀프 체크인 가능</span>
+            <span>동물 동반 가능 '<%= room.getRooms_DogAvail() %>'</span>
           </div>
         </div>
         <div class="body_info2">
           <h2>숙소 편의 시설</h2>
           <div class="info_a">
+            
+            <%= room.getAmenity() %>
+
             <!-- 가로로 병렬시키기 -->
-            <img class="emoji" alt="집" src="<%= request.getContextPath() %>/img/public_file/room/home.png" />
+            <!-- <img class="emoji" alt="집" src="<%= request.getContextPath() %>/img/public_file/room/home.png" />
             <div><b>아파트 전체</b></div>
             <img
               class="emoji"
@@ -110,22 +97,12 @@ pageEncoding="UTF-8"%>
             <div><b>에어컨</b></div>
             <img class="emoji" alt="주방" src="<%= request.getContextPath() %>/img/public_file/room/kitchen.png" />
             <div><b>주방</b></div>
-          </div>
+          </div> -->
         </div>
         <div class="body_info3">
           <h2>숙소 위치</h2>
           <br />
-          <div>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3261.8972314302264!2d129.15316575108915!3d35.15918366593513!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35688d58be7e6c63%3A0xdd37731410008030!2z67aA7IKw6rSR7Jet7IucIO2VtOyatOuMgOq1rCDsmrAx64-ZIDY1MS0y!5e0!3m2!1sko!2skr!4v1636036959507!5m2!1sko!2skr"
-              width="90%"
-              height="300"
-              style="border: 0"
-              allowfullscreen=""
-              loading="lazy"
-            >
-            </iframe>
-          </div>
+          <div id="map"></div> 
         </div>
 
         <div class="body_info4">
@@ -134,21 +111,21 @@ pageEncoding="UTF-8"%>
           <div class="reviews">
             <div>
               <img class="reviewer" src="<%= request.getContextPath() %>/img/public_file/room/man.png" />
-              <div><b>룰루</b></div>
-              <pre>2021.4.12</pre>
-              <div>너무 깔끔하고 좋았습니다 &nbsp;</div>
+              <div><b><%= loginUser.getUser_name() %></b></div>
+              <pre><%= review.getR_update() %></pre>
+              <div><%= review.getR_content() %></div>
             </div>
             <div>
               <img class="reviewer" src="<%= request.getContextPath() %>/img/public_file/room/man2.png" />
-              <div><b>랄라</b></div>
-              <pre>2021.7.08</pre>
-              <div>&nbsp;최고입니다 !!&nbsp;</div>
+              <div><b><%= loginUser.getUser_name() %></b></div>
+              <pre><%= review.getR_update() %></pre>
+              <div><%= review.getR_content() %></div>
             </div>
             <div>
               <img class="reviewer" src="<%= request.getContextPath() %>/img/public_file/room/woman.png" />
-              <div><b>릴리</b></div>
-              <pre>2021.10.16</pre>
-              <div>&nbsp;다시 방문하고 싶어요</div>
+              <div><b><%= loginUser.getUser_name() %></b></div>
+              <pre><%= review.getR_update() %></pre>
+              <div><%= review.getR_content() %></div>
             </div>
             <!-- <div class="more">후기 더보기</div> -->
           </div>
@@ -182,11 +159,11 @@ pageEncoding="UTF-8"%>
             <ul>
               <li>
                 <span><b>체크인</b></span>
-                <input type="date" class="date" />
+                <input type="date" class="date" name="checkIn"/>
               </li>
               <li>
                 <span><b>체크아웃</b></span>
-                <input type="date" class="date" />
+                <input type="date" class="date" name="chekOut"/>
               </li>
               <li>
                 <div class="add">
@@ -221,9 +198,7 @@ pageEncoding="UTF-8"%>
               </li>
             </ul>
             <div class="button">
-              <button type="button" class="button2">
-                예약 가능 여부 확인 / 예약 확인
-              </button>
+              <input type="submit" class="button2" value="예약하기" onclick="location.href='<%= request.getContextPath() %>/payment.bo'">
             </div>
           </div>
 
@@ -232,10 +207,8 @@ pageEncoding="UTF-8"%>
           <div class="result">
             <ul>
               <li>
-                <span>\ 50,000 X 3박 </span>
-              </li>
-              <li>
-                <span>\ 150,00</span>
+                <span>\ <%= room.getRooms_Price() %> X 3박 </span>
+                <br>
               </li>
               <li>
                 <span>
@@ -248,5 +221,57 @@ pageEncoding="UTF-8"%>
         </div>
       </div>
     </form>
+
+    <script>
+      // 사진 슬라이드 설정
+      let slides = document.querySelector(".slides");
+      let slideImg = document.querySelectorAll(".slides li");
+      currentIdx = 0;
+      slideCount = slideImg.length;
+      prev = document.querySelector(".prev");
+      next = document.querySelector(".next");
+      slideWidth = 300;
+      slideMargin = 100;
+      slides.style.width = (slideWidth + slideMargin) * slideCount + "px";
+      function moveSlide(num) {
+        // 왼쪽으로 400px씩 이동
+        slides.style.left = -num * 400 + "px";
+        currentIdx = num;
+      }
+      prev.addEventListener("click", function () {
+        // 첫 번째 슬라이드로 표시 됐을때는 이전 버튼 눌러도 아무런 반응 없게 하기 위해
+        // currentIdx !==0일때만 moveSlide 함수 불러옴
+        if (currentIdx !== 0) moveSlide(currentIdx - 1);
+      });
+      next.addEventListener("click", function () {
+        // 마지막 슬라이드로 표시 됐을때는 다음 버튼 눌러도 아무런 반응 없게 하기 위해
+        // currentIdx !==slideCount - 1 일때만 moveSlide 함수 불러옴
+        if (currentIdx !== slideCount - 1) moveSlide(currentIdx + 1);
+      });
+      
+      
+      // Google Map 설정 
+	    function initMap() {
+	
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 15,
+            center: { lat: 35.15205551267718, lng: 129.1171569191601 }, 
+        });
+
+        for (var i = 0; i < locations.length; i++) {
+            var marker = new google.maps.Marker({
+                map: map,
+                label: locations[i].place,
+                position: new google.maps.LatLng(locations[i].lat, locations[i].lng),
+            });
+        }
+      }
+          // 장소 마킹
+          const locations = [
+          { place:"광안리 해수욕장", lat: 35.15317618071567, lng: 129.11867182936666 },
+              // { place:"어린이대공원역", lat: 37.547263, lng: 127.074181 },
+          ];
+	
+    </script>
   </body>
 </html>
