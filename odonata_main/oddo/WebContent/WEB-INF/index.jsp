@@ -141,7 +141,7 @@
       </div>
     </div>
     <form>
-
+  
     <div class="menu">
       <% if(loginUser == null) { %>
       <button type="button" onclick="location.href='<%= request.getContextPath() %>/loginForm.us'" class="item menusolo hostdg">
@@ -169,11 +169,6 @@
           </a>
 
           <% } %>
-
-
-
-
-
         </button>
       </div>
     </div>
