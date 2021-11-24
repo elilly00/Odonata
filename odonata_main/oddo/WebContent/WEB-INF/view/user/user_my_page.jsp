@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="user.model.vo.User"%>
+    pageEncoding="UTF-8" import="user.model.vo.User, java.text.SimpleDateFormat"%>
 <%
   User loginUser = (User)session.getAttribute("loginUser");
+  String userBirth = new SimpleDateFormat("YY-MM-dd").format(loginUser.getUser_birth());
 %>
 <!DOCTYPE html>
 
@@ -148,7 +149,7 @@
                             name="uBirth"
                             class="form-control form-control-lg"
                             readonly
-                            value="<%= loginUser.getUser_birth() %>"
+                            value="<%= userBirth %>"
                           />
                           <label class="form-label" for="uBirth">생년월일</label>
                         </div>

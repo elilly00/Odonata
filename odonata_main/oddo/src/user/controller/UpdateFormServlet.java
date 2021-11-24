@@ -7,7 +7,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import user.model.service.UserService;
 import user.model.vo.User;
@@ -31,9 +30,7 @@ public class UpdateFormServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        User loginUser = (User) session.getAttribute("loginUser");
-        String userId = loginUser.getUser_id();
+        String userId = ((User) request.getSession().getAttribute("loginUser")).getUser_id();
         
         User myInfo = new UserService().selectUser(userId);
         

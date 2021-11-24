@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="user.model.vo.User"%>
+    pageEncoding="UTF-8" import="user.model.vo.User, java.text.SimpleDateFormat"%>
 <%
   User loginUser = (User)session.getAttribute("loginUser");
   String emailId = loginUser.getUser_email().substring(0, loginUser.getUser_email().indexOf('@'));
   String emailDomain = loginUser.getUser_email().substring(loginUser.getUser_email().indexOf('@'));
+  String userBirth = new SimpleDateFormat("YY-MM-dd").format(loginUser.getUser_birth());
   
   String[] selected = new String[3];
   switch(emailDomain) {
@@ -170,7 +171,7 @@
                             id="uBirth"
                             name="uBirth"
                             class="form-control form-control-lg"
-                            value="<%= loginUser.getUser_birth() %>"
+                            value="<%= userBirth %>"
                           />
                           <label class="form-label" for="uBirth">생년월일</label>
                         </div>
