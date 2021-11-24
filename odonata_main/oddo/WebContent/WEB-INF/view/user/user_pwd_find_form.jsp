@@ -54,7 +54,7 @@
                   <div class="my-4">
                     <h2 class="text-center mb-3">비밀번호 찾기</h2>
                     <h5 class="text-center mb-3">회원가입 시 사용한 비밀번호는 <strong>${fn:substring(pwd,0,4)}
-                        <c:forEach begin="1" end="${fn:lenght(pwd)-4}">
+                        <c:forEach begin="1" end="${fn:length(pwd)-4}">
                           *
                         </c:forEach>
                       </strong>입니다.</h5>

@@ -52,7 +52,7 @@
                   <div class="my-4">
                     <h2 class="text-center mb-3">아이디 찾기</h2>
                     <h5 class="text-center mb-3">회원가입 시 사용한 비밀번호는 <strong>${fn:substring(id,0,2)}
-                        <c:forEach begin="1" end="${fn:lenght(id)-2}">
+                        <c:forEach begin="1" end="${fn:length(id)-2}">
                           *
                         </c:forEach>
                       </strong>입니다.</h5>
