@@ -5,16 +5,11 @@
                  review.model.vo.*, reserv.model.vo.*" 
 %>
 <% 
-    ArrayList<Rooms> rList = (ArrayList<Rooms>)request.getAttribute("bList");
-	ArrayList<sooksoImg> ImgList = (ArrayList<sooksoImg>)request.getAttribute("fList");
+    ArrayList<Rooms> rList = (ArrayList<Rooms>)request.getAttribute("rList");
+  	ArrayList<sooksoImg> ImgList = (ArrayList<sooksoImg>)request.getAttribute("fList");
 
     User loginUser = (User)session.getAttribute("loginUser"); 
-    Rooms room = (Rooms)request.getAttribute("room");
     reserv r = (reserv)request.getAttribute("r");
-%>
-<%@ page import="user.model.vo.User" %>
-<%
-  User loginUser = (User)session.getAttribute("loginUser");
 %>
 <!DOCTYPE html>
 <html>
@@ -23,7 +18,7 @@
 <title>Search_result</title>
 <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/style/Search_Result.css" />
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
- <script src="<%= request.getContextPath() %>/js/calendar.js"></script>
+<script src="<%= request.getContextPath() %>/js/calendar.js"></script>
 <!-- 구글 지도 API -->
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJil7Bh-RMna_GTpFIVfnvxUw_jIAiPco&callback=initMap" async defer></script>
 
@@ -37,37 +32,6 @@
              alt="메인페이지"
              id="logo">
       </label>
-
-      <div class="menu">
-      <% if(loginUser == null) { %>
-      <button type="button" onclick="location.href='<%= request.getContextPath() %>/loginForm.us'" class="item menusolo hostdg">
-        로그인/회원가입
-      </button>
-      <% } else { %>
-      <div id="userInfo" align="right">
-        <%-- <label> <%= loginUser.getUser_name() %> 님의 방문을 환영합니다. </label>
-        <br clear="all"> --%>
-        <div class="menu">
-          <%-- <input type="button" class="item menusolo hostdg" value="내 정보 보기" onclick="location.href='<%= request.getContextPath() %>/myPage.me'">
-          --%>
-          <input type="button" class="item menusolo hostdg" value="로그 아웃"
-            onclick="location.href='<%= request.getContextPath() %>/logout.me'">
-        </div>
-      </div>
-      <div class="item menusolo">
-        <!-- <i class="fas fa-globe"></i> -->
-      </div>
-      <div class="item menuset">
-        <button class="mypage" type="button" onclick="location.href='<%= request.getContextPath() %>/myPage.me'" class="item menusolo hostdg">
-          <!-- <i class="fas fa-bars"></i> -->
-          <a href="<%= request.getContextPath()%>/view/user/user_my_page.jsp">
-            <i class="fas fa-user-circle"></i>
-          </a>
-
-          <% } %>
-        </button>
-      </div>
-    </div>
     </div>
     
     <div class="searching_box">
@@ -309,19 +273,19 @@
         <div class="body">
           <div class="room_left">
             <div class="rooms">
-          	<% if(rLIst.isEmpty() || ImgList.isEmpty()) { %>
+          	<% if(rList.isEmpty() || ImgList.isEmpty()) { %>
           		등록된 숙소가 없습니다.
           	<% } else { %>
           	<% for(int i = 0; i < rList.size(); i++) { %>
           	<% Rooms room = rList.get(i); %>
-          		<input type="hidden" value="<%= room.getRooms_code() %>">
-				<% for(int j = 0; j < fList.size(); j++) { %>
-				<% sooksoImg = ImgList.get(j); %>
-				<% if(room.getRooms_code() == ImgList.getRooms_code()) { %>	
+          		<input type="hidden" value="<%= room.getRooms_Code() %>">
+				<% for(int j = 0; j < ImgList.size(); j++) { %>
+				<% sooksoImg s = ImgList.get(j); %>
+				<% if(room.getRooms_Code() == s.getRooms_Code()) { %>	
               <img
                 class="room_img_input"
                 alt="방 사진"
-                src="<%= request.getContextPath() %>/thumbnail_uploadFiles/<%= ImgList.getChangeName() %>" 
+                src="<%= request.getContextPath() %>/thumbnail_uploadFiles/<%= s.getChange_name() %>" 
                 width="250"
                 height="250"
               />
@@ -338,7 +302,7 @@
     
               <br />
     
-              <span><% room.getRooms_Type() %></span>
+              <span><%= room.getRooms_Type() %></span>
     
               <br />
     
@@ -351,21 +315,19 @@
               <br />
               
               <span><%= room.getAmenity() %></span>
-              
-              <!-- 이미지와 같이 넣기 힘들거 같아서 글자만 나오도록 할 생각입니다.. -->
-              <!-- <span>무료 주차 공간</span><span> · </span><span>에어컨</span
-              ><span> · </span><span>무료 인터넷</span> -->
     
                 <h3>\ <%= room.getRooms_Price() %> / 박</h3>
                
-                <p class="star_rating"><br /><a href="<%= request.getContextPath() %>/Roompage_guest.jsp" class="on">⭐ 4.8</a></p>
-              
+                <p class="star_rating"><br /><a href="Roompage_guest.jsp" class="on">⭐ 4.8</a></p>
+              <% } %>
+			<% } %>
           </div>
         </div>
 
           <div class="map_right">
             <div id="map"></div>
           </div>
+
           <script>
             // 날짜 선택 설정
             var trigger = document.querySelector('#datePicker');
@@ -402,7 +364,8 @@
                   { place:"광안리 해수욕장", lat: 35.1532222614049, lng: 129.11855625595865 },
                   // { place:"어린이대공원역", lat: 37.547263, lng: 127.074181 },
                ];
-    
+
+              
               </script>
         
       </body>
