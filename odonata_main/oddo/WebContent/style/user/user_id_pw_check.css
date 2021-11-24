@@ -10,7 +10,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif; /*글꼴지정*/
-  background: url(../../img/airbnbBG.jpeg) center center no-repeat;
+  background: url(../../img/public_file/main/airbnbBG.jpeg) center center no-repeat;
   
 
   background-size: cover;
