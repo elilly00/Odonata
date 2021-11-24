@@ -12,6 +12,10 @@
     Rooms room = (Rooms)request.getAttribute("room");
     reserv r = (reserv)request.getAttribute("r");
 %>
+<%@ page import="user.model.vo.User" %>
+<%
+  User loginUser = (User)session.getAttribute("loginUser");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,6 +36,37 @@
              alt="메인페이지"
              id="logo">
       </label>
+
+      <div class="menu">
+      <% if(loginUser == null) { %>
+      <button type="button" onclick="location.href='<%= request.getContextPath() %>/loginForm.us'" class="item menusolo hostdg">
+        로그인/회원가입
+      </button>
+      <% } else { %>
+      <div id="userInfo" align="right">
+        <%-- <label> <%= loginUser.getUser_name() %> 님의 방문을 환영합니다. </label>
+        <br clear="all"> --%>
+        <div class="menu">
+          <%-- <input type="button" class="item menusolo hostdg" value="내 정보 보기" onclick="location.href='<%= request.getContextPath() %>/myPage.me'">
+          --%>
+          <input type="button" class="item menusolo hostdg" value="로그 아웃"
+            onclick="location.href='<%= request.getContextPath() %>/logout.me'">
+        </div>
+      </div>
+      <div class="item menusolo">
+        <!-- <i class="fas fa-globe"></i> -->
+      </div>
+      <div class="item menuset">
+        <button class="mypage" type="button" onclick="location.href='<%= request.getContextPath() %>/myPage.me'" class="item menusolo hostdg">
+          <!-- <i class="fas fa-bars"></i> -->
+          <a href="<%= request.getContextPath()%>/view/user/user_my_page.jsp">
+            <i class="fas fa-user-circle"></i>
+          </a>
+
+          <% } %>
+        </button>
+      </div>
+    </div>
     </div>
     
     <div class="searching_box">
