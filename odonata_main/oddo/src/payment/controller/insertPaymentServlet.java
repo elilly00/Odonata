@@ -69,4 +69,4 @@ public class insertPaymentServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
-}
+} 
