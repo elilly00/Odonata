@@ -1,4 +1,4 @@
-package main.rooms.model.vo;
+package rooms.model.vo;
 
 public class PageInfo {
 	private int currentPage;

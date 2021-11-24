@@ -1,4 +1,4 @@
-package main.payment.model.vo;
+package payment.model.vo;
 
 import java.sql.Date;
 

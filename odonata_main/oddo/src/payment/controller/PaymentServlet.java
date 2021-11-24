@@ -1,4 +1,4 @@
-package main.payment.controller;
+package payment.controller;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import main.payment.model.service.PaymentService;
-import main.payment.model.vo.Payment;
+import payment.model.service.PaymentService;
+import payment.model.vo.Payment;
 
 
 

@@ -1,6 +1,6 @@
-package main.payment.model.dao;
+package mpayment.model.dao;
 
-import static main.common.JDBCTemplate.*;
+import static common.JDBCTemplate.*;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import main.payment.model.vo.Payment;
+import payment.model.vo.Payment;
 
 public class PaymentDAO {
 
