@@ -88,4 +88,19 @@ public class UserService {
         
         return user;
     }
+    
+    public int updateUser(User u) {
+        Connection conn = getConnection();
+        
+        int result = uDAO.updateUser(conn, u);
+        
+        if (result > 0)
+            commit(conn);
+        else
+            rollback(conn);
+        
+        close(conn);
+        
+        return 0;
+    }
 }

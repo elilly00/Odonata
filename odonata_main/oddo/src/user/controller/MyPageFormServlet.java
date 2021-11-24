@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class MyPageFormServlet
  */
-@WebServlet("/user_myPageForm.us")
+@WebServlet("/myPageForm.us")
 public class MyPageFormServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     

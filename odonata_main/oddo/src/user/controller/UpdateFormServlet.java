@@ -38,7 +38,7 @@ public class UpdateFormServlet extends HttpServlet {
         User myInfo = new UserService().selectUser(userId);
         
         request.setAttribute("myInfo", myInfo);
-        request.getRequestDispatcher("views/user/userUpdateForm.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/view/user/user_update.jsp").forward(request, response);
     }
     
     /**

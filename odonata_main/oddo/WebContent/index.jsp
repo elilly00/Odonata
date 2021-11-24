@@ -124,8 +124,8 @@
         </div>
       </div>
       <div class="item menuset">
-        <button class="mypage" type="button" onclick="location.href='<%= request.getContextPath() %>/myPage.me'" class="item menusolo hostdg">
-          <a href="<%= request.getContextPath()%>/user_myPageForm.us">
+        <button class="mypage" type="button" onclick="location.href='<%= request.getContextPath() %>/myPageForm.us'" class="item menusolo hostdg">
+          <a href="<%= request.getContextPath()%>/myPageForm.us">
             <i class="fas fa-user-circle"></i>
           </a>
         </button>

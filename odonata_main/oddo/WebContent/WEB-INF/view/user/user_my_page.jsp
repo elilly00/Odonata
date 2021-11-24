@@ -9,7 +9,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>login</title>
+  <title>내 정보 보기</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -27,17 +27,28 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-    
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/style/login.css" />
     <script src="<%= request.getContextPath() %>/js/jquery-3.6.0.min.js"></script>
 
+    <style>
+      .mask-custom {
+        backdrop-filter: blur(15px);
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 3em;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        background-clip: padding-box;
+        box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
+      }
+    </style>
 </head>
 
 <body>
   <nav class="main-navi">
+  <div>
     <a class="logoo" href="<%= request.getContextPath() %>/WEB-INF/index.jsp">
       <img class="logoo" src="<%= request.getContextPath() %>/img/public_img/logo.png">
     </a>
-    </div>
+  </div>
     <div class="menu">
       <% if(loginUser == null) { %>
       <button type="button" onclick="location.href='<%= request.getContextPath() %>/loginForm.us'" class="item menusolo hostdg">
@@ -55,25 +66,19 @@
         </div>
       </div>
       <div class="item menusolo">
-        <!-- <i class="fas fa-globe"></i> -->
       </div>
       <div class="item menuset">
         <button class="mypage" type="button" onclick="location.href='<%= request.getContextPath() %>/myPage.me'" class="item menusolo hostdg">
-          <!-- <i class="fas fa-bars"></i> -->
           <a href="<%= request.getContextPath()%>/view/user/user_my_page.jsp">
             <i class="fas fa-user-circle"></i>
           </a>
-
-          <% } %>
         </button>
       </div>
+      <% } %>
     </div>
   </nav>
 
-  <!-- <div class="main-page"> -->
     <section class="intro">
-      
-      
         <div class="mask d-flex align-items-center h-100">
           <div class="container">
             <div class="row justify-content-center">
@@ -148,11 +153,11 @@
                           <label class="form-label" for="uBirth">생년월일</label>
                         </div>
                         
-                        <input type="button" value="내 정보 수정" class="submit-btn" />
-                        <input type="button" value="비밀 번호 변경" class="submit-btn" />
-                        <input type="button" value="쪽지" class="submit-btn" />
-                        <input type="button" value="과거 예약 내역" class="submit-btn" />
-                        <input type="button" value="숙소 등록" class="submit-btn" />
+                        <input type="button" value="내 정보 수정" class="btn btn-secondary btn-sm btn-block" onclick="location.href='<%= request.getContextPath() %>/updateForm.us'" />
+                        <input type="button" value="비밀 번호 변경" class="btn btn-secondary btn-sm btn-block" />
+                        <input type="button" value="쪽지" class="btn btn-secondary btn-sm btn-block" />
+                        <input type="button" value="과거 예약 내역" class="btn btn-secondary btn-sm btn-block" />
+                        <input type="button" value="숙소 등록" class="btn btn-secondary btn-sm btn-block" />
                     </div>
                   </div>
                 </div>
@@ -160,7 +165,6 @@
             </div>
           </div>
         </div>
-      </div>
     </section>
 
   <script>
