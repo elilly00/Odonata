@@ -41,9 +41,6 @@ public class LoginServlet extends HttpServlet {
   ) throws ServletException, IOException {
     request.setCharacterEncoding("UTF-8");
 
-    String path1 = "index.jsp";
-    String path2 = "view/login.jsp";
-
     String userId = request.getParameter("userId");
     String userPwd = request.getParameter("userPwd");
 
