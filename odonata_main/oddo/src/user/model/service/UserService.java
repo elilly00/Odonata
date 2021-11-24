@@ -6,6 +6,7 @@ import static common.JDBCTemplate.getConnection;
 import static common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
+import java.util.HashMap;
 
 import user.model.dao.UserDAO;
 import user.model.vo.User;
@@ -93,6 +94,21 @@ public class UserService {
         Connection conn = getConnection();
         
         int result = uDAO.updateUser(conn, u);
+        
+        if (result > 0)
+            commit(conn);
+        else
+            rollback(conn);
+        
+        close(conn);
+        
+        return 0;
+    }
+    
+    public int updatePwd(HashMap<String, String> map) {
+        Connection conn = getConnection();
+        
+        int result = uDAO.updatePwd(conn, map);
         
         if (result > 0)
             commit(conn);

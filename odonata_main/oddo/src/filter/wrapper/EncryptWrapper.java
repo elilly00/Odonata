@@ -17,7 +17,7 @@ public class EncryptWrapper extends HttpServletRequestWrapper {
     @Override
     public String getParameter(String name) {
         String value = null;
-        if (name != null && (name.equals("uPwd1") || name.equals("userPwd"))) {
+        if (name != null && (name.equals("uPwd1") || name.equals("userPwd") || name.equals("newPwd1"))) {
             try {
                 MessageDigest md = MessageDigest.getInstance("SHA-512");
                 byte[] bytes = super.getParameter(name).getBytes(Charset.forName("UTF-8"));

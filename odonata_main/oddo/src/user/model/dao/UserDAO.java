@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Properties;
 
 import user.model.vo.User;
@@ -264,6 +265,28 @@ public class UserDAO {
             pstmt.setString(3, u.getUser_phone());
             pstmt.setDate(4, u.getUser_birth());
             pstmt.setString(5, u.getUser_id());
+            
+            result = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(pstmt);
+        }
+        
+        return result;
+    }
+    
+    public int updatePwd(Connection conn, HashMap<String, String> map) {
+        PreparedStatement pstmt = null;
+        int result = 0;
+        
+        String query = prop.getProperty("updatePwd");
+        
+        try {
+            pstmt = conn.prepareStatement(query);
+            pstmt.setString(1, map.get("newPwd"));
+            pstmt.setString(2, map.get("userId"));
+            pstmt.setString(3, map.get("userPwd"));
             
             result = pstmt.executeUpdate();
         } catch (SQLException e) {
