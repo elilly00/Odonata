@@ -126,7 +126,7 @@ CREATE TABLE "SookSoIMG" (
 	"img_Level"	NUMBER		NOT NULL,   -- 이미지 레벨을 추가하였습니다.
 	"image_path"	VARCHAR2(50)		NOT NULL,
 	"Rooms_Code"	NUMBER		NOT NULL,
-	"Status"	CHAR(1)	DEFAULT 'Y'	NOT NULL
+	"Status"	VARCHAR2(20)	DEFAULT 'Y'	NOT NULL
 );
 
 COMMENT ON COLUMN "SookSoIMG"."Status" IS 'Y or N';
@@ -144,7 +144,7 @@ CREATE TABLE "Rooms" ( -- 데이터 타입을 변경하였습니다.
 	"Amenity"	VARCHAR2(100)		NOT NULL,
 	"Rooms_Desc"	VARCHAR2(500)		NOT NULL,
 	"Rooms_RegDate"	DATE		NOT NULL,
-	"Status"	CHAR(1)	DEFAULT 'Y'	NOT NULL,
+	"Status"	VARCHAR2(20)	DEFAULT 'Y'	NOT NULL,
 	"User_code"	NUMBER		NOT NULL
 );
 --------------------------------------------------
