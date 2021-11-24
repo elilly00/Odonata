@@ -12,7 +12,7 @@ body {
 }
 
 #main-page {
-  background: url(../img/airbnbBG.jpeg) center center no-repeat;
+  background: url(../img/public_file/main/airbnbBG.jpeg) center center no-repeat;
   background-size: cover;
   height: 70vh;
   opacity: 0.8;
@@ -213,7 +213,7 @@ section {
   margin-bottom: 80px;
   width: 91vw;
   height: 40vh;
-  background: url(../img/hostbox.jpeg) center center no-repeat;
+  background: url(../img/public_file/main/hostbox.jpeg) center center no-repeat;
   background-size: cover;
   border-radius: 25px;
 }

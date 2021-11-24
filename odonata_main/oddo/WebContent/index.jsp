@@ -4,68 +4,40 @@
 <%
   User loginUser = (User)session.getAttribute("loginUser");
 %>
-
-
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>
-    잠자리: 휴가용 임대 숙소, 통나무집, 비치 하우스, 독특한 숙소 및 체험
-  </title>
-  <script src="<%= request.getContextPath() %>/js/jquery-3.5.1.min.js"></script>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/cesiumjs/1.78/Build/Cesium/Cesium.js"></script>
-  <link rel="shortcut icon" href="img/airbnb.ico" type="WEB-INF/image/x-icon" />
-  <!-- <link rel="shortcut icon" href="img/public_photo/logo.png" type="WEB-INF/image/x-icon" /> -->
-
-
+  <title>잠자리: 휴가용 임대 숙소, 통나무집, 비치 하우스, 독특한 숙소 및 체험</title>
 
   <!-- 폰트어썸 라이브러리 CDNJS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-
-  <link rel="stylesheet" href="<%= request.getContextPath() %>/style/main.css" />
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/style/main.css" />
 
+  <script src="https://ajax.googleapis.com/ajax/libs/cesiumjs/1.78/Build/Cesium/Cesium.js"></script>
   <script type="text/javascript" src="${pageContext.request.contextPath}/WEB-INF/js/jquery-ui.min.js"></script>
   <script type="text/javascript" src="${pageContext.request.contextPath}/WEB-INF/js/jquery.fullPage.js"></script>
   <script type="text/javascript" src="${pageContext.request.contextPath}/WEB-INF/js/jquery-3.6.0.min.js"></script>
-
-
 </head>
-<!-- 첫페이지 시작 -->
 <header id="main-page">
   <!-- 네비메뉴 -->
   <nav class="main-navi">
     <div class="logo">
       <!-- <i class="fab fa-airbnb"></i> 잠자리 -->
       <a href="<%= request.getContextPath() %>/WEB-INF/index.jsp">
-        <img class="main-navi" src="<%= request.getContextPath() %>/img/public_img/logo.png" href="<%= request.getContextPath() %>/WEB-INF/index.jsp">
+        <img class="main-navi" src="<%= request.getContextPath() %>/img/public_img/logo.png" href="<%= request.getContextPath() %>/index.jsp">
       </a>
-
     </div>
-    <!-- <div class="search">
-                <button class="btn">
-                    <div>검색 시작하기</div>
-                    <div class="bicon">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    
-                </button>
-            </div> -->
   <form id="loginForm" action="<%=request.getContextPath()%>/list.re" method="post">
     <div class="searching_box">
       <div class="searching_box_inner">
         <div class="location">
           <p>위치</p>
-
         </div>
         <div class="location_input">
           <input id="inputLocalizacao" type="text" class="dropdown-toggle" autocomplete="off" data-toggle="dropdown"
@@ -75,12 +47,9 @@
           <p>체크인/체크아웃</p>
         </div>
         <div id="demo">
-
           <input type="text" class="datePicker" placeholder="체크인/체크아웃 날자를 선택" id="datePicker" readonly>
-
           <span id="calendar"></span>
         </div>
-
 
         <script src="<%= request.getContextPath() %>/js/calendar.js"></script>
         <script>
@@ -102,9 +71,7 @@
         </div>
 
         <div class="peoplenum_input">
-
           <select class="input_box">
-
             <option value="1">1명</option>
             <option value="2">2명</option>
             <option value="3">3명</option>
@@ -117,7 +84,6 @@
             <option value="10">10명</option>
           </select>
           <select class="input_box">
-
             <option value="1">1명</option>
             <option value="2">2명</option>
             <option value="3">3명</option>
@@ -135,12 +101,11 @@
             <button class="search_img" onclick="alert" type="button" src="<%= request.getContextPath() %>/img/public_img/search.png">
               <img class="search_img" src="<%= request.getContextPath() %>/img/public_img/search.png" />
             </button>
-            <!-- <p class="search_text">검색</p> -->
           </a>
         </div>
       </div>
     </div>
-    <form>
+    </form>
   
     <div class="menu">
       <% if(loginUser == null) { %>
@@ -158,19 +123,14 @@
             onclick="location.href='<%= request.getContextPath() %>/logout.me'">
         </div>
       </div>
-      <div class="item menusolo">
-        <!-- <i class="fas fa-globe"></i> -->
-      </div>
       <div class="item menuset">
         <button class="mypage" type="button" onclick="location.href='<%= request.getContextPath() %>/myPage.me'" class="item menusolo hostdg">
-          <!-- <i class="fas fa-bars"></i> -->
           <a href="<%= request.getContextPath()%>/view/user/user_my_page.jsp">
             <i class="fas fa-user-circle"></i>
           </a>
-
-          <% } %>
         </button>
       </div>
+      <% } %>
     </div>
   </nav>
   <!-- 글자박스 -->
@@ -181,6 +141,7 @@
   </div>
 </header>
 <!-- 첫페이지 끝 -->
+
 <!-- 둘러보기 섹션 -->
 <section id="hostbox">
   <div>
