@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import rooms.model.vo.Rooms;
-import sooksoimg.model.vo.sooksoImg;
+import rooms.model.vo.sooksoImg;
 
 public class RoomsDAO {
     

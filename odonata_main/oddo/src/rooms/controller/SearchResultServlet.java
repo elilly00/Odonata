@@ -68,7 +68,7 @@ public class SearchResultServlet extends HttpServlet {
         ArrayList<sooksoImg> ImgList = rService.selectTList(2);   // 숙소 이미지
         
         String page = null;
-        if (rList != null && sList != null) {
+        if (rList != null && ImgList != null) {
             request.setAttribute("rList", rList);
             request.setAttribute("ImgListfList", ImgList);
             // request.setAttribute("pi", pi);
