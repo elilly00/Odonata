@@ -9,7 +9,8 @@
   	ArrayList<sooksoImg> ImgList = (ArrayList<sooksoImg>)request.getAttribute("fList");
 
     User loginUser = (User)session.getAttribute("loginUser"); 
-    reserv r = (reserv)request.getAttribute("r");
+    //     reserv r = (reserv)request.getAttribute("r");
+    Reserv r = (Reserv)request.getAttribute("reserv");
 %>
 <!DOCTYPE html>
 <html>
