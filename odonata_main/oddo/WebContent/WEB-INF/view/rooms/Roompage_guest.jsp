@@ -10,7 +10,8 @@ pageEncoding="UTF-8"%>
 <% 
 	User loginUser = (User)session.getAttribute("loginUser");
 	Rooms room = (Rooms)request.getAttribute("room");
-	reserv r = (reserv)request.getAttribute("r");
+	// 	reserv r = (reserv)request.getAttribute("r");
+	Reserv r = (Reserv)request.getAttribute("rserv");
 	ArrayList<sooksoImg> ImgList = (ArrayList<sooksoImg>)request.getAttribute("ImgList");
 	review review = (review)request.getAttribute("reivew");
 %>
