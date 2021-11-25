@@ -63,11 +63,11 @@
   
 
         <div class="links">
-          <a href="<%= request.getContextPath() %>WEB-INF/view/user/user_id_find.jsp">아이디 찾기</a>
+          <a href="<%= request.getContextPath() %>/idfindForm.us">아이디 찾기</a>
         </div>
 <br>
         <div class="links">
-          <a href="<%= request.getContextPath() %>WEB-INF/view/user/user_pwd_find.jsp">비밀번호 찾기</a>
+          <a href="<%= request.getContextPath() %>/pwdfindForm.us">비밀번호 찾기</a>
         </div>
 <br>
         <div class="links">
