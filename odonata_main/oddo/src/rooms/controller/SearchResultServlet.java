@@ -35,43 +35,43 @@ public class SearchResultServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int listCount;
-        int currentPage;
-        int pageLimit;
-        int boardLimit;
-        int maxPage;
-        int startPage;
-        int endPage;
+        // int listCount;
+        // int currentPage;
+        // int pageLimit;
+        // int boardLimit;
+        // int maxPage;
+        // int startPage;
+        // int endPage;
         
         RoomsService rService = new RoomsService();
         
-        listCount = rService.getListCount(); // �� �Խñ� ���� 
+        // listCount = rService.getListCount(); // �� �Խñ� ���� 
         
-        currentPage = 1;
-        if (request.getParameter("currentPage") != null) {
-            currentPage = Integer.parseInt(request.getParameter("currentPage"));
-        }
+        // currentPage = 1;
+        // if (request.getParameter("currentPage") != null) {
+        //     currentPage = Integer.parseInt(request.getParameter("currentPage"));
+        // }
         
-        pageLimit = 5;
-        boardLimit = 4;
+        // pageLimit = 5;
+        // boardLimit = 4;
         
-        maxPage = (int) Math.ceil((double) listCount / boardLimit);
-        startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
-        endPage = startPage + (pageLimit - 1);
-        if (maxPage < endPage) {
-            endPage = maxPage;
-        }
+        // maxPage = (int) Math.ceil((double) listCount / boardLimit);
+        // startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
+        // endPage = startPage + (pageLimit - 1);
+        // if (maxPage < endPage) {
+        //     endPage = maxPage;
+        // }
         
-        PageInfo pi = new PageInfo(currentPage, listCount, pageLimit, boardLimit, maxPage, startPage, endPage);
+        // PageInfo pi = new PageInfo(currentPage, listCount, pageLimit, boardLimit, maxPage, startPage, endPage);
         
         ArrayList<Rooms> rList = rService.selectTList(1); 		// 숙소
-        ArrayList<sooksoImg> sList = rService.selectTList(2);   // 숙소 이미지
+        ArrayList<sooksoImg> ImgList = rService.selectTList(2);   // 숙소 이미지
         
         String page = null;
         if (rList != null && sList != null) {
             request.setAttribute("rList", rList);
-            request.setAttribute("fList", sList);
-            request.setAttribute("pi", pi);
+            request.setAttribute("ImgListfList", ImgList);
+            // request.setAttribute("pi", pi);
             page = "WEB-INF/view/search_result.jsp";
         } else {
             request.setAttribute("msg", "검색 조회 실패");

@@ -75,10 +75,10 @@
     
               <select class="kind" name="roomType">
                 <option>숙소 유형</option>
-                <option value="house1">공동 주택</option>
-                <option value="house2">주택</option>
-                <option value="outhouse">별채</option>
-                <option value="gesthous">게스트하우스</option>
+                <option value="공동 주택">공동 주택</option>
+                <option value="주택">주택</option>
+                <option value="별채">별채</option>
+                <option value="게스트하우스">게스트하우스</option>
               </select>
             </div>
     

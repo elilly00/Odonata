@@ -1,16 +1,13 @@
 package rooms.model.service;
 
-import static common.JDBCTemplate.close;
-import static common.JDBCTemplate.commit;
-import static common.JDBCTemplate.getConnection;
-import static common.JDBCTemplate.rollback;
+import static common.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.util.ArrayList;
 
 import rooms.model.DAO.RoomsDAO;
 import rooms.model.vo.Rooms;
-import sooksoimg.model.vo.sooksoImg;
+import rooms.model.vo.sooksoImg;
 
 public class RoomsService {
     
@@ -51,7 +48,7 @@ public class RoomsService {
         if (i == 1) {
             list = rDAO.selectRList(conn);	
         } else {
-            list = rDAO.selectFList(conn);
+            list = rDAO.selectImgList(conn);	
         }
         
         close(conn);
