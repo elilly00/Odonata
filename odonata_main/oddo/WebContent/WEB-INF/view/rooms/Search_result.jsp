@@ -265,18 +265,18 @@
         <span>
           <select class="button" name="roomType">
             <option>숙소 유형</option>
-            <option>아파트</option>
+            <option>공용 주택</option>
             <option>주택</option>
             <option>별채</option>
             <option>게스트하우스</option>
           </select>
-          <button class="button" name="Amenity" value="price">요금</button>
-          <button class="button" name="Amenity" value="kichen">주방</button>
-          <button class="button" name="Amenity" value="aircon">에어컨</button>
-          <button class="button" name="Amenity" value="washer">세탁기</button>
-          <button class="button" name="Amenity" value="pet">애완동물 동반</button>
-          <button class="button" name="Amenity" value="freeP">무료 주차장</button>
-          <button class="button" name="Amenity" value="breakfast">조식</button>
+          <button class="button" name="Amenity" value="요금">요금</button>
+                <button class="button" name="Amenity" value="주방">주방</button>
+                <button class="button" name="Amenity" value="aircon">에어컨</button>
+                <button class="button" name="Amenity" value="에어컨">세탁기</button>
+                <button class="button" name="Amenity" value="애완동물 동반">애완동물 동반</button>
+                <button class="button" name="Amenity" value="무료 주차장">무료 주차장</button>
+                <button class="button" name="Amenity" value="조식">조식</button>
         </span>
       </nav>
     </div>
@@ -306,7 +306,7 @@
         <% } %>
       </div>
       <br /><br />
-      <!--             <div class="info"> -->
+      <div class="info">
       <p><b><%= room.getRooms_Host() %></b></p>
 
       <br />
@@ -377,12 +377,17 @@
     }
     // 마킹
     const locations = [{
-        place: "광안리 해수욕장",
-        lat: 35.1532222614049,
-        lng: 129.11855625595865
+        lat: 35.15327033772827, 
+        lng: 129.11775981321813
       },
-      // { place:"어린이대공원역", lat: 37.547263, lng: 127.074181 },
+      
     ];
+
+    
+    $('.rooms').click(function(){
+				var rCd = $(this).chidren().eq(0).val();
+				location.href= "<%= request.getContextPath() %>/detail.ro?rCd=" + rCd;
+			});
   </script>
 
 </body>

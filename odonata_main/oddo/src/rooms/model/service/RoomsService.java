@@ -55,4 +55,28 @@ public class RoomsService {
         
         return list;
     }
+
+    public Rooms selectRooms(int rCd) {
+		Connection conn = getConnection();
+		
+		Rooms room = rDAO.selectRooms(conn, rCd);
+		
+		if(room != null) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		return room;
+	}
+
+	public ArrayList<sooksoImg> selectSooksoImg(int rCd) {
+		Connection conn = getConnection();
+		
+		ArrayList<sooksoImg> list = rDAO.selectSooksoImg(rCd, conn);
+		
+		close(conn);
+		
+		return list;
+	}
 }
