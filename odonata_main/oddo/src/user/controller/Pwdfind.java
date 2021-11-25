@@ -50,11 +50,11 @@ public class Pwdfind extends HttpServlet {
         
         if (pwd == null) {
             request.setAttribute("msg", "패스워드 찾기 실패");
-            RequestDispatcher view = request.getRequestDispatcher("view/user/user_pwd_find.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("WEB-INF/view/user/user_pwd_find.jsp");
             view.forward(request, response);
         } else {
             response.sendRedirect(request.getContextPath());
-            RequestDispatcher view = request.getRequestDispatcher("view/user/user_pwd_find_form.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("WEB-INF/view/user/user_pwd_find_form.jsp");
             view.forward(request, response);
         }
         

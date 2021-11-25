@@ -49,11 +49,11 @@ public class Idfind extends HttpServlet {
         
         if (id == null) {
             request.setAttribute("msg", "아이디 찾기 실패");
-            RequestDispatcher view = request.getRequestDispatcher("view/user/user_id_find.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("WEB-INF/view/user/user_id_find.jsp");
             view.forward(request, response);
         } else {
             response.sendRedirect(request.getContextPath());
-            RequestDispatcher view = request.getRequestDispatcher("view/user/user_id_find_form.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("WEB-INF/view/user/user_id_find_form.jsp");
             view.forward(request, response);
         }
         
