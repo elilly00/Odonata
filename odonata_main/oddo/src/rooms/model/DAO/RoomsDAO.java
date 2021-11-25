@@ -54,6 +54,7 @@ public class RoomsDAO {
             pstmt.setString(8, r.getRooms_DogAvail());
             pstmt.setString(9, r.getAmenity());
             pstmt.setString(10, r.getRooms_Desc());
+            pstmt.setString(11, r.getRooms_name());
             
             result = pstmt.executeUpdate();
             
@@ -66,7 +67,7 @@ public class RoomsDAO {
         return result;
     }
     
-        public int insertsooksoImg(Connection conn, ArrayList<sooksoImg> ImgList) {
+    public int insertsooksoImg(Connection conn, ArrayList<sooksoImg> ImgList) {
         PreparedStatement pstmt = null;
         int result = 0;
         
@@ -132,7 +133,7 @@ public class RoomsDAO {
                         rset.getString("rooms_personnel"), rset.getString("rooms_roomcnt"),
                         rset.getString("rooms_toiletcnt"), rset.getString("rooms_dogavail"), rset.getString("amenity"),
                         rset.getString("rooms_desc"), rset.getDate("rooms_regdate"), rset.getString("status"),
-                        rset.getInt("user_code")));
+                        rset.getInt("user_code"), rset.getString("room_name")));
             }
             
         } catch (SQLException e) {
@@ -144,13 +145,12 @@ public class RoomsDAO {
         return list;
     }
     
-    public ArrayList selectFList(Connection conn) {
+    public ArrayList selectImgList(Connection conn) {
         Statement stmt = null;
         ResultSet rset = null;
         ArrayList<sooksoImg> list = null;
         
-        String query = prop.getProperty("selectFList");
-        // image_Level�� 0�� �� (�����)�� ������
+        String query = prop.getProperty("selectImgList");
         
         try {
             stmt = conn.createStatement();
@@ -160,7 +160,9 @@ public class RoomsDAO {
             while (rset.next()) {
                 sooksoImg s = new sooksoImg();
                 s.setImage_number(rset.getInt("image_number"));
-                s.setChange_name(rset.getString("chang_name"));
+                s.setOrigin_name(rset.getString("origin_name"));
+                s.setChange_name(rset.getString("change_name"));
+                s.setImage_path(rset.getString("img_path"));
                 
                 list.add(s);
             }

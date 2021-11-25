@@ -18,7 +18,7 @@ import com.oreilly.servlet.MultipartRequest;
 import common.MyFileRenamePolicy;
 import rooms.model.service.RoomsService;
 import rooms.model.vo.Rooms;
-import sooksoimg.model.vo.sooksoImg;
+import rooms.model.vo.sooksoImg;
 
 /**
  * Servlet implementation class InsertRoomeServlet
@@ -44,9 +44,9 @@ public class InsertRoomsServlet extends HttpServlet {
         
         if (ServletFileUpload.isMultipartContent(request)) {
             
-            int maxSize = 1024 * 1024 * 10;  // 10Mbyte
-            String root = request.getSession().getServletContext().getRealPath("/");
-            String savePath = root + "thumbnail_uploadFiles/";
+            int maxSize = 1024 * 1024 * 10;		// 10Mbyte
+            String root = request.getSession().getServletContext().getRealPath("/");	// 웹 서버 컨테이너 경로 추출 : WebContent
+            String savePath = root + "thumbnail_uploadFiles/";	// 방금 뽑아낸 루트에 uploadFiles파일 추가함
             
             File f = new File(savePath);
             if (!f.exists()) {	
@@ -54,28 +54,28 @@ public class InsertRoomsServlet extends HttpServlet {
             }
             
             System.out.println(savePath);
-            MultipartRequest multiRequset = new MultipartRequest(request, savePath, maxSize, "UTF-8",
+            MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8",
                     new MyFileRenamePolicy());
             
             ArrayList<String> saveFiles = new ArrayList<String>();		// 파일의 바뀐 이름을 저장할 ArrayList
-            ArrayList<String> originFiles = new ArrayList<String>();	// 파일의 원래 이름을 저장할 ArrayList
+            ArrayList<String> originFiles = new ArrayList<String>();	// 파일의 원래 이름을 젖아할 ArrayList
             
-            Enumeration<String> files = multiRequset.getFileNames();
+            Enumeration<String> files = multiRequest.getFileNames();	// view에서 보낸 fileNames을 가져옴
             
             while (files.hasMoreElements()) {
                 //	System.out.println(files.nextElement());	
                 String name = files.nextElement();
                 
-                if (multiRequset.getFilesystemName(name) != null) {				
-                    saveFiles.add(multiRequset.getFilesystemName(name));		// 바뀐 이름
-                    originFiles.add(multiRequset.getOriginalFileName(name));	// 원래 이름
+                if (multiRequest.getFilesystemName(name) != null) {				// 해당 이미지에 대한 rename된 파일명을 가지고 옴	
+                    saveFiles.add(multiRequest.getFilesystemName(name));		// 바뀐 이름
+                    originFiles.add(multiRequest.getOriginalFileName(name));	// 원래 이름을 가져옴
                 }
             }
+            
             
             System.out.println(saveFiles);
             System.out.println(originFiles);
             
-           
             String Rooms_Host = multiRequest.getParameter("roomHost");
             String Rooms_Type = multiRequest.getParameter("roomType");
             String[] Rooms_Addr = multiRequest.getParameterValues("roomAddr");
@@ -115,7 +115,7 @@ public class InsertRoomsServlet extends HttpServlet {
             						Rooms_RoomCnt, Rooms_ToiletCnt, Rooms_DogAvail, strAmenity, Rooms_Desc, null, strAmenity, 0, Rooms_name);
             // rooms
             
-            // image
+            // 이미지
             ArrayList<sooksoImg> ImgList = new ArrayList<sooksoImg>();
             for (int e = originFiles.size() - 1; e >= 0; e--) {
                 sooksoImg s = new sooksoImg();
@@ -135,12 +135,13 @@ public class InsertRoomsServlet extends HttpServlet {
             
             int result = new RoomsService().insertRooms(room, ImgList);
             
-            if (result >= 1 + ImgList.size()) {
+            if (result >= 1+ImgList.size()) {
                 response.sendRedirect(request.getContextPath()); 
             } else {
                 request.setAttribute("msg", "숙소 등록 실패");
                 request.getRequestDispatcher("WEB-INF/view/errorPage.jsp").forward(request, response);
                 
+
                 for (int e = 0; e < saveFiles.size(); e++) {
                     File fail = new File(savePath + saveFiles.get(e));
                     fail.delete();
