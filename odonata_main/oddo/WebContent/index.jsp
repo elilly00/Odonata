@@ -150,9 +150,9 @@
       숙소를 등록하여 부수입을 올리고 새로운<br />
       가능성을 만나세요.
     </p>
-    <a href="<%= request.getContextPath() %>/WEB-INF/view/rooms/Registration.jsp">
+    <%-- <a href="<%= request.getContextPath() %>/WEB-INF/view/rooms/Registration.jsp">
       <button type="button">숙소 등록하기</button>
-    </a>
+    </a> --%>
   </div>
 </section>
 
@@ -246,7 +246,7 @@
     <section class="footerul3">
       <div>
         <div class="copyright">
-          <a>© 2021 잠자리, Inc.</a>
+          <a>© 2021 odonata, Inc.</a>
         </div>
         <div class="footermenu">
           <a>개인정보 처리방침</a>
