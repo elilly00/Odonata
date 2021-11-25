@@ -158,7 +158,7 @@
                         <input type="button" value="비밀 번호 변경" class="btn btn-secondary btn-sm btn-block" onclick="location.href='<%= request.getContextPath() %>/updatePwdForm.us'" />
                         <input type="button" value="쪽지" class="btn btn-secondary btn-sm btn-block" />
                         <input type="button" value="과거 예약 내역" class="btn btn-secondary btn-sm btn-block" />
-                        <input type="button" value="숙소 등록" class="btn btn-secondary btn-sm btn-block" />
+                        <input type="button" value="숙소 등록" class="btn btn-secondary btn-sm btn-block"  onclick="location.href='<%= request.getContextPath() %>/regist.ro'" />
                     </div>
                   </div>
                 </div>
