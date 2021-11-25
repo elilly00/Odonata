@@ -1,12 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"  import="payment.model.vo.Payment"%>
-<%@ page import="user.model.vo.User" %>
+    pageEncoding="UTF-8" %>
+
+<%@ page import="user.model.vo.User, 
+				reserv.model.vo.Reserv, 
+				rooms.model.vo.Rooms, 
+				payment.model.vo.Payment" %>
+
 <%
-  User loginUser = (User)session.getAttribute("loginUser");
-%>
-<% 
-	// 필요한 것 : 예약일(체크인,체크아웃), 숙소이름, 인원 수, 총 금액  -> payment : 금액 | Reserv: 체크인, 체크아웃, 숙소이름, 인원 수
-	// payment받아오기 
+	// Reserv: 체크인, 체크아웃, 인원 수, 가격  | Rooms : 숙소이름
+	User loginUser = (User)session.getAttribute("loginUser");
+	Reserv r = (Reserv)request.getAttribute("reserv");
+	//// Rooms에서 숙소이름 받아와야함
+	Rooms room = (Rooms)request.getAttribute("rooms");
 	Payment p = (Payment)request.getAttribute("payment");
 %>
 <!DOCTYPE html>
@@ -71,14 +76,13 @@
 
         <h3 class="title1">결제가 정상적으로 완료되었습니다.</h3>
 
-        <!-- 결제 정보 -->
         <div>
           <h4>결제 정보</h4>
           <div class="title5">
             <div class="title6">
-              <h5>예약 날짜: </h5>
-              <h5>숙소 이름 : </h5>
-              <h5>인원 : </h5>
+              <h5>예약 날짜: <%= r.getCheck_in() %> - <%= r.getCheck_out() %></h5>
+              <h5>숙소 이름 : <%= room.getRooms_name() %></h5>
+              <h5>인원 : <%= r.getPersonnel() %></h5>
 
               <hr>
               <hr>
@@ -87,8 +91,5 @@
 
           </div>
         </div>
-        <!-- 결제 정보 끝 -->
-
-
 
       </div>
