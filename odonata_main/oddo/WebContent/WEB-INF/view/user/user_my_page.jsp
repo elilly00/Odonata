@@ -2,7 +2,7 @@
     pageEncoding="UTF-8" import="user.model.vo.User, java.text.SimpleDateFormat"%>
 <%
   User loginUser = (User)session.getAttribute("loginUser");
-  String userBirth = new SimpleDateFormat("YY-MM-dd").format(loginUser.getUser_birth());
+  String userBirth = new SimpleDateFormat("yy-MM-dd").format(loginUser.getUser_birth());
 %>
 <!DOCTYPE html>
 
@@ -156,7 +156,7 @@
                         
                         <input type="button" value="내 정보 수정" class="btn btn-secondary btn-sm btn-block" onclick="location.href='<%= request.getContextPath() %>/updateForm.us'" />
                         <input type="button" value="비밀 번호 변경" class="btn btn-secondary btn-sm btn-block" onclick="location.href='<%= request.getContextPath() %>/updatePwdForm.us'" />
-                        <input type="button" value="쪽지" class="btn btn-secondary btn-sm btn-block" />
+                        <input type="button" value="쪽지" class="btn btn-secondary btn-sm btn-block" onclick="location.href='<%= request.getContextPath() %>/msgBoxForm.ms'" />
                         <input type="button" value="과거 예약 내역" class="btn btn-secondary btn-sm btn-block" />
                         <input type="button" value="숙소 등록" class="btn btn-secondary btn-sm btn-block"  onclick="location.href='<%= request.getContextPath() %>/regist.ro'" />
                     </div>

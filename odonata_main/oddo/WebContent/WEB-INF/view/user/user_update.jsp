@@ -4,7 +4,7 @@
   User loginUser = (User)session.getAttribute("loginUser");
   String emailId = loginUser.getUser_email().substring(0, loginUser.getUser_email().indexOf('@'));
   String emailDomain = loginUser.getUser_email().substring(loginUser.getUser_email().indexOf('@'));
-  String userBirth = new SimpleDateFormat("YY-MM-dd").format(loginUser.getUser_birth());
+  String userBirth = new SimpleDateFormat("yy-MM-dd").format(loginUser.getUser_birth());
   
   String[] selected = new String[3];
   switch(emailDomain) {
