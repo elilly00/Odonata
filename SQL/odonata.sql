@@ -124,7 +124,7 @@ CREATE TABLE "SookSoIMG" (
 	"Origin_name"	VARCHAR2(100)		NOT NULL,
 	"Change_name"	VARCHAR2(100)		NOT NULL,
 	"img_Level"	NUMBER		NOT NULL,   -- 이미지 레벨을 추가하였습니다.
-	"image_path"	VARCHAR2(50)		NOT NULL,
+	"image_path"	VARCHAR2(300)		NOT NULL,  -- 데이터 크기 변경하였습니다.
 	"Rooms_Code"	NUMBER		NOT NULL,
 	"Status"	VARCHAR2(20)	DEFAULT 'Y'	NOT NULL
 );
@@ -141,7 +141,7 @@ CREATE TABLE "Rooms" ( -- 데이터 타입을 변경하였습니다.
 	"Rooms_RoomCnt"	VARCHAR2(50)		NOT NULL,
 	"Rooms_ToiletCnt"	VARCHAR2(50)		NOT NULL,
 	"Rooms_DogAvail"	CHAR(1)	DEFAULT 'N'	NOT NULL,
-	"Amenity"	VARCHAR2(100)		NOT NULL,
+	"Amenity"	VARCHAR2(200)		NOT NULL,  -- 데이터 크기를 변경하였습니다.
 	"Rooms_Desc"	VARCHAR2(500)		NOT NULL,
 	"Rooms_RegDate"	DATE		NOT NULL,
 	"Status"	VARCHAR2(20)	DEFAULT 'Y'	NOT NULL,
