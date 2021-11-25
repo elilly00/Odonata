@@ -33,6 +33,7 @@
         <img class="main-navi" src="<%= request.getContextPath() %>/img/public_img/logo.png" href="<%= request.getContextPath() %>/index.jsp">
       </a>
     </div>
+    <%-- 검색 폼 시작 --%>
   <form id="loginForm" action="<%=request.getContextPath()%>/list.re" method="post">
     <div class="searching_box">
       <div class="searching_box_inner">
@@ -106,6 +107,7 @@
       </div>
     </div>
     </form>
+    <%-- 검색 폼 끝 --%>
   
     <div class="menu">
       <% if(loginUser == null) { %>
