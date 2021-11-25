@@ -18,14 +18,14 @@ import user.model.vo.User;
  */
 @WebServlet("/idfindForm.us")
 // name="UpdatePwdServlet",urlPatterns=
-public class Idfind extends HttpServlet {
+public class IdfindForm extends HttpServlet {
 
   private static final long serialVersionUID = 1L;
 
   /**
    * @see HttpServlet#HttpServlet()
    */
-  public Idfind() {
+  public IdfindForm() {
     super();
     // TODO Auto-generated constructor stub
   }
