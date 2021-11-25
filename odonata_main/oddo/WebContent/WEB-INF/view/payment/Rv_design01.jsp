@@ -7,7 +7,6 @@
 	User loginUser = (User)session.getAttribute("loginUser");
 	Reserv r = (Reserv)request.getAttribute("reserv");
 	Rooms room = (Rooms)request.getAttribute("rooms");
-
 %>
 
 <!DOCTYPE html>
@@ -48,29 +47,23 @@
 			justify-content: space-between;
 			align-items: center;
 		}
-
 		header {
 			margin: 0px;
 			padding: 0px;
 		}
-
 		.content {
 			font-size: 100%;
 			margin-left: 100px;
 			margin-right: 100px;
 		}
-
-
 		.checkboxDescription {
 			display: inline;
 			font-size: 0.8em;
 		}
-
 		#paymentChoice {
 			width: 400px;
 			height: 30px;
 		}
-
 		#refund_notice {
 			border: 1px solid black;
 			width: 100%;
@@ -78,64 +71,49 @@
 			overflow-y: scroll;
 			font-size: 0.8em;
 		}
-
 		#charge_info {
 			border: 1px solid black;
 			width: 100%;
 			height: 100px;
 		}
-
 		.agree {
 			font-size: 0.8em;
 			display: inline-block;
 		}
-
 		#mandatory {
 			font-size: 0.8em;
 			color: blue;
 		}
-
 		#choice {
 			font-size: 0.8em;
 			color: gray;
 		}
-
-
 		input {
 			padding: 5px;
 			border: 1px solid #dedede
 		}
-
 		input:read-only {
 			background-color: #dedede
 		}
-
 		select {
 			padding: 7px;
 			vertical-align: middle
 		}
-
 		.info {
 			width: 200px;
 		}
-
 		.em_red {
 			color: red;
 		}
-
 		.dyrmatpqn {
 			font-size: 1.0em;
-
 		}
-
 		.dyrmatpqn1 {
 			padding-left: 15px;
 		}
-
 		.rDateForm {
 			width: 300px;
 		}
-
 		.rDateForm tr {
 			text-align: middle;
 		}
@@ -239,7 +217,6 @@
 						<!-- LoginUser로 받아오기 -->
 						<!-- 					<input type="text" name="email1" id="email1" class="info" placeholder="이메일"> @
 						<input type="text" name="email2" id="email2" class="info" placeholder="이메일 도메인">
-
 						<select class="select" title="이메일 도메인 주소 선택" name="select_email" onChange="selectEmail(this)">
 							<option value="" selected>선택하세요</option>
 							<option value="naver.com">naver.com</option>
@@ -371,7 +348,6 @@
 		// 동의사항 선택 
 		var all = document.getElementById("all");
 		var agree = document.getElementsByName("agree");
-
 		function selectAll() {
 			if (all.checked) {
 				for (var i = 0; i < agree.length; i++) {
@@ -383,23 +359,19 @@
 				}
 			}
 		}
-
 		function selectOne() {
 			var count = 0;
-
 			for (var i = 0; i < agree.length; i++) {
 				if (agree[i].checked) {
 					count++;
 				}
 			}
-
 			if (count != 5) {
 				all.checked = false;
 			} else {
 				all.checked = true;
 			}
 		}
-
 		// 이메일 폼 : 값을 loginuser에서 받아오고 난 후에는 지울것
 		// 		function selectEmail(ele) {
 		// 			// ele = this
@@ -414,45 +386,38 @@
 		// 				$email2.val($ele.val());
 		// 			}
 		// 		}
-
 		// 결제페이지로 연결 -> required를 인식하기는하는데 그전에 결제 창이 뜸 
 		// => required는 submit을 할때만 걸러주는 애라서 해당 함수에서 window.open을 바로 연결하지 말고 모든 필드에 값이 들어왔을 때 열리게끔 로직을 추가
 		document.getElementById('paymentBtn').onclick = function () {
 			// 결제스크립트에 필요
-			var pName = < %= loginUser.getUser_name() % > /* document.getElementById("name").value */ ;
-			var pTel = < %= loginUser.getUser_phone() % > /* document.getElementById("tel").value */ ;
-			var pEmail = < %= loginUser.getUser_email() % >
+			var pName = <%= loginUser.getUser_name() %> /* document.getElementById("name").value */ ;
+			var pTel = <%= loginUser.getUser_phone() %> /* document.getElementById("tel").value */ ;
+			var pEmail = <%= loginUser.getUser_email() %>
 				/* document.getElementById("email1").value + "@" + document.getElementById("email2").value */
 			;
-
 			// SERVICE로 넘길 데이터 
-			var price = < %= r.getReserv_Price() % > ; // 숙소 가격
-			var vCode = < %= r.getV_code() % > ; // 예약 코드
-
+			var price = <%= r.getReserv_Price() %>; // 숙소 가격
+			var vCode = <%= r.getV_code() %>; // 예약 코드
 			// 선택되어야 결제가능
 			var refundCheck = document.getElementById('refundCheck'); // 취소, 환불규정
 			var age14 = document.getElementById('age14'); // 14세 이상 동의
 			var p_collect = document.getElementById('personalInfo_collect'); // 수집 이용 동의
 			var partyConsent = document.getElementById('3rdPartyConsent'); // 3자 제공
 			var accomodationUse = document.getElementById('Accommodation_use'); // 숙소이용규칙
-
 			/* --------------------------------------------------------------------------------- */
 			// ※ 아임포트 : 주문 페이지에 가맹점 식별코드를 이용하여 IMP 객체를 초기화합니다.
 			var IMP = window.IMP;
 			var code = "imp18406886";
 			IMP.init(code);
-
 			/* 
 				가맹점 식별 코드 : imp18406886
 				REST API 키 : 4301146235024506
 				REST API secret : 65f31c8c86859ebe1d61ec55457158bbcf97cc98043d69a46a35e37f9eebb230b539ff31319a1fb9
 			
 			*/
-
 			//  결제로 넘어가지 않아야 하는 경우 설정 
 			if (refundCheck.checked == false || age14.checked == false || p_collect.checked == false || partyConsent
 				.checked == false || accomodationUse.checked == false) {
-
 				if (refundCheck.checked == false) {
 					msg = "취소 및 환불규칙에 동의해주세요";
 					refundCheck.focus();
@@ -460,9 +425,7 @@
 					accomodationUse.checked == false) {
 					msg = "동의사항을 확인해주세요";
 				}
-
 				alert(msg);
-
 			} else { // 결제요청
 				IMP.request_pay({
 					pg: 'html5_inicis', // pg사
@@ -473,7 +436,6 @@
 					buyer_email: pEmail, // 구매자 이메일
 					buyer_name: pName, // 구매자 이름
 					buyer_tel: pTel, // 구매자 전화번호 
-
 				}, function (rsp) { // 4. 고객이 결제를 완료한 후 실행되는 함수(callback) 추가
 					if (rsp
 						.success
@@ -490,22 +452,16 @@
 							// 							        console.log("결제성공"); 
 							// ※ 새로운 url 요청 -> 데이터 정보를 받아 db에 저장, 마지막 결제완료 페이지까지 연결 
 							// 				location.href로 url만 보내면 데이터들이 안넘어갈테니까 쿼리스트링도 같이 넣어주기
-							location.href = "<%= request.getContextPath() %>/payment.bo?price=" + price +
-								"&vCode=" + vCode;
-
+							location.href = "<%= request.getContextPath() %>/payment.bo?vCode="  + vCode;
 						})
 					} else { // 결제 실패시 : 알림
 						var msg = '결제에 실패하였습니다. 에러내용 : ' + rsp.error_msg
 						alert(msg);
-
 						// 				                request.setAttribute("msg", "결제를 실패했습니다");
 						// 				        		request.getRequestDispatcher("errorPage.jsp").forward(request, response);
-
 					}
-
 				});
 			}
-
 		}
 	</script>
 </body>
