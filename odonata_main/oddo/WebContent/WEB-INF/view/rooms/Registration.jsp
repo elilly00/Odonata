@@ -75,8 +75,8 @@
     
               <select class="kind" name="roomType">
                 <option>숙소 유형</option>
-                <option value="house">공동 주택</option>
-                <option value="house">주택</option>
+                <option value="house1">공동 주택</option>
+                <option value="house2">주택</option>
                 <option value="outhouse">별채</option>
                 <option value="gesthous">게스트하우스</option>
               </select>
@@ -132,9 +132,6 @@
             <ul>
               <li>
                 <input type=number name="personNum" id="personNum" min="1" max="10" step="1" placeholder="0"/>
-                <!-- <input type="button" onclick='count1("plus1")' value="+" id="plus1"/>
-                <span id="result1">0</span>
-                <input type="button" onclick='count1("minus1")' value="-" id="minus1"/> -->
               </li>
             </ul>
   
@@ -145,9 +142,6 @@
             <ul>
               <li>
                 <input type=number name="roomCnt" id="roomCnt" min="1" max="4" step="1" placeholder="0"/>
-                <!-- <input type="button" onclick='count2("plus2")' value="+" id="plus2"/>
-                <span id="result2">0</span>
-                <input type="button" onclick='count2("minus2")' value="-" id="minus2"/> -->
               </li>
             </ul> 
   
@@ -158,9 +152,6 @@
             <ul>
               <li>
                 <input type=number name="toiletCnt" id="toiletCnt" min="1" max="3" step="1" placeholder="0"/>
-                <!-- <input type="button" onclick='count3("plus3")' value="+" id="plus3" />
-                <span id="result3">0</span>
-                <input type="button" onclick='count3("minus3")' value="-" id="minus3"/> -->
               </li>
             </ul>
       </div>
@@ -184,20 +175,20 @@
             
               <br />
             
-              <input type="checkbox" value="essentials" name="amenity" checked/>필수 품목(수건,휴지,치약)<br />
+              <input type="checkbox" value="필수 품목(수건,휴지,치약)" name="amenity" checked/>필수 품목(수건,휴지,치약)<br />
               <input type="checkbox" value="wifi" name="amenity"/>무선인터넷 <br />
-              <input type="checkbox" value="sap_con" name="amenity"/>샴푸/컨디셔너<br />
-              <input type="checkbox" value="tube" name="amenity"/>욕조 <br />
-              <input type="checkbox" value="tv" name="amenity"/>TV <br />
-              <input type="checkbox" value="aircon" name="amenity"/>에어컨 <br />
-              <input type="checkbox" value="hairDry" name="amenity"/>헤어드라이어 <br />
-              <input type="checkbox" value="iron" name="amenity"/>다리미 <br />
-              <input type="checkbox" value="breakfast" name="amenity"/>조식 <br />
-              <input type="checkbox" value="coffeMachine" name="amenity"/>커피머신기 <br />
-              <input type="checkbox" value="kitchen" name="amenity"/>주방 <br />
-              <input type="checkbox" value="washer" name="amenity"/>세탁기 <br />
-              <input type="checkbox" value="dryer" name="amenity"/>건조기<br />
-              <input type="checkbox" value="freeParking" name="amenity"/>무료 주차장<br />
+              <input type="checkbox" value="샴푸/컨디셔너" name="amenity"/>샴푸/컨디셔너<br />
+              <input type="checkbox" value="욕조" name="amenity"/>욕조 <br />
+              <input type="checkbox" value="TV" name="amenity"/>TV <br />
+              <input type="checkbox" value="에어컨" name="amenity"/>에어컨 <br />
+              <input type="checkbox" value="헤어드라이어" name="amenity"/>헤어드라이어 <br />
+              <input type="checkbox" value="다리미" name="amenity"/>다리미 <br />
+              <input type="checkbox" value="조식" name="amenity"/>조식 <br />
+              <input type="checkbox" value="커피머신기" name="amenity"/>커피머신기 <br />
+              <input type="checkbox" value="주방" name="amenity"/>주방 <br />
+              <input type="checkbox" value="세탁기" name="amenity"/>세탁기 <br />
+              <input type="checkbox" value="건조기" name="amenity"/>건조기<br />
+              <input type="checkbox" value="무료 주차장" name="amenity"/>무료 주차장<br />
             </div>
             
             <br /><br />
@@ -263,6 +254,32 @@
     
             <br /><br />
     
+            <div>
+              <h3 id="host">호스트 이름</h3>
+                  <pre>
+              
+    호스트 이름을 작성해주세요.
+            
+                 </pre>
+              
+                <input type="text" placeholder="별명 가능" class="hostName" name="roomHost">
+              </div>
+              
+              <br /><br />
+              
+              <div>
+              <h3 id="roomName">숙소 이름</h3>
+                <pre>
+              
+    숙소 이름을 지어주세요.
+            
+                </pre>
+              
+                <input type="text" placeholder="숙소 이름 작성" class="roomName" name="roomName">
+              </div>
+              
+              <br /><br />
+
             <div class="fini">
               <!-- 숙소 등록 완료 시 메인페이지로 이동함 -->
                 <input type="submit" value="등록완료" class="submit" onclick="location.href='<%= request.getContextPath() %>'"/>
