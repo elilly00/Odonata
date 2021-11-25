@@ -56,14 +56,9 @@
 
   .input { margin-right: 35px; }
   
-  .location-input1 {
-    height: 20px;
-    text-align: center;
-    border: 1px solid lightgrey;
-    border-radius: 10px;
-  }
-
-  .location-input2 {
+  .location-input1,
+  .location-input2,
+  .room-price {
     height: 20px;
     text-align: center;
     border: 1px solid lightgrey;
@@ -132,6 +127,14 @@
     -webkit-transform: translateX(26px); 
     -ms-transform: translateX(26px); 
     transform: translateX(26px); 
+  }
+
+  .hostName,
+  .roomName {
+  	height: 20px;
+    text-align: center;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
   }
 
   /* 등록완료 버튼 */

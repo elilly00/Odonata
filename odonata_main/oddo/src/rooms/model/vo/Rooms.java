@@ -12,17 +12,18 @@ public class Rooms {
     private String Rooms_RoomCnt;
     private String Rooms_ToiletCnt;
     private String Rooms_DogAvail;
-    private String Amenity;	
+    private String Amenity;
     private String Rooms_Desc;
     private Date Rooms_RegDate;
     private String Status;
     private int User_code;
+    private String Rooms_name;
 
     public Rooms() {}
 
 	public Rooms(int rooms_Code, String rooms_Host, String rooms_Type, String rooms_Addr, String rooms_Price,
 			String rooms_Personnel, String rooms_RoomCnt, String rooms_ToiletCnt, String rooms_DogAvail, String amenity,
-			String rooms_Desc, Date rooms_RegDate, String status, int user_code) {
+			String rooms_Desc, Date rooms_RegDate, String status, int user_code, String rooms_name) {
 		super();
 		Rooms_Code = rooms_Code;
 		Rooms_Host = rooms_Host;
@@ -38,6 +39,7 @@ public class Rooms {
 		Rooms_RegDate = rooms_RegDate;
 		Status = status;
 		User_code = user_code;
+		Rooms_name = rooms_name;
 	}
 
 	public int getRooms_Code() {
@@ -152,13 +154,24 @@ public class Rooms {
 		User_code = user_code;
 	}
 
+	public String getRooms_name() {
+		return Rooms_name;
+	}
+
+	public void setRooms_name(String rooms_name) {
+		Rooms_name = rooms_name;
+	}
+
 	@Override
 	public String toString() {
 		return "Rooms [Rooms_Code=" + Rooms_Code + ", Rooms_Host=" + Rooms_Host + ", Rooms_Type=" + Rooms_Type
 				+ ", Rooms_Addr=" + Rooms_Addr + ", Rooms_Price=" + Rooms_Price + ", Rooms_Personnel=" + Rooms_Personnel
 				+ ", Rooms_RoomCnt=" + Rooms_RoomCnt + ", Rooms_ToiletCnt=" + Rooms_ToiletCnt + ", Rooms_DogAvail="
 				+ Rooms_DogAvail + ", Amenity=" + Amenity + ", Rooms_Desc=" + Rooms_Desc + ", Rooms_RegDate="
-				+ Rooms_RegDate + ", Status=" + Status + ", User_code=" + User_code + "]";
+				+ Rooms_RegDate + ", Status=" + Status + ", User_code=" + User_code + ", Rooms_name=" + Rooms_name
+				+ "]";
 	}
+
+	
 	
 }

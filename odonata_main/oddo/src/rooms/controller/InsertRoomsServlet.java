@@ -71,29 +71,22 @@ public class InsertRoomsServlet extends HttpServlet {
                     originFiles.add(multiRequset.getOriginalFileName(name));	// 원래 이름
                 }
             }
-
-//			System.out.println(request.getParameter("roomType"));
-//			System.out.println(request.getParameter("roomAddr"));
-//			System.out.println(request.getParameter("roomPrice"));
-//			System.out.println(request.getParameter("personNum"));
-//			System.out.println(request.getParameter("roomCnt"));
-//			System.out.println(request.getParameter("toiletCont"));
-//			System.out.println(request.getParameter("pet"));
-//			System.out.println(request.getParameter("amenity"));
-//			System.out.println(request.getParameter("Desc"));
             
             System.out.println(saveFiles);
             System.out.println(originFiles);
             
-            String Rooms_Type = multiRequset.getParameter("roomType");
-            String[] Rooms_Addr = multiRequset.getParameterValues("roomAddr");
-            String Rooms_Price = multiRequset.getParameter("roomPrice");
-            String Rooms_Personnel = multiRequset.getParameter("personNum");
-            String Rooms_RoomCnt = multiRequset.getParameter("roomCnt");
-            String Rooms_ToiletCnt = multiRequset.getParameter("toiletCont");
-            String Rooms_DogAvail = multiRequset.getParameter("pet");
-            String[] Amenity = multiRequset.getParameterValues("amenity");
-            String Rooms_Desc = multiRequset.getParameter("Desc");
+           
+            String Rooms_Host = multiRequest.getParameter("roomHost");
+            String Rooms_Type = multiRequest.getParameter("roomType");
+            String[] Rooms_Addr = multiRequest.getParameterValues("roomAddr");
+            String Rooms_Price = multiRequest.getParameter("roomPrice");
+            String Rooms_Personnel = multiRequest.getParameter("personNum");
+            String Rooms_RoomCnt = multiRequest.getParameter("roomCnt");
+            String Rooms_ToiletCnt = multiRequest.getParameter("toiletCnt");
+            String Rooms_DogAvail = multiRequest.getParameter("pet");
+            String[] Amenity = multiRequest.getParameterValues("amenity");
+            String Rooms_Desc = multiRequest.getParameter("Desc");
+            String Rooms_name = multiRequest.getParameter("roomName");
             
             String strRooms_Addr = "";
             if (Rooms_Addr != null) {
@@ -118,8 +111,8 @@ public class InsertRoomsServlet extends HttpServlet {
                 
             }
             
-            Rooms room = new Rooms(0, null, Rooms_Type, strRooms_Addr, Rooms_Price, Rooms_Personnel, Rooms_RoomCnt, 
-            					   Rooms_ToiletCnt, Rooms_DogAvail, strAmenity, Rooms_Desc, null, null, 0);
+            Rooms room = new Rooms(0, Rooms_Host, Rooms_Type, strRooms_Addr, Rooms_Price, Rooms_Personnel, 
+            						Rooms_RoomCnt, Rooms_ToiletCnt, Rooms_DogAvail, strAmenity, Rooms_Desc, null, strAmenity, 0, Rooms_name);
             // rooms
             
             // image
