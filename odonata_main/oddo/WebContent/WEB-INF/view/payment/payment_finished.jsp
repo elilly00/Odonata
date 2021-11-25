@@ -4,7 +4,8 @@
 <%@ page import="user.model.vo.User, 
 				reserv.model.vo.Reserv, 
 				rooms.model.vo.Rooms, 
-				payment.model.vo.Payment" %>
+				payment.model.vo.Payment" 
+%>
 
 <%
 	// Reserv: 체크인, 체크아웃, 인원 수, 가격  | Rooms : 숙소이름
@@ -81,7 +82,7 @@
 
               <hr>
               <hr>
-              <h5>총 금액 : <%= p.getPrice() %></h5>
+              <h5>총 금액 : <%= r.getReserv_Price() %></h5>
             </div>
 
           </div>

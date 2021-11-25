@@ -1,4 +1,4 @@
-package mpayment.model.dao;
+package payment.model.dao;
 
 import static common.JDBCTemplate.*;
 
@@ -35,8 +35,10 @@ public class PaymentDAO {
 		
 		try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, payment.getPrice());
-			pstmt.setInt(2, payment.getvCode()); 
+//			pstmt.setInt(1, payment.getPrice());
+//			pstmt.setInt(2, payment.getvCode()); 
+
+			pstmt.setInt(1, payment.getvCode()); 
 			
 			result = pstmt.executeUpdate();
 			

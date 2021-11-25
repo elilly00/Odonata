@@ -35,15 +35,15 @@ public class insertPaymentServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-//		
-		// 주문자 이름, 전화번호, 이메일, 숙소이름, 게스트 수, 체크인, 체크아웃은 RESERV테이블에 INSERT
-		int price = Integer.parseInt(request.getParameter("price")); // 숙소 가격 
+		
+		int price = Integer.parseInt(request.getParameter("price")); 
 		int vCode = Integer.parseInt(request.getParameter("vCode"));
 		// NumberFormatException : 숫자 형식의 오류
 		// -> [0] 바이트에서 시작하고 [11] 바이트에서 끝나며 값이 [=price=1000]인, 유효하지 않은 chunk는 무시됩니다. 
-		// : 값이 왜 저렇게 들어갔지 => location.href로 보낼때 ?뒤에 =이 있었음
+		// : location.href로 보낼때 ?뒤에 =이 있었음
 
-		Payment payment = new Payment(0, vCode, price, null, null);
+//		Payment payment = new Payment(0, vCode, price, null, null);
+		Payment payment = new Payment(0, vCode, null, null);
 		
 		int result = new PaymentService().insertPayment(payment);
 		
