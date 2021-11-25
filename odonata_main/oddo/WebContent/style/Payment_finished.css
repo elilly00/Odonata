@@ -182,3 +182,8 @@ body {
   display: inline-block;
   vertical-align:middle;
 } */
+.profile {
+  height: 40px;
+
+  background-color: #f2bba7;
+}

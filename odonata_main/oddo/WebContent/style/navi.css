@@ -398,3 +398,8 @@ ul > li.disabled {
   width: 100px;
   height: 100px;
 }
+.profile {
+  height: 40px;
+
+  background-color: #f2bba7;
+}

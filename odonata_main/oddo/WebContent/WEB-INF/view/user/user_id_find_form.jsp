@@ -57,22 +57,22 @@
                         </c:forEach>
                       </strong>입니다.</h5>
 
-                    
-
-                      
 
 
 
-                      <div class="form-check d-flex justify-content-center mb-4">
-
-                      </div>
 
 
-                      <a href="<%= request.getContextPath() %>/WEB-INF/view/login.jsp">
-                        <input type="submit" value="로그인 화면으로 돌아가기" class="submit-btn" />
-                      </a>
 
-                    
+                    <div class="form-check d-flex justify-content-center mb-4">
+
+                    </div>
+
+
+                    <a href="<%= request.getContextPath() %>/WEB-INF/view/login.jsp">
+                      <input type="submit" value="로그인 화면으로 돌아가기" class="submit-btn" />
+                    </a>
+
+
                   </div>
                 </div>
               </div>

@@ -142,3 +142,9 @@ body {
   display: block;
   margin: auto;
 }
+
+.profile {
+  height: 40px;
+
+  background-color: #f2bba7;
+}

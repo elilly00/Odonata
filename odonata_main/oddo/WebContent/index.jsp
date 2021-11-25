@@ -6,6 +6,7 @@
 %>
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -30,88 +31,91 @@
     <div class="logo">
       <!-- <i class="fab fa-airbnb"></i> 잠자리 -->
       <a href="<%= request.getContextPath() %>/WEB-INF/index.jsp">
-        <img class="main-navi" src="<%= request.getContextPath() %>/img/public_img/logo.png" href="<%= request.getContextPath() %>/index.jsp">
+        <img class="main-navi" src="<%= request.getContextPath() %>/img/public_img/logo.png"
+          href="<%= request.getContextPath() %>/index.jsp">
       </a>
     </div>
     <%-- 검색 폼 시작 --%>
-  <form id="loginForm" action="<%=request.getContextPath()%>/list.re" method="post">
-    <div class="searching_box">
-      <div class="searching_box_inner">
-        <div class="location">
-          <p>위치</p>
-        </div>
-        <div class="location_input">
-          <input id="inputLocalizacao" type="text" class="dropdown-toggle" autocomplete="off" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="true" placeholder="도시 또는 지역을 입력하세요."></input>
-        </div>
-        <div class="checkin">
-          <p>체크인/체크아웃</p>
-        </div>
-        <div id="demo">
-          <input type="text" class="datePicker" placeholder="체크인/체크아웃 날자를 선택" id="datePicker" readonly>
-          <span id="calendar"></span>
-        </div>
+    <form id="loginForm" action="<%=request.getContextPath()%>/list.re" method="post">
+      <div class="searching_box">
+        <div class="searching_box_inner">
+          <div class="location">
+            <p>위치</p>
+          </div>
+          <div class="location_input">
+            <input id="inputLocalizacao" type="text" class="dropdown-toggle" autocomplete="off" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="true" placeholder="도시 또는 지역을 입력하세요."></input>
+          </div>
+          <div class="checkin">
+            <p>체크인/체크아웃</p>
+          </div>
+          <div id="demo">
+            <input type="text" class="datePicker" placeholder="체크인/체크아웃 날자를 선택" id="datePicker" readonly>
+            <span id="calendar"></span>
+          </div>
 
-        <script src="<%= request.getContextPath() %>/js/calendar.js"></script>
-        <script>
-          var trigger = document.querySelector('#datePicker');
-          var dateComponent = new DatePicker({
-            el: document.querySelector('#calendar'),
-            trigger: trigger,
-            onchange: function (curr) {
-              trigger.value = curr;
-            }
-          });
+          <script src="<%= request.getContextPath() %>/js/calendar.js"></script>
+          <script>
+            var trigger = document.querySelector('#datePicker');
+            var dateComponent = new DatePicker({
+              el: document.querySelector('#calendar'),
+              trigger: trigger,
+              onchange: function (curr) {
+                trigger.value = curr;
+              }
+            });
 
-          trigger.onfocus = function () {
-            dateComponent.show();
-          };
-        </script>
-        <div class="peoplenum">
-          <p>인원 - 성인 / 유아</p>
-        </div>
+            trigger.onfocus = function () {
+              dateComponent.show();
+            };
+          </script>
+          <div class="peoplenum">
+            <p>인원 - 성인 / 유아</p>
+          </div>
 
-        <div class="peoplenum_input">
-          <select class="input_box">
-            <option value="1">1명</option>
-            <option value="2">2명</option>
-            <option value="3">3명</option>
-            <option value="4">4명</option>
-            <option value="5">5명</option>
-            <option value="6">6명</option>
-            <option value="7">7명</option>
-            <option value="8">8명</option>
-            <option value="9">9명</option>
-            <option value="10">10명</option>
-          </select>
-          <select class="input_box">
-            <option value="1">1명</option>
-            <option value="2">2명</option>
-            <option value="3">3명</option>
-            <option value="4">4명</option>
-            <option value="5">5명</option>
-            <option value="6">6명</option>
-            <option value="7">7명</option>
-            <option value="8">8명</option>
-            <option value="9">9명</option>
-            <option value="10">10명</option>
-          </select>
-        </div>
-        <div class="search_button">
-          <a class="search_button_a">
-            <button class="search_img" onclick="alert" type="button" src="<%= request.getContextPath() %>/img/public_img/search.png">
-              <img class="search_img" src="<%= request.getContextPath() %>/img/public_img/search.png" />
-            </button>
-          </a>
+          <div class="peoplenum_input">
+            <select class="input_box">
+              <option value="1">1명</option>
+              <option value="2">2명</option>
+              <option value="3">3명</option>
+              <option value="4">4명</option>
+              <option value="5">5명</option>
+              <option value="6">6명</option>
+              <option value="7">7명</option>
+              <option value="8">8명</option>
+              <option value="9">9명</option>
+              <option value="10">10명</option>
+            </select>
+            <select class="input_box">
+              <option value="1">1명</option>
+              <option value="2">2명</option>
+              <option value="3">3명</option>
+              <option value="4">4명</option>
+              <option value="5">5명</option>
+              <option value="6">6명</option>
+              <option value="7">7명</option>
+              <option value="8">8명</option>
+              <option value="9">9명</option>
+              <option value="10">10명</option>
+            </select>
+          </div>
+          <div class="search_button">
+            <a class="search_button_a">
+              <button class="search_img" onclick="alert" type="button"
+                src="<%= request.getContextPath() %>/img/public_img/search.png">
+                <img class="search_img" src="<%= request.getContextPath() %>/img/public_img/search.png" />
+              </button>
+            </a>
+          </div>
         </div>
       </div>
-    </div>
     </form>
     <%-- 검색 폼 끝 --%>
-  
+
     <div class="menu">
       <% if(loginUser == null) { %>
-      <button type="button" onclick="location.href='<%= request.getContextPath() %>/loginForm.us'" class="item menusolo hostdg">
+      <button type="button" onclick="location.href='<%= request.getContextPath() %>/loginForm.us'"
+        class="item menusolo hostdg">
         로그인/회원가입
       </button>
       <% } else { %>
@@ -126,8 +130,9 @@
         </div>
       </div>
       <div class="button" type="button" onclick="location.href='<%= request.getContextPath() %>/myPageForm.us'">
-      <img class="profile" src="<%= request.getContextPath() %>/img/public_img/profile.png" alt="마이페이지" id="profile"  />
-    </div>
+        <img class="profile" src="<%= request.getContextPath() %>/img/public_img/profile.png" alt="마이페이지"
+          id="profile" />
+      </div>
       <% } %>
     </div>
   </nav>
@@ -149,7 +154,7 @@
       가능성을 만나세요.
     </p>
     <%-- <a href="<%= request.getContextPath() %>/WEB-INF/view/rooms/Registration.jsp">
-      <button type="button">숙소 등록하기</button>
+    <button type="button">숙소 등록하기</button>
     </a> --%>
   </div>
 </section>

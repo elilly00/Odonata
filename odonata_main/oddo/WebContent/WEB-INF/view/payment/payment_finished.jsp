@@ -36,7 +36,8 @@
     </a>
     <div class="menu">
       <% if(loginUser == null) { %>
-      <button type="button" onclick="location.href='<%= request.getContextPath() %>/loginForm.us'" class="item menusolo hostdg">
+      <button type="button" onclick="location.href='<%= request.getContextPath() %>/loginForm.us'"
+        class="item menusolo hostdg">
         로그인/회원가입
       </button>
       <% } else { %>
@@ -50,13 +51,13 @@
             onclick="location.href='<%= request.getContextPath() %>/logout.me'">
         </div>
       </div>
-      <div class="button" type="button" onclick="location.href='<%= request.getContextPath() %>/myPageForm.us'">
-          <img class="profile" src="<%= request.getContextPath() %>/img/public_img/profile.png" alt="마이페이지" id="profile"  />
-        </div>
-
-          <% } %>
-        </button>
+      <div class="item menusolo">
       </div>
+      <div class="button" type="button" onclick="location.href='<%= request.getContextPath() %>/myPageForm.us'">
+        <img class="profile" src="<%= request.getContextPath() %>/img/public_img/profile.png" alt="마이페이지"
+          id="profile" />
+      </div>
+      <% } %>
     </div>
   </nav>
 

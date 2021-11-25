@@ -114,3 +114,8 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+.profile {
+  height: 40px;
+
+  background-color: #f2bba7;
+}
