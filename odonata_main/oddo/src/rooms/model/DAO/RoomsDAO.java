@@ -66,20 +66,20 @@ public class RoomsDAO {
         return result;
     }
     
-    public int insertsooksoImg(Connection conn, ArrayList<sooksoImg> ImgList) {
+        public int insertsooksoImg(Connection conn, ArrayList<sooksoImg> ImgList) {
         PreparedStatement pstmt = null;
         int result = 0;
         
         String query = prop.getProperty("insertsooksoImg");
         
         try {
-            for (int e = 0; e < ImgList.size(); e++) {
+            for (int i = 0; i < ImgList.size(); i++) {
                 pstmt = conn.prepareStatement(query);
                 
-                pstmt.setString(1, ImgList.get(e).getOrigin_name());
-                pstmt.setString(2, ImgList.get(e).getChange_name());
-                pstmt.setString(3, ImgList.get(e).getImage_path());
-                pstmt.setInt(4, ImgList.get(e).getImage_Level());
+                pstmt.setString(1, ImgList.get(i).getOrigin_name());
+                pstmt.setString(2, ImgList.get(i).getChange_name());
+                pstmt.setInt(3, ImgList.get(i).getImage_Level());
+                pstmt.setString(4, ImgList.get(i).getImage_path());
                 
                 result += pstmt.executeUpdate();
             }

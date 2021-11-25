@@ -44,7 +44,7 @@ public class InsertRoomsServlet extends HttpServlet {
         
         if (ServletFileUpload.isMultipartContent(request)) {
             
-            int maxSize = 1024 * 1024 * 10;
+            int maxSize = 1024 * 1024 * 10;  // 10Mbyte
             String root = request.getSession().getServletContext().getRealPath("/");
             String savePath = root + "thumbnail_uploadFiles/";
             
@@ -57,8 +57,8 @@ public class InsertRoomsServlet extends HttpServlet {
             MultipartRequest multiRequset = new MultipartRequest(request, savePath, maxSize, "UTF-8",
                     new MyFileRenamePolicy());
             
-            ArrayList<String> saveFiles = new ArrayList<String>();		
-            ArrayList<String> originFiles = new ArrayList<String>();	
+            ArrayList<String> saveFiles = new ArrayList<String>();		// 파일의 바뀐 이름을 저장할 ArrayList
+            ArrayList<String> originFiles = new ArrayList<String>();	// 파일의 원래 이름을 저장할 ArrayList
             
             Enumeration<String> files = multiRequset.getFileNames();
             
@@ -67,8 +67,8 @@ public class InsertRoomsServlet extends HttpServlet {
                 String name = files.nextElement();
                 
                 if (multiRequset.getFilesystemName(name) != null) {				
-                    saveFiles.add(multiRequset.getFilesystemName(name));		
-                    originFiles.add(multiRequset.getOriginalFileName(name));	
+                    saveFiles.add(multiRequset.getFilesystemName(name));		// 바뀐 이름
+                    originFiles.add(multiRequset.getOriginalFileName(name));	// 원래 이름
                 }
             }
 
@@ -118,8 +118,8 @@ public class InsertRoomsServlet extends HttpServlet {
                 
             }
             
-            Rooms room = new Rooms(0, null, Rooms_Type, strRooms_Addr, Rooms_Price, Rooms_Personnel, Rooms_RoomCnt,
-                    Rooms_ToiletCnt, Rooms_DogAvail, strAmenity, Rooms_Desc, null, 0, null);
+            Rooms room = new Rooms(0, null, Rooms_Type, strRooms_Addr, Rooms_Price, Rooms_Personnel, Rooms_RoomCnt, 
+            					   Rooms_ToiletCnt, Rooms_DogAvail, strAmenity, Rooms_Desc, null, null, 0);
             // rooms
             
             // image

@@ -33,7 +33,7 @@ public class RoomsService {
         return result1 + result2;
     }
     
-    public int getListCount() {  // ��ü �� ����Ʈ 
+    public int getListCount() {  
         Connection conn = getConnection();
         
         int listCount = rDAO.getListCount(conn);
@@ -49,9 +49,9 @@ public class RoomsService {
         ArrayList list = null;
         
         if (i == 1) {
-            list = rDAO.selectRList(conn);	// �Խñ�
+            list = rDAO.selectRList(conn);	
         } else {
-            list = rDAO.selectFList(conn);	// ����
+            list = rDAO.selectFList(conn);
         }
         
         close(conn);
