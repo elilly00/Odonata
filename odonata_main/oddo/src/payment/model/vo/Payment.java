@@ -10,6 +10,8 @@ public class Payment {
 	private Date pDate; // 결제일
 	private String pStatus; // 결제 상태
 	
+	public Payment() {}
+	
 	public Payment(int pCode, int vCode, int price, Date pDate, String pStatus) {
 		super();
 		this.pCode = pCode;
