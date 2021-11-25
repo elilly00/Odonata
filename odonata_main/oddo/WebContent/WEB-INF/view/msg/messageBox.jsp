@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList, msg.model.vo.*"%>
+    pageEncoding="UTF-8" import="user.model.vo.User, java.util.ArrayList, msg.model.vo.*"%>
 <%
     ArrayList<Message> list = (ArrayList)request.getAttribute("list");
     PageInfo pi = (PageInfo)request.getAttribute("pi");
@@ -139,15 +139,15 @@
           <table class="table table-borderless" id="messageText">
             <thead>
               <tr>
-                <th class="col-md-1"><%= msg.getMessage_Title() %></th>
-                <td class="col-md-1">from &nbsp;&nbsp;&nbsp;&nbsp;<b><%= msg.getSend_Id() %></b></td>
-                <td><%= msg.getSendTime() %></td>
+<%--                 <th class="col-md-1"><%= msg.getMessage_Title() %></th> --%>
+<%--                 <td class="col-md-1">from &nbsp;&nbsp;&nbsp;&nbsp;<b><%= msg.getSend_Id() %></b></td> --%>
+<%--                 <td><%= msg.getSendTime() %></td> --%>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td colspan="3">
-                    <%= msg.getMessage_Text() %>
+<%--                     <%= msg.getMessage_Text() %> --%>
                 </td>
               </tr>
             </tbody>
@@ -162,6 +162,9 @@
       </div>
 
       <div class="mx-5">
+        <button type="button" class="btn btn-secondary btn-sm btn-block">
+          작성
+        </button>
         <button type="button" class="btn btn-secondary btn-sm btn-block">
           답장
         </button>

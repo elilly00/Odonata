@@ -1,4 +1,4 @@
-package user.controller;
+package msg.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ import user.model.vo.User;
 /**
  * Servlet implementation class MessageBoxFormServlet
  */
-@WebServlet("/msgBoxForm.us")
+@WebServlet("/msgBoxForm.ms")
 public class MessageBoxFormServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     
@@ -69,11 +69,11 @@ public class MessageBoxFormServlet extends HttpServlet {
         
         String page = null;
         if (list != null) {
-            page = "WebContent/msg/messageBox.jsp";
+            page = "WEB-INF/view/msg/messageBox.jsp";
             request.setAttribute("list", list);
             request.setAttribute("pi", pi);
         } else {
-            page = "WebContent/errorPage.jsp";
+            page = "WEB-INF/errorPage.jsp";
             request.setAttribute("msg", "메세지 조회 실패");
         }
         
