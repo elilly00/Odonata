@@ -18,7 +18,7 @@ public class PaymentDAO {
 	public PaymentDAO() {
 		prop = new Properties();
 		
-		String fileName = PaymentDAO.class.getResource("/main/sql/payment/payment-query.properties").getPath();
+		String fileName = PaymentDAO.class.getResource("/sql/payment/payment-query.properties").getPath();
 		
 		try {
 			prop.load(new FileReader(fileName));
