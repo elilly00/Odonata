@@ -9,7 +9,7 @@
       <head>
         <meta charset="UTF-8" />
         <title>Registration</title>
-        <link rel="stylesheet" href="<%= request.getContextPath() %>/Registration.css">
+        <link rel="stylesheet" href="<%= request.getContextPath() %>/style/Registration.css">
         <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
       </head>
