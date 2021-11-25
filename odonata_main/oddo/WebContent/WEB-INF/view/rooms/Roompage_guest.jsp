@@ -52,12 +52,9 @@ pageEncoding="UTF-8"%>
       <div class="item menusolo">
         <!-- <i class="fas fa-globe"></i> -->
       </div>
-      <div class="item menuset">
-        <button class="mypage" type="button" onclick="location.href='<%= request.getContextPath() %>/myPage.me'" class="item menusolo hostdg">
-          <!-- <i class="fas fa-bars"></i> -->
-          <a href="<%= request.getContextPath()%>/view/user/user_my_page.jsp">
-            <i class="fas fa-user-circle"></i>
-          </a>
+      <div class="button" type="button" onclick="location.href='<%= request.getContextPath() %>/myPageForm.us'">
+          <img class="profile" src="<%= request.getContextPath() %>/img/public_img/profile.png" alt="마이페이지" id="profile"  />
+        </div>
 
           <% } %>
         </button>
