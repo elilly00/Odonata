@@ -1,32 +1,31 @@
 package reserv.model.vo;
+// package reserv.model.vo;
 
 import java.sql.Date;
 
-public class reserv {
-	private int v_code;
-	private char v_status;
-	private Date check_in;
-	private Date check_out;
-	private int personnel;
-	private int rooms_code;
-	private int user_code;
-	private char status;
-	private String room_name;
+public class Reserv {
+	private int v_code; // 예약코드
+	private String status; // 예약상태
+	private Date check_in; // 체크인
+	private Date check_out; // 체크아웃
+	private String personnel; // 예약인원
+	private int rooms_code; // 숙소코드
+	private int user_code; // 사용자 코드
+	private int reserv_Price; // 예약 금액
 	
-	public reserv() {}
+	public Reserv() {}
 
-	public reserv(int v_code, char v_status, Date check_in, Date check_out, int personnel, int rooms_code,
-			int user_code, char status, String room_name) {
+	public Reserv(int v_code, String status, Date check_in, Date check_out, String personnel, int rooms_code,
+			int user_code, int reserv_Price) {
 		super();
 		this.v_code = v_code;
-		this.v_status = v_status;
+		this.status = status;
 		this.check_in = check_in;
 		this.check_out = check_out;
 		this.personnel = personnel;
 		this.rooms_code = rooms_code;
 		this.user_code = user_code;
-		this.status = status;
-		this.room_name = room_name;
+		this.reserv_Price = reserv_Price;
 	}
 
 	public int getV_code() {
@@ -37,12 +36,12 @@ public class reserv {
 		this.v_code = v_code;
 	}
 
-	public char getV_status() {
-		return v_status;
+	public String getStatus() {
+		return status;
 	}
 
-	public void setV_status(char v_status) {
-		this.v_status = v_status;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public Date getCheck_in() {
@@ -61,11 +60,11 @@ public class reserv {
 		this.check_out = check_out;
 	}
 
-	public int getPersonnel() {
+	public String getPersonnel() {
 		return personnel;
 	}
 
-	public void setPersonnel(int personnel) {
+	public void setPersonnel(String personnel) {
 		this.personnel = personnel;
 	}
 
@@ -85,28 +84,22 @@ public class reserv {
 		this.user_code = user_code;
 	}
 
-	public char getStatus() {
-		return status;
+	public int getReserv_Price() {
+		return reserv_Price;
 	}
 
-	public void setStatus(char status) {
-		this.status = status;
-	}
-
-	public String getRoom_name() {
-		return room_name;
-	}
-
-	public void setRooms_name(String room_name) {
-		this.room_name = room_name;
+	public void setReserv_Price(int reserv_Price) {
+		this.reserv_Price = reserv_Price;
 	}
 
 	@Override
 	public String toString() {
-		return "reserv [v_code=" + v_code + ", v_status=" + v_status + ", check_in=" + check_in + ", check_out="
-				+ check_out + ", personnel=" + personnel + ", rooms_code=" + rooms_code + ", user_code=" + user_code
-				+ ", status=" + status + ", room_name=" + room_name + "]";
+		return "Reserv [v_code=" + v_code + ", status=" + status + ", check_in=" + check_in + ", check_out=" + check_out
+				+ ", personnel=" + personnel + ", rooms_code=" + rooms_code + ", user_code=" + user_code
+				+ ", reserv_Price=" + reserv_Price + "]";
 	}
+
 	
+
 	
 }
