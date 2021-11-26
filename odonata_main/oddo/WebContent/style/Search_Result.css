@@ -339,6 +339,7 @@ ul > li.disabled {
   /* background:rosybrown;  */
   margin-left: 4%;
   border-bottom: 1px solid lightgrey;
+  justify-content: space-between;
 }
 /* 
   .room_left2, 
@@ -384,6 +385,7 @@ ul > li.disabled {
 .room_img_input {
   margin: 10px;
   border-radius: 10px;
+  justify-content: space-between;
 }
 
 .pho {
