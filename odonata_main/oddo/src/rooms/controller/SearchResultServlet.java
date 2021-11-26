@@ -45,7 +45,7 @@ public class SearchResultServlet extends HttpServlet {
         if (rList != null && ImgList != null) {
             request.setAttribute("rList", rList);
             request.setAttribute("ImgList", ImgList);
-            page = "Search_result.jsp";
+            page = "WEB-INF/view/rooms/Search_result.jsp";
         } else {
             request.setAttribute("msg", "검색 조회 실패");
             page = "WEB-INF/view/errorPage.jsp";
