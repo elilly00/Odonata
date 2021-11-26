@@ -32,7 +32,7 @@ public class RoomPageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int rCd = Integer.parseInt(request.getParameter("rCd"));
+		int Rooms_Code = Integer.parseInt(request.getParameter("Rooms_Code"));
 		
 		// 사진게시판 상세조회이기 때문에 Board와 관련된 것과 image에 관련된 것들을 가져 와야함
 		RoomsService service = new RoomsService();

@@ -278,9 +278,9 @@
         <input type="hidden" value="<%= room.getRooms_Code() %>">
         <% for(int j = 0; j < ImgList.size(); j++) { %>
         <% sooksoImg s = ImgList.get(j); %>
-        <% if(room.getRooms_Code() == s.getRooms_Code()) { %>
+        <% if(room.getRooms_Code() != s.getRooms_Code()) { %>
         <img class="room_img_input" alt="방 사진"
-        	   src="<%= request.getContextPath() %>/thumbnail_uploadFiles/<%= room.getRooms_name() %>"
+             src="<%= request.getContextPath() %>/thumbnail_uploadFiles/<%= s.getChange_name() %>"
            	 width="250px"
           	 height="250px" 
          />
