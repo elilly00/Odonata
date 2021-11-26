@@ -4,9 +4,7 @@ pageEncoding="UTF-8"%>
 	page import="java.util.ArrayList"  
 	import="user.model.vo.*, rooms.model.vo.*,   
 			reserv.model.vo.*, sooksoimg.model.vo.*, review.model.vo.*" %>
-
 <%@ page import="user.model.vo.User" %>
-
 <% 
 	User loginUser = (User)session.getAttribute("loginUser");
 	Rooms room = (Rooms)request.getAttribute("room");
@@ -15,12 +13,9 @@ pageEncoding="UTF-8"%>
 	ArrayList<sooksoImg> ImgList = (ArrayList<sooksoImg>)request.getAttribute("ImgList");
 	review review = (review)request.getAttribute("reivew");
 %>
-
 <!-- ★  에러 체크하느라 가져온 값들을 주석처리했는데 그 부분은 확인하지 못했습니다 : 확인필요 -->
-
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="UTF-8" />
   <title>Roompage_guest</title>
@@ -66,21 +61,21 @@ pageEncoding="UTF-8"%>
 
   <div class="body">
     <div class="name">
-      <%--         <h1><%= r.getRoom_name() %></h1> --%>
-      <%--         <p><b>\<%= room.getRooms_Price() %></b>/박</p> --%>
+              <h1><%= room.getRooms_name() %></h1>
+              <p><b>\<%= room.getRooms_Price() %></b>/박</p>
     </div>
   </div>
   <div id="slideShow">
     <!-- 첫 사진이 제대로 안나옴.. -->
     <ul class="slides">
-      <%--         <li><img src="<%= request.getContextPath() %>/thumbnail_uploadFiles/<%= ImgList.get(0).getChange_name() %>"
-      alt="방사진1" /></li> --%>
-      <%--         <li><img src="<%= request.getContextPath() %>/thumbnail_uploadFiles/<%= ImgList.get(1).getChange_name() %>"
-      alt="방사진2" /></li> --%>
-      <%--         <li><img src="<%= request.getContextPath() %>/thumbnail_uploadFiles/<%= ImgList.get(1).getChange_name() %>"
-      alt="방사진3" /></li> --%>
-      <%--       	<li><img src="<%= request.getContextPath() %>/thumbnail_uploadFiles/<%= ImgList.get(1).getChange_name() %>"
-      alt="방사진4" /></li> --%>
+               <li><img src="<%= request.getContextPath() %>/thumbnail_uploadFiles/<%= ImgList.get(0).getChange_name() %>"
+      alt="방사진1" /></li> 
+               <li><img src="<%= request.getContextPath() %>/thumbnail_uploadFiles/<%= ImgList.get(1).getChange_name() %>"
+      alt="방사진2" /></li> 
+               <li><img src="<%= request.getContextPath() %>/thumbnail_uploadFiles/<%= ImgList.get(1).getChange_name() %>"
+      alt="방사진3" /></li> 
+             	<li><img src="<%= request.getContextPath() %>/thumbnail_uploadFiles/<%= ImgList.get(1).getChange_name() %>"
+      alt="방사진4" /></li> 
     </ul>
 
     <p class="controller">
@@ -93,30 +88,31 @@ pageEncoding="UTF-8"%>
     <div class="body1_1">
       <div class="body1_2">
         <div class="body_info">
-          <%--             <h2><%= room.getRooms_Host() %>님의 <%= room.getRooms_Type() %></h2> --%>
+                      <h2><%= room.getRooms_Host() %>님의 <%= room.getRooms_Type() %></h2>
 
           <br />
 
-          <%--             <span>최대 인원 <%= room.getRooms_Personnel() %>명</span> --%>
+                      <span>최대 인원 <%= room.getRooms_Personnel() %>명</span>
 
           <br />
 
-          <%--             <span>침실 <%= room.getRooms_RoomCnt() %>개</span><span> · </span><span>욕실
-            <%= room.getRooms_ToiletCnt() %>개</span> --%>
+                       <span>침실 <%= room.getRooms_RoomCnt() %>개</span><span> · </span>
+                       <span>욕실 <%= room.getRooms_ToiletCnt() %>개</span> 
 
           <br />
 
-          <%--             <span>동물 동반 가능 '<%= room.getRooms_DogAvail() %>'</span> --%>
+                       <!-- ★ null일경우 화면에 안보이도록 설정해야할듯 -->
+                       <span>동물 동반 가능 '<%= room.getRooms_DogAvail() %>'</span> 
         </div>
       </div>
       <div class="body_info2">
         <h2>숙소 편의 시설</h2>
         <div class="info_a">
 
-          <%--             <%= room.getAmenity() %> --%>
+                       <%= room.getAmenity() %> 
 
           <!-- 가로로 병렬시키기 -->
-          <!-- <img class="emoji" alt="집" src="<%= request.getContextPath() %>/img/public_file/room/home.png" />
+           <img class="emoji" alt="집" src="<%= request.getContextPath() %>/img/public_file/room/home.png" />
             <div><b>아파트 전체</b></div>
             <img
               class="emoji"
@@ -132,7 +128,7 @@ pageEncoding="UTF-8"%>
             <div><b>에어컨</b></div>
             <img class="emoji" alt="주방" src="<%= request.getContextPath() %>/img/public_file/room/kitchen.png" />
             <div><b>주방</b></div>
-          </div> -->
+          </div> 
         </div>
         <div class="body_info3">
           <h2>숙소 위치</h2>
@@ -140,35 +136,35 @@ pageEncoding="UTF-8"%>
           <div id="map"></div>
         </div>
 
-        <div class="body_info4">
-          <h2>리뷰</h2>
-          <p>nn개</p>
-          <div class="reviews">
-            <div>
-              <%--               <img class="reviewer" src="<%= request.getContextPath() %>/img/public_file/room/man.png"
-              /> --%>
-              <%--               <div><b><%= loginUser.getUser_name() %></b></div> --%>
-            <%--               <pre><%= review.getR_update() %></pre> --%>
-            <%--               <div><%= review.getR_content() %>
-          </div> --%>
-        </div>
-        <div>
-          <img class="reviewer" src="<%= request.getContextPath() %>/img/public_file/room/man2.png" />
-          <%--               <div><b><%= loginUser.getUser_name() %></b></div> --%>
-        <%--               <pre><%= review.getR_update() %></pre> --%>
-        <%--               <div><%= review.getR_content() %>
-      </div> --%>
-    </div>
-    <div>
-      <img class="reviewer" src="<%= request.getContextPath() %>/img/public_file/room/woman.png" />
-      <%--               <div><b><%= loginUser.getUser_name() %></b></div> --%>
-    <%--               <pre><%= review.getR_update() %></pre> --%>
-    <%--               <div><%= review.getR_content() %>
-  </div> --%>
-  </div>
-  <!-- <div class="more">후기 더보기</div> -->
-  </div>
-  </div>
+<!-- ★ 활성화시 오류 발생 -->
+<!--         <div class="body_info4"> -->
+<!--           <h2>리뷰</h2> -->
+<!--           <p>nn개</p> -->
+<!--           <div class="reviews"> -->
+<!--             <div> -->
+<%--                              <img class="reviewer" src="<%= request.getContextPath() %>/img/public_file/room/man.png"/>  --%>
+<%--                              <div><b><%= loginUser.getUser_name() %></b></div>  --%>
+<%--                            <pre><%= review.getR_update() %></pre>  --%>
+<%--                           <div><%= review.getR_content() %> --%>
+<!--           </div>  -->
+<!--         </div> -->
+<!--         <div> -->
+<%--           <img class="reviewer" src="<%= request.getContextPath() %>/img/public_file/room/man2.png" /> --%>
+<%--                          <div><b><%= loginUser.getUser_name() %></b></div>  --%>
+<%--                        <pre><%= review.getR_update() %></pre>  --%>
+<%--                        <div><%= review.getR_content() %> --%>
+<!--       </div>  -->
+<!--     </div> -->
+<!--     <div> -->
+<%--       <img class="reviewer" src="<%= request.getContextPath() %>/img/public_file/room/woman.png" /> --%>
+<%--                      <div><b><%= loginUser.getUser_name() %></b></div>  --%>
+<%--                    <pre><%= review.getR_update() %></pre>  --%>
+<%--                    <div><%= review.getR_content() %> --%>
+<!--   </div>  -->
+<!--   </div> -->
+<!--   <!-- <div class="more">후기 더보기</div> --> 
+<!--   </div> -->
+<!--   </div> -->
   <form action="<%= request.getContextPath() %>/msgDetail.ms" method="post"></form>
   <div class="body_info5">
     <h2>호스트에게 쪽지 보내기</h2>
@@ -197,7 +193,6 @@ pageEncoding="UTF-8"%>
         <div class="booking">
           <ul>
             <li>
-              <!-- [★ 수정] id추가 -->
               <span><b>체크인</b></span>
               <input type="date" class="date" name="checkIn" id="checkIn" />
             </li>
@@ -209,9 +204,8 @@ pageEncoding="UTF-8"%>
               <div class="add">
                 <b>인원 추가</b>
               </div>
-              <!-- [★ 수정] id 추가 -->
-              <span class="add2" id="adult">성인</span>
-              <select class="select">
+              <span class="add2">성인</span>
+              <select class="select"  id="adult">
                 <option value="1">1명</option>
                 <option value="2">2명</option>
                 <option value="3">3명</option>
@@ -223,7 +217,6 @@ pageEncoding="UTF-8"%>
                 <option value="9">9명</option>
                 <option value="10">10명</option>
               </select>
-              <!-- [★ 수정] id 추가 -->
               <span class="add3">아동</span>
               <select class="select" id="kid">
                 <option value="1">1명</option>
@@ -240,7 +233,6 @@ pageEncoding="UTF-8"%>
             </li>
           </ul>
           <div class="button">
-            <!-- ★ 수정한 부분 -->
             <%--  <input type="submit" class="button2" value="예약하기" onclick="location.href='<%= request.getContextPath() %>/payment.bo'">
             --%>
             <input type="button" class="button2" id="but2" value="예약하기">
@@ -252,21 +244,21 @@ pageEncoding="UTF-8"%>
         <div class="result">
           <ul>
             <li>
-              <span>\ <%= room.getRooms_Price() %> X 3박 </span>
+              <span> 
+              	\ <%= room.getRooms_Price() %> X 
+			 	<input type ="text" onBlur="javascript:termDate();"> 박
+			 </span> 
+			          
               <br>
             </li>
             <li>
-              <!-- [수정 ★ ] 정은씨가 한 방법 -->
-              <!--                 <span> <b>총 합계</b> </span> -->
-              <!--                 <span>\ 150,000</span> -->
-              <!-- 을 수정해봤습니다 -->
               <br>
               <table>
                 <tr></tr>
                 <tr>
                   <th>총 합계</th>
                   <td>\</td>
-                  <td id="price">150,000</td> <!-- room.getRooms_page * __ 한 값  -->
+                  <td id="price">150000</td> <!-- room.getRooms_page * __ 한 값  -->
                 </tr>
               </table>
 
@@ -288,7 +280,6 @@ pageEncoding="UTF-8"%>
     slideWidth = 300;
     slideMargin = 100;
     slides.style.width = (slideWidth + slideMargin) * slideCount + "px";
-
     function moveSlide(num) {
       // 왼쪽으로 400px씩 이동
       slides.style.left = -num * 400 + "px";
@@ -304,11 +295,8 @@ pageEncoding="UTF-8"%>
       // currentIdx !==slideCount - 1 일때만 moveSlide 함수 불러옴
       if (currentIdx !== slideCount - 1) moveSlide(currentIdx + 1);
     });
-
-
     // Google Map 설정 
     function initMap() {
-
       const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 15,
         center: {
@@ -332,15 +320,31 @@ pageEncoding="UTF-8"%>
       },
       // { place:"어린이대공원역", lat: 37.547263, lng: 127.074181 },
     ];
-
-
+    
+		// 체크아웃 - 체크인
+	    function termDate(){
+//  	    var interval = checkOut - checkIn; // nan : checkIn의 타입이 String
+ 	 	  f=document.form1;
+ 	 	 var checkIn = document.getElementById("checkIn").value;
+ 	     var checkOut = document.getElementById("checkOut").value;
+ 	      
+ 	      var v1 = checkIn.split("-");
+ 	      var v2 = checkOut.split("-"); 
+ 	      var a1 = new Date(v1[0],v1[1]-1,v1[2]).getTime();
+ 	      var a2 = new Date(v2[0],v2[1]-1,v2[2]).getTime();
+ 	      
+ 	      var interval=(a2-a1)/(1000*60*60*24);
+ 	      console.log(interval); // 박
+ 	      f.term.value=interval; 
+       }
+    
     // 예약하기 버튼을 누르면 DB에 데이터 저장 & PAYMENT페이지로 이동
     document.getElementById('but2').onclick = function () {
-
       // 체크인, 체크아웃
       var checkIn = document.getElementById("checkIn").value;
       var checkOut = document.getElementById("checkOut").value;
-
+      console.log(typeof checkIn);
+      
       // 성인
       var a = document.getElementById("adult");
       var adultC = a.options[a.selectedIndex].text;
@@ -351,14 +355,12 @@ pageEncoding="UTF-8"%>
 
       // 성인 + 아동 
       var personnel = "성인 " + adultC + ", " + "아동 " + kidC;
-
-      // 숙소코드, 사용자코드도 여기서 저장할수있게 보내줘야 하는데 받아와야 함 => 우선 임의의 데이터로 삽입 [★★★ 수정 필요]
-      var roomCode = 9; // 숙소
-      var userCode = 5; // 사용자
-
+      
+      // 숙소코드, 사용자코드도 여기서 저장할수있게 보내줘야
+      var roomCode = <%= room.getRooms_Code() %>; // 숙소
+      var userCode = <%= loginUser.getUser_code() %>; // 사용자
       // 가격
       var price = document.getElementById("price").innerHTML;
-
       // 보내줄때 Rv와 같은 방법으로 쿼리스트링으로 보내주기 + 체크인/체크아웃을 선택하지 않을시 넘어가지 않도록 설정
       if (checkIn == "" | checkOut == "") {
         if (checkIn == "") {
@@ -374,7 +376,6 @@ pageEncoding="UTF-8"%>
           checkOut + "&personnel=" + personnel + "&roomCode=" + roomCode + "&userCode=" + userCode + "&price=" +
           price;
       }
-
     }
   </script>
 </body>
