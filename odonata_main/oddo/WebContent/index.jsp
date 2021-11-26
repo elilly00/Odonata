@@ -100,11 +100,10 @@
             </select>
           </div>
           <div class="search_button">
-            <a class="search_button_a" >
-            <input type="submit" value="검색" class="submit-btn" />
-              <button class="search_img"   type="submit"
-                src="<%= request.getContextPath() %>/img/public_img/search.png">
-                <img class="search_img" src="<%= request.getContextPath() %>/img/public_img/search.png" />
+            <a class="search_button_a">
+              <%-- <input type="submit" value="검색" class="submit-btn" /> --%>
+              <button class="search_img" type="submit" src="<%= request.getContextPath() %>/img/public_img/search.png">
+                <%-- <img class="search_img" src="<%= request.getContextPath() %>/img/public_img/search.png" /> --%>
                 <%-- onclick="location.href='<%= request.getContextPath() %>/list.re'" --%>
               </button>
             </a>
