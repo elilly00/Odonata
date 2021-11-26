@@ -32,7 +32,7 @@
       <!-- <i class="fab fa-airbnb"></i> 잠자리 -->
       <a href="<%= request.getContextPath() %>/WEB-INF/index.jsp">
         <img class="main-navi" src="<%= request.getContextPath() %>/img/public_img/logo.png"
-          href="<%= request.getContextPath() %>/index.jsp">
+          href="<%= request.getContextPath() %>/WEB-INF/index.jsp">
       </a>
     </div>
     <%-- 검색 폼 시작 --%>
@@ -249,7 +249,7 @@
     <section class="footerul3">
       <div>
         <div class="copyright">
-          <a>© 2021 odonata, Inc.</a>
+          <a>© 2021 odonata</a>
         </div>
         <div class="footermenu">
           <a>개인정보 처리방침</a>
