@@ -334,13 +334,6 @@ ul > li.disabled {
   border-bottom: 1px solid lightgrey;
 }
 
-.rooms {
-  overflow: auto;
-  /* background:rosybrown;  */
-  margin-left: 4%;
-  border-bottom: 1px solid lightgrey;
-  justify-content: space-between;
-}
 /* 
   .room_left2, 
   .room_left3, 
@@ -381,11 +374,20 @@ ul > li.disabled {
 .info3 > pre {
   margin-bottom: 2px;
 }
+.rooms {
+  overflow: auto;
+  /* background:rosybrown;  */
+  margin-left: 4%;
+  border-bottom: 1px solid lightgrey;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .room_img_input {
   margin: 10px;
   border-radius: 10px;
   justify-content: space-between;
+  align-items: center;
 }
 
 .pho {
