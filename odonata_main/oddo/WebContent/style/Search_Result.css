@@ -368,6 +368,8 @@ ul > li.disabled {
   .info7 */ {
   margin: 30px;
   float: left;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .info > pre,
