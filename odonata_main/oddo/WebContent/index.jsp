@@ -25,6 +25,7 @@
   <script type="text/javascript" src="${pageContext.request.contextPath}/WEB-INF/js/jquery-ui.min.js"></script>
   <script type="text/javascript" src="${pageContext.request.contextPath}/WEB-INF/js/jquery.fullPage.js"></script>
   <script type="text/javascript" src="${pageContext.request.contextPath}/WEB-INF/js/jquery-3.6.0.min.js"></script>
+
 </head>
 <header id="main-page">
   <!-- 네비메뉴 -->
