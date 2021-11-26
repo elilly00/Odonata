@@ -204,7 +204,7 @@ public class RoomsDAO {
 		return room;
 	}
 
-	public ArrayList<sooksoImg> selectSooksoImg(int Rooms_Code, Connection conn) {
+	public ArrayList<sooksoImg> selectSooksoImg(Connection conn, int Rooms_Code) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<sooksoImg> list = null;
