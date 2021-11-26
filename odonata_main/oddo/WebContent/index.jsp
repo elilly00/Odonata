@@ -87,6 +87,7 @@
               <option value="10">10명</option>
             </select>
             <select class="input_box">
+              <option value="0">0명</option>
               <option value="1">1명</option>
               <option value="2">2명</option>
               <option value="3">3명</option>
