@@ -56,10 +56,10 @@ public class RoomsService {
         return list;
     }
 
-    public Rooms selectRooms(int rCd) {
+	public Rooms selectRooms(int Rooms_Code) {
 		Connection conn = getConnection();
 		
-		Rooms room = rDAO.selectRooms(conn, rCd);
+		Rooms room = rDAO.selectRooms(conn, Rooms_Code);
 		
 		if(room != null) {
 			commit(conn);
@@ -70,10 +70,10 @@ public class RoomsService {
 		return room;
 	}
 
-	public ArrayList<sooksoImg> selectSooksoImg(int rCd) {
+	public ArrayList<sooksoImg> selectSooksoImg(int Rooms_Code) {
 		Connection conn = getConnection();
 		
-		ArrayList<sooksoImg> list = rDAO.selectSooksoImg(rCd, conn);
+		ArrayList<sooksoImg> list = rDAO.selectSooksoImg(conn, Rooms_Code);
 		
 		close(conn);
 		
