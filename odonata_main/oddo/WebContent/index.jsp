@@ -36,7 +36,7 @@
       </a>
     </div>
     <%-- 검색 폼 시작 --%>
-    <form id="loginForm" action="<%=request.getContextPath()%>/listForm.re" method="post">
+    <form id="loginForm" action="<%=request.getContextPath()%>/list.re" method="post">
       <div class="searching_box">
         <div class="searching_box_inner">
           <div class="location">
@@ -100,7 +100,7 @@
             </select>
           </div>
           <div class="search_button">
-            <a class="search_button_a">
+            <a class="search_button_a" >
             <input type="submit" value="검색" class="submit-btn" />
               <%-- <button class="search_img" onclick="location.href='<%= request.getContextPath() %>/list.re'"  type="button"
                 src="<%= request.getContextPath() %>/img/public_img/search.png">
