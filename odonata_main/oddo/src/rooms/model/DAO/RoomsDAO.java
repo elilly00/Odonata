@@ -1,6 +1,6 @@
 package rooms.model.DAO;
 
-import static common.JDBCTemplate.close;
+import static common.JDBCTemplate.*;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -160,9 +160,7 @@ public class RoomsDAO {
             while (rset.next()) {
                 sooksoImg s = new sooksoImg();
                 s.setImage_number(rset.getInt("image_number"));
-                s.setOrigin_name(rset.getString("origin_name"));
                 s.setChange_name(rset.getString("change_name"));
-                s.setImage_path(rset.getString("img_path"));
                 
                 list.add(s);
             }
@@ -175,4 +173,66 @@ public class RoomsDAO {
         
         return list;
     }
+
+	public Rooms selectRooms(Connection conn, int Rooms_Code) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Rooms room = null;
+		
+		String query = prop.getProperty("selectRoom");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, Rooms_Code);
+			
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				room = new Rooms(rset.getInt("rooms_code"), rset.getString("rooms_host"),
+                        rset.getString("rooms_type"), rset.getString("rooms_addr"), rset.getString("rooms_price"),
+                        rset.getString("rooms_personnel"), rset.getString("rooms_roomcnt"),
+                        rset.getString("rooms_toiletcnt"), rset.getString("rooms_dogavail"), rset.getString("amenity"),
+                        rset.getString("rooms_desc"), rset.getDate("rooms_regdate"), rset.getString("status"),
+                        rset.getInt("user_code"), rset.getString("room_name"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return room;
+	}
+
+	public ArrayList<sooksoImg> selectSooksoImg(int Rooms_Code, Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<sooksoImg> list = null;
+		
+		String query = prop.getProperty("selectsooksoImg");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, Rooms_Code);
+			
+			rset = pstmt.executeQuery();
+			
+			list = new ArrayList<sooksoImg>();
+			while(rset.next()) {
+				sooksoImg s = new sooksoImg();
+				s.setImage_number(rset.getInt("image_number"));
+                s.setOrigin_name(rset.getString("origin_name"));
+                s.setChange_name(rset.getString("change_name"));
+                s.setImage_path(rset.getString("img_path"));
+				
+                list.add(s);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
 }
