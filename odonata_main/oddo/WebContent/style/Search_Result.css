@@ -367,9 +367,9 @@ ul > li.disabled {
   .info5, 
   .info7 */ {
   margin: 30px;
-  float: left;
+  float: right;
   justify-content: space-between;
-  align-items: center;
+  align-items: right;
 }
 
 .info > pre,
@@ -382,7 +382,7 @@ ul > li.disabled {
   margin-left: 4%;
   border-bottom: 1px solid lightgrey;
   justify-content: space-between;
-  align-items: center;
+  align-items: left;
 }
 
 .room_img_input {
