@@ -87,6 +87,7 @@
               <option value="10">10명</option>
             </select>
             <select class="input_box">
+              <option value="0">0명</option>
               <option value="1">1명</option>
               <option value="2">2명</option>
               <option value="3">3명</option>
@@ -103,7 +104,7 @@
             <a class="search_button_a">
               <%-- <input type="submit" value="검색" class="submit-btn" /> --%>
               <button class="search_img" type="submit" src="<%= request.getContextPath() %>/img/public_img/search.png">
-                <%-- <img class="search_img" src="<%= request.getContextPath() %>/img/public_img/search.png" /> --%>
+                <img class="search_img" src="<%= request.getContextPath() %>/img/public_img/search.png" />
                 <%-- onclick="location.href='<%= request.getContextPath() %>/list.re'" --%>
               </button>
             </a>
