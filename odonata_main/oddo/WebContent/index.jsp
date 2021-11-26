@@ -36,7 +36,7 @@
       </a>
     </div>
     <%-- 검색 폼 시작 --%>
-    <form id="loginForm" action="<%=request.getContextPath()%>/list.re" method="post">
+    <form id="loginForm" action="<%=request.getContextPath()%>/listForm.re" method="post">
       <div class="searching_box">
         <div class="searching_box_inner">
           <div class="location">
