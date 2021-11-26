@@ -6,10 +6,9 @@
 %>
 <% 
     ArrayList<Rooms> rList = (ArrayList<Rooms>)request.getAttribute("rList");
-	ArrayList<sooksoImg> ImgList = (ArrayList<sooksoImg>)request.getAttribute("ImgList");
+  	ArrayList<sooksoImg> ImgList = (ArrayList<sooksoImg>)request.getAttribute("ImgList");
 
     User loginUser = (User)session.getAttribute("loginUser");
-	PageInfo pi = (PageInfo)request.getAttribute("pi");
 %>
 <!DOCTYPE html>
 <html>
@@ -17,7 +16,7 @@
 <meta charset="UTF-8" />
 <title>Search_result</title>
 <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/style/Search_Result.css" />
-<script src="<%= request.getContextPath() %>/js/jquery-3.6.0.min.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="<%= request.getContextPath() %>/js/calendar.js"></script>
 <!-- 구글 지도 API -->
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJil7Bh-RMna_GTpFIVfnvxUw_jIAiPco&callback=initMap" async defer></script>
@@ -346,13 +345,6 @@
                 trigger.onfocus = function () {
                     dateComponent.show();
                 };
-                
-                // 
-//                 $(function(){
-//                 	$('#Amenity1').click(function(){
-                		
-//                 	})
-//                 }
                 
               
               // 구글 지도 설정

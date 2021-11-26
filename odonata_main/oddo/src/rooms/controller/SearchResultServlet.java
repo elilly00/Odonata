@@ -38,7 +38,7 @@ public class SearchResultServlet extends HttpServlet {
 
         RoomsService rService = new RoomsService();
         
-       ArrayList<Rooms> rList = rService.selectTList(1); 		// 숙소
+        ArrayList<Rooms> rList = rService.selectTList(1); 		// 숙소
         ArrayList<sooksoImg> ImgList = rService.selectTList(2);   // 숙소 이미지
         
         String page = null;
