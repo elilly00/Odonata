@@ -17,7 +17,7 @@
         <div class="header">
           <div class="logo">
             <label>
-              <a href="<%= request.getContextPath() %>/index.jsp">
+              <a href="<%= request.getContextPath() %>">
                <img src="<%= request.getContextPath() %>/img/public_img/logo.png" 
                 alt="메인페이지" 
                 id="main">
@@ -25,7 +25,7 @@
             </label>
           </div>
           <div class="img">
-            <a href="<%= request.getContextPath() %>mypage.jsp">
+            <a href="<%= request.getContextPath() %>/myPageForm.us">
               <img
                 src="<%= request.getContextPath() %>/img/public_img/profile.png"
                 alt="마이페이지" 

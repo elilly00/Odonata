@@ -273,16 +273,17 @@
       <% } else { %>
       <% for(int i = 0; i < rList.size(); i++) { %>
       <% Rooms room = rList.get(i); %>
+      <div class="rooms">
       <div>
-      <div class="rooms" onclick="location.href='<%= request.getContextPath() %>/detail.ro'">
         <input type="hidden" value="<%= room.getRooms_Code() %>">
         <% for(int j = 0; j < ImgList.size(); j++) { %>
         <% sooksoImg s = ImgList.get(j); %>
-        <% if(room.getRooms_Code() != s.getRooms_Code()) { %>
+        <% if(room.getRooms_Code() == s.getRooms_Code()) { %>
         <img class="room_img_input" alt="방 사진"
-          src="<%= request.getContextPath() %>/thumbnail_uploadFiles/<%= s.getChange_name() %>" width="250px"
-          height="250px" />
-        <%-- <br /><br /> --%>
+        	   src="<%= request.getContextPath() %>/thumbnail_uploadFiles/<%= room.getRooms_name() %>"
+           	 width="250px"
+          	 height="250px" 
+         />
         <% } %>
         <% } %>
         <div class="info">
@@ -311,7 +312,9 @@
 
           <h3>\ <%= room.getRooms_Price() %> / 박</h3>
 
-          <p class="star_rating"><br /><a href="<%= request.getContextPath() %>/detail.ro" class="on">⭐ 4.8</a></p>
+          <p class="star_rating"><br /><a class="on">⭐ 4.8</a></p>
+          
+          <br />
         </div>
         </div>
       </div>
@@ -320,6 +323,7 @@
       <% } %>
     </div>
   </div>
+
 
   <div class="map_right">
     <div id="map">
