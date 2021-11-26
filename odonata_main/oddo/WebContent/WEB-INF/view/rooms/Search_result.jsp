@@ -17,6 +17,7 @@
   <meta charset="UTF-8" />
   <title>Search_result</title>
   <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/style/Search_Result.css" />
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/style/Search_Result.css" />
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script src="<%= request.getContextPath() %>/js/calendar.js"></script>
   <!-- 구글 지도 API -->
