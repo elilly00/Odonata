@@ -101,11 +101,11 @@
           </div>
           <div class="search_button">
             <a class="search_button_a">
-              <button class="search_img"  type="button"
+            <input type="submit" value="검색" class="submit-btn" />
+              <%-- <button class="search_img" onclick="location.href='<%= request.getContextPath() %>/list.re'"  type="button"
                 src="<%= request.getContextPath() %>/img/public_img/search.png">
                 <img class="search_img" src="<%= request.getContextPath() %>/img/public_img/search.png" />
-              </button>
-              <%-- onclick="location.href='<%= request.getContextPath() %>/list.re'" --%>
+              </button> --%>
             </a>
           </div>
         </div>
