@@ -273,6 +273,7 @@
       <% } else { %>
       <% for(int i = 0; i < rList.size(); i++) { %>
       <% Rooms room = rList.get(i); %>
+      <div>
       <div class="rooms" onclick="location.href='<%= request.getContextPath() %>/detail.ro'">
         <input type="hidden" value="<%= room.getRooms_Code() %>">
         <% for(int j = 0; j < ImgList.size(); j++) { %>
@@ -311,6 +312,7 @@
           <h3>\ <%= room.getRooms_Price() %> / 박</h3>
 
           <p class="star_rating"><br /><a href="<%= request.getContextPath() %>/detail.ro" class="on">⭐ 4.8</a></p>
+        </div>
         </div>
       </div>
 

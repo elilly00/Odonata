@@ -388,8 +388,8 @@ ul > li.disabled {
 .room_img_input {
   margin: 10px;
   border-radius: 10px;
-  justify-content: space-between;
-  align-items: center;
+  /* justify-content: space-between;
+  align-items: center; */
 }
 
 .pho {
