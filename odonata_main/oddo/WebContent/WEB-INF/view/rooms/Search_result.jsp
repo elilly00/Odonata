@@ -284,7 +284,7 @@
               <img
                 class="room_img_input"
                 alt="방 사진"
-                src="<%= request.getContextPath() %>/rooms/<%= s.getChange_name() %>" 
+                src="<%= request.getContextPath() %>/thumbnail_uploadFiles/<%= s.getChange_name() %>" 
                 width="250px"
                 height="250px"
               />
