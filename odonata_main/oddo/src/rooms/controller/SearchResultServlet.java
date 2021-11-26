@@ -72,7 +72,7 @@ public class SearchResultServlet extends HttpServlet {
             request.setAttribute("rList", rList);
             request.setAttribute("ImgListfList", ImgList);
             // request.setAttribute("pi", pi);
-            page = "WEB-INF/view/search_result.jsp";
+            page = "WEB-INF/view/rooms/search_result.jsp";
         } else {
             request.setAttribute("msg", "검색 조회 실패");
             page = "WEB-INF/view/errorPage.jsp";
