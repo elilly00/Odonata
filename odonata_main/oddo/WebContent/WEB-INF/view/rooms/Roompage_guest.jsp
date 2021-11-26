@@ -233,8 +233,8 @@ pageEncoding="UTF-8"%>
             </li>
           </ul>
           <div class="button">
-            <%--  <input type="submit" class="button2" value="예약하기" onclick="location.href='<%= request.getContextPath() %>/payment.bo'">
-            --%>
+          	<!-- 임의로 확인을 위해 but3삽입 -->
+            <input type="button" class="button2" id="but3" value="금액 확인하기"><br><br>
             <input type="button" class="button2" id="but2" value="예약하기">
           </div>
         </div>
@@ -245,8 +245,8 @@ pageEncoding="UTF-8"%>
           <ul>
             <li>
               <span> 
-              	\ <%= room.getRooms_Price() %> X 
-			 	<input type ="text" onBlur="javascript:termDate();"> 박
+              	\ <%= room.getRooms_Price() %> X <p id="test"></p>박
+              	<!-- 들어가긴했는데 아무 값도 안들어갔을때는 1이 기본적으로 출력되게 하고싶긴합니다 -->
 			 </span> 
 			          
               <br>
@@ -321,10 +321,11 @@ pageEncoding="UTF-8"%>
       // { place:"어린이대공원역", lat: 37.547263, lng: 127.074181 },
     ];
     
-		// 체크아웃 - 체크인
-	    function termDate(){
+		// 체크아웃 - 체크인 일수 계산
+// 	    function termDate(){
+		document.getElementById("but3").onclick = function(){
 //  	    var interval = checkOut - checkIn; // nan : checkIn의 타입이 String
- 	 	  f=document.form1;
+//  	 	  f=document.form1;
  	 	 var checkIn = document.getElementById("checkIn").value;
  	     var checkOut = document.getElementById("checkOut").value;
  	      
@@ -335,7 +336,10 @@ pageEncoding="UTF-8"%>
  	      
  	      var interval=(a2-a1)/(1000*60*60*24);
  	      console.log(interval); // 박
- 	      f.term.value=interval; 
+//  	      f.term.value=interval; 
+//  	     document.writeln(interval);
+		  var test = document.getElementById("test");
+		  test.innerHTML = interval;
        }
     
     // 예약하기 버튼을 누르면 DB에 데이터 저장 & PAYMENT페이지로 이동
@@ -343,16 +347,13 @@ pageEncoding="UTF-8"%>
       // 체크인, 체크아웃
       var checkIn = document.getElementById("checkIn").value;
       var checkOut = document.getElementById("checkOut").value;
-      console.log(typeof checkIn);
       
       // 성인
       var a = document.getElementById("adult");
       var adultC = a.options[a.selectedIndex].text;
-
       // 아동
       var k = document.getElementById("kid");
       var kidC = k.options[k.selectedIndex].text;
-
       // 성인 + 아동 
       var personnel = "성인 " + adultC + ", " + "아동 " + kidC;
       
