@@ -76,13 +76,14 @@
           <h4>결제 정보</h4>
           <div class="title5">
             <div class="title6">
-              <h5>예약 날짜: <%= r.getCheck_in() %> - <%= r.getCheck_out() %></h5>
-              <h5>숙소 이름 : <%= room.getRooms_name() %></h5>
-              <h5>인원 : <%= r.getPersonnel() %></h5>
+              <br>
+              <h5>예약 날짜: <%= p.getCheckIn() %> - <%= p.getCheckOut() %></h5>
+              <%-- <h5>숙소 이름 : <%=  %></h5> --%>
+              <h5>인원 : <%= p.getPersonnel() %></h5>
 
               <hr>
               <hr>
-              <h5>총 금액 : <%= r.getReserv_Price() %></h5>
+              <h5>총 금액 : <%= p.getPrice() %></h5>
             </div>
 
           </div>
