@@ -76,7 +76,7 @@ public class insertResrvServlet extends HttpServlet {
 		String page = null;
 		if(result > 0) {
 			// 결과값 보내기 : Rv_design01로
-			page = "view/payment/Rv_design01.jsp";
+			page = "WEB-INF/view/payment/Rv_design01.jsp";
 			request.setAttribute("reserv", reserv);
 		} else {
 			// 에러 페이지로 이동

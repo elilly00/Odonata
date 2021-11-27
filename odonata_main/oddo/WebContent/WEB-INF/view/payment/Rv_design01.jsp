@@ -245,7 +245,7 @@
 						<td></td>
 						<td>
 							<p id="amount"><%= r.getReserv_Price() %></p>
-						</td> <!-- reserv 받아오기 -->
+						</td> 
 						<td>원</td>
 					</tr>
 				</table>
@@ -348,6 +348,7 @@
 		// 동의사항 선택 
 		var all = document.getElementById("all");
 		var agree = document.getElementsByName("agree");
+		
 		function selectAll() {
 			if (all.checked) {
 				for (var i = 0; i < agree.length; i++) {
@@ -372,6 +373,7 @@
 				all.checked = true;
 			}
 		}
+		
 		// 이메일 폼 : 값을 loginuser에서 받아오고 난 후에는 지울것
 		// 		function selectEmail(ele) {
 		// 			// ele = this
@@ -391,11 +393,10 @@
 		// => required는 submit을 할때만 걸러주는 애라서 해당 함수에서 window.open을 바로 연결하지 말고 모든 필드에 값이 들어왔을 때 열리게끔 로직을 추가
 		document.getElementById('paymentBtn').onclick = function () {
 			// 결제스크립트에 필요
-			var pName = <%= loginUser.getUser_name() %> /* document.getElementById("name").value */ ;
-			var pTel = <%= loginUser.getUser_phone() %> /* document.getElementById("tel").value */ ;
-			var pEmail = <%= loginUser.getUser_email() %>
-				/* document.getElementById("email1").value + "@" + document.getElementById("email2").value */
-			;
+			var pName = "<%= loginUser.getUser_name() %>";
+			var pTel = "<%= loginUser.getUser_phone() %>";
+			var pEmail = "<%= loginUser.getUser_email() %>";
+			// Uncaught SyntaxError: Invalid or unexpected token ==> 문자열이기때문에 ""로 묶어줘야 함, 특히 email에는 .이 기본적으로 들어있기때문에 에러 발생
 				
 			// SERVICE로 넘길 데이터 
 			var price = <%= r.getReserv_Price() %>; // 숙소 가격
@@ -419,8 +420,7 @@
 			
 			*/
 			//  결제로 넘어가지 않아야 하는 경우 설정 
-			if (refundCheck.checked == false || age14.checked == false || p_collect.checked == false || partyConsent
-				.checked == false || accomodationUse.checked == false) {
+			if (refundCheck.checked == false || age14.checked == false || p_collect.checked == false || partyConsent.checked == false || accomodationUse.checked == false) {
 				if (refundCheck.checked == false) {
 					msg = "취소 및 환불규칙에 동의해주세요";
 					refundCheck.focus();
@@ -433,16 +433,15 @@
 				IMP.request_pay({
 					pg: 'html5_inicis', // pg사
 					pay_method: 'card', // 결제 방식
-					merchant_uid: 'merchant_' + new Date().getTime(), // ★ 결제코드로 사용 가능?
+					merchant_uid: 'merchant_' + new Date().getTime(), 
 					name: rName, // 주문명
 					amount: price, // 가격
 					buyer_email: pEmail, // 구매자 이메일
 					buyer_name: pName, // 구매자 이름
-					buyer_tel: pTel, // 구매자 전화번호 
+					buyer_tel: pTel // 구매자 전화번호 
+					
 				}, function (rsp) { // 4. 고객이 결제를 완료한 후 실행되는 함수(callback) 추가
-					if (rsp
-						.success
-					) { // 5. 콜백 함수에서 쿼리 파라미터 전달하기 : jQuery로 HTTP 요청  / 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
+					if (rsp.success) { // 5. 콜백 함수에서 쿼리 파라미터 전달하기 : jQuery로 HTTP 요청  / 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
 						jQuery.ajax({
 							url: '<%= request.getContextPath() %>/reservationPayment.do',
 							// [√] reservationPayment.do일 경우 결제 완료후 그대로 Rv_design01페이지에 있음 (서블릿에 내용이 없어도 결제 가능)

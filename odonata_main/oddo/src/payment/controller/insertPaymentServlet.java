@@ -36,7 +36,7 @@ public class insertPaymentServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		int price = Integer.parseInt(request.getParameter("price")); 
+//		int price = Integer.parseInt(request.getParameter("price")); 
 		int vCode = Integer.parseInt(request.getParameter("vCode"));
 		// NumberFormatException : 숫자 형식의 오류
 		// -> [0] 바이트에서 시작하고 [11] 바이트에서 끝나며 값이 [=price=1000]인, 유효하지 않은 chunk는 무시됩니다. 
@@ -50,7 +50,7 @@ public class insertPaymentServlet extends HttpServlet {
 		String page = null;
 		if(result > 0) {
 			// 결과값 보내기 : payment_finished로
-			page="view/payment/payment_finished.jsp";
+			page="WEB-INF/view/payment/payment_finished.jsp";
 			request.setAttribute("payment", payment);
 		} else {
 			// 에러페이지로 이동
