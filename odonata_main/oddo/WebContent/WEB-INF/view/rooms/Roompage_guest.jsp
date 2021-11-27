@@ -235,7 +235,7 @@ pageEncoding="UTF-8"%>
           <div class="button">
           	<!-- 임의로 확인을 위해 but3삽입 -->
             <input type="button" class="button2" id="but3" value="금액 확인하기"><br><br>
-            <input type="button" class="button2" id="but2" value="예약하기">
+            <!-- <input type="button" class="button2" id="but2" value="예약하기"> -->
           </div>
         </div>
 
@@ -258,10 +258,15 @@ pageEncoding="UTF-8"%>
                 <tr>
                   <th>총 합계</th>
                   <td>\</td>
-                  <td id="price">150000</td> <!-- room.getRooms_page * __ 한 값  -->
+                  <td id="price"></td> <!-- room.getRooms_page * __ 한 값  -->
+                  <td>
+                  	 <div class="button">
+		             	 <input type="button" class="button2" id="but2" value="예약하기">
+		             </div>
+                  </td>
                 </tr>
               </table>
-
+			 
             </li>
           </ul>
         </div>
@@ -340,6 +345,10 @@ pageEncoding="UTF-8"%>
 //  	     document.writeln(interval);
 		  var test = document.getElementById("test");
 		  test.innerHTML = interval;
+		  
+		  var fPrice = <%= room.getRooms_Price() %> * interval;
+		  var testR = document.getElementById("price");
+		  testR.innerHTML = fPrice;
        }
     
     // 예약하기 버튼을 누르면 DB에 데이터 저장 & PAYMENT페이지로 이동
