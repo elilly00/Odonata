@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ page import="user.model.vo.User, reserv.model.vo.Reserv, rooms.model.vo.Rooms" %>
+<%@ page import="user.model.vo.*, reserv.model.vo.*" %>
 
 <%
 	User loginUser = (User)session.getAttribute("loginUser");
 	Reserv r = (Reserv)request.getAttribute("reserv");
-	Rooms room = (Rooms)request.getAttribute("rooms");
+	
 %>
 
 <!DOCTYPE html>
@@ -24,7 +24,7 @@
 
 	<link rel="stylesheet" href="<%= request.getContextPath() %>/style/main.css" />
 	<script src="<%= request.getContextPath() %>/js/jquery-3.6.0.min.js"></script>
-
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 	<!-- 아임포트 라이브러리 : jQuery 1.0이상 필요-->
 	<!-- jQuery -->
@@ -166,7 +166,7 @@
 			<h2>예약정보</h2> <br />
 			<p id="reservation_info">
 				<!-- 받아와서 화면에 뿌려야할 부분들 : 숙소명, 체크인, 체크아웃, 숙소이름, 이름, 전화번호, 이메일 -->
-				<b id="rName"><%= room.getRooms_name() %></b><br><br> <!-- 숙소명 -->
+				<b id="rName"><%-- room.getRooms_name() --%></b><br><br> <!-- 숙소명이 그대로 있으면 500에러발생-->
 				<b id="rDate">날짜</b><br />
 				<table class="rDateForm">
 					<tr>
@@ -386,6 +386,7 @@
 		// 				$email2.val($ele.val());
 		// 			}
 		// 		}
+		
 		// 결제페이지로 연결 -> required를 인식하기는하는데 그전에 결제 창이 뜸 
 		// => required는 submit을 할때만 걸러주는 애라서 해당 함수에서 window.open을 바로 연결하지 말고 모든 필드에 값이 들어왔을 때 열리게끔 로직을 추가
 		document.getElementById('paymentBtn').onclick = function () {
@@ -395,9 +396,11 @@
 			var pEmail = <%= loginUser.getUser_email() %>
 				/* document.getElementById("email1").value + "@" + document.getElementById("email2").value */
 			;
+				
 			// SERVICE로 넘길 데이터 
 			var price = <%= r.getReserv_Price() %>; // 숙소 가격
 			var vCode = <%= r.getV_code() %>; // 예약 코드
+			
 			// 선택되어야 결제가능
 			var refundCheck = document.getElementById('refundCheck'); // 취소, 환불규정
 			var age14 = document.getElementById('age14'); // 14세 이상 동의
