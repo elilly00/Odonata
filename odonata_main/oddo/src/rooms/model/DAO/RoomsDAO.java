@@ -56,7 +56,6 @@ public class RoomsDAO {
             pstmt.setString(10, r.getRooms_name());
             
             result = pstmt.executeUpdate();
-            
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

@@ -1,6 +1,9 @@
 package rooms.model.service;
 
-import static common.JDBCTemplate.*;
+import static common.JDBCTemplate.close;
+import static common.JDBCTemplate.commit;
+import static common.JDBCTemplate.getConnection;
+import static common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -19,7 +22,7 @@ public class RoomsService {
         int result1 = rDAO.insertRooms(conn, r);
         int result2 = rDAO.insertsooksoImg(conn, ImgList);
         
-        if (result1 > 0 && result2 > 0) {
+        if (result1 > 0 || (result1 > 0 && result2 > 0)) {
             commit(conn);
         } else {
             rollback(conn);
@@ -30,7 +33,7 @@ public class RoomsService {
         return result1 + result2;
     }
     
-    public int getListCount() {  
+    public int getListCount() {
         Connection conn = getConnection();
         
         int listCount = rDAO.getListCount(conn);
@@ -46,37 +49,37 @@ public class RoomsService {
         ArrayList list = null;
         
         if (i == 1) {
-            list = rDAO.selectRList(conn);	
+            list = rDAO.selectRList(conn);
         } else {
-            list = rDAO.selectImgList(conn);	
+            list = rDAO.selectImgList(conn);
         }
         
         close(conn);
         
         return list;
     }
-
-	public Rooms selectRooms(int Rooms_Code) {
-		Connection conn = getConnection();
-		
-		Rooms room = rDAO.selectRooms(conn, Rooms_Code);
-		
-		if(room != null) {
-			commit(conn);
-		} else {
-			rollback(conn);
-		}
-		
-		return room;
-	}
-
-	public ArrayList<sooksoImg> selectSooksoImg(int Rooms_Code) {
-		Connection conn = getConnection();
-		
-		ArrayList<sooksoImg> list = rDAO.selectSooksoImg(conn, Rooms_Code);
-		
-		close(conn);
-		
-		return list;
-	}
+    
+    public Rooms selectRooms(int Rooms_Code) {
+        Connection conn = getConnection();
+        
+        Rooms room = rDAO.selectRooms(conn, Rooms_Code);
+        
+        if (room != null) {
+            commit(conn);
+        } else {
+            rollback(conn);
+        }
+        
+        return room;
+    }
+    
+    public ArrayList<sooksoImg> selectSooksoImg(int Rooms_Code) {
+        Connection conn = getConnection();
+        
+        ArrayList<sooksoImg> list = rDAO.selectSooksoImg(conn, Rooms_Code);
+        
+        close(conn);
+        
+        return list;
+    }
 }
