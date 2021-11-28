@@ -13,7 +13,6 @@ pageEncoding="UTF-8"%>
 %>
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="UTF-8" />
   <title>Roompage_guest</title>
@@ -21,11 +20,9 @@ pageEncoding="UTF-8"%>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-
   <link rel="stylesheet" href="<%= request.getContextPath() %>/style/Roompage_guest.css" />
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
-
 <body>
   <div class="header">
     <div class="logo">
@@ -35,16 +32,13 @@ pageEncoding="UTF-8"%>
         </a>
       </label>
     </div>
-
     <div class="myPage">
       <label>
         <img onclick="location.href='<%= request.getContextPath() %>/myPageForm.us'"
           src="<%= request.getContextPath() %>/img/public_img/profile.png" alt="마이페이지" id="profile">
       </label>
     </div>
-
   </div>
-
   <div class="body">
     <div class="name">
       <h1><%= room.getRooms_name() %></h1>
@@ -222,7 +216,7 @@ pageEncoding="UTF-8"%>
           <ul>
             <li>
               <span>
-                \ 234 X <span id="test"></span>박
+                <%= room.getRooms_Price() %> X <span id="test"></span>박
               </span>
               <br />
             </li>
@@ -261,7 +255,6 @@ pageEncoding="UTF-8"%>
     slideWidth = 300;
     slideMargin = 100;
     slides.style.width = (slideWidth + slideMargin) * slideCount + "px";
-
     function moveSlide(num) {
       // 왼쪽으로 400px씩 이동
       slides.style.left = -num * 400 + "px";
@@ -277,25 +270,20 @@ pageEncoding="UTF-8"%>
       // currentIdx !==slideCount - 1 일때만 moveSlide 함수 불러옴
       if (currentIdx !== slideCount - 1) moveSlide(currentIdx + 1);
     });
-
     // Google Map 설정 
     //    function initMap() {
-
     //     // 지도 스타일
     //     const map = new google.maps.Map(document.getElementById("map"), {
     //         zoom: 14,
     //         center: { lat: 35.15205551267718, lng: 129.1171569191601 },
     //     });
-
     //     // 마커 정보
     //     var locations = [
     //         { place: "광안리 해수욕장", lat: 35.15205551267718, lng: 129.1171569191601 },
     //         { place: "어린이대공원역", lat: 37.547263, lng: 127.074181 },
     //     ];
-
     //     //인포윈도우
     //     var infowindow = new google.maps.InfoWindow();
-
     //     //마커 생성
     //     for (var i = 0; i < locations.length; i++) {
     //         var marker = new google.maps.Marker({
@@ -303,7 +291,6 @@ pageEncoding="UTF-8"%>
     //             //label: locations[i].place,
     //             position: new google.maps.LatLng(locations[i].lat, locations[i].lng),
     //         });
-
     //         google.maps.event.addListener(marker, 'click', (function(marker, i) {
     //             return function() {
     //                 //html로 표시될 인포 윈도우의 내용
@@ -312,7 +299,6 @@ pageEncoding="UTF-8"%>
     //                 infowindow.open(map, marker);
     //             }
     //         })(marker, i));
-
     //         if (marker) {
     //             marker.addListener('click', function() {
     //                 //중심 위치를 클릭된 마커의 위치로 변경
@@ -323,8 +309,6 @@ pageEncoding="UTF-8"%>
     //         }
     //     }
     // }
-
-
     // 체크아웃 - 체크인 일수 계산
     // 	    function termDate(){
     document.getElementById("but3").onclick = function () {
@@ -332,30 +316,25 @@ pageEncoding="UTF-8"%>
       //  	 	  f=document.form1;
       var checkIn = document.getElementById("checkIn").value;
       var checkOut = document.getElementById("checkOut").value;
-
       var v1 = checkIn.split("-");
       var v2 = checkOut.split("-");
       var a1 = new Date(v1[0], v1[1] - 1, v1[2]).getTime();
       var a2 = new Date(v2[0], v2[1] - 1, v2[2]).getTime();
-
       var interval = (a2 - a1) / (1000 * 60 * 60 * 24);
       console.log(interval); // 박
       //  	      f.term.value=interval; 
       //  	     document.writeln(interval);
       var test = document.getElementById("test");
       test.innerHTML = interval;
-
-      var fPrice = < %= room.getRooms_Price() % > * interval;
+      var fPrice = <%= room.getRooms_Price() %> * interval;
       var testR = document.getElementById("price");
       testR.innerHTML = fPrice;
     }
-
     // 예약하기 버튼을 누르면 DB에 데이터 저장 & PAYMENT페이지로 이동
     document.getElementById('but2').onclick = function () {
       // 체크인, 체크아웃
       var checkIn = document.getElementById("checkIn").value;
       var checkOut = document.getElementById("checkOut").value;
-
       // 성인
       var a = document.getElementById("adult");
       var adultC = a.options[a.selectedIndex].text;
@@ -364,10 +343,9 @@ pageEncoding="UTF-8"%>
       var kidC = k.options[k.selectedIndex].text;
       // 성인 + 아동 
       var personnel = "성인 " + adultC + ", " + "아동 " + kidC;
-
       // 숙소코드, 사용자코드도 여기서 저장할수있게 보내줘야
-      var roomCode = < %= room.getRooms_Code() % > ; // 숙소
-      var userCode = < %= loginUser.getUser_code() % > ; // 사용자
+      var roomCode = <%= room.getRooms_Code() %> ; // 숙소
+      var userCode = <%= loginUser.getUser_code() %> ; // 사용자
       // 가격
       var price = document.getElementById("price").innerHTML;
       // 보내줄때 Rv와 같은 방법으로 쿼리스트링으로 보내주기 + 체크인/체크아웃을 선택하지 않을시 넘어가지 않도록 설정

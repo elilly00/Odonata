@@ -42,12 +42,7 @@
       </div>
     </a>
 
-    <div class="menu">
-      <button type="button" onclick="location.href='login.html'" class="item menusolo hostdg">
-        로그인/회원가입
-      </button>
-      <div class="item menusolo">
-      </div>
+   
       <div class="menu">
         <% if(loginUser == null) { %>
         <button type="button" onclick="location.href='<%= request.getContextPath() %>/loginForm.us'"
@@ -73,7 +68,7 @@
         </div>
         <% } %>
       </div>
-    </div>
+    
 
   </nav>
   
