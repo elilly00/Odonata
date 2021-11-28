@@ -8,7 +8,7 @@ pageEncoding="UTF-8"%>
 <% 
 	User loginUser = (User)session.getAttribute("loginUser");
 	Rooms room = (Rooms)request.getAttribute("room");
-	reserv r = (reserv)request.getAttribute("rserv");
+	Reserv r = (Reserv)request.getAttribute("rserv");
 	ArrayList<sooksoImg> ImgList = (ArrayList<sooksoImg>)request.getAttribute("ImgList");
 %>
 <!DOCTYPE html>
@@ -24,9 +24,6 @@ pageEncoding="UTF-8"%>
 
   <link rel="stylesheet" href="<%= request.getContextPath() %>/style/Roompage_guest.css" />
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-  <script type="text/javascript"
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJil7Bh-RMna_GTpFIVfnvxUw_jIAiPco&callback=initMap" async
-    defer></script>
 </head>
 
 <body>
@@ -234,14 +231,15 @@ pageEncoding="UTF-8"%>
               <table>
                 <tr></tr>
                 <tr>
-                  <th>총 합계</th>
-                  <td>\</td>
+                  <td><b>총 합계 \ </b></td>
                   <td id="price"></td> <!-- room.getRooms_page * __ 한 값  -->
-                  <td>
-                    <div class="buttonn">
-                      <input type="button" class="button2" id="but2" value="예약하기">
-                    </div>
-                  </td>
+                  <tr>
+                    <td>
+                      <div class="buttonn">
+                      <input type="button" class="button3" id="but2" value="예약하기">
+                      </div>
+                    </td>
+                  </tr>
                 </tr>
               </table>
             </li>
