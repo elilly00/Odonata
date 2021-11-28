@@ -36,7 +36,6 @@ public class RoomPageServlet extends HttpServlet {
             throws ServletException, IOException {
         int rCd = Integer.parseInt(request.getParameter("Rooms_Code"));
         
-        // �����Խ��� ����ȸ�̱� ������ Board�� ���õ� �Ͱ� image�� ���õ� �͵��� ���� �;���
         RoomsService service = new RoomsService();
         Rooms room = service.selectRooms(rCd);
         ArrayList<sooksoImg> ImgList = service.selectSooksoImg(rCd);
@@ -47,7 +46,7 @@ public class RoomPageServlet extends HttpServlet {
             request.setAttribute("ImgList", ImgList);
             page = "WEB-INF/view/rooms/Roompage_guest.jsp";
         } else {
-            request.setAttribute("msg", "���� �󼼺��� ����");
+            request.setAttribute("msg", "숙소 상세보기 실패");
             page = "WEB-INF/errorPage.jsp";
         }
         request.getRequestDispatcher(page).forward(request, response);
