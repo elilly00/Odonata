@@ -1,7 +1,6 @@
 package rooms.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,22 +8,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import msg.model.vo.PageInfo;
-import rooms.model.service.RoomsService;
-import rooms.model.vo.Rooms;
-import sooksoimg.model.vo.sooksoImg;
-
 /**
  * Servlet implementation class FileListServlet
  */
 @WebServlet("/listForm.re")
-public class SearchResultServlet extends HttpServlet {
+public class SearchResultServletForm extends HttpServlet {
     private static final long serialVersionUID = 1L;
     
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SearchResultServlet() {
+    public SearchResultServletForm() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,9 +29,7 @@ public class SearchResultServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                request
-                .getRequestDispatcher("WEB-INF/view/rooms/Search_result.jsp")
-                .forward(request, response);
+        request.getRequestDispatcher("WEB-INF/view/rooms/Search_result.jsp").forward(request, response);
     }
     
     /**
