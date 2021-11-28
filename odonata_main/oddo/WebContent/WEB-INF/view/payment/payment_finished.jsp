@@ -33,7 +33,7 @@
 <body>
   <nav class="main-navi">
     <a class="logoo" href="<%= request.getContextPath() %>/WEB-INF/index.jsp">
-      <img class="logoo" src="<%= request.getContextPath() %>/img/logo.png">
+      <img class="logoo" src="<%= request.getContextPath() %>/img/public_img/logo.png">
     </a>
     <div class="menu">
       <% if(loginUser == null) { %>
