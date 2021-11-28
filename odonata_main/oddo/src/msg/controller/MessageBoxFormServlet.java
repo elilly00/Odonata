@@ -74,7 +74,7 @@ public class MessageBoxFormServlet extends HttpServlet {
             request.setAttribute("pi", pi);
         } else {
             page = "WEB-INF/errorPage.jsp";
-            request.setAttribute("msg", "메세지 조회 실패");
+            request.setAttribute("msg", "메세지 목록 조회 실패");
         }
         
         request.getRequestDispatcher(page).forward(request, response);
