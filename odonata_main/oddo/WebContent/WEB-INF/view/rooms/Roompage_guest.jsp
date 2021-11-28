@@ -17,6 +17,11 @@ pageEncoding="UTF-8"%>
 <head>
   <meta charset="UTF-8" />
   <title>Roompage_guest</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <link rel="stylesheet" href="<%= request.getContextPath() %>/style/Roompage_guest.css" />
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script type="text/javascript"
