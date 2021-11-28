@@ -22,7 +22,7 @@ public class RoomsService {
         int result1 = rDAO.insertRooms(conn, r);
         int result2 = rDAO.insertsooksoImg(conn, ImgList);
         
-        if (result1 > 0 || (result1 > 0 && result2 > 0)) {
+        if (result1 > 0 && result2 > 0) {
             commit(conn);
         } else {
             rollback(conn);
