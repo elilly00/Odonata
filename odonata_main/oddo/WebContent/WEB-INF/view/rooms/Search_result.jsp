@@ -355,7 +355,7 @@
   </div>
 
   <div class="topBtn">
-    <button type="button" class="top" onclick="goTop()">↑</button>
+  	<button type="button" class="top" onclick="goTop()">↑</button>
   </div>
 
   <script>
@@ -453,20 +453,22 @@
     }
 
     // 맨위로 가기 버튼 설정
-    $(window).scroll(function () {
-      if ($(this).scrollTop() > 200) {
-        $('.top').fadeIn();
-      } else {
-        $('.top').fadeOut();
-      }
-    });
+    $(document).ready(function() {
 
-    $('.top').click(function () {
-      $('html, body').animate({
-        scrollTop: 0
-      }, 1000);
-      return false;
-    });
+      $(window).scroll(function() {
+        // 버튼 컨트롤
+          if ($(this).scrollTop() > 200) {
+              $('.top').fadeIn();
+          } else {
+              $('.top').fadeOut();
+          }
+      });
+
+      $(".top").click(function() {
+        $('html, body').animate({scrollTop:0}, '300');
+      });
+
+      });
   </script>
 
 </body>
