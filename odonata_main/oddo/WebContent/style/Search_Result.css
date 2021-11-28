@@ -399,3 +399,8 @@ height: 1000px;
   color: white;
   cursor: pointer;
 }
+.profile {
+  height: 40px;
+
+  background-color: #f2bba7;
+}
