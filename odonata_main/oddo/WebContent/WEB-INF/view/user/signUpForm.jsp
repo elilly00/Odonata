@@ -56,7 +56,7 @@
   <section class="intro">
     <div class="bg-image h-100"
       style="background-size: cover; background-image: url('<%= request.getContextPath() %>/img/public_img/bg.jpg')">
-      <a href="index.html">
+      <a href="<%= request.getContextPath() %>/WEB-INF/index.html">
         <span class="fixed-top logo my-3">
           <img src="<%= request.getContextPath() %>/img/public_img/logo.png" width="80px" height="80px" alt="잠자리"
             class="mx-2" />

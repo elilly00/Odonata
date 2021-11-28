@@ -17,7 +17,7 @@
         <div class="header">
           <div class="logo">
             <label>
-              <a href="<%= request.getContextPath() %>">
+              <a href="<%= request.getContextPath() %>/WEB-INF/index.html">
                <img src="<%= request.getContextPath() %>/img/public_img/logo.png" 
                 alt="메인페이지" 
                 id="main">

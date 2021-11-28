@@ -29,7 +29,7 @@
   <div class="header">
     <div class="logo">
       <label>
-        <img onclick="location.href='<%= request.getContextPath() %>'"
+        <img onclick="location.href='<%= request.getContextPath() %>/WEB-INF/index.html'"
           src="<%= request.getContextPath() %>/img/public_img/logo.png" alt="메인페이지" id="logo">
       </label>
     </div>
