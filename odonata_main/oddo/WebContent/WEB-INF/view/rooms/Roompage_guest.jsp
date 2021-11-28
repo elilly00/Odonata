@@ -230,7 +230,7 @@ pageEncoding="UTF-8"%>
                   <tr>
                     <td>
                       <div class="buttonn">
-                      <input type="button" class="button3" id="but2" value="예약하기">
+                      <input type="button" class="button2" id="but2" value="예약하기">
                       </div>
                     </td>
                   </tr>
