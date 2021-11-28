@@ -8,20 +8,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import msg.model.service.MessageService;
-import msg.model.vo.Message;
-
 /**
- * Servlet implementation class MessageDetailServlet
+ * Servlet implementation class MessageWriteFormServlet
  */
-@WebServlet("/msgDetail.ms")
-public class MessageDetailServlet extends HttpServlet {
+@WebServlet("/msgInsert.ms")
+public class MessageWriteFormServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MessageDetailServlet() {
+    public MessageWriteFormServlet() {
     }
     
     /**
@@ -30,19 +27,7 @@ public class MessageDetailServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int mId = Integer.parseInt(request.getParameter("mId"));
-        
-        Message msg = new MessageService().selectMessage(mId);
-        
-        String page = null;
-        if (msg != null) {
-            page = "WEB-INF/view/msg/messageDetail.jsp";
-            request.setAttribute("msgDetail", msg);
-        } else {
-            page = "WEB-INF/errorPage.jsp";
-            request.setAttribute("msg", "쪽지 상세보기 실패");
-        }
-        request.getRequestDispatcher(page).forward(request, response);
+        request.getRequestDispatcher("WEB-INF/view/msg/messageWrite.jsp").forward(request, response);
     }
     
     /**

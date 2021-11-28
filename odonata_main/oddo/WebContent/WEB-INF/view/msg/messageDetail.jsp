@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="user.model.vo.User, java.util.ArrayList, msg.model.vo.*"%>
 <%
-    ArrayList<Message> list = (ArrayList)request.getAttribute("list");
-    PageInfo pi = (PageInfo)request.getAttribute("pi");
     Message msg = (Message)request.getAttribute("msgDetail");
 %>
 <%@ page import="user.model.vo.User" %>
@@ -114,7 +112,7 @@
   <div class="container-fluid">
     <div class="row mx-auto my-4">
       <div class="col px-5">
-        <h2>내 쪽지함</h2>
+        <h2>쪽지</h2>
       </div>
     </div>
 
@@ -122,35 +120,35 @@
       <button type="button" class="btn btn-secondary btn-sm btn-block" onclick="location.href='<%= request.getContextPath() %>/msgInsert.ms'">
         작성하기
       </button>
+      <button type="button" class="btn btn-secondary btn-sm btn-block" onclick="deleteMSG();">
+        삭제하기
+      </button>
     </div>
 
     <div class="row mx-auto my-2 mb-4">
       <div class="col px-5 mx-5" id="messageBox">
-        <table class="table table-border table-hover" id="messageTB">
+        <table class="table table-border" id="messageDetail">
           <thead>
             <tr>
               <th>제목</th>
-              <th>보낸 사람</th>
+              <th colspan="3"><%= msg.getMessage_Title() %></th>
+            </tr>
+            <tr>
+              <th>보낸이</th>
+              <td><%= msg.getSend_Id() %></td>
               <th>보낸 시간</th>
+              <td><%= msg.getSendTime() %></td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                  <div class="form">
+                      <textarea class="form-control" id="msgContent" name="msgContent" style="height: 240px" readonly><%= msg.getMessage_Text() %></textarea>
+                  </div>
+                </td>
             </tr>
           </thead>
           <tbody>
-            <% if(list.isEmpty()) { %>
-            <tr>
-              <td colspan="4">조회된 쪽지가 없습니다.</td>
-            </tr>
-            <% } else { %>
-            <%   for(int i = 0; i < list.size(); i++) { %>
-            <tr>
-              <td><%= list.get(i).getMessage_Title() %></td>
-              <td><%= list.get(i).getSend_Id() %></td>
-              <td><%= list.get(i).getSendTime() %></td>
-              <td>
-                <div style="display: none;"><%= list.get(i).getMessage_Code() %></div>
-              </td>
-            </tr>
-            <%   } %>
-            <% } %>
+            <div style="display:none;" id="msgCode"><%= msg.getMessage_Code() %></div>
           </tbody>
         </table>
       </div>
@@ -158,12 +156,12 @@
   </div>
 </body>
 <script>
-  $('#messageBox td').click(function () {
-    var mId = $(this).parent().children().eq(3).text();
-    if(mId.trim() == "")
-    	return;
-    location.href = '<%= request.getContextPath() %>/msgDetail.ms?mId=' + mId.trim();
-  });
+    function deleteMSG() {
+    	var bool = confirm('정말로 삭제하시겠습니까?');
+    	var mId = $('#msgCode').text();
+    	if(bool)
+    		location.href='<%= request.getContextPath() %>/deleteMessage.ms?mId=' + mId;
+    }
 </script>
 
 </html>

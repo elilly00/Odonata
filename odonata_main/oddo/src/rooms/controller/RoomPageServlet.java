@@ -18,8 +18,8 @@ import rooms.model.vo.sooksoImg;
  */
 @WebServlet("/detail.ro")
 public class RoomPageServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+    private static final long serialVersionUID = 1L;
+    
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -27,36 +27,40 @@ public class RoomPageServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int Rooms_Code = Integer.parseInt(request.getParameter("Rooms_Code"));
-		
-		// »çÁø°Ô½ÃÆÇ »ó¼¼Á¶È¸ÀÌ±â ¶§¹®¿¡ Board¿Í °ü·ÃµÈ °Í°ú image¿¡ °ü·ÃµÈ °ÍµéÀ» °¡Á® ¿Í¾ßÇÔ
-		RoomsService service = new RoomsService();
-		Rooms room = service.selectRooms(rCd);
-		ArrayList<sooksoImg> ImgList = service.selectSooksoImg(rCd);
-		
-		String page = null;
-		if(room != null) {
-			request.setAttribute("room", room);
-			request.setAttribute("ImgList", ImgList);
-			page = "WEB-INF/view/rooms/Roompage_guest.jsp";
-		} else {
-			request.setAttribute("msg", "¼÷¼Ò »ó¼¼º¸±â ½ÇÆÐ");
-			page = "WEB-INF/errorPage.jsp";
-		}
-		request.getRequestDispatcher(page).forward(request, response);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
+    
+    /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+     *      response)
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        int rCd = Integer.parseInt(request.getParameter("Rooms_Code"));
+        
+        // ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½È¸ï¿½Ì±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Boardï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½Í°ï¿½ imageï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½Íµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Í¾ï¿½ï¿½ï¿½
+        RoomsService service = new RoomsService();
+        Rooms room = service.selectRooms(rCd);
+        ArrayList<sooksoImg> ImgList = service.selectSooksoImg(rCd);
+        
+        String page = null;
+        if (room != null) {
+            request.setAttribute("room", room);
+            request.setAttribute("ImgList", ImgList);
+            page = "WEB-INF/view/rooms/Roompage_guest.jsp";
+        } else {
+            request.setAttribute("msg", "ï¿½ï¿½ï¿½ï¿½ ï¿½ó¼¼ºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
+            page = "WEB-INF/errorPage.jsp";
+        }
+        request.getRequestDispatcher(page).forward(request, response);
+    }
+    
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+     *      response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        doGet(request, response);
+    }
+    
 }

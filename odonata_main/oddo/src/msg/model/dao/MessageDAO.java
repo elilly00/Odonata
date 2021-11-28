@@ -116,24 +116,47 @@ public class MessageDAO {
         
         return m;
     }
-
-    public int insertMessage(Connection conn, Message msg) {
-		PreparedStatement pstmt = null;
-		int result = 0;
-		
-		String query = prop.getProperty("insertMessage");
-		
-		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, msg.getMessage_Title());
-			pstmt.setString(2, msg.getMessage_Text());
-			
-			result = pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-		}
-		return result;
-	}
+    
+    public int insertMessage(Connection conn, Message m) {
+        PreparedStatement pstmt = null;
+        int result = 0;
+        
+        String query = prop.getProperty("insertMessage");
+        
+        try {
+            pstmt = conn.prepareStatement(query);
+            pstmt.setString(1, m.getMessage_Title());
+            pstmt.setString(2, m.getMessage_Text());
+            pstmt.setString(3, m.getSend_Id());
+            pstmt.setString(4, m.getReceive_Id());
+            
+            result = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(pstmt);
+        }
+        
+        return result;
+    }
+    
+    public int deleteMessage(Connection conn, int mId) {
+        PreparedStatement pstmt = null;
+        int result = 0;
+        
+        String query = prop.getProperty("deleteMessage");
+        
+        try {
+            pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, mId);
+            
+            result = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(pstmt);
+        }
+        
+        return result;
+    }
 }

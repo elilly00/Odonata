@@ -22,26 +22,26 @@
   width: 75%;
   height: 80px;
   margin-left: 20px;
-  /*         background: gray; */
+/*         background: gray; */
 }
 #logo {
-  width: 80px;
-  height: 80px;
+    width: 80px;
+    height: 80px;
   margin-top: 5px;
-  /*       	background:tomato; */
+/*       	background:tomato; */
 }
 
 .img {
-  width: 30%;
-  /* 	  	background: yellow; */
-}
-
+      width: 30%;
+/* 	  	background: yellow; */
+    } 
+  
 #profile {
-  margin-left: 87%;
+  margin-left:87%;
   width: 40px;
   height: 40px;
-  margin-top: 25px;
-  /* background: gray;  */
+  margin-top: 25px;  
+       /* background: gray;  */
 }
 
 .body {
@@ -52,7 +52,7 @@
   border-bottom: 1px solid lightgrey;
 }
 
-/* 슬라이드 부분 */
+  /* 슬라이드 부분 */
 /* 보여줄 구간의 높이와 넓이 설정 */
 #slideShow {
   width: 500px;
@@ -152,42 +152,15 @@
   text-align: center;
 }
 
-.body_info2 > h2 {
+.body_info2>h2 {
   height: 50px;
   margin-top: 10px;
 }
 
-.emoji {
-  width: 24px;
-  height: 24px;
-  padding: 2px;
+.rLocation {
+  width: 16px;
+  height: 20px;
 }
-
-.reviews {
-  display: flex;
-  margin-right: 6%;
-  padding: 5%;
-  /* background:rgba(0, 0, 0, 0.1); */
-}
-.reviewer {
-  width: 40px;
-  height: 40px;
-  border-radius: 30px;
-}
-
-/* .more {
-  margin-top: 65px;
-  margin-left: 50px;
-  width: 100px;
-  height: 30px;
-  background-color: white;
-  color: black;
-  border: 1px solid gray;
-  text-align: center;  // 글자 위치 : 가운데
-  line-height: 30px;  // 글자 높이  
-  cursor: pointer;
-  border-radius: 10px;
-} */
 
 #map {
   width: 90%;
@@ -207,12 +180,13 @@
   text-align: center;
   border-radius: 10px;
 }
+
 #note {
-  width: 70%;
-  height: 90px;
-  margin-top: 20px;
-  text-align: center;
-  border-radius: 10px;
+    width: 70%;
+    height: 90px;
+    margin-top: 20px;
+    text-align: center;
+    border-radius: 10px;
 }
 
 .submit {
@@ -246,6 +220,7 @@
   margin-right: 15%;
   float: right;
 }
+
 .wrap {
   position: sticky;
   top: 0px;
@@ -289,11 +264,12 @@
   text-align: center;
   border: 1px solid lightgrey;
   border-radius: 10px;
+
 }
 
 .button {
   height: 60px;
-  margin-top: 20%;
+  margin-top: 5%;
   border-bottom: 1px solid lightgrey;
 }
 
@@ -316,10 +292,10 @@
 }
 
 .result {
-  margin-top: 72%;
+  margin-top: 60%;
 }
-.profile {
-  height: 40px;
 
-  background-color: #f2bba7;
+.buttonn {
+  height: 60px;
+  margin-top: 5%;
 }

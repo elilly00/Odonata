@@ -9,19 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import msg.model.service.MessageService;
-import msg.model.vo.Message;
 
 /**
- * Servlet implementation class InsertMessageServlet
+ * Servlet implementation class DeleteMessageServlet
  */
-@WebServlet("/insert.ms")
-public class InsertMessageServlet extends HttpServlet {
+@WebServlet("/deleteMessage.ms")
+public class DeleteMessageServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InsertMessageServlet() {
+    public DeleteMessageServlet() {
     }
     
     /**
@@ -30,23 +29,14 @@ public class InsertMessageServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String msgTitle = request.getParameter("msgTitle");
-        String msgContent = request.getParameter("msgContent");
-        String sendId = request.getParameter("sendId");
-        String recvId = request.getParameter("recvId");
+        int mId = Integer.parseInt(request.getParameter("mId"));
         
-        Message m = new Message();
-        m.setMessage_Title(msgTitle);
-        m.setMessage_Text(msgContent);
-        m.setSend_Id(sendId);
-        m.setReceive_Id(recvId);
-        
-        int result = new MessageService().insertMessage(m);
+        int result = new MessageService().deleteMessage(mId);
         
         if (result > 0)
             response.sendRedirect("msgBoxForm.ms");
         else {
-            request.setAttribute("msg", "메세지 전송 실패");
+            request.setAttribute("msg", "쪽지 삭제 실패");
             request.getRequestDispatcher("WEB-INF/errorPage.jsp").forward(request, response);
         }
     }

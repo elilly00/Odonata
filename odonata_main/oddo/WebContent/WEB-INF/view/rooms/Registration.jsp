@@ -127,17 +127,17 @@
         
             <br /><br />
             
-            <div class="check">
-              <h3>애완동물 동반 가능 여부</h3>
-              <br />
-              <label class="switch-button"> 
-                <input type="checkbox" name="pet"/> 
-                <span class="onoff-switch">
-                </span> 
-              </label>
-            </div>
-    
-            <br /><br />
+<!--             <div class="check"> -->
+<!--               <h3>반려동물 동반 가능 여부</h3> -->
+<!--               <br /> -->
+<!--               <label class="switch-button">  -->
+<!--                 <input type="checkbox" id="pet" name="pet"/>  -->
+<!--                 <span class="onoff-switch"> -->
+<!--                 </span>  -->
+<!--               </label> -->
+<!--             </div> -->
+    		
+<!--             <br /><br /> -->
             
             <div>
               <h3 id="option">편의 시설</h3>
@@ -158,7 +158,8 @@
               <input type="checkbox" value="세탁기" name="amenity"/>세탁기 <br />
               <input type="checkbox" value="건조기" name="amenity"/>건조기<br />
               <input type="checkbox" value="무료 주차장" name="amenity"/>무료 주차장<br />
-            </div>
+              <input type="checkbox" value="반려동물 동반 가능" name="amenity"/>반려동물 동반<br />
+              </div>
             
             <br /><br />
             
@@ -260,7 +261,6 @@
           </form>
     
           <script>
-           
 	        // 내용 작성 부분의 공간을 클릭할 때 파일 첨부 창이 뜨도록 설정하는 함수
 	        $(function(){
 	          $("#fileArea").hide(); 
