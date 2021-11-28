@@ -56,7 +56,7 @@
   <section class="intro">
     <div class="bg-image h-100"
       style="background-size: cover; background-image: url('<%= request.getContextPath() %>/img/public_img/bg.jpg')">
-      <a href="<%= request.getContextPath() %>/WEB-INF/index.html">
+      <a href="index.html">
         <span class="fixed-top logo my-3">
           <img src="<%= request.getContextPath() %>/img/public_img/logo.png" width="80px" height="80px" alt="잠자리"
             class="mx-2" />
@@ -141,11 +141,6 @@
                         </label>
                       </div>
 
-                      <button type="button" class="btn btn-light btn-lg btn-block mx-5 mb-4">
-                        결제 수단 등록
-                      </button>
-                      <button type="button" class="btn btn-light btn-lg btn-block mx-5 mb-4">
-                        호스트 숙소 등록</button><br />
                       <button type="submit" class="btn btn-secondary btn-lg btn-block mx-5">
                         가입하기
                       </button>

@@ -35,11 +35,19 @@ public class MyResrvFormServlet extends HttpServlet {
         int userCode = ((User) request.getSession().getAttribute("loginUser")).getUser_code();
         
         ArrayList<Reserv> yList = new ResrvService().selectResrvY(userCode);
-        ArrayList<Reserv> List = new ResrvService().selectResrvAll(userCode);
+        ArrayList<Reserv> list = new ResrvService().selectResrvAll(userCode);
         
-        request.setAttribute("myResrvY", yList);
-        request.setAttribute("myResrvAll", List);
-        request.getRequestDispatcher("WEB-INF/view/user/myRevPage.jsp").forward(request, response);
+        String page = null;
+        if (yList != null && list != null) {
+            page = "WEB-INF/view/user/myRevPage.jsp";
+            request.setAttribute("myResrvY", yList);
+            request.setAttribute("myResrvAll", list);
+        } else {
+            page = "WEB-INF/errorPage.jsp";
+            request.setAttribute("msg", "예약 목록 조회 실패");
+        }
+        
+        request.getRequestDispatcher(page).forward(request, response);
     }
     
     /**

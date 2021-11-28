@@ -2,8 +2,8 @@
     pageEncoding="UTF-8" import="java.util.ArrayList, user.model.vo.User, reserv.model.vo.Reserv"%>
 <%
   User loginUser = (User)session.getAttribute("loginUser");
-  ArrayList<Reserv> yList = (ArrayList<Reserv>)request.getAttribute("myReservY");
-  ArrayList<Reserv> list = (ArrayList<Reserv>)request.getAttribute("myReservAll");
+  ArrayList<Reserv> yList = (ArrayList)request.getAttribute("myResrvY");
+  ArrayList<Reserv> list = (ArrayList)request.getAttribute("myResrvAll");
 %>
 <!doctype html>
 <html lang="ko">
@@ -24,6 +24,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="<%= request.getContextPath() %>/js/jquery-3.6.0.min.js"></script>
 
   <link rel="stylesheet" href="<%= request.getContextPath() %>/style/navi.css" />
 
@@ -47,7 +48,7 @@
   </style>
 </head>
 
-<body>
+<body onload="chk();">
   <nav class="main-navi" style="background: #f2bba7;">
     <a href="<%= request.getContextPath() %>/WEB-INF/index.html">
       <div class="logo">
@@ -70,11 +71,7 @@
         </button>
         <% } else { %>
         <div id="userInfo" align="right">
-          <%-- <label> <%= loginUser.getUser_name() %> 님의 방문을 환영합니다. </label>
-          <br clear="all"> --%>
           <div class="menu">
-            <%-- <input type="button" class="item menusolo hostdg" value="내 정보 보기" onclick="location.href='<%= request.getContextPath() %>/myPage.me'">
-            --%>
             <input type="button" class="item menusolo hostdg" value="로그 아웃"
               onclick="location.href='<%= request.getContextPath() %>/logout.me'">
           </div>
@@ -113,7 +110,9 @@
           </thead>
           <tbody>
             <% if(list.isEmpty()) { %>
-            <td colspan="4">조회된 기록이 없습니다.</td>
+            <tr>
+              <td colspan="4">조회된 기록이 없습니다.</td>
+            </tr>
             <% } else { %>
             <%   for(int i = 0; i < list.size(); i++) { %>
             <tr>
@@ -151,7 +150,9 @@
           </thead>
           <tbody>
             <% if(yList.isEmpty()) { %>
-            <td colspan="5">조회된 기록이 없습니다.</td>
+            <tr>
+              <td colspan="5">조회된 기록이 없습니다.</td>
+            </tr>
             <% } else { %>
             <%   for(int i = 0; i < list.size(); i++) { %>
             <tr>

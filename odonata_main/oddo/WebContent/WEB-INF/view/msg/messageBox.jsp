@@ -62,7 +62,6 @@
         <img src="<%= request.getContextPath() %>/img/public_img/logo.png" width="80px" height="80px" alt="잠자리"
           class="mx-2" />
       </div>
-      <%-- 로그인 / 마이페이지 / 로그아웃 --%>
       <div class="menu">
         <% if(loginUser == null) { %>
         <button type="button" onclick="location.href='<%= request.getContextPath() %>/loginForm.us'"
@@ -71,14 +70,12 @@
         </button>
         <% } else { %>
         <div id="userInfo" align="right">
-          <%-- <label> <%= loginUser.getUser_name() %> 님의 방문을 환영합니다. </label>
-          <br clear="all"> --%>
           <div class="menu">
-            <%-- <input type="button" class="item menusolo hostdg" value="내 정보 보기" onclick="location.href='<%= request.getContextPath() %>/myPage.me'">
-            --%>
             <input type="button" class="item menusolo hostdg" value="로그 아웃"
               onclick="location.href='<%= request.getContextPath() %>/logout.me'">
           </div>
+        </div>
+        <div class="item menusolo">
         </div>
         <div class="button" type="button" onclick="location.href='<%= request.getContextPath() %>/myPageForm.us'">
           <img class="profile" src="<%= request.getContextPath() %>/img/public_img/profile.png" alt="마이페이지"
@@ -86,30 +83,7 @@
         </div>
         <% } %>
       </div>
-
-      <%-- 로그인 / 마이페이지 / 로그아웃 끝 --%>
     </a>
-
-    <%-- <div class="menu">
-        <button
-          type="button"
-          onclick="location.href='login.html'"
-          class="item menusolo hostdg"
-        >
-          로그인/회원가입
-        </button>
-        <div class="item menusolo"></div>
-        <div class="item menuset">
-          <button
-            class="mypage"
-            type="button"
-            onclick="location.href='login.html'"
-            class="item menusolo hostdg"
-          >
-            <i class="fas fa-user-circle"></i>
-          </button>
-        </div>
-      </div> --%>
   </nav>
 
   <div class="container-fluid">
@@ -120,8 +94,7 @@
     </div>
 
     <div class="mx-5">
-      <button type="button" class="btn btn-secondary btn-sm btn-block"
-        onclick="location.href='<%= request.getContextPath() %>/msgInsert.ms'">
+      <button type="button" class="btn btn-secondary btn-sm btn-block" onclick="location.href='<%= request.getContextPath() %>/msgInsert.ms'">
         작성하기
       </button>
     </div>
@@ -162,8 +135,8 @@
 <script>
   $('#messageBox td').click(function () {
     var mId = $(this).parent().children().eq(3).text();
-    if (mId.trim() == "")
-      return;
+    if(mId.trim() == "")
+    	return;
     location.href = '<%= request.getContextPath() %>/msgDetail.ms?mId=' + mId.trim();
   });
 </script>
