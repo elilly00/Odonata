@@ -8,25 +8,26 @@ pageEncoding="UTF-8"%>
 <% 
 	User loginUser = (User)session.getAttribute("loginUser");
 	Rooms room = (Rooms)request.getAttribute("room");
-	// 	reserv r = (reserv)request.getAttribute("r");
-	Reserv r = (Reserv)request.getAttribute("rserv");
+	reserv r = (reserv)request.getAttribute("rserv");
 	ArrayList<sooksoImg> ImgList = (ArrayList<sooksoImg>)request.getAttribute("ImgList");
-	review review = (review)request.getAttribute("reivew");
 %>
-<!-- ★  에러 체크하느라 가져온 값들을 주석처리했는데 그 부분은 확인하지 못했습니다 : 확인필요 -->
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8" />
   <title>Roompage_guest</title>
   <link rel="stylesheet" href="<%= request.getContextPath() %>/style/Roompage_guest.css" />
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJil7Bh-RMna_GTpFIVfnvxUw_jIAiPco&callback=initMap" async
+    defer></script>
 </head>
 
 <body>
   <div class="header">
     <div class="logo">
       <label>
-        <a href="<%= request.getContextPath() %>WebContent/index.jsp">
+        <a href="<%= request.getContextPath() %>">
           <img src="<%= request.getContextPath() %>/img/public_img/logo.png" alt="메인페이지" id="logo" />
         </a>
       </label>
@@ -39,11 +40,7 @@ pageEncoding="UTF-8"%>
       </button>
       <% } else { %>
       <div id="userInfo" align="right">
-        <%-- <label> <%= loginUser.getUser_name() %> 님의 방문을 환영합니다. </label>
-        <br clear="all"> --%>
         <div class="menu">
-          <%-- <input type="button" class="item menusolo hostdg" value="내 정보 보기" onclick="location.href='<%= request.getContextPath() %>/myPage.me'">
-          --%>
           <input type="button" class="item menusolo hostdg" value="로그 아웃"
             onclick="location.href='<%= request.getContextPath() %>/logout.me'">
         </div>
@@ -57,25 +54,22 @@ pageEncoding="UTF-8"%>
       <% } %>
     </div>
   </div>
-  </div>
 
   <div class="body">
     <div class="name">
               <h1><%= room.getRooms_name() %></h1>
-              <p><b>\<%= room.getRooms_Price() %></b>/박</p>
+              <p><b>\<%= room.getRooms_Price() %></b> / 박</p>
     </div>
   </div>
   <div id="slideShow">
     <!-- 첫 사진이 제대로 안나옴.. -->
     <ul class="slides">
-               <li><img src="<%= request.getContextPath() %>/thumbnail_uploadFiles/<%= ImgList.get(0).getChange_name() %>"
-      alt="방사진1" /></li> 
-               <li><img src="<%= request.getContextPath() %>/thumbnail_uploadFiles/<%= ImgList.get(1).getChange_name() %>"
-      alt="방사진2" /></li> 
-               <li><img src="<%= request.getContextPath() %>/thumbnail_uploadFiles/<%= ImgList.get(1).getChange_name() %>"
-      alt="방사진3" /></li> 
-             	<li><img src="<%= request.getContextPath() %>/thumbnail_uploadFiles/<%= ImgList.get(1).getChange_name() %>"
-      alt="방사진4" /></li> 
+      <li><img src="<%= request.getContextPath() %>/thumbnail_uploadFiles/<%= ImgList.get(0).getChange_name() %>"
+                alt="방사진" width="300" height="300"/></li> 
+      <% for(int i = 1; i < ImgList.size(); i++) { %>
+        <li><img src="<%= request.getContextPath() %>/thumbnail_uploadFiles/<%= ImgList.get(i).getChange_name() %>"
+                 alt="방사진" width="300" height="300"/></li>
+        <% } %> 
     </ul>
 
     <p class="controller">
@@ -88,52 +82,32 @@ pageEncoding="UTF-8"%>
     <div class="body1_1">
       <div class="body1_2">
         <div class="body_info">
-                      <h2><%= room.getRooms_Host() %>님의 <%= room.getRooms_Type() %></h2>
+        <h2><%= room.getRooms_Host() %>님의 <%= room.getRooms_Type() %></h2>
+
+        <br />
+        <span>최대 인원 <%= room.getRooms_Personnel() %>명</span>
+
+         <br />
+		 <span>침실 <%= room.getRooms_RoomCnt() %>개</span><span> · </span>
+         <span>욕실 <%= room.getRooms_ToiletCnt() %>개</span> 
 
           <br />
-
-                      <span>최대 인원 <%= room.getRooms_Personnel() %>명</span>
-
-          <br />
-
-                       <span>침실 <%= room.getRooms_RoomCnt() %>개</span><span> · </span>
-                       <span>욕실 <%= room.getRooms_ToiletCnt() %>개</span> 
-
-          <br />
-
-                       <!-- ★ null일경우 화면에 안보이도록 설정해야할듯 -->
-                       <span>동물 동반 가능 '<%= room.getRooms_DogAvail() %>'</span> 
         </div>
       </div>
       <div class="body_info2">
         <h2>숙소 편의 시설</h2>
         <div class="info_a">
-
-                       <%= room.getAmenity() %> 
-
-          <!-- 가로로 병렬시키기 -->
-           <img class="emoji" alt="집" src="<%= request.getContextPath() %>/img/public_file/room/home.png" />
-            <div><b>아파트 전체</b></div>
-            <img
-              class="emoji"
-              alt="세탁기"
-              src="../images/washingmachine.PNG"
-            />
-            <div><b>세탁기</b></div>
-          </div>
-          <div class="info_b">
-            <img class="emoji" alt="와이파이" src="<%= request.getContextPath() %>/img/public_file/room/wifi.png" />
-            <div><b>와이파이</b></div>
-            <img class="emoji" alt="에어컨" src="<%= request.getContextPath() %>/img/public_file/room/aircon.png" />
-            <div><b>에어컨</b></div>
-            <img class="emoji" alt="주방" src="<%= request.getContextPath() %>/img/public_file/room/kitchen.png" />
-            <div><b>주방</b></div>
-          </div> 
+          <%= room.getAmenity() %> 
+        </div>
         </div>
         <div class="body_info3">
           <h2>숙소 위치</h2>
           <br />
-          <div id="map"></div>
+          <div>
+          	<img src="<%= request.getContextPath() %>/img/public_file/room/location.png" class="rLocation"><%= room.getRooms_Addr() %>
+          </div>
+          <br />
+          <!-- <div id="map"></div> -->
         </div>
 
 <!-- ★ 활성화시 오류 발생 -->
@@ -165,24 +139,33 @@ pageEncoding="UTF-8"%>
 <!--   <!-- <div class="more">후기 더보기</div> --> 
 <!--   </div> -->
 <!--   </div> -->
-  <form action="<%= request.getContextPath() %>/msgDetail.ms" method="post"></form>
+  <div class="body_info4"> 
+    <h2>숙소 상세 설명</h2>
+    <br>
+    <%= room.getRooms_Desc() %>
+  </div>
+  <form action="<%= request.getContextPath() %>/msgDetail.ms" method="post">
   <div class="body_info5">
     <h2>호스트에게 쪽지 보내기</h2>
     <ul>
-      <br>
-      <b>제목</b>
+      <li>
+      	<br>
+      	<b>제목</b>
+      </li>
       <li>
         <textarea id="title" placeholder="제목 입력" name="title"></textarea>
       </li>
-      <br>
-      <b>내용</b>
+      <li>
+      	<br>
+      	<b>내용</b>
+      </li>
       <li>
         <textarea id="note" placeholder="호스트에게 쪽지 보내기 / 문의하기" name="text"></textarea>
       </li>
     </ul>
   </div>
   <div class="submit">
-    <input type="submit" id="submit" value="보내기" />
+    <input type="submit" id="submit" value="보내기" onclick="location.href='<%= request.getContextPath() %>/insertMSG.ms'">
   </div>
   </form>
   </div>
@@ -235,41 +218,38 @@ pageEncoding="UTF-8"%>
           <div class="button">
           	<!-- 임의로 확인을 위해 but3삽입 -->
             <input type="button" class="button2" id="but3" value="금액 확인하기"><br><br>
-            <!-- <input type="button" class="button2" id="but2" value="예약하기"> -->
           </div>
         </div>
 
         <br />
 
         <div class="result">
-          <ul>
-            <li>
-              <span> 
-              	\ <%= room.getRooms_Price() %> X <p id="test"></p>박
-              	<!-- 들어가긴했는데 아무 값도 안들어갔을때는 1이 기본적으로 출력되게 하고싶긴합니다 -->
-			 </span> 
-			          
-              <br>
-            </li>
-            <li>
-              <br>
-              <table>
-                <tr></tr>
-                <tr>
+            <ul>
+              <li>
+                <span> 
+                  \ 234 X <span id="test"></span>박
+                </span> 
+                <br />
+              </li>
+              <li>
+                <br>
+                <table>
+                  <tr></tr>
+                  <tr>
                   <th>총 합계</th>
-                  <td>\</td>
-                  <td id="price"></td> <!-- room.getRooms_page * __ 한 값  -->
-                  <td>
-                  	 <div class="button">
-		             	 <input type="button" class="button2" id="but2" value="예약하기">
-		             </div>
-                  </td>
-                </tr>
-              </table>
-			 
-            </li>
-          </ul>
-        </div>
+                    <td>\</td>
+                    <td id="price"></td> <!-- room.getRooms_page * __ 한 값  -->
+                    <td>
+                       <div class="buttonn">
+                      <input type="button" class="button2" id="but2" value="예약하기">
+                   </div>
+                    </td>
+                  </tr>
+                </table>
+              </li>
+            </ul>
+          </div>
+        
       </div>
     </div>
   </form>
@@ -300,31 +280,53 @@ pageEncoding="UTF-8"%>
       // currentIdx !==slideCount - 1 일때만 moveSlide 함수 불러옴
       if (currentIdx !== slideCount - 1) moveSlide(currentIdx + 1);
     });
+    
     // Google Map 설정 
-    function initMap() {
-      const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 15,
-        center: {
-          lat: 35.15205551267718,
-          lng: 129.1171569191601
-        },
-      });
-      for (var i = 0; i < locations.length; i++) {
-        var marker = new google.maps.Marker({
-          map: map,
-          label: locations[i].place,
-          position: new google.maps.LatLng(locations[i].lat, locations[i].lng),
-        });
-      }
-    }
-    // 장소 마킹
-    const locations = [{
-        place: "광안리 해수욕장",
-        lat: 35.15317618071567,
-        lng: 129.11867182936666
-      },
-      // { place:"어린이대공원역", lat: 37.547263, lng: 127.074181 },
-    ];
+    //    function initMap() {
+
+    //     // 지도 스타일
+    //     const map = new google.maps.Map(document.getElementById("map"), {
+    //         zoom: 14,
+    //         center: { lat: 35.15205551267718, lng: 129.1171569191601 },
+    //     });
+
+    //     // 마커 정보
+    //     var locations = [
+    //         { place: "광안리 해수욕장", lat: 35.15205551267718, lng: 129.1171569191601 },
+    //         { place: "어린이대공원역", lat: 37.547263, lng: 127.074181 },
+    //     ];
+
+    //     //인포윈도우
+    //     var infowindow = new google.maps.InfoWindow();
+
+    //     //마커 생성
+    //     for (var i = 0; i < locations.length; i++) {
+    //         var marker = new google.maps.Marker({
+    //             map: map,
+    //             //label: locations[i].place,
+    //             position: new google.maps.LatLng(locations[i].lat, locations[i].lng),
+    //         });
+
+    //         google.maps.event.addListener(marker, 'click', (function(marker, i) {
+    //             return function() {
+    //                 //html로 표시될 인포 윈도우의 내용
+    //                 infowindow.setContent(locations[i].place);
+    //                 //인포윈도우가 표시될 위치
+    //                 infowindow.open(map, marker);
+    //             }
+    //         })(marker, i));
+            
+    //         if (marker) {
+    //             marker.addListener('click', function() {
+    //                 //중심 위치를 클릭된 마커의 위치로 변경
+    //                 map.setCenter(this.getPosition());
+    //                 //마커 클릭 시의 줌 변화
+    //                 map.setZoom(17);
+    //             });
+    //         }
+    //     }
+    // }
+    
     
 		// 체크아웃 - 체크인 일수 계산
 // 	    function termDate(){
