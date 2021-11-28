@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page import="user.model.vo.User" %>
+    pageEncoding="UTF-8" import="java.util.ArrayList, user.model.vo.User, reserv.model.vo.Reserv"%>
 <%
   User loginUser = (User)session.getAttribute("loginUser");
+  ArrayList<Reserv> yList = (ArrayList<Reserv>)request.getAttribute("myReservY");
+  ArrayList<Reserv> list = (ArrayList<Reserv>)request.getAttribute("myReservAll");
 %>
 <!doctype html>
 <html lang="ko">
@@ -26,7 +27,7 @@
 
   <link rel="stylesheet" href="<%= request.getContextPath() %>/style/navi.css" />
 
-  <title>마이페이지</title>
+  <title>예약 정보</title>
 
   <style>
     /* html, body {
@@ -94,36 +95,35 @@
 
     <div class="row mx-auto my-4">
       <div class="col px-5">
-        <h2>과거 내역</h2>
+        <h2>과거 모든 내역</h2>
       </div>
     </div>
 
     <div class="row mx-auto my-2">
       <div class="col px-5 mx-5" id="history">
 
-        <!-- 과거 내역 표 형태 예시 -->
         <table class="table table-border table-hover" id="historyTB">
           <thead>
             <tr>
-              <th>No.</th>
-              <th>호스트</th>
+              <th>예약 코드</th>
+              <th>예약 인원</th>
               <th>여행 일자</th>
-              <th>상태</th>
+              <th>호스트</th>
             </tr>
           </thead>
           <tbody>
+            <% if(list.isEmpty()) { %>
+            <td colspan="4">조회된 기록이 없습니다.</td>
+            <% } else { %>
+            <%   for(int i = 0; i < list.size(); i++) { %>
             <tr>
-              <td>1</td>
-              <td>KH</td>
-              <td>2021.10.25.</td>
-              <td>완료</td>
+              <td><%= list.get(i).getV_code() %></td>
+              <td><%= list.get(i).getPersonnel() %></td>
+              <td><%= list.get(i).getCheck_in() %> ~ <%= list.get(i).getCheck_out() %></td>
+              <td><%= list.get(i).getRooms_host() %></td>
             </tr>
-            <tr>
-              <td>2</td>
-              <td>KH</td>
-              <td>2021.10.22.</td>
-              <td>취소</td>
-            </tr>
+            <%   } %>
+            <% } %>
           </tbody>
         </table>
 
@@ -132,49 +132,42 @@
 
     <div class="row mx-auto my-4">
       <div class="col px-5">
-        <h2>예약 내역</h2>
+        <h2>현재 예약 내역</h2>
       </div>
     </div>
 
     <div class="row mx-auto my-2 mb-5">
       <div class="col px-5 mx-5" id="reserve">
 
-        <!-- 예약 내역 표 형태 예시 -->
         <table class="table table-border table-hover" id="logTB">
           <thead>
             <tr>
-              <th>No.</th>
+              <th>예약 코드</th>
               <th>호스트</th>
               <th>여행 일자</th>
-              <th>예약 접수 일자</th>
-              <th>상태</th>
+              <th>예약 인원</th>
+              <th>예약 상태</th>
             </tr>
           </thead>
           <tbody>
+            <% if(yList.isEmpty()) { %>
+            <td colspan="5">조회된 기록이 없습니다.</td>
+            <% } else { %>
+            <%   for(int i = 0; i < list.size(); i++) { %>
             <tr>
-              <td>1</td>
-              <td>KH</td>
-              <td>2021.10.25. ~ 10.27.</td>
-              <td>2021.10.17.</td>
-              <td>진행 중</td>
+              <td><%= list.get(i).getV_code() %></td>
+              <td><%= list.get(i).getRooms_host() %></td>
+              <td><%= list.get(i).getCheck_in() %> ~ <%= list.get(i).getCheck_out() %></td>
+              <td><%= list.get(i).getPersonnel() %></td>
+              <td><%= list.get(i).getStatus() %></td>
             </tr>
-            <tr>
-              <td>2</td>
-              <td>KH</td>
-              <td>2021.10.22. ~ 10.24.</td>
-              <td>2021.10.13.</td>
-              <td>취소</td>
-            </tr>
+            <%   } %>
+            <% } %>
           </tbody>
         </table>
 
       </div>
     </div>
-
-    <!-- <button type="button" class="btn btn-secondary btn-lg btn-block mx-5">개인 정보 변경</button> -->
-    <!-- <button type="button" class="btn btn-secondary btn-lg btn-block mx-5">쪽지함</button>
-    <button type="button" class="btn btn-secondary btn-lg btn-block mx-5">결제 수단 관리</button>
-    <button type="button" class="btn btn-secondary btn-lg btn-block mx-5">호스트 숙소 등록</button> -->
 
   </div>
 </body>

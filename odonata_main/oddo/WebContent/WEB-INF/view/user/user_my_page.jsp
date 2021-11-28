@@ -2,7 +2,7 @@
     pageEncoding="UTF-8" import="user.model.vo.User, java.text.SimpleDateFormat"%>
 <%
   User loginUser = (User)session.getAttribute("loginUser");
-  String userBirth = new SimpleDateFormat("yy-MM-dd").format(loginUser.getUser_birth());
+  String userBirth = new SimpleDateFormat("YYYY-MM-dd").format(loginUser.getUser_birth());
 %>
 <!DOCTYPE html>
 
@@ -124,9 +124,12 @@
                     onclick="location.href='<%= request.getContextPath() %>/updatePwdForm.us'" />
                   <input type="button" value="쪽지" class="btn btn-secondary btn-sm btn-block"
                     onclick="location.href='<%= request.getContextPath() %>/msgBoxForm.ms'" />
-                  <input type="button" value="과거 예약 내역" class="btn btn-secondary btn-sm btn-block" />
+                  <input type="button" value="과거 예약 내역" class="btn btn-secondary btn-sm btn-block"
+                    onclick="location.href='<%= request.getContextPath() %>/myResrvForm.rv'" />
                   <input type="button" value="숙소 등록" class="btn btn-secondary btn-sm btn-block"
                     onclick="location.href='<%= request.getContextPath() %>/regist.ro'" />
+                  <input type="button" value="탈퇴" class="btn btn-secondary btn-sm btn-block"
+                    onclick="deleteUser();" />
                 </div>
               </div>
             </div>
@@ -137,8 +140,11 @@
   </section>
 
   <script>
-
-
+    function deleteUser() {
+        var bool = confirm('정말로 탈퇴하시겠습니까?');
+        if(bool)
+            location.href='<%= request.getContextPath() %>/deleteUser.us';
+    }
   </script>
 
 </body>
