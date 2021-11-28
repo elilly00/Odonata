@@ -183,9 +183,9 @@ public class UserDAO {
             rset = pstmt.executeQuery();
             
             pstmt2 = conn.prepareStatement(sql2);
-            pstmt.setString(1, name);
-            pstmt.setString(2, email);
-            rset2 = pstmt.executeQuery();
+            pstmt2.setString(1, name);
+            pstmt2.setString(2, email);
+            rset2 = pstmt2.executeQuery();
             
             if (rset.next())
                 user = new User(rset.getInt("USER_CODE"), rset.getString("USER_NAME"), rset.getString("USER_PWD"),
@@ -227,10 +227,10 @@ public class UserDAO {
             rset = pstmt.executeQuery();
             
             pstmt2 = conn.prepareStatement(sql2);
-            pstmt.setString(1, id);
-            pstmt.setString(2, email);
-            pstmt.setString(3, name);
-            rset2 = pstmt.executeQuery();
+            pstmt2.setString(1, id);
+            pstmt2.setString(2, email);
+            pstmt2.setString(3, name);
+            rset2 = pstmt2.executeQuery();
             
             if (rset.next())
                 user = new User(rset.getInt("USER_CODE"), rset.getString("USER_NAME"), rset.getString("USER_PWD"),
