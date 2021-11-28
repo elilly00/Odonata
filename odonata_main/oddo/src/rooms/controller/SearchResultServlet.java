@@ -9,10 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import msg.model.vo.PageInfo;
 import rooms.model.service.RoomsService;
 import rooms.model.vo.Rooms;
-import sooksoimg.model.vo.sooksoImg;
+import rooms.model.vo.sooksoImg;
 
 /**
  * Servlet implementation class FileListServlet
@@ -35,7 +34,7 @@ public class SearchResultServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         RoomsService rService = new RoomsService();
         
         ArrayList<Rooms> rList = rService.selectTList(1); 		// 숙소

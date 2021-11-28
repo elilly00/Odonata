@@ -102,7 +102,7 @@ public class UserService {
         
         close(conn);
         
-        return 0;
+        return result;
     }
     
     public int updatePwd(HashMap<String, String> map) {
@@ -117,6 +117,21 @@ public class UserService {
         
         close(conn);
         
-        return 0;
+        return result;
+    }
+    
+    public int deleteUser(String userId) {
+        Connection conn = getConnection();
+        
+        int result = uDAO.deleteUser(conn, userId);
+        
+        if (result > 0)
+            commit(conn);
+        else
+            rollback(conn);
+        
+        close(conn);
+        
+        return result;
     }
 }

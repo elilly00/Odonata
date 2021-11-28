@@ -4,7 +4,7 @@
   User loginUser = (User)session.getAttribute("loginUser");
   String emailId = loginUser.getUser_email().substring(0, loginUser.getUser_email().indexOf('@'));
   String emailDomain = loginUser.getUser_email().substring(loginUser.getUser_email().indexOf('@'));
-  String userBirth = new SimpleDateFormat("yy-MM-dd").format(loginUser.getUser_birth());
+  String userBirth = new SimpleDateFormat("YYYY-MM-dd").format(loginUser.getUser_birth());
   
   String[] selected = new String[3];
   switch(emailDomain) {
@@ -320,14 +320,14 @@
     var birthChk = false;
 
     $('#uBirth').one('focus', function () {
-      alert('생년월일은 00-00-00 형태로 입력해주세요.\n   예) 99년 3월 15일생\n      → 99-03-15 입력');
+      alert('생년월일은 0000-00-00 형태로 입력해주세요.\n   예) 99년 3월 15일생\n      → 1999-03-15 입력');
     });
 
     $('#uBirth').blur(function () {
       var birth = $(this).val();
-      var regExpBirth = /^\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])/;
+      var regExpBirth = /^(19[0-9][0-9]|20\d{2})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/;
 
-      if (regExpBirth.test(birth) && birth.length == 8) {
+      if (regExpBirth.test(birth) && birth.length == 10) {
         $("label[for='uBirth']").text('생년월일').css({
           'color': 'green',
           'font-weight': 'bold'

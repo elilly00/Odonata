@@ -1,6 +1,7 @@
-package msg.controller;
+package reserv.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,20 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import msg.model.service.MessageService;
-import msg.model.vo.Message;
+import reserv.model.service.ResrvService;
+import reserv.model.vo.Reserv;
+import user.model.vo.User;
 
 /**
- * Servlet implementation class MessageDetailServlet
+ * Servlet implementation class MyResrvFormServlet
  */
-@WebServlet("/msgDetail.ms")
-public class MessageDetailServlet extends HttpServlet {
+@WebServlet("/myResrvForm.rv")
+public class MyResrvFormServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MessageDetailServlet() {
+    public MyResrvFormServlet() {
     }
     
     /**
@@ -30,19 +32,14 @@ public class MessageDetailServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int mId = Integer.parseInt(request.getParameter("mId"));
+        int userCode = ((User) request.getSession().getAttribute("loginUser")).getUser_code();
         
-        Message msg = new MessageService().selectMessage(mId);
+        ArrayList<Reserv> yList = new ResrvService().selectResrvY(userCode);
+        ArrayList<Reserv> List = new ResrvService().selectResrvAll(userCode);
         
-        String page = null;
-        if (msg != null) {
-            page = "WEB-INF/view/msg/messageDetail.jsp";
-            request.setAttribute("msgDetail", msg);
-        } else {
-            page = "WEB-INF/errorPage.jsp";
-            request.setAttribute("msg", "쪽지 상세보기 실패");
-        }
-        request.getRequestDispatcher(page).forward(request, response);
+        request.setAttribute("myResrvY", yList);
+        request.setAttribute("myResrvAll", List);
+        request.getRequestDispatcher("WEB-INF/view/user/myRevPage.jsp").forward(request, response);
     }
     
     /**

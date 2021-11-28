@@ -297,4 +297,24 @@ public class UserDAO {
         
         return result;
     }
+    
+    public int deleteUser(Connection conn, String userId) {
+        PreparedStatement pstmt = null;
+        int result = 0;
+        
+        String query = prop.getProperty("deleteUser");
+        
+        try {
+            pstmt = conn.prepareStatement(query);
+            pstmt.setString(1, userId);
+            
+            result = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(pstmt);
+        }
+        
+        return result;
+    }
 }
