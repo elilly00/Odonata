@@ -424,7 +424,7 @@
 			// Uncaught SyntaxError: Invalid or unexpected token ==> 문자열이기때문에 ""로 묶어줘야 함, 특히 email에는 .이 기본적으로 들어있기때문에 에러 발생
 
 			// SERVICE로 넘길 데이터 
-			var price = < %= r.getReserv_Price() % > ; // 숙소 가격
+			var price = <%= r.getReserv_Price() %> ; // 숙소 가격
 			var reservCode = "<%= r.getV_code() %>"; // 예약 코드 : 시퀸스로 들어간 값을 받아오지 못하고 자꾸 0을 받아옴
 			var checkIn = "<%= r.getCheck_in() %>";
 			var checkOut = "<%= r.getCheck_out() %>";
