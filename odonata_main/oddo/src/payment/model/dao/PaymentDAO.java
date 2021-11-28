@@ -35,10 +35,11 @@ public class PaymentDAO {
 		
 		try {
 			pstmt = conn.prepareStatement(query);
-//			pstmt.setInt(1, payment.getPrice());
-//			pstmt.setInt(2, payment.getvCode()); 
-
-			pstmt.setInt(1, payment.getvCode()); 
+			pstmt.setInt(1, payment.getReservCode()); 
+			pstmt.setDate(2, payment.getCheckIn());
+			pstmt.setDate(3, payment.getCheckOut());
+			pstmt.setInt(4, payment.getPrice());
+			pstmt.setString(5, payment.getPersonnel());
 			
 			result = pstmt.executeUpdate();
 			
@@ -52,3 +53,4 @@ public class PaymentDAO {
 	}
 
 }
+

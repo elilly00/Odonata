@@ -36,14 +36,40 @@ public class insertPaymentServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-//		int price = Integer.parseInt(request.getParameter("price")); 
-		int vCode = Integer.parseInt(request.getParameter("vCode"));
-		// NumberFormatException : 숫자 형식의 오류
-		// -> [0] 바이트에서 시작하고 [11] 바이트에서 끝나며 값이 [=price=1000]인, 유효하지 않은 chunk는 무시됩니다. 
-		// : location.href로 보낼때 ?뒤에 =이 있었음
+		int reservCode = Integer.parseInt(request.getParameter("reservCode"));
+		
+		// 체크인
+		String checkInD = request.getParameter("checkIn");
+		Date checkInDate = null;
+		if(checkInD.equals("")) {
+			checkInDate = new Date(new GregorianCalendar().getTimeInMillis());
+		} else {
+			String[] splitCheckIn = checkInD.split("-");
+			int year = Integer.parseInt(splitCheckIn[0]);
+			int month = Integer.parseInt(splitCheckIn[1])-1;
+			int day = Integer.parseInt(splitCheckIn[2]);
+			
+			checkInDate = new Date(new GregorianCalendar(year,month, day).getTimeInMillis());
+		}
+			
+		// 체크아웃
+		String checkOutD = request.getParameter("checkOut");
+		Date checkOutDate = null;
+		if(checkOutD.equals("")) {
+			checkOutDate = new Date(new GregorianCalendar().getTimeInMillis());
+		} else {
+			String[] splitCheckOut = checkOutD.split("-");
+			int year = Integer.parseInt(splitCheckOut[0]);
+			int month = Integer.parseInt(splitCheckOut[1])-1;
+			int day = Integer.parseInt(splitCheckOut[2]);
+					
+			checkOutDate = new Date(new GregorianCalendar(year,month, day).getTimeInMillis());
+		}
+		
+		int price = Integer.parseInt(request.getParameter("price")); 
+		String person = request.getParameter("person");
 
-//		Payment payment = new Payment(0, vCode, price, null, null);
-		Payment payment = new Payment(0, vCode, null, null);
+		Payment payment = new Payment(0, null, reservCode, null, checkInDate, checkOutDate, price, person);
 		
 		int result = new PaymentService().insertPayment(payment);
 		

@@ -1,11 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ page import="user.model.vo.*, reserv.model.vo.*" %>
+<%@ 
+	page import="java.util.ArrayList"  
+	import="user.model.vo.*, rooms.model.vo.*,   
+			reserv.model.vo.*, sooksoimg.model.vo.*, review.model.vo.*" %>
+<%@ page import="user.model.vo.User" %>
 
 <%
 	User loginUser = (User)session.getAttribute("loginUser");
 	Reserv r = (Reserv)request.getAttribute("reserv");
+	Rooms room = (Rooms)request.getAttribute("room");
 	
 %>
 
@@ -180,7 +185,7 @@
 				</table>
 				<br>
 				<b id=rGuest>게스트</b><br />
-				<%= r.getPersonnel() %>
+				<%= r.getPersonnel() %><br>
 			</p>
 			<br>
 
@@ -400,7 +405,12 @@
 				
 			// SERVICE로 넘길 데이터 
 			var price = <%= r.getReserv_Price() %>; // 숙소 가격
-			var vCode = <%= r.getV_code() %>; // 예약 코드
+			var reservCode = "<%= r.getV_code() %>"; // 예약 코드 : 시퀸스로 들어간 값을 받아오지 못하고 자꾸 0을 받아옴
+			var checkIn = "<%= r.getCheck_in() %>";
+			var checkOut = "<%= r.getCheck_out() %>";
+			var person = "<%= r.getPersonnel() %>";
+			console.log(reservCode);
+			console.log(typeof reservCode);
 			
 			// 선택되어야 결제가능
 			var refundCheck = document.getElementById('refundCheck'); // 취소, 환불규정
@@ -454,7 +464,7 @@
 							// 							        console.log("결제성공"); 
 							// ※ 새로운 url 요청 -> 데이터 정보를 받아 db에 저장, 마지막 결제완료 페이지까지 연결 
 							// 				location.href로 url만 보내면 데이터들이 안넘어갈테니까 쿼리스트링도 같이 넣어주기
-							location.href = "<%= request.getContextPath() %>/payment.bo?vCode="  + vCode;
+							location.href = "<%= request.getContextPath() %>/payment.bo?reservCode=" + reservCode + "&person=" + person + "&checkIn=" + checkIn + "&checkOut=" + checkOut + "&price=" + price;
 						})
 					} else { // 결제 실패시 : 알림
 						var msg = '결제에 실패하였습니다. 에러내용 : ' + rsp.error_msg
