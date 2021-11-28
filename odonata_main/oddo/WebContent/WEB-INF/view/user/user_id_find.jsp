@@ -30,14 +30,47 @@
 </head>
 
 <body>
-  <nav class="main-navi">
-    <a class="logoo" href="<%= request.getContextPath() %>/WEB-INF/index.jsp">
-      <img class="logoo" src="<%= request.getContextPath() %>/img/public_img/logo.png">
+  <nav class="main-navi" style="background: #f2bba7;">
+    <a href="<%= request.getContextPath() %>/WEB-INF/index.html">
+      <div class="logo">
+        <img src="<%= request.getContextPath() %>/img/public_img/logo.png" width="80px" height="80px" alt="잠자리"
+          class="mx-2" />
+      </div>
     </a>
+
+    <div class="menu">
+      <button type="button" onclick="location.href='login.html'" class="item menusolo hostdg">
+        로그인/회원가입
+      </button>
+      <div class="item menusolo">
+      </div>
+      <div class="menu">
+        <% if(loginUser == null) { %>
+        <button type="button" onclick="location.href='<%= request.getContextPath() %>/loginForm.us'"
+          class="item menusolo hostdg">
+          로그인/회원가입
+        </button>
+        <% } else { %>
+        <div id="userInfo" align="right">
+          <%-- <label> <%= loginUser.getUser_name() %> 님의 방문을 환영합니다. </label>
+          <br clear="all"> --%>
+          <div class="menu">
+            <%-- <input type="button" class="item menusolo hostdg" value="내 정보 보기" onclick="location.href='<%= request.getContextPath() %>/myPage.me'">
+            --%>
+            <input type="button" class="item menusolo hostdg" value="로그 아웃"
+              onclick="location.href='<%= request.getContextPath() %>/logout.me'">
+          </div>
+        </div>
+        <div class="item menusolo">
+        </div>
+        <div class="button" type="button" onclick="location.href='<%= request.getContextPath() %>/myPageForm.us'">
+          <img class="profile" src="<%= request.getContextPath() %>/img/public_img/profile.png" alt="마이페이지"
+            id="profile" />
+        </div>
+        <% } %>
+      </div>
     </div>
-    <%-- <div class="button" type="button" onclick="location.href='<%= request.getContextPath() %>/myPageForm.us'">
-      <img class="profile" src="<%= request.getContextPath() %>/img/public_img/profile.png" alt="마이페이지" id="profile"  />
-    </div> --%>
+
   </nav>
   
 

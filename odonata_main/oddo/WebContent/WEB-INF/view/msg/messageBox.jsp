@@ -62,6 +62,7 @@
         <img src="<%= request.getContextPath() %>/img/public_img/logo.png" width="80px" height="80px" alt="잠자리"
           class="mx-2" />
       </div>
+      <%-- 로그인 / 마이페이지 / 로그아웃 --%>
       <div class="menu">
         <% if(loginUser == null) { %>
         <button type="button" onclick="location.href='<%= request.getContextPath() %>/loginForm.us'"
@@ -79,14 +80,14 @@
               onclick="location.href='<%= request.getContextPath() %>/logout.me'">
           </div>
         </div>
-        <div class="item menusolo">
-        </div>
         <div class="button" type="button" onclick="location.href='<%= request.getContextPath() %>/myPageForm.us'">
           <img class="profile" src="<%= request.getContextPath() %>/img/public_img/profile.png" alt="마이페이지"
             id="profile" />
         </div>
         <% } %>
       </div>
+
+      <%-- 로그인 / 마이페이지 / 로그아웃 끝 --%>
     </a>
 
     <%-- <div class="menu">
@@ -119,7 +120,8 @@
     </div>
 
     <div class="mx-5">
-      <button type="button" class="btn btn-secondary btn-sm btn-block" onclick="location.href='<%= request.getContextPath() %>/msgInsert.ms'">
+      <button type="button" class="btn btn-secondary btn-sm btn-block"
+        onclick="location.href='<%= request.getContextPath() %>/msgInsert.ms'">
         작성하기
       </button>
     </div>
@@ -160,8 +162,8 @@
 <script>
   $('#messageBox td').click(function () {
     var mId = $(this).parent().children().eq(3).text();
-    if(mId.trim() == "")
-    	return;
+    if (mId.trim() == "")
+      return;
     location.href = '<%= request.getContextPath() %>/msgDetail.ms?mId=' + mId.trim();
   });
 </script>

@@ -52,23 +52,28 @@
 			justify-content: space-between;
 			align-items: center;
 		}
+
 		header {
 			margin: 0px;
 			padding: 0px;
 		}
+
 		.content {
 			font-size: 100%;
 			margin-left: 100px;
 			margin-right: 100px;
 		}
+
 		.checkboxDescription {
 			display: inline;
 			font-size: 0.8em;
 		}
+
 		#paymentChoice {
 			width: 400px;
 			height: 30px;
 		}
+
 		#refund_notice {
 			border: 1px solid black;
 			width: 100%;
@@ -76,49 +81,62 @@
 			overflow-y: scroll;
 			font-size: 0.8em;
 		}
+
 		#charge_info {
 			border: 1px solid black;
 			width: 100%;
 			height: 100px;
 		}
+
 		.agree {
 			font-size: 0.8em;
 			display: inline-block;
 		}
+
 		#mandatory {
 			font-size: 0.8em;
 			color: blue;
 		}
+
 		#choice {
 			font-size: 0.8em;
 			color: gray;
 		}
+
 		input {
 			padding: 5px;
 			border: 1px solid #dedede
 		}
+
 		input:read-only {
 			background-color: #dedede
 		}
+
 		select {
 			padding: 7px;
 			vertical-align: middle
 		}
+
 		.info {
 			width: 200px;
 		}
+
 		.em_red {
 			color: red;
 		}
+
 		.dyrmatpqn {
 			font-size: 1.0em;
 		}
+
 		.dyrmatpqn1 {
 			padding-left: 15px;
 		}
+
 		.rDateForm {
 			width: 300px;
 		}
+
 		.rDateForm tr {
 			text-align: middle;
 		}
@@ -133,11 +151,12 @@
 			<div class="logo">
 				<a href="<%= request.getContextPath() %>/WEB-INF/index.html">
 					<div class="logo">
-						<img src="<%= request.getContextPath() %>/img/public_img/logo.png" width="80px" height="80px" alt="잠자리"
-							class="mx-2" />
+						<img src="<%= request.getContextPath() %>/img/public_img/logo.png" width="80px" height="80px"
+							alt="잠자리" class="mx-2" />
 					</div>
 				</a>
 			</div>
+			<%-- 로그인 / 마이페이지 / 로그아웃 --%>
 			<div class="menu">
 				<% if(loginUser == null) { %>
 				<button type="button" onclick="location.href='<%= request.getContextPath() %>/loginForm.us'"
@@ -155,8 +174,6 @@
 							onclick="location.href='<%= request.getContextPath() %>/logout.me'">
 					</div>
 				</div>
-				<div class="item menusolo">
-				</div>
 				<div class="button" type="button"
 					onclick="location.href='<%= request.getContextPath() %>/myPageForm.us'">
 					<img class="profile" src="<%= request.getContextPath() %>/img/public_img/profile.png" alt="마이페이지"
@@ -164,6 +181,8 @@
 				</div>
 				<% } %>
 			</div>
+
+			<%-- 로그인 / 마이페이지 / 로그아웃 끝 --%>
 		</nav>
 
 		<div class="content">
@@ -250,7 +269,7 @@
 						<td></td>
 						<td>
 							<p id="amount"><%= r.getReserv_Price() %></p>
-						</td> 
+						</td>
 						<td>원</td>
 					</tr>
 				</table>
@@ -353,7 +372,7 @@
 		// 동의사항 선택 
 		var all = document.getElementById("all");
 		var agree = document.getElementsByName("agree");
-		
+
 		function selectAll() {
 			if (all.checked) {
 				for (var i = 0; i < agree.length; i++) {
@@ -365,6 +384,7 @@
 				}
 			}
 		}
+
 		function selectOne() {
 			var count = 0;
 			for (var i = 0; i < agree.length; i++) {
@@ -378,7 +398,7 @@
 				all.checked = true;
 			}
 		}
-		
+
 		// 이메일 폼 : 값을 loginuser에서 받아오고 난 후에는 지울것
 		// 		function selectEmail(ele) {
 		// 			// ele = this
@@ -393,7 +413,7 @@
 		// 				$email2.val($ele.val());
 		// 			}
 		// 		}
-		
+
 		// 결제페이지로 연결 -> required를 인식하기는하는데 그전에 결제 창이 뜸 
 		// => required는 submit을 할때만 걸러주는 애라서 해당 함수에서 window.open을 바로 연결하지 말고 모든 필드에 값이 들어왔을 때 열리게끔 로직을 추가
 		document.getElementById('paymentBtn').onclick = function () {
@@ -402,16 +422,16 @@
 			var pTel = "<%= loginUser.getUser_phone() %>";
 			var pEmail = "<%= loginUser.getUser_email() %>";
 			// Uncaught SyntaxError: Invalid or unexpected token ==> 문자열이기때문에 ""로 묶어줘야 함, 특히 email에는 .이 기본적으로 들어있기때문에 에러 발생
-				
+
 			// SERVICE로 넘길 데이터 
-			var price = <%= r.getReserv_Price() %>; // 숙소 가격
+			var price = < %= r.getReserv_Price() % > ; // 숙소 가격
 			var reservCode = "<%= r.getV_code() %>"; // 예약 코드 : 시퀸스로 들어간 값을 받아오지 못하고 자꾸 0을 받아옴
 			var checkIn = "<%= r.getCheck_in() %>";
 			var checkOut = "<%= r.getCheck_out() %>";
 			var person = "<%= r.getPersonnel() %>";
 			console.log(reservCode);
 			console.log(typeof reservCode);
-			
+
 			// 선택되어야 결제가능
 			var refundCheck = document.getElementById('refundCheck'); // 취소, 환불규정
 			var age14 = document.getElementById('age14'); // 14세 이상 동의
@@ -430,7 +450,8 @@
 			
 			*/
 			//  결제로 넘어가지 않아야 하는 경우 설정 
-			if (refundCheck.checked == false || age14.checked == false || p_collect.checked == false || partyConsent.checked == false || accomodationUse.checked == false) {
+			if (refundCheck.checked == false || age14.checked == false || p_collect.checked == false || partyConsent
+				.checked == false || accomodationUse.checked == false) {
 				if (refundCheck.checked == false) {
 					msg = "취소 및 환불규칙에 동의해주세요";
 					refundCheck.focus();
@@ -443,15 +464,17 @@
 				IMP.request_pay({
 					pg: 'html5_inicis', // pg사
 					pay_method: 'card', // 결제 방식
-					merchant_uid: 'merchant_' + new Date().getTime(), 
+					merchant_uid: 'merchant_' + new Date().getTime(),
 					name: rName, // 주문명
 					amount: price, // 가격
 					buyer_email: pEmail, // 구매자 이메일
 					buyer_name: pName, // 구매자 이름
 					buyer_tel: pTel // 구매자 전화번호 
-					
+
 				}, function (rsp) { // 4. 고객이 결제를 완료한 후 실행되는 함수(callback) 추가
-					if (rsp.success) { // 5. 콜백 함수에서 쿼리 파라미터 전달하기 : jQuery로 HTTP 요청  / 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
+					if (rsp
+						.success
+						) { // 5. 콜백 함수에서 쿼리 파라미터 전달하기 : jQuery로 HTTP 요청  / 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
 						jQuery.ajax({
 							url: '<%= request.getContextPath() %>/reservationPayment.do',
 							// [√] reservationPayment.do일 경우 결제 완료후 그대로 Rv_design01페이지에 있음 (서블릿에 내용이 없어도 결제 가능)
@@ -464,7 +487,9 @@
 							// 							        console.log("결제성공"); 
 							// ※ 새로운 url 요청 -> 데이터 정보를 받아 db에 저장, 마지막 결제완료 페이지까지 연결 
 							// 				location.href로 url만 보내면 데이터들이 안넘어갈테니까 쿼리스트링도 같이 넣어주기
-							location.href = "<%= request.getContextPath() %>/payment.bo?reservCode=" + reservCode + "&person=" + person + "&checkIn=" + checkIn + "&checkOut=" + checkOut + "&price=" + price;
+							location.href = "<%= request.getContextPath() %>/payment.bo?reservCode=" +
+								reservCode + "&person=" + person + "&checkIn=" + checkIn + "&checkOut=" +
+								checkOut + "&price=" + price;
 						})
 					} else { // 결제 실패시 : 알림
 						var msg = '결제에 실패하였습니다. 에러내용 : ' + rsp.error_msg

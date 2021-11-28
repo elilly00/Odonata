@@ -35,6 +35,7 @@
     <a class="logoo" href="<%= request.getContextPath() %>/WEB-INF/index.jsp">
       <img class="logoo" src="<%= request.getContextPath() %>/img/public_img/logo.png">
     </a>
+    <%-- 로그인 / 마이페이지 / 로그아웃 --%>
     <div class="menu">
       <% if(loginUser == null) { %>
       <button type="button" onclick="location.href='<%= request.getContextPath() %>/loginForm.us'"
@@ -52,14 +53,14 @@
             onclick="location.href='<%= request.getContextPath() %>/logout.me'">
         </div>
       </div>
-      <div class="item menusolo">
-      </div>
       <div class="button" type="button" onclick="location.href='<%= request.getContextPath() %>/myPageForm.us'">
         <img class="profile" src="<%= request.getContextPath() %>/img/public_img/profile.png" alt="마이페이지"
           id="profile" />
       </div>
       <% } %>
     </div>
+
+    <%-- 로그인 / 마이페이지 / 로그아웃 끝 --%>
   </nav>
 
   <div class="main-page">

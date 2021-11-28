@@ -16,24 +16,29 @@
   <meta charset="UTF-8" />
   <title>Search_result</title>
   <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/style/Search_Result.css" />
-<%--   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/style/Search_Result.css" /> --%>
+  <%--   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/style/Search_Result.css" /> --%>
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script src="<%= request.getContextPath() %>/js/calendar.js"></script>
   <!-- 구글 지도 API -->
   <script type="text/javascript"
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJil7Bh-RMna_GTpFIVfnvxUw_jIAiPco&callback=initMap" async defer></script>
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJil7Bh-RMna_GTpFIVfnvxUw_jIAiPco&callback=initMap" async
+    defer></script>
 
 </head>
 
 <body>
   <div class="header">
+    <%-- 로고 --%>
     <div class="logo">
       <label>
         <img onclick="location.href='<%= request.getContextPath() %>/WEB-INF/index.html'"
           src="<%= request.getContextPath() %>/img/public_img/logo.png" alt="메인페이지" id="logo">
       </label>
     </div>
+    <%-- 로고 끝 --%>
 
+
+    <%-- 검색 박스 --%>
     <div class="searching_box">
       <div class="searching_box_inner">
         <div class="location">
@@ -227,13 +232,35 @@
         </div>
       </div>
     </div>
-
-    <div class="myPage">
-      <label>
-        <img onclick="location.href='<%= request.getContextPath() %>/myPageForm.us'"
-          src="<%= request.getContextPath() %>/img/public_img/profile.png" alt="마이페이지" id="profile">
-      </label>
+    <%-- 검색 폼 끝 --%>
+    <%-- 로그인 / 마이페이지 / 로그아웃 --%>
+    <div class="menu">
+      <% if(loginUser == null) { %>
+      <button type="button" onclick="location.href='<%= request.getContextPath() %>/loginForm.us'"
+        class="item menusolo hostdg">
+        로그인/회원가입
+      </button>
+      <% } else { %>
+      <div id="userInfo" align="right">
+        <%-- <label> <%= loginUser.getUser_name() %> 님의 방문을 환영합니다. </label>
+        <br clear="all"> --%>
+        <div class="menu">
+          <%-- <input type="button" class="item menusolo hostdg" value="내 정보 보기" onclick="location.href='<%= request.getContextPath() %>/myPage.me'">
+          --%>
+          <input type="button" class="item menusolo hostdg" value="로그 아웃"
+            onclick="location.href='<%= request.getContextPath() %>/logout.me'">
+        </div>
+      </div>
+      <div class="button" type="button" onclick="location.href='<%= request.getContextPath() %>/myPageForm.us'">
+        <img class="profile" src="<%= request.getContextPath() %>/img/public_img/profile.png" alt="마이페이지"
+          id="profile" />
+      </div>
+      <% } %>
     </div>
+
+    <%-- 로그인 / 마이페이지 / 로그아웃 끝 --%>
+
+    <%-- 상태 바 끝 --%>
   </div>
 
   <div class="header2">
@@ -264,58 +291,56 @@
     <h2>부산에서 위치한 숙소입니다.</h2>
     <br />
   </div>
- <div class="body">
+  <div class="body">
     <div class="room_left">
       <% if(rList.isEmpty() || ImgList.isEmpty()) { %>
-      		등록된 숙소가 없습니다.
+      등록된 숙소가 없습니다.
       <% } else { %>
-      	<% for(int i = 0; i < rList.size(); i++) { %>
-      		<% Rooms room = rList.get(i); %>
-      		<div class="rooms">
-    		  <div>
-       			<% for(int j = 0; j < ImgList.size(); j++) { %>
-		        	<% sooksoImg s = ImgList.get(j); %>
-		        	<% if(room.getRooms_Code() == s.getRooms_Code()) { %>
-		        		<img class="room_img_input" alt="방 사진"
-				        	 src="<%= request.getContextPath() %>/thumbnail_uploadFiles/<%= s.getChange_name() %>"
-				           	 width="200px"
-				          	 height="200px" 
-				         />
-		        	<% } %>
-		        <% } %>
-        <div class="info">
- 		<input type="hidden" value="<%= room.getRooms_Code() %>">
-          <h3><%= room.getRooms_name() %></h3>
+      <% for(int i = 0; i < rList.size(); i++) { %>
+      <% Rooms room = rList.get(i); %>
+      <div class="rooms">
+        <div>
+          <% for(int j = 0; j < ImgList.size(); j++) { %>
+          <% sooksoImg s = ImgList.get(j); %>
+          <% if(room.getRooms_Code() == s.getRooms_Code()) { %>
+          <img class="room_img_input" alt="방 사진"
+            src="<%= request.getContextPath() %>/thumbnail_uploadFiles/<%= s.getChange_name() %>" width="200px"
+            height="200px" />
+          <% } %>
+          <% } %>
+          <div class="info">
+            <input type="hidden" value="<%= room.getRooms_Code() %>">
+            <h3><%= room.getRooms_name() %></h3>
 
-          <br />
+            <br />
 
-          <span><b><%= room.getRooms_Host() %></b></span>
+            <span><b><%= room.getRooms_Host() %></b></span>
 
-          <br />
+            <br />
 
-          <span><%= room.getRooms_Type() %></span>
+            <span><%= room.getRooms_Type() %></span>
 
-          <br />
+            <br />
 
-          <span>최대 인원 <%= room.getRooms_Personnel() %>명</span>
+            <span>최대 인원 <%= room.getRooms_Personnel() %>명</span>
 
-          <br />
+            <br />
 
-          <span>침실 <%= room.getRooms_RoomCnt() %>개</span><span> · </span><span>욕실
-            <%= room.getRooms_ToiletCnt() %>개</span>
+            <span>침실 <%= room.getRooms_RoomCnt() %>개</span><span> · </span><span>욕실
+              <%= room.getRooms_ToiletCnt() %>개</span>
 
-          <br />
+            <br />
 
-          <span><%= room.getAmenity() %></span>
-          
-           <br /> <br />
+            <span><%= room.getAmenity() %></span>
 
-          <h3>\ <%= room.getRooms_Price() %> / 박</h3>
+            <br /> <br />
 
-<!--           <p class="star_rating"><br /><a class="on">⭐ 4.8</a></p> -->
-          
-          <br />
-        </div>
+            <h3>\ <%= room.getRooms_Price() %> / 박</h3>
+
+            <!--           <p class="star_rating"><br /><a class="on">⭐ 4.8</a></p> -->
+
+            <br />
+          </div>
         </div>
       </div>
       <% } %>
@@ -325,14 +350,14 @@
 
   <div class="map_right">
     <div id="map">
-    
+
     </div>
   </div>
-  
+
   <div class="topBtn">
-  	<button type="button" class="top" onclick="goTop()">↑</button>
+    <button type="button" class="top" onclick="goTop()">↑</button>
   </div>
-  
+
   <script>
     // 날짜 선택 설정
     var trigger = document.querySelector('#datePicker');
@@ -347,82 +372,101 @@
     trigger.onfocus = function () {
       dateComponent.show();
     };
-	
+
     function initMap() {
 
-        // 지도 스타일
-        const map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 14,
-            center: { lat: 35.15205551267718, lng: 129.1171569191601 },
+      // 지도 스타일
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 14,
+        center: {
+          lat: 35.15205551267718,
+          lng: 129.1171569191601
+        },
+      });
+
+      // 마커 정보
+      var locations = [{
+          place: "오션뷰",
+          lat: 35.150516494825055,
+          lng: 129.1153318989716
+        },
+        {
+          place: "광안리 주택",
+          lat: 35.15857582414486,
+          lng: 129.11895595793789
+        },
+        {
+          place: "신축 오션뷰",
+          lat: 35.155030694969305,
+          lng: 129.12023152514823
+        },
+        {
+          place: "강알리",
+          lat: 35.15548185886721,
+          lng: 129.12194917969023
+        },
+        //         	{ place: "신축 오션뷰", lat: 35.155030694969305, lng: 129.12023152514823},
+        //         	{ place: "신축 오션뷰", lat: 35.155030694969305, lng: 129.12023152514823},
+
+
+      ];
+
+      //인포윈도우
+      var infowindow = new google.maps.InfoWindow();
+
+      //마커 생성
+      for (var i = 0; i < locations.length; i++) {
+        var marker = new google.maps.Marker({
+          map: map,
+          //label: locations[i].place,
+          position: new google.maps.LatLng(locations[i].lat, locations[i].lng),
         });
 
-        // 마커 정보
-        var locations = [
-            { place: "오션뷰", lat: 35.150516494825055, lng: 129.1153318989716 },
-            { place: "광안리 주택", lat: 35.15857582414486, lng: 129.11895595793789 },
-        	{ place: "신축 오션뷰", lat: 35.155030694969305, lng: 129.12023152514823},
-        	{ place: "강알리", lat: 35.15548185886721, lng: 129.12194917969023},
-//         	{ place: "신축 오션뷰", lat: 35.155030694969305, lng: 129.12023152514823},
-//         	{ place: "신축 오션뷰", lat: 35.155030694969305, lng: 129.12023152514823},
+        google.maps.event.addListener(marker, 'click', (function (marker, i) {
+          return function () {
+            //html로 표시될 인포 윈도우의 내용
+            infowindow.setContent(locations[i].place);
+            //인포윈도우가 표시될 위치
+            infowindow.open(map, marker);
+          }
+        })(marker, i));
 
-            
-        ];
-        
-        //인포윈도우
-        var infowindow = new google.maps.InfoWindow();
-
-        //마커 생성
-        for (var i = 0; i < locations.length; i++) {
-            var marker = new google.maps.Marker({
-                map: map,
-                //label: locations[i].place,
-                position: new google.maps.LatLng(locations[i].lat, locations[i].lng),
-            });
-
-            google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                return function() {
-                    //html로 표시될 인포 윈도우의 내용
-                    infowindow.setContent(locations[i].place);
-                    //인포윈도우가 표시될 위치
-                    infowindow.open(map, marker);
-                }
-            })(marker, i));
-            
-            if (marker) {
-                marker.addListener('click', function() {
-                    //중심 위치를 클릭된 마커의 위치로 변경
-                    map.setCenter(this.getPosition());
-                    //마커 클릭 시의 줌 변화
-                    map.setZoom(17);
-                });
-            }
+        if (marker) {
+          marker.addListener('click', function () {
+            //중심 위치를 클릭된 마커의 위치로 변경
+            map.setCenter(this.getPosition());
+            //마커 클릭 시의 줌 변화
+            map.setZoom(17);
+          });
         }
+      }
     }
-    
-	// 상세페이지로 이동
+
+    // 상세페이지로 이동
     $('.info').click(function () {
       var Rooms_Code = $(this).children().eq(0).val();
       location.href = "<%= request.getContextPath() %>/detail.ro?Rooms_Code=" + Rooms_Code;
     });
-    
-    function goTop(){
-    	document.documentElement.scrollTop = 0;
+
+    function goTop() {
+      document.documentElement.scrollTop = 0;
     }
-    
+
     // 맨위로 가기 버튼 설정
-    $( window ).scroll( function() {
-    	if ( $( this ).scrollTop() > 200 ) {
-    		$( '.top' ).fadeIn();
-    	} else {
-    		$( '.top' ).fadeOut();
-    	}
-    } );
-    
-    $( '.top' ).click( function() {
-    	$( 'html, body' ).animate( { scrollTop : 0 }, 1000 );
-    	return false;
-    } );
-    
+    $(window).scroll(function () {
+      if ($(this).scrollTop() > 200) {
+        $('.top').fadeIn();
+      } else {
+        $('.top').fadeOut();
+      }
+    });
+
+    $('.top').click(function () {
+      $('html, body').animate({
+        scrollTop: 0
+      }, 1000);
+      return false;
+    });
   </script>
 
 </body>

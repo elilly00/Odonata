@@ -24,14 +24,32 @@
               </a>
             </label>
           </div>
-          <div class="img">
-            <a href="<%= request.getContextPath() %>/myPageForm.us">
-              <img
-                src="<%= request.getContextPath() %>/img/public_img/profile.png"
-                alt="마이페이지" 
-                id="profile"/>
-              </a>
-          </div>
+          <%-- 로그인 / 마이페이지 / 로그아웃 --%>
+    <div class="menu">
+      <% if(loginUser == null) { %>
+      <button type="button" onclick="location.href='<%= request.getContextPath() %>/loginForm.us'"
+        class="item menusolo hostdg">
+        로그인/회원가입
+      </button>
+      <% } else { %>
+      <div id="userInfo" align="right">
+        <%-- <label> <%= loginUser.getUser_name() %> 님의 방문을 환영합니다. </label>
+        <br clear="all"> --%>
+        <div class="menu">
+          <%-- <input type="button" class="item menusolo hostdg" value="내 정보 보기" onclick="location.href='<%= request.getContextPath() %>/myPage.me'">
+          --%>
+          <input type="button" class="item menusolo hostdg" value="로그 아웃"
+            onclick="location.href='<%= request.getContextPath() %>/logout.me'">
+        </div>
+      </div>
+      <div class="button" type="button" onclick="location.href='<%= request.getContextPath() %>/myPageForm.us'">
+        <img class="profile" src="<%= request.getContextPath() %>/img/public_img/profile.png" alt="마이페이지"
+          id="profile" />
+      </div>
+      <% } %>
+    </div>
+
+    <%-- 로그인 / 마이페이지 / 로그아웃 끝 --%>
         </div>
     
         <form action="<%= request.getContextPath() %>/insert.ro" method="post" encType="multipart/form-data">

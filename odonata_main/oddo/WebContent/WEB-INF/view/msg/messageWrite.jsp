@@ -37,7 +37,6 @@
       background: lightgray;
       height: 400px;
     }
-
   </style>
 </head>
 
@@ -48,6 +47,7 @@
         <img src="<%= request.getContextPath() %>/img/public_img/logo.png" width="80px" height="80px" alt="잠자리"
           class="mx-2" />
       </div>
+      <%-- 로그인 / 마이페이지 / 로그아웃 --%>
       <div class="menu">
         <% if(loginUser == null) { %>
         <button type="button" onclick="location.href='<%= request.getContextPath() %>/loginForm.us'"
@@ -65,14 +65,14 @@
               onclick="location.href='<%= request.getContextPath() %>/logout.me'">
           </div>
         </div>
-        <div class="item menusolo">
-        </div>
         <div class="button" type="button" onclick="location.href='<%= request.getContextPath() %>/myPageForm.us'">
           <img class="profile" src="<%= request.getContextPath() %>/img/public_img/profile.png" alt="마이페이지"
             id="profile" />
         </div>
         <% } %>
       </div>
+
+      <%-- 로그인 / 마이페이지 / 로그아웃 끝 --%>
     </a>
 
     <%-- <div class="menu">
@@ -105,146 +105,149 @@
     </div>
 
     <div class="row justify-content-center">
-    <div class="col-12 col-md-10 col-lg-7 col-xl-6">
-    <div class="card-body p-5">
-    <div class="row mx-auto my-2 mb-4">
-        <form action="<%= request.getContextPath() %>/insert.ms" method="post" id="msgWrite" name="msgWrite" onsubmit="return insertValidate();">
-          <table class="table table-border" id="messageInsert">
-            <tr>
-              <th>
-                <div class="form-floating">
-                    <input type="text" id="sendId" name="sendId" class="form-control" value="<%= loginUser.getUser_id() %>" readonly>
-                    <label class="form-label" for="sendId">보내는 사람 아이디</label>
-                </div>
-              </th>
-              <th>
-                <div class="form-floating">
-                    <input type="text" id="recvId" name="recvId" class="form-control">
-                    <label class="form-label" for="recvId">받는 사람 아이디</label>
-                </div>
-              </th>
-            </tr>
-            <tr>
-              <th colspan="2">
-                <div class="form-floating">
-                    <input type="text" id="msgTitle" name="msgTitle" class="form-control">
-                    <label class="form-label" for="msgTitle">제목</label>
-                </div>
-              </th>
-            </tr>
-            <tr>
-              <td colspan="2">
-                  <div class="form-floating">
+      <div class="col-12 col-md-10 col-lg-7 col-xl-6">
+        <div class="card-body p-5">
+          <div class="row mx-auto my-2 mb-4">
+            <form action="<%= request.getContextPath() %>/insert.ms" method="post" id="msgWrite" name="msgWrite"
+              onsubmit="return insertValidate();">
+              <table class="table table-border" id="messageInsert">
+                <tr>
+                  <th>
+                    <div class="form-floating">
+                      <input type="text" id="sendId" name="sendId" class="form-control"
+                        value="<%= loginUser.getUser_id() %>" readonly>
+                      <label class="form-label" for="sendId">보내는 사람 아이디</label>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="form-floating">
+                      <input type="text" id="recvId" name="recvId" class="form-control">
+                      <label class="form-label" for="recvId">받는 사람 아이디</label>
+                    </div>
+                  </th>
+                </tr>
+                <tr>
+                  <th colspan="2">
+                    <div class="form-floating">
+                      <input type="text" id="msgTitle" name="msgTitle" class="form-control">
+                      <label class="form-label" for="msgTitle">제목</label>
+                    </div>
+                  </th>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <div class="form-floating">
                       <textarea class="form-control" id="msgContent" name="msgContent" style="height: 300px"></textarea>
                       <label for="msgContent">쪽지 내용</label>
-                  </div>
-              </td>
-            </tr>
-          </table>
-        <button type="submit" class="btn btn-secondary btn-block">보내기</button>
-        <button type="button" class="btn btn-secondary btn-block mx-4" onclick="location.href='<%= request.getContextPath() %>/msgBoxForm.ms'">취소</button>
-        </form>
-        
-    </div>
-    </div>
-    </div>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+              <button type="submit" class="btn btn-secondary btn-block">보내기</button>
+              <button type="button" class="btn btn-secondary btn-block mx-4"
+                onclick="location.href='<%= request.getContextPath() %>/msgBoxForm.ms'">취소</button>
+            </form>
+
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </body>
 <script>
-    /* ------------------------------------------------------------ */
+  /* ------------------------------------------------------------ */
 
 
-    /* 아이디 검사 */
-    var isIdChecked = false;
+  /* 아이디 검사 */
+  var isIdChecked = false;
 
-    $('#recvId').on('change paste keyup', function () {
-      isIdChecked = false;
-    });
+  $('#recvId').on('change paste keyup', function () {
+    isIdChecked = false;
+  });
 
-    $('#recvId').change(function () {
-      var recvId = $('#recvId');
-      console.log(recvId);
+  $('#recvId').change(function () {
+    var recvId = $('#recvId');
+    console.log(recvId);
 
-      if (!recvId) {
-        recvId.focus();
-      } else {
-        $.ajax({
-          url: 'checkId.us',
-          data: {
-            inputId: recvId.val()
-          },
-          success: function (data) {
-            console.log(data);
-            if (data.trim() == '0') {
-              $("label[for='recvId']").text('받는 사람 아이디: 없는 아이디').css({
-                'color': 'red',
-                'font-weight': 'bold'
-              });
-              isIdChecked = false;
-            } else {
-              $("label[for='recvId']").text('받는 사람 아이디: 발송 가능').css({
-                'color': 'black',
-                'font-weight': 'bold'
-              });
-              isIdChecked = true;
-            }
-          },
-          error: function (data) {
-            console.log(data);
+    if (!recvId) {
+      recvId.focus();
+    } else {
+      $.ajax({
+        url: 'checkId.us',
+        data: {
+          inputId: recvId.val()
+        },
+        success: function (data) {
+          console.log(data);
+          if (data.trim() == '0') {
+            $("label[for='recvId']").text('받는 사람 아이디: 없는 아이디').css({
+              'color': 'red',
+              'font-weight': 'bold'
+            });
+            isIdChecked = false;
+          } else {
+            $("label[for='recvId']").text('받는 사람 아이디: 발송 가능').css({
+              'color': 'black',
+              'font-weight': 'bold'
+            });
+            isIdChecked = true;
           }
-        });
-      }
-    });
-
-
-    /* ------------------------------------------------------------ */
-
-
-    /* 제목 확인 */
-    var titleChk = false;
-
-    $('#msgTitle').blur(function () {
-      var msgTitle = $(this).val();
-
-      if (msgTitle == null || msgTitle.length < 2) {
-        $("label[for='msgTitle']").text('제목: 미작성').css({
-          'color': 'red',
-          'font-weight': 'bold'
-        });
-        titleChk = false;
-      } else {
-        $("label[for='msgTitle']").text('제목').css({
-          'color': 'black',
-          'font-weight': 'bold'
-        });
-        titleChk = true;
-      }
-    });
-
-
-
-
-    /* ------------------------------------------------------------ */
-
-
-    /* 입력 정보 최종 확인 */
-    function insertValidate() {
-      var confirmMSG = confirm("쪽지를 발송하시겠습니까?");
-
-      if (confirmMSG) {
-        if (isIdChecked && titleChk) {
-          console.log('isIdChecked: ' + isIdChecked);
-          console.log('titleChk: ' + titleChk);
-          return true;
-        } else {
-          alert('입력된 정보를 확인해주세요.');
-          return false;
+        },
+        error: function (data) {
+          console.log(data);
         }
+      });
+    }
+  });
+
+
+  /* ------------------------------------------------------------ */
+
+
+  /* 제목 확인 */
+  var titleChk = false;
+
+  $('#msgTitle').blur(function () {
+    var msgTitle = $(this).val();
+
+    if (msgTitle == null || msgTitle.length < 2) {
+      $("label[for='msgTitle']").text('제목: 미작성').css({
+        'color': 'red',
+        'font-weight': 'bold'
+      });
+      titleChk = false;
+    } else {
+      $("label[for='msgTitle']").text('제목').css({
+        'color': 'black',
+        'font-weight': 'bold'
+      });
+      titleChk = true;
+    }
+  });
+
+
+
+
+  /* ------------------------------------------------------------ */
+
+
+  /* 입력 정보 최종 확인 */
+  function insertValidate() {
+    var confirmMSG = confirm("쪽지를 발송하시겠습니까?");
+
+    if (confirmMSG) {
+      if (isIdChecked && titleChk) {
+        console.log('isIdChecked: ' + isIdChecked);
+        console.log('titleChk: ' + titleChk);
+        return true;
       } else {
+        alert('입력된 정보를 확인해주세요.');
         return false;
       }
+    } else {
+      return false;
     }
+  }
 </script>
 
 </html>
