@@ -403,3 +403,6 @@ ul > li.disabled {
 
   background-color: #f2bba7;
 }
+.menu{
+  align-items: right;
+}
