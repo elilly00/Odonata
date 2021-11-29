@@ -49,8 +49,8 @@ public class InsertRoomsServlet extends HttpServlet {
             String savePath = root + "thumbnail_uploadFiles/";	// 방금 뽑아낸 루트에 uploadFiles파일 추가함
             
             File f = new File(savePath);
-            if (!f.exists()) {	
-                f.mkdirs();	
+            if (!f.exists()) {
+                f.mkdirs();
             }
             
             System.out.println(savePath);
@@ -71,7 +71,6 @@ public class InsertRoomsServlet extends HttpServlet {
                     originFiles.add(multiRequest.getOriginalFileName(name));	// 원래 이름을 가져옴
                 }
             }
-            
             
             System.out.println(saveFiles);
             System.out.println(originFiles);
@@ -111,8 +110,8 @@ public class InsertRoomsServlet extends HttpServlet {
                 
             }
             
-            Rooms room = new Rooms(0, Rooms_Host, Rooms_Type, strRooms_Addr, Rooms_Price, Rooms_Personnel, 
-            						Rooms_RoomCnt, Rooms_ToiletCnt, Rooms_DogAvail, strAmenity, Rooms_Desc, null, strAmenity, 0, Rooms_name);
+            Rooms room = new Rooms(0, Rooms_Host, Rooms_Type, strRooms_Addr, Rooms_Price, Rooms_Personnel,
+                    Rooms_RoomCnt, Rooms_ToiletCnt, strAmenity, Rooms_Desc, null, strAmenity, 0, Rooms_name);
             // rooms
             
             // 이미지
@@ -122,7 +121,6 @@ public class InsertRoomsServlet extends HttpServlet {
                 s.setImage_path(savePath);
                 s.setOrigin_name(originFiles.get(e));
                 s.setChange_name(saveFiles.get(e));
-                
                 
                 if (e == originFiles.size() - 1) {
                     s.setImage_Level(0);
@@ -135,13 +133,12 @@ public class InsertRoomsServlet extends HttpServlet {
             
             int result = new RoomsService().insertRooms(room, ImgList);
             
-            if (result >= 1+ImgList.size()) {
-                response.sendRedirect(request.getContextPath()); 
+            if (result >= 1 + ImgList.size()) {
+                response.sendRedirect(request.getContextPath());
             } else {
                 request.setAttribute("msg", "숙소 등록 실패");
                 request.getRequestDispatcher("WEB-INF/view/errorPage.jsp").forward(request, response);
                 
-
                 for (int e = 0; e < saveFiles.size(); e++) {
                     File fail = new File(savePath + saveFiles.get(e));
                     fail.delete();
