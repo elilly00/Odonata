@@ -35,7 +35,7 @@ pageEncoding="UTF-8"%>
     <div class="myPage">
       <label>
         <img onclick="location.href='<%= request.getContextPath() %>/myPageForm.us'"
-          src="<%= request.getContextPath() %>/img/public_img/profile.png" alt="마이페이지" id="profile">
+          src="<%= request.getContextPath() %>/img/public_img/profile.png" alt="마이페이지" id="profile" class="profile">
       </label>
     </div>
   </div>
