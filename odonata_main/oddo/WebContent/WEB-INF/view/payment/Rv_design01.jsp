@@ -145,11 +145,12 @@
 </head>
 
 <body>
+<header>
 	<form action="<%= request.getContextPath() %>/" method="post" id="reservationForm" name="reservationForm">
 
 		<nav class="main-navi">
 			<div class="logo">
-				<a href="<%= request.getContextPath() %>/WEB-INF/index.html">
+				<a href="<%= request.getContextPath() %>">
 					<div class="logo">
 						<img src="<%= request.getContextPath() %>/img/public_img/logo.png" width="80px" height="80px"
 							alt="잠자리" class="mx-2" />
@@ -157,7 +158,7 @@
 				</a>
 			</div>
 			<%-- 로그인 / 마이페이지 / 로그아웃 --%>
-			<div class="menu">
+			<div class="roginmenu">
 				<% if(loginUser == null) { %>
 				<button type="button" onclick="location.href='<%= request.getContextPath() %>/loginForm.us'"
 					class="item menusolo hostdg">
@@ -184,6 +185,7 @@
 
 			<%-- 로그인 / 마이페이지 / 로그아웃 끝 --%>
 		</nav>
+</header>
 
 		<div class="content">
 			<br>

@@ -317,4 +317,31 @@ public class UserDAO {
         
         return result;
     }
+    
+    public User selectUser(Connection conn, int recvIdCode) {
+        PreparedStatement pstmt = null;
+        ResultSet rset = null;
+        User user = null;
+        
+        String query = prop.getProperty("selectUserCode");
+        
+        try {
+            pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, recvIdCode);
+            
+            rset = pstmt.executeQuery();
+            
+            if (rset.next())
+                user = new User(rset.getInt("USER_CODE"), rset.getString("USER_NAME"), rset.getString("USER_PWD"),
+                        rset.getString("USER_EMAIL"), rset.getString("USER_PHONE"), rset.getDate("USER_BIRTH"),
+                        rset.getString("USER_ID"), rset.getString("USER_TYPE"), rset.getString("STATUS").charAt(0));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(rset);
+            close(pstmt);
+        }
+        System.out.println(user);
+        return user;
+    }
 }

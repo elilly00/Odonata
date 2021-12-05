@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import msg.model.service.MessageService;
 import msg.model.vo.Message;
+import user.model.service.UserService;
 
 /**
  * Servlet implementation class InsertMessageServlet
@@ -32,8 +33,18 @@ public class InsertMessageServlet extends HttpServlet {
             throws ServletException, IOException {
         String msgTitle = request.getParameter("msgTitle");
         String msgContent = request.getParameter("msgContent");
+        if (msgContent.toLowerCase().equals("null"))
+            msgContent = null;
         String sendId = request.getParameter("sendId");
-        String recvId = request.getParameter("recvId");
+//        String recvId = request.getParameter("recvId");
+        
+        String recvId = null;
+        if (request.getParameter("recvId") != null && !request.getParameter("recvId").equals(""))
+            recvId = request.getParameter("recvId");
+        else {
+            int recvIdCode = Integer.parseInt(request.getParameter("recvIdCode"));
+            recvId = new UserService().selectUser(recvIdCode).getUser_id();
+        }
         
         Message m = new Message();
         m.setMessage_Title(msgTitle);
@@ -43,9 +54,12 @@ public class InsertMessageServlet extends HttpServlet {
         
         int result = new MessageService().insertMessage(m);
         
-        if (result > 0)
-            response.sendRedirect("msgBoxForm.ms");
-        else {
+        if (result > 0) {
+            if (request.getParameter("recvId") != null && !request.getParameter("recvId").equals(""))
+                response.sendRedirect("msgBoxForm.ms");
+            else
+                response.sendRedirect("myPageForm.us");
+        } else {
             request.setAttribute("msg", "메세지 전송 실패");
             request.getRequestDispatcher("WEB-INF/errorPage.jsp").forward(request, response);
         }

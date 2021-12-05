@@ -31,12 +31,13 @@
 </head>
 
 <body>
+<header>
   <nav class="main-navi">
-    <a class="logoo" href="<%= request.getContextPath() %>/WEB-INF/index.jsp">
+    <a class="logoo" href="<%= request.getContextPath() %>">
       <img class="logoo" src="<%= request.getContextPath() %>/img/public_img/logo.png">
     </a>
     <%-- 로그인 / 마이페이지 / 로그아웃 --%>
-    <div class="menu">
+    <div class="roginmenu">
       <% if(loginUser == null) { %>
       <button type="button" onclick="location.href='<%= request.getContextPath() %>/loginForm.us'"
         class="item menusolo hostdg">
@@ -62,6 +63,7 @@
 
     <%-- 로그인 / 마이페이지 / 로그아웃 끝 --%>
   </nav>
+</header>
 
   <div class="main-page">
     <div class="login-form">

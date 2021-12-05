@@ -403,6 +403,8 @@ ul > li.disabled {
 
   background-color: #f2bba7;
 }
-.menu{
-  align-items: right;
+
+.roginmenu{
+  display: inline-flex;
+  float: right;
 }

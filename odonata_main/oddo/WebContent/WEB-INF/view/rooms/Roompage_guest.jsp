@@ -24,21 +24,23 @@ pageEncoding="UTF-8"%>
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
+<header>
   <div class="header">
     <div class="logo">
       <label>
-        <a href="<%= request.getContextPath() %>/WEB-INF/index.html">
+        <a href="<%= request.getContextPath() %>">
           <img src="<%= request.getContextPath() %>/img/public_img/logo.png" alt="메인페이지" id="logo" />
         </a>
       </label>
     </div>
     <div class="myPage">
-      <label>
+      <label class="profile">
         <img onclick="location.href='<%= request.getContextPath() %>/myPageForm.us'"
           src="<%= request.getContextPath() %>/img/public_img/profile.png" alt="마이페이지" id="profile" class="profile">
       </label>
     </div>
   </div>
+  </header>
   <div class="body">
     <div class="name">
       <h1><%= room.getRooms_name() %></h1>
@@ -92,47 +94,14 @@ pageEncoding="UTF-8"%>
             class="rLocation"><%= room.getRooms_Addr() %>
         </div>
         <br />
-        <!-- <div id="map"></div> -->
       </div>
 
-      <!-- ★ 활성화시 오류 발생 -->
-      <!--         <div class="body_info4"> -->
-      <!--           <h2>리뷰</h2> -->
-      <!--           <p>nn개</p> -->
-      <!--           <div class="reviews"> -->
-      <!--             <div> -->
-      <%--                              <img class="reviewer" src="<%= request.getContextPath() %>/img/public_file/room/man.png"/>
-      --%>
-      <%--                              <div><b><%= loginUser.getUser_name() %></b>
-    </div> --%>
-    <%--                            <pre><%= review.getR_update() %></pre> --%>
-    <%--                           <div><%= review.getR_content() %> --%>
-    <!--           </div>  -->
-    <!--         </div> -->
-    <!--         <div> -->
-    <%--           <img class="reviewer" src="<%= request.getContextPath() %>/img/public_file/room/man2.png" /> --%>
-    <%--                          <div><b><%= loginUser.getUser_name() %></b>
-  </div> --%>
-  <%--                        <pre><%= review.getR_update() %></pre> --%>
-  <%--                        <div><%= review.getR_content() %> --%>
-  <!--       </div>  -->
-  <!--     </div> -->
-  <!--     <div> -->
-  <%--       <img class="reviewer" src="<%= request.getContextPath() %>/img/public_file/room/woman.png" /> --%>
-  <%--                      <div><b><%= loginUser.getUser_name() %></b></div> --%>
-  <%--                    <pre><%= review.getR_update() %></pre> --%>
-  <%--                    <div><%= review.getR_content() %> --%>
-  <!--   </div>  -->
-  <!--   </div> -->
-  <!--    <div class="more">후기 더보기</div> -->
-  <!--   </div> -->
-  <!--   </div> -->
   <div class="body_info4">
     <h2>숙소 상세 설명</h2>
     <br>
     <%= room.getRooms_Desc() %>
   </div>
-  <form action="<%= request.getContextPath() %>/msgDetail.ms" method="post">
+  <form action="<%= request.getContextPath() %>/insert.ms" method="post">
     <div class="body_info5">
       <h2>호스트에게 쪽지 보내기</h2>
       <ul>
@@ -141,20 +110,21 @@ pageEncoding="UTF-8"%>
           <b>제목</b>
         </li>
         <li>
-          <textarea id="title" placeholder="제목 입력" name="title"></textarea>
+          <textarea id="msgTitle" placeholder="제목 입력" name="msgTitle"></textarea>
         </li>
         <li>
           <br>
           <b>내용</b>
         </li>
         <li>
-          <textarea id="note" placeholder="호스트에게 쪽지 보내기 / 문의하기" name="text"></textarea>
+          <textarea id="msgContent" placeholder="호스트에게 쪽지 보내기 / 문의하기" name="msgContent"></textarea>
         </li>
       </ul>
     </div>
+    <input type="hidden" id="sendId" name="sendId" value="<%= loginUser.getUser_id() %>">
+    <input type="hidden" id="recvIdCode" name="recvIdCode" value="<%= room.getUser_code() %>">
     <div class="submit">
-      <input type="submit" id="submit" value="보내기"
-        onclick="location.href='<%= request.getContextPath() %>/insertMSG.ms'">
+      <input type="submit" id="submit" value="보내기">
     </div>
   </form>
   </div>

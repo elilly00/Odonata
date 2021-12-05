@@ -53,7 +53,8 @@ public class RoomsDAO {
             pstmt.setString(7, r.getRooms_ToiletCnt());
             pstmt.setString(8, r.getAmenity());
             pstmt.setString(9, r.getRooms_Desc());
-            pstmt.setString(10, r.getRooms_name());
+            pstmt.setInt(10, r.getUser_code());
+            pstmt.setString(11, r.getRooms_name());
             
             result = pstmt.executeUpdate();
         } catch (SQLException e) {

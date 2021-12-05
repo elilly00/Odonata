@@ -30,8 +30,9 @@
 </head>
 
 <body>
+<header>
   <nav class="main-navi" style="background: #f2bba7;">
-    <a href="<%= request.getContextPath() %>/WEB-INF/index.html">
+    <a href="<%= request.getContextPath() %>">
       <div class="logo">
         <img src="<%= request.getContextPath() %>/img/public_img/logo.png" width="80px" height="80px" alt="잠자리"
           class="mx-2" />
@@ -39,7 +40,7 @@
     </a>
 
     
-      <div class="menu">
+      <div class="roginmenu">
         <% if(loginUser == null) { %>
         <button type="button" onclick="location.href='<%= request.getContextPath() %>/loginForm.us'"
           class="item menusolo hostdg">
@@ -67,6 +68,7 @@
     
 
   </nav>
+  </header>
 
 
   <div class="main-page">

@@ -14,10 +14,11 @@
 
       </head>
       <body>
+      <header>
         <div class="header">
           <div class="logo">
             <label>
-              <a href="<%= request.getContextPath() %>/WEB-INF/index.html">
+              <a href="<%= request.getContextPath() %>">
                <img src="<%= request.getContextPath() %>/img/public_img/logo.png" 
                 alt="메인페이지" 
                 id="main">
@@ -25,7 +26,7 @@
             </label>
           </div>
           <%-- 로그인 / 마이페이지 / 로그아웃 --%>
-    <div class="menu">
+    <div class="roginmenu">
       <% if(loginUser == null) { %>
       <button type="button" onclick="location.href='<%= request.getContextPath() %>/loginForm.us'"
         class="item menusolo hostdg">
@@ -48,11 +49,12 @@
       </div>
       <% } %>
     </div>
+  </header>
 
     <%-- 로그인 / 마이페이지 / 로그아웃 끝 --%>
         </div>
     
-        <form action="<%= request.getContextPath() %>/insert.ro" method="post" encType="multipart/form-data" onsubmit="return insertValidate();">
+        <form action="<%= request.getContextPath() %>/insert.ro" method="post" encType="multipart/form-data">
           <div class="body">
             <div>
               <h3>숙소 유형</h3>
@@ -321,21 +323,6 @@
 	                  
 	              reader.readAsDataURL(value.files[0]);	// 여러 파일을 선택했을 때 가장 앞에 있는 파일만 올라가도록 하는 것
 	            }
-	          }
-	          
-	          /* 사진 파일 미업로드 여부 확인 */
-	          function insertValidate() {
-	        	   var imgChk = $("#titleImg").val();
-	        	   var imgChk1 = $("#contentImg1").val();
-	        	   var imgChk2 = $("#contentImg2").val();
-	        	   var imgChk3 = $("#contentImg3").val();
-	        	   
-	        	   if(!imgChk && !imgChk1 && !imgChk2 && !imgChk3) {
-	        		   alert('사진 파일을 최소 1개 이상 업로드해야 합니다.');
-	        		   return false;
-	        	   } else {
-	        		   return true;
-	        	   }
 	          }
       </script>
        

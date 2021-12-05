@@ -166,3 +166,10 @@
 
   background-color: #f2bba7;
 }
+.roginmenu{
+  
+  display: inline-flex;
+}
+.item menusolo hostdg{
+  margin-top: 50px;
+}

@@ -49,13 +49,14 @@
 </head>
 
 <body>
+<header>
   <nav class="main-navi">
     <div>
-      <a class="logoo" href="<%= request.getContextPath() %>/WEB-INF/index.jsp">
+      <a class="logoo" href="<%= request.getContextPath() %>">
         <img class="logoo" src="<%= request.getContextPath() %>/img/public_img/logo.png">
       </a>
     </div>
-    <div class="menu">
+    <div class="roginmenu">
       <% if(loginUser == null) { %>
       <button type="button" onclick="location.href='<%= request.getContextPath() %>/loginForm.us'"
         class="item menusolo hostdg">
@@ -81,6 +82,7 @@
       <% } %>
     </div>
   </nav>
+</header>
 
   <section class="intro">
     <div class="mask d-flex align-items-center h-100">

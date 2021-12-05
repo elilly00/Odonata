@@ -40,7 +40,7 @@ public class ConfirmMailServlet extends HttpServlet {
         String receiver = request.getParameter("email") + request.getParameter("domain");
         String title = "[잠자리] 유효 메일 확인";
         String content = "잠자리 회원님의 메일이 <b>유효한지 확인</b>하기 위한 메일입니다.";
-        String host = "smtp.google.com";
+        String host = "";       // 확인 메일 전송용 이메일 도메인
         String sender = "";         // 확인 메일 전송용 이메일 주소
         String senderPwd = "";      // 확인 메일 전송용 이메일 계정 비밀번호
         

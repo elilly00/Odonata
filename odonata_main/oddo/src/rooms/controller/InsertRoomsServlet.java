@@ -19,6 +19,7 @@ import common.MyFileRenamePolicy;
 import rooms.model.service.RoomsService;
 import rooms.model.vo.Rooms;
 import rooms.model.vo.sooksoImg;
+import user.model.vo.User;
 
 /**
  * Servlet implementation class InsertRoomeServlet
@@ -82,10 +83,10 @@ public class InsertRoomsServlet extends HttpServlet {
             String Rooms_Personnel = multiRequest.getParameter("personNum");
             String Rooms_RoomCnt = multiRequest.getParameter("roomCnt");
             String Rooms_ToiletCnt = multiRequest.getParameter("toiletCnt");
-            String Rooms_DogAvail = multiRequest.getParameter("pet");
             String[] Amenity = multiRequest.getParameterValues("amenity");
             String Rooms_Desc = multiRequest.getParameter("Desc");
             String Rooms_name = multiRequest.getParameter("roomName");
+            int User_code = ((User) request.getSession().getAttribute("loginUser")).getUser_code();
             
             String strRooms_Addr = "";
             if (Rooms_Addr != null) {
@@ -111,7 +112,7 @@ public class InsertRoomsServlet extends HttpServlet {
             }
             
             Rooms room = new Rooms(0, Rooms_Host, Rooms_Type, strRooms_Addr, Rooms_Price, Rooms_Personnel,
-                    Rooms_RoomCnt, Rooms_ToiletCnt, strAmenity, Rooms_Desc, null, strAmenity, 0, Rooms_name);
+                    Rooms_RoomCnt, Rooms_ToiletCnt, strAmenity, Rooms_Desc, null, strAmenity, User_code, Rooms_name);
             // rooms
             
             // 이미지

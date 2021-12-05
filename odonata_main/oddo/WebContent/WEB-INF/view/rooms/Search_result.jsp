@@ -32,11 +32,12 @@
 </head>
 
 <body>
+<header>
   <div class="header">
     <%-- 로고 --%>
     <div class="logo">
       <label>
-        <img onclick="location.href='<%= request.getContextPath() %>/WEB-INF/index.html'"
+        <img onclick="location.href='<%= request.getContextPath() %>'"
           src="<%= request.getContextPath() %>/img/public_img/logo.png" alt="메인페이지" id="logo">
       </label>
     </div>
@@ -246,6 +247,7 @@
 
     <%-- 상태 바 끝 --%>
   </div>
+  </header>
 
   <div class="header2">
     <div class="ft">
@@ -271,7 +273,6 @@
   </div>
 
   <div class="search_info">
-    <p>00월 00일 - 00월 00일 . 게스트 nn명</p>
     <h2>부산에서 위치한 숙소입니다.</h2>
     <br />
   </div>

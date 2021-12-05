@@ -404,3 +404,6 @@ height: 1000px;
 
   background-color: #f2bba7;
 }
+.roginmenu{
+  display: inline-flex;
+}

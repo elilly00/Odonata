@@ -134,4 +134,14 @@ public class UserService {
         
         return result;
     }
+    
+    public User selectUser(int recvIdCode) {
+        Connection conn = getConnection();
+        
+        User user = uDAO.selectUser(conn, recvIdCode);
+        
+        close(conn);
+        
+        return user;
+    }
 }
