@@ -1,6 +1,7 @@
 # Semi Project [잠자리]
+<br>
 
-<h3>🔎 바로가기</h3> 
+## 🔎 바로가기
 1. [프로젝트 개요](https://github.com/elilly00/Odonata/edit/main/README.md#1-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B0%9C%EC%9A%94) <br>
 2. [프로젝트 기간](https://github.com/elilly00/Odonata/edit/main/README.md#2-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B8%B0%EA%B0%84) <br>
 3. [UI Prototype](https://github.com/elilly00/Odonata/edit/main/README.md#3-ui-prototype) <br>
