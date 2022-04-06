@@ -61,8 +61,8 @@ OS : Window 10, iOS
 Server : Tomcat 9.0.54
 DataBase : Oracle 18c
 FrameWork : Bootstrap
-Development Language : JAVA, HTML5, CSS3, JavaScript, jQuery, JSP, Servlet
-Development Tool : Eclipse 4.15.0, sqlDeveloper version 21.2.1, VsCode, Star UML
-Share Tools : GitHub, VsCode
+Development Language : JAVA, HTML5, CSS3, JavaScript, jQuery, SQL, JSP, Servlet
+Development Tool : Eclipse 4.15.0, sqlDeveloper version 21.2.1, Visual Studio code
+Team Coop : Github, ERDCloud, kakaoOven, Star UML
 Open API : Google Map API, Import API 
 ```
