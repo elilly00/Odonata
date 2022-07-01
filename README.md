@@ -73,3 +73,20 @@ Development Tool : Eclipse 4.15.0, sqlDeveloper version 21.2.1, Visual Studio co
 Team Coop : Github, ERDCloud, kakaoOven, Star UML
 Open API : Google Map API, Import API 
 ```
+
+<br>
+
+## 8. 결과물
+### 숙소 등록
+![숙소 등록1](https://user-images.githubusercontent.com/90914001/176836593-fa22fb95-b14a-4264-89fd-02365298264b.PNG)
+![숙소 등록2](https://user-images.githubusercontent.com/90914001/176836608-1d2e85ef-80c0-499a-9ecf-2018769aa06e.PNG)
+![숙소 등록3](https://user-images.githubusercontent.com/90914001/176836614-0bec7d64-753a-4e3d-a732-484a71d5c8dd.PNG)
+
+## 숙소 목록
+![숙소 목록1](https://user-images.githubusercontent.com/90914001/176836702-a73dcebf-2b0b-4890-ab08-164dc230265d.PNG)
+
+## 상세 정보
+![숙소 상세](https://user-images.githubusercontent.com/90914001/176836728-8fa0ed49-2da3-4f54-8a4d-2980018ee81c.PNG)
+상세 정보 페이지 상단에 숙소 이미지를 슬라이드하여 볼 수 있습니다.
+![숙소 상세2](https://user-images.githubusercontent.com/90914001/176836734-427569d8-3f7f-4a42-8d82-92282229986f.PNG)
+
