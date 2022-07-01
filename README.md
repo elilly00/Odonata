@@ -6,8 +6,10 @@
 2. [프로젝트 기간](https://github.com/elilly00/Odonata#2-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B8%B0%EA%B0%84) <br>
 3. [UI Prototype](https://github.com/elilly00/Odonata#3-ui-prototype) <br>
 4. [프로젝트 산출물](https://github.com/elilly00/Odonata#4-db-erd) <br>
-5. [구현기능](https://github.com/elilly00/Odonata#5-%EA%B5%AC%ED%98%84%EA%B8%B0%EB%8A%A5) <br>
-6. [개발환경](https://github.com/elilly00/Odonata#6-%EA%B0%9C%EB%B0%9C%ED%99%98%EA%B2%BD)
+5. [주요 기능](https://github.com/elilly00/Odonata#5-%EA%B5%AC%ED%98%84%EA%B8%B0%EB%8A%A5) <br>
+6. [구현 기능](https://github.com/elilly00/Odonata/edit/main/README.md#6-%EA%B5%AC%ED%98%84-%EA%B8%B0%EB%8A%A5) <br>
+7. [개발환경](https://github.com/elilly00/Odonata/edit/main/README.md#7-%EA%B0%9C%EB%B0%9C%ED%99%98%EA%B2%BD) <br>
+8. [결과물](https://github.com/elilly00/Odonata/edit/main/README.md#8-%EA%B2%B0%EA%B3%BC%EB%AC%BC)
 <br><br>
 
 ## 1. 프로젝트 개요
