@@ -85,8 +85,14 @@ Open API : Google Map API, Import API
 ## 숙소 목록
 ![숙소 목록1](https://user-images.githubusercontent.com/90914001/176836702-a73dcebf-2b0b-4890-ab08-164dc230265d.PNG)
 
+지도를 통해 숙소 위치를 조회할 수 있다. 
+지도의 마킹표시를 클릭하면 해당 위치의 숙소 이름이 띄워진다.
+
 ## 상세 정보
 ![숙소 상세](https://user-images.githubusercontent.com/90914001/176836728-8fa0ed49-2da3-4f54-8a4d-2980018ee81c.PNG)
-상세 정보 페이지 상단에 숙소 이미지를 슬라이드하여 볼 수 있습니다.
+
+상세 정보 페이지 상단에 숙소 이미지를 슬라이드하여 볼 수 있다.
+
 ![숙소 상세2](https://user-images.githubusercontent.com/90914001/176836734-427569d8-3f7f-4a42-8d82-92282229986f.PNG)
 
+상세 정보 페이지에서 바로 호스트에서 쪽지를 보내거나 숙소를 예약할 수 있다.
